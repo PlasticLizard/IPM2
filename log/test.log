@@ -1,0 +1,1020 @@
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:34:29) [GET]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering tenants/index
+Completed in 33ms (View: 25, DB: 4) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:34:29) [GET]
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering tenants/index
+Completed in 9ms (View: 5, DB: 1) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:34:29) [GET]
+Rendering tenants/new
+ERROR: compiling _run_haml_app47views47tenants47_form46html46haml_locals_form_object RAISED compile error
+D:/Development/ipm/app/views/tenants/_form.html.haml:2: syntax error, unexpected kENSURE, expecting kEND
+_erbout;ensure;@haml_buffer = @haml_buffer.upper;end;
+              ^
+D:/Development/ipm/app/views/tenants/_form.html.haml:5: syntax error, unexpected $end, expecting kEND
+Function body:           def _run_haml_app47views47tenants47_form46html46haml_locals_form_object(local_assigns)
+            old_output_buffer = output_buffer;form = local_assigns[:form];object = local_assigns[:object];;begin;extend Haml::Helpers;_hamlout = @haml_buffer = Haml::Buffer.new(@haml_buffer, {:autoclose=>["meta", "img", "link", "br", "hr", "input", "area", "param", "col", "base"], :encoding=>nil, :ugly=>false, :format=>:xhtml, :escape_html=>false, :attr_wrapper=>"'", :preserve=>["textarea", "pre", "code"]});_erbout = _hamlout.buffer;__in_erb_template = true;; form.inputs do;
+_erbout;ensure;@haml_buffer = @haml_buffer.upper;end;
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: D:/Development/ipm/app/views/tenants/_form.html.haml:5:in `compile!'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render_without_template_tracking'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/test_case.rb:20:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:20:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:19:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:44:in `render_partial'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/partials.rb:184:in `render_partial'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:276:in `render_without_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:11:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers.rb:96:in `non_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:11:in `render'
+D:/Development/ipm/app/views/tenants/new.html.haml:5
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:203:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:203
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers.rb:573:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers.rb:573:in `haml_bind_proc'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/helpers/form_helper.rb:499:in `fields_for'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/helpers/form_helper.rb:282:in `form_for_without_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:209:in `form_for'
+C:/Ruby/lib/ruby/gems/1.8/gems/formtastic-0.9.8/rails/../lib/formtastic.rb:1703:in `semantic_form_for'
+C:/Ruby/lib/ruby/gems/1.8/gems/formtastic-0.9.8/rails/../lib/formtastic.rb:1681:in `with_custom_field_error_proc'
+C:/Ruby/lib/ruby/gems/1.8/gems/formtastic-0.9.8/rails/../lib/formtastic.rb:1702:in `semantic_form_for'
+D:/Development/ipm/app/views/tenants/new.html.haml:4:in `_run_haml_app47views47tenants47new46html46haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `render_without_template_tracking'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:306:in `with_template'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:30:in `render_without_template_tracking'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/test_case.rb:20:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render_without_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:13:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:945:in `render_without_benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1326:in `default_render'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/respond_to.rb:105
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:183:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:183:in `default_render'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:124:in `to_html'
+C:/Ruby/lib/ruby/gems/1.8/gems/responders-0.4.7/lib/responders/flash_responder.rb:93:in `to_html'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:117:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:117:in `respond'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:110:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/respond_to.rb:67:in `respond_with'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/actions.rb:19:in `new'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `sass_old_process'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/rails/../lib/sass/plugin/rails.rb:20:in `process'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/test_process.rb:567:in `process_with_test'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/test_process.rb:447:in `process'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/test_process.rb:398:in `get'
+D:/Development/ipm/test/functional/tenants_controller_test.rb:32:in `__bind_1271046869_798000'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:380:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:380:in `run_current_setup_blocks'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:379:in `each'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:379:in `run_current_setup_blocks'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:361:in `test: new should assign @resource. '
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/testing/setup_and_teardown.rb:62:in `__send__'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/testing/setup_and_teardown.rb:62:in `run'
+C:/Ruby/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+C:/Ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+C:/Ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+C:/Ruby/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\patch\testunit/test/unit/ui/testrunnermediator.rb:36:in `run_suite'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\patch\testunit/test/unit/ui/teamcity/testrunner.rb:215:in `start_mediator'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\patch\testunit/test/unit/ui/teamcity/testrunner.rb:191:in `start'
+C:/Ruby/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\runner\tunit_in_folder_runner.rb:87
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\runner\tunit_in_folder_runner.rb:64:in `each_object'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\runner\tunit_in_folder_runner.rb:64
+-e:1:in `load'
+-e:1
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:34:29) [GET]
+Rendering tenants/new
+ERROR: compiling _run_haml_app47views47tenants47_form46html46haml_locals_form_object RAISED compile error
+D:/Development/ipm/app/views/tenants/_form.html.haml:2: syntax error, unexpected kENSURE, expecting kEND
+_erbout;ensure;@haml_buffer = @haml_buffer.upper;end;
+              ^
+D:/Development/ipm/app/views/tenants/_form.html.haml:5: syntax error, unexpected $end, expecting kEND
+Function body:           def _run_haml_app47views47tenants47_form46html46haml_locals_form_object(local_assigns)
+            old_output_buffer = output_buffer;form = local_assigns[:form];object = local_assigns[:object];;begin;extend Haml::Helpers;_hamlout = @haml_buffer = Haml::Buffer.new(@haml_buffer, {:autoclose=>["meta", "img", "link", "br", "hr", "input", "area", "param", "col", "base"], :encoding=>nil, :ugly=>false, :format=>:xhtml, :escape_html=>false, :attr_wrapper=>"'", :preserve=>["textarea", "pre", "code"]});_erbout = _hamlout.buffer;__in_erb_template = true;; form.inputs do;
+_erbout;ensure;@haml_buffer = @haml_buffer.upper;end;
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: D:/Development/ipm/app/views/tenants/_form.html.haml:5:in `compile!'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render_without_template_tracking'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/test_case.rb:20:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:20:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:19:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:44:in `render_partial'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/partials.rb:184:in `render_partial'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:276:in `render_without_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:11:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers.rb:96:in `non_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:11:in `render'
+D:/Development/ipm/app/views/tenants/new.html.haml:5
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:203:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:203
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers.rb:573:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers.rb:573:in `haml_bind_proc'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/helpers/form_helper.rb:499:in `fields_for'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/helpers/form_helper.rb:282:in `form_for_without_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:209:in `form_for'
+C:/Ruby/lib/ruby/gems/1.8/gems/formtastic-0.9.8/rails/../lib/formtastic.rb:1703:in `semantic_form_for'
+C:/Ruby/lib/ruby/gems/1.8/gems/formtastic-0.9.8/rails/../lib/formtastic.rb:1681:in `with_custom_field_error_proc'
+C:/Ruby/lib/ruby/gems/1.8/gems/formtastic-0.9.8/rails/../lib/formtastic.rb:1702:in `semantic_form_for'
+D:/Development/ipm/app/views/tenants/new.html.haml:4:in `_run_haml_app47views47tenants47new46html46haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `render_without_template_tracking'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:306:in `with_template'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:30:in `render_without_template_tracking'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/test_case.rb:20:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render_without_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:13:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:945:in `render_without_benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1326:in `default_render'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/respond_to.rb:105
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:183:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:183:in `default_render'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:124:in `to_html'
+C:/Ruby/lib/ruby/gems/1.8/gems/responders-0.4.7/lib/responders/flash_responder.rb:93:in `to_html'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:117:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:117:in `respond'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:110:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/respond_to.rb:67:in `respond_with'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/actions.rb:19:in `new'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `sass_old_process'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/rails/../lib/sass/plugin/rails.rb:20:in `process'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/test_process.rb:567:in `process_with_test'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/test_process.rb:447:in `process'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/test_process.rb:398:in `get'
+D:/Development/ipm/test/functional/tenants_controller_test.rb:32:in `__bind_1271046869_867000'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:380:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:380:in `run_current_setup_blocks'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:379:in `each'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:379:in `run_current_setup_blocks'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:361:in `test: new should render template :new. '
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/testing/setup_and_teardown.rb:62:in `__send__'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/testing/setup_and_teardown.rb:62:in `run'
+C:/Ruby/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+C:/Ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+C:/Ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+C:/Ruby/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\patch\testunit/test/unit/ui/testrunnermediator.rb:36:in `run_suite'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\patch\testunit/test/unit/ui/teamcity/testrunner.rb:215:in `start_mediator'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\patch\testunit/test/unit/ui/teamcity/testrunner.rb:191:in `start'
+C:/Ruby/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\runner\tunit_in_folder_runner.rb:87
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\runner\tunit_in_folder_runner.rb:64:in `each_object'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\runner\tunit_in_folder_runner.rb:64
+-e:1:in `load'
+-e:1
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:34:29) [GET]
+Rendering tenants/new
+ERROR: compiling _run_haml_app47views47tenants47_form46html46haml_locals_form_object RAISED compile error
+D:/Development/ipm/app/views/tenants/_form.html.haml:2: syntax error, unexpected kENSURE, expecting kEND
+_erbout;ensure;@haml_buffer = @haml_buffer.upper;end;
+              ^
+D:/Development/ipm/app/views/tenants/_form.html.haml:5: syntax error, unexpected $end, expecting kEND
+Function body:           def _run_haml_app47views47tenants47_form46html46haml_locals_form_object(local_assigns)
+            old_output_buffer = output_buffer;form = local_assigns[:form];object = local_assigns[:object];;begin;extend Haml::Helpers;_hamlout = @haml_buffer = Haml::Buffer.new(@haml_buffer, {:autoclose=>["meta", "img", "link", "br", "hr", "input", "area", "param", "col", "base"], :encoding=>nil, :ugly=>false, :format=>:xhtml, :escape_html=>false, :attr_wrapper=>"'", :preserve=>["textarea", "pre", "code"]});_erbout = _hamlout.buffer;__in_erb_template = true;; form.inputs do;
+_erbout;ensure;@haml_buffer = @haml_buffer.upper;end;
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: D:/Development/ipm/app/views/tenants/_form.html.haml:5:in `compile!'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render_without_template_tracking'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/test_case.rb:20:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:20:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:19:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:44:in `render_partial'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/partials.rb:184:in `render_partial'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:276:in `render_without_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:11:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers.rb:96:in `non_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:11:in `render'
+D:/Development/ipm/app/views/tenants/new.html.haml:5
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:203:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:203
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers.rb:573:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers.rb:573:in `haml_bind_proc'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/helpers/form_helper.rb:499:in `fields_for'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/helpers/form_helper.rb:282:in `form_for_without_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:209:in `form_for'
+C:/Ruby/lib/ruby/gems/1.8/gems/formtastic-0.9.8/rails/../lib/formtastic.rb:1703:in `semantic_form_for'
+C:/Ruby/lib/ruby/gems/1.8/gems/formtastic-0.9.8/rails/../lib/formtastic.rb:1681:in `with_custom_field_error_proc'
+C:/Ruby/lib/ruby/gems/1.8/gems/formtastic-0.9.8/rails/../lib/formtastic.rb:1702:in `semantic_form_for'
+D:/Development/ipm/app/views/tenants/new.html.haml:4:in `_run_haml_app47views47tenants47new46html46haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `render_without_template_tracking'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:306:in `with_template'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:30:in `render_without_template_tracking'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/test_case.rb:20:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render_without_haml'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/lib/haml/helpers/action_view_mods.rb:13:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:945:in `render_without_benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1326:in `default_render'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/respond_to.rb:105
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:183:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:183:in `default_render'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:124:in `to_html'
+C:/Ruby/lib/ruby/gems/1.8/gems/responders-0.4.7/lib/responders/flash_responder.rb:93:in `to_html'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:117:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:117:in `respond'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/responder.rb:110:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/legacy/respond_to.rb:67:in `respond_with'
+C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/actions.rb:19:in `new'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `sass_old_process'
+C:/Ruby/lib/ruby/gems/1.8/gems/haml-2.2.22/rails/../lib/sass/plugin/rails.rb:20:in `process'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/test_process.rb:567:in `process_with_test'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/test_process.rb:447:in `process'
+C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/test_process.rb:398:in `get'
+D:/Development/ipm/test/functional/tenants_controller_test.rb:32:in `__bind_1271046869_922000'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:380:in `call'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:380:in `run_current_setup_blocks'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:379:in `each'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:379:in `run_current_setup_blocks'
+C:/Ruby/lib/ruby/gems/1.8/gems/shoulda-2.10.3/lib/shoulda/context.rb:361:in `test: new should respond with success. '
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/testing/setup_and_teardown.rb:62:in `__send__'
+C:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/testing/setup_and_teardown.rb:62:in `run'
+C:/Ruby/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+C:/Ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+C:/Ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+C:/Ruby/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `old_run_suite'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\patch\testunit/test/unit/ui/testrunnermediator.rb:36:in `run_suite'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\patch\testunit/test/unit/ui/teamcity/testrunner.rb:215:in `start_mediator'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\patch\testunit/test/unit/ui/teamcity/testrunner.rb:191:in `start'
+C:/Ruby/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\runner\tunit_in_folder_runner.rb:87
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\runner\tunit_in_folder_runner.rb:64:in `each_object'
+C:\Program Files (x86)\JetBrains\RubyMine 2.0.1\rb\testing\runner\tunit_in_folder_runner.rb:64
+-e:1:in `load'
+-e:1
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:48:42) [GET]
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering tenants/index
+Rendered tenants/_item (11.0ms)
+Completed in 39ms (View: 32, DB: 7) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:48:42) [GET]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering tenants/index
+Rendered tenants/_item (3.0ms)
+Completed in 10ms (View: 7, DB: 1) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:48:42) [GET]
+Rendering tenants/new
+Rendered tenants/_form (4.0ms)
+Completed in 15ms (View: 14, DB: 0) | 200 OK [http://test.host/tenants/new]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:48:42) [GET]
+Rendering tenants/new
+Rendered tenants/_form (4.0ms)
+Completed in 12ms (View: 11, DB: 0) | 200 OK [http://test.host/tenants/new]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:48:42) [GET]
+Rendering tenants/new
+Rendered tenants/_form (4.0ms)
+Completed in 12ms (View: 10, DB: 0) | 200 OK [http://test.host/tenants/new]
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#create (for 0.0.0.0 at 2010-04-11 21:49:56) [POST]
+  Parameters: {"resource"=>{"name"=>"Hello", "created_at"=>Mon Apr 12 04:49:55 UTC 2010, "updated_at"=>Mon Apr 12 04:49:55 UTC 2010, "id"=>276395349}}
+  [4;35;1mTenant Create (1.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES(NULL, '2010-04-12 04:49:56', '2010-04-12 04:49:56')[0m
+Redirected to http://test.host/tenants/276395350
+Completed in 15ms (DB: 0) | 302 Found [http://test.host/tenants?resource%5Bcreated_at%5D=Mon+Apr+12+04%3A49%3A55+UTC+2010&resource%5Bid%5D=276395349&resource%5Bname%5D=Hello&resource%5Bupdated_at%5D=Mon+Apr+12+04%3A49%3A55+UTC+2010]
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#destroy (for 0.0.0.0 at 2010-04-11 21:49:56) [DELETE]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+  [4;36;1mTenant Destroy (2.0ms)[0m   [0;1mDELETE FROM "tenants" WHERE "id" = 276395349[0m
+Redirected to http://test.host/tenants
+Completed in 11ms (DB: 0) | 302 Found [http://test.host/tenants/276395349]
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#edit (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering tenants/edit
+Rendered tenants/_form (5.0ms)
+Completed in 31ms (View: 27, DB: 2) | 200 OK [http://test.host/tenants/276395349/edit]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#edit (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering tenants/edit
+Rendered tenants/_form (4.0ms)
+Completed in 16ms (View: 12, DB: 2) | 200 OK [http://test.host/tenants/276395349/edit]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#edit (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering tenants/edit
+Rendered tenants/_form (4.0ms)
+Completed in 21ms (View: 15, DB: 2) | 200 OK [http://test.host/tenants/276395349/edit]
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering tenants/index
+Rendered tenants/_item (97.0ms)
+Completed in 110ms (View: 107, DB: 1) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering tenants/index
+Rendered tenants/_item (4.0ms)
+Completed in 13ms (View: 8, DB: 1) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+Rendering tenants/new
+Rendered tenants/_form (3.0ms)
+Completed in 15ms (View: 13, DB: 0) | 200 OK [http://test.host/tenants/new]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+Rendering tenants/new
+Rendered tenants/_form (3.0ms)
+Completed in 12ms (View: 10, DB: 0) | 200 OK [http://test.host/tenants/new]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+Rendering tenants/new
+Rendered tenants/_form (3.0ms)
+Completed in 12ms (View: 10, DB: 0) | 200 OK [http://test.host/tenants/new]
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#show (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering tenants/show
+Completed in 11ms (View: 8, DB: 1) | 200 OK [http://test.host/tenants/276395349]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#show (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering tenants/show
+Completed in 9ms (View: 4, DB: 2) | 200 OK [http://test.host/tenants/276395349]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#show (for 0.0.0.0 at 2010-04-11 21:49:56) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering tenants/show
+Completed in 7ms (View: 4, DB: 1) | 200 OK [http://test.host/tenants/276395349]
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#update (for 0.0.0.0 at 2010-04-11 21:49:56) [PUT]
+  Parameters: {"resource"=>{"name"=>"Hello", "created_at"=>Mon Apr 12 04:49:55 UTC 2010, "updated_at"=>Mon Apr 12 04:49:55 UTC 2010, "id"=>276395349}, "id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Redirected to http://test.host/tenants/276395349
+Completed in 9ms (DB: 0) | 302 Found [http://test.host/tenants/276395349?resource%5Bcreated_at%5D=Mon+Apr+12+04%3A49%3A55+UTC+2010&resource%5Bid%5D=276395349&resource%5Bname%5D=Hello&resource%5Bupdated_at%5D=Mon+Apr+12+04%3A49%3A55+UTC+2010]
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#create (for 0.0.0.0 at 2010-04-11 21:53:54) [POST]
+  Parameters: {"resource"=>{"name"=>"Hello", "created_at"=>Mon Apr 12 04:53:54 UTC 2010, "updated_at"=>Mon Apr 12 04:53:54 UTC 2010, "id"=>276395349}}
+  [4;35;1mTenant Create (2.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES(NULL, '2010-04-12 04:53:54', '2010-04-12 04:53:54')[0m
+Redirected to http://test.host/tenants/276395350
+Completed in 16ms (DB: 0) | 302 Found [http://test.host/tenants?resource%5Bcreated_at%5D=Mon+Apr+12+04%3A53%3A54+UTC+2010&resource%5Bid%5D=276395349&resource%5Bname%5D=Hello&resource%5Bupdated_at%5D=Mon+Apr+12+04%3A53%3A54+UTC+2010]
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#destroy (for 0.0.0.0 at 2010-04-11 21:53:54) [DELETE]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+  [4;36;1mTenant Destroy (2.0ms)[0m   [0;1mDELETE FROM "tenants" WHERE "id" = 276395349[0m
+Redirected to http://test.host/tenants
+Completed in 10ms (DB: 0) | 302 Found [http://test.host/tenants/276395349]
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (3.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#edit (for 0.0.0.0 at 2010-04-11 21:53:54) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/edit
+Rendered tenants/_form (6.0ms)
+Completed in 36ms (View: 32, DB: 4) | 200 OK [http://test.host/tenants/276395349/edit]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#edit (for 0.0.0.0 at 2010-04-11 21:53:54) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/edit
+Rendered tenants/_form (3.0ms)
+Completed in 16ms (View: 12, DB: 2) | 200 OK [http://test.host/tenants/276395349/edit]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#edit (for 0.0.0.0 at 2010-04-11 21:53:54) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/edit
+Rendered tenants/_form (4.0ms)
+Completed in 20ms (View: 14, DB: 1) | 200 OK [http://test.host/tenants/276395349/edit]
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:53:54) [GET]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering tenants/index
+Rendered tenants/_item (7.0ms)
+Completed in 108ms (View: 104, DB: 1) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:53:54) [GET]
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering tenants/index
+Rendered tenants/_item (3.0ms)
+Completed in 12ms (View: 9, DB: 1) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:53:54) [GET]
+Rendering template within layouts/application
+Rendering tenants/new
+Rendered tenants/_form (2.0ms)
+Completed in 15ms (View: 13, DB: 0) | 200 OK [http://test.host/tenants/new]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:53:55) [GET]
+Rendering template within layouts/application
+Rendering tenants/new
+Rendered tenants/_form (3.0ms)
+Completed in 12ms (View: 10, DB: 0) | 200 OK [http://test.host/tenants/new]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:53:55) [GET]
+Rendering template within layouts/application
+Rendering tenants/new
+Rendered tenants/_form (6.0ms)
+Completed in 16ms (View: 15, DB: 0) | 200 OK [http://test.host/tenants/new]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#show (for 0.0.0.0 at 2010-04-11 21:53:55) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/show
+Completed in 11ms (View: 9, DB: 1) | 200 OK [http://test.host/tenants/276395349]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#show (for 0.0.0.0 at 2010-04-11 21:53:55) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (2.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/show
+Completed in 11ms (View: 5, DB: 3) | 200 OK [http://test.host/tenants/276395349]
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#show (for 0.0.0.0 at 2010-04-11 21:53:55) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/show
+Completed in 9ms (View: 6, DB: 1) | 200 OK [http://test.host/tenants/276395349]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#update (for 0.0.0.0 at 2010-04-11 21:53:55) [PUT]
+  Parameters: {"resource"=>{"name"=>"Hello", "created_at"=>Mon Apr 12 04:53:54 UTC 2010, "updated_at"=>Mon Apr 12 04:53:54 UTC 2010, "id"=>276395349}, "id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Redirected to http://test.host/tenants/276395349
+Completed in 10ms (DB: 0) | 302 Found [http://test.host/tenants/276395349?resource%5Bcreated_at%5D=Mon+Apr+12+04%3A53%3A54+UTC+2010&resource%5Bid%5D=276395349&resource%5Bname%5D=Hello&resource%5Bupdated_at%5D=Mon+Apr+12+04%3A53%3A54+UTC+2010]
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#destroy (for 0.0.0.0 at 2010-04-11 21:54:28) [DELETE]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+  [4;36;1mTenant Destroy (1.0ms)[0m   [0;1mDELETE FROM "tenants" WHERE "id" = 276395349[0m
+Redirected to http://test.host/tenants
+Completed in 13ms (DB: 0) | 302 Found [http://test.host/tenants/276395349]
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#edit (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/edit
+Rendered tenants/_form (8.0ms)
+Completed in 37ms (View: 33, DB: 2) | 200 OK [http://test.host/tenants/276395349/edit]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#edit (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/edit
+Rendered tenants/_form (4.0ms)
+Completed in 16ms (View: 12, DB: 2) | 200 OK [http://test.host/tenants/276395349/edit]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#edit (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/edit
+Rendered tenants/_form (3.0ms)
+Completed in 16ms (View: 12, DB: 2) | 200 OK [http://test.host/tenants/276395349/edit]
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering tenants/index
+Rendered tenants/_item (6.0ms)
+Completed in 20ms (View: 17, DB: 1) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#index (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" LIMIT 20 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering tenants/index
+Rendered tenants/_item (3.0ms)
+Completed in 11ms (View: 8, DB: 0) | 200 OK [http://test.host/tenants]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+Rendering template within layouts/application
+Rendering tenants/new
+Rendered tenants/_form (4.0ms)
+Completed in 103ms (View: 101, DB: 0) | 200 OK [http://test.host/tenants/new]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+Rendering template within layouts/application
+Rendering tenants/new
+Rendered tenants/_form (3.0ms)
+Completed in 13ms (View: 11, DB: 0) | 200 OK [http://test.host/tenants/new]
+
+
+Processing TenantsController#new (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+Rendering template within layouts/application
+Rendering tenants/new
+Rendered tenants/_form (4.0ms)
+Completed in 16ms (View: 13, DB: 0) | 200 OK [http://test.host/tenants/new]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#show (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (0.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/show
+Completed in 15ms (View: 12, DB: 1) | 200 OK [http://test.host/tenants/276395349]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#show (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/show
+Completed in 9ms (View: 5, DB: 2) | 200 OK [http://test.host/tenants/276395349]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#show (for 0.0.0.0 at 2010-04-11 21:54:28) [GET]
+  Parameters: {"id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Rendering template within layouts/application
+Rendering tenants/show
+Completed in 10ms (View: 6, DB: 2) | 200 OK [http://test.host/tenants/276395349]
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+
+
+Processing TenantsController#update (for 0.0.0.0 at 2010-04-11 21:54:28) [PUT]
+  Parameters: {"resource"=>{"name"=>"Hello", "created_at"=>Mon Apr 12 04:54:27 UTC 2010, "updated_at"=>Mon Apr 12 04:54:27 UTC 2010, "id"=>276395349}, "id"=>"276395349"}
+  [4;35;1mTenant Load (1.0ms)[0m   [0mSELECT * FROM "tenants" WHERE ("tenants"."id" = 276395349) [0m
+Redirected to http://test.host/tenants/276395349
+Completed in 9ms (DB: 0) | 302 Found [http://test.host/tenants/276395349?resource%5Bcreated_at%5D=Mon+Apr+12+04%3A54%3A27+UTC+2010&resource%5Bid%5D=276395349&resource%5Bname%5D=Hello&resource%5Bupdated_at%5D=Mon+Apr+12+04%3A54%3A27+UTC+2010]
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" [0m
+  [4;36;1mOrganizationalUnit Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 05:12:31', '2010-04-15 05:12:31', NULL, NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 05:12:31', '2010-04-15 05:12:31', '980190963', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 05:12:31', '2010-04-15 05:12:31', '980190963/980190964', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 05:12:31', '2010-04-15 05:12:31', '980190963/980190964', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 05:12:31', '2010-04-15 05:12:31', '980190963', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 05:12:31', '2010-04-15 05:12:31', '980190963/980190967', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 05:12:51', '2010-04-15 05:12:51', NULL, NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 05:12:51', '2010-04-15 05:12:51', '980190963', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 05:12:51', '2010-04-15 05:12:51', '980190963/980190964', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 05:12:51', '2010-04-15 05:12:51', '980190963/980190964', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 05:12:51', '2010-04-15 05:12:51', '980190963', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 05:12:51', '2010-04-15 05:12:51', '980190963/980190967', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 980190963) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '980190963/%' or ancestry = '980190963') [0m
+  [4;36;1mOrganizationalUnit Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 05:13:36', '2010-04-15 05:13:36', NULL, NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 05:13:36', '2010-04-15 05:13:36', '980190963', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 05:13:36', '2010-04-15 05:13:36', '980190963/980190964', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 05:13:36', '2010-04-15 05:13:36', '980190963/980190964', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 05:13:36', '2010-04-15 05:13:36', '980190963', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 05:13:36', '2010-04-15 05:13:36', '980190963/980190967', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Load (0.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 980190963) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '980190963/%' or ancestry = '980190963') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (980190963,980190964)) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;36;1mOrganizationalUnit Create (3.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 05:14:12', '2010-04-15 05:14:12', NULL, NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 05:14:12', '2010-04-15 05:14:12', '980190963', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 05:14:12', '2010-04-15 05:14:12', '980190963/980190964', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 05:14:12', '2010-04-15 05:14:12', '980190963/980190964', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 05:14:12', '2010-04-15 05:14:12', '980190963', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 05:14:12', '2010-04-15 05:14:12', '980190963/980190967', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Load (3.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 980190963) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '980190963/%' or ancestry = '980190963') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (980190963,980190964)) [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;36;1mOrganizationalUnit Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 05:16:07', '2010-04-15 05:16:07', NULL, NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 05:16:07', '2010-04-15 05:16:07', '980190963', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 05:16:07', '2010-04-15 05:16:07', '980190963/980190964', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 05:16:08', '2010-04-15 05:16:08', '980190963/980190964', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 05:16:08', '2010-04-15 05:16:08', '980190963', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 05:16:08', '2010-04-15 05:16:08', '980190963/980190967', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 980190963) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '980190963/%' or ancestry = '980190963') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (980190963,980190964)) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190967') [0m
+  [4;36;1mOrganizationalUnit Create (3.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 05:20:49', '2010-04-15 05:20:49', NULL, NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 05:20:49', '2010-04-15 05:20:49', '980190963', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 05:20:49', '2010-04-15 05:20:49', '980190963/980190964', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 05:20:49', '2010-04-15 05:20:49', '980190963/980190964', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 05:20:49', '2010-04-15 05:20:49', '980190963', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 05:20:49', '2010-04-15 05:20:49', '980190963/980190967', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 980190963) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '980190963/%' or ancestry = '980190963') [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (980190963,980190964)) [0m
+  [4;35;1mOrganizationalUnit Load (3.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190967') [0m
+  [4;35;1mOrganizationalUnit Load (2.0ms)[0m   [0mSELECT * FROM "organizational_units" [0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 05:22:17', '2010-04-15 05:22:17', NULL, NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 05:22:17', '2010-04-15 05:22:17', '980190963', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 05:22:17', '2010-04-15 05:22:17', '980190963/980190964', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 05:22:17', '2010-04-15 05:22:17', '980190963/980190964', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 05:22:17', '2010-04-15 05:22:17', '980190963', NULL, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 05:22:17', '2010-04-15 05:22:17', '980190963/980190967', NULL, NULL)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 980190963) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '980190963/%' or ancestry = '980190963') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (980190963,980190964)) [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190964') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '980190963/980190967') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" [0m
+  [4;36;1mOrganizationalUnit Create (3.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 06:17:28', '2010-04-15 06:17:28', NULL, NULL, 1)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 06:17:28', '2010-04-15 06:17:28', '980190963', NULL, 1)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 06:17:28', '2010-04-15 06:17:28', '980190963/980190964', NULL, 1)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 06:17:28', '2010-04-15 06:17:28', '980190963/980190964', NULL, 1)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 06:17:28', '2010-04-15 06:17:28', '980190963', NULL, 1)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 06:17:28', '2010-04-15 06:17:28', '980190963/980190967', NULL, 1)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 980190963) AND ("organizational_units"."tenant_id" = 1) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 1) AND (ancestry like '980190963/%' or ancestry = '980190963')) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 1 AND "organizational_units"."id" IN (980190963,980190964))) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 1)) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 1)) [0m
+  [4;35;1mOrganizationalUnit Load (2.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 1)) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190967' AND "organizational_units"."tenant_id" = 1)) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."tenant_id" = 1) [0m
+  [4;36;1mOrganizationalUnit Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 06:18:42', '2010-04-15 06:18:42', NULL, NULL, 1)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 06:18:42', '2010-04-15 06:18:42', '980190963', NULL, 1)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 06:18:42', '2010-04-15 06:18:42', '980190963/980190964', NULL, 1)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 06:18:42', '2010-04-15 06:18:42', '980190963/980190964', NULL, 1)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 06:18:42', '2010-04-15 06:18:42', '980190963', NULL, 1)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 06:18:42', '2010-04-15 06:18:42', '980190963/980190967', NULL, 1)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 980190963) AND ("organizational_units"."tenant_id" = 1) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 1) AND (ancestry like '980190963/%' or ancestry = '980190963')) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 1 AND "organizational_units"."id" IN (980190963,980190964))) [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 1)) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 1)) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 1)) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190967' AND "organizational_units"."tenant_id" = 1)) [0m
+  [4;35;1mOrganizationalUnit Load (2.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."tenant_id" = 1) [0m
+  [4;36;1mOrganizationalUnit Create (3.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 06:19:49', '2010-04-15 06:19:49', NULL, NULL, 100)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 06:19:49', '2010-04-15 06:19:49', '980190963', NULL, 100)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 06:19:49', '2010-04-15 06:19:49', '980190963/980190964', NULL, 100)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 06:19:49', '2010-04-15 06:19:49', '980190963/980190964', NULL, 100)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 06:19:49', '2010-04-15 06:19:49', '980190963', NULL, 100)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 06:19:49', '2010-04-15 06:19:49', '980190963/980190967', NULL, 100)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') AND ("organizational_units"."tenant_id" = 100) LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 100) AND (ancestry like '980190963/%' or ancestry = '980190963')) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 100 AND "organizational_units"."id" IN (980190963,980190964))) [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190967' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;35;1mOrganizationalUnit Load (2.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."tenant_id" = 100) [0m
+  [4;36;1mOrganizationalUnit Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 06:21:52', '2010-04-15 06:21:52', NULL, NULL, 100)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 06:21:52', '2010-04-15 06:21:52', '980190963', NULL, 100)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 06:21:52', '2010-04-15 06:21:52', '980190963/980190964', NULL, 100)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 06:21:52', '2010-04-15 06:21:52', '980190963/980190964', NULL, 100)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 06:21:52', '2010-04-15 06:21:52', '980190963', NULL, 100)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 06:21:52', '2010-04-15 06:21:52', '980190963/980190967', NULL, 100)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') AND ("organizational_units"."tenant_id" = 100) LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 100) AND (ancestry like '980190963/%' or ancestry = '980190963')) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 100 AND "organizational_units"."id" IN (980190963,980190964))) [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190964' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '980190963/980190967' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."tenant_id" = 100) [0m
+  [4;36;1mOrganizationalUnit Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-15 06:35:35', '2010-04-15 06:35:35', NULL, NULL, 100)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-15 06:35:35', '2010-04-15 06:35:35', '1', NULL, 100)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-15 06:35:35', '2010-04-15 06:35:35', '1/2', NULL, 100)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-15 06:35:35', '2010-04-15 06:35:35', '1/2', NULL, 100)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-15 06:35:35', '2010-04-15 06:35:35', '1', NULL, 100)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-15 06:35:35', '2010-04-15 06:35:35', '1/5', NULL, 100)[0m
+  [4;36;1mOrganizationalUnit Load (0.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') AND ("organizational_units"."tenant_id" = 100) LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 100) AND (ancestry like '1/%' or ancestry = '1')) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."tenant_id" = 100 AND "organizational_units"."id" IN (1,2))) [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '1/2' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '1/2' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '1/2' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (("organizational_units"."ancestry" = '1/5' AND "organizational_units"."tenant_id" = 100)) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."tenant_id" = 100) [0m
+  [4;36;1mTenant Create (2.0ms)[0m   [0;1mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:44:14', '2010-04-16 04:44:14')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-16 04:44:14', '2010-04-16 04:44:14', NULL, NULL, 1)[0m
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (2.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:49:06', '2010-04-16 04:49:06')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (1.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:51:14', '2010-04-16 04:51:14')[0m
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (1.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:51:49', '2010-04-16 04:51:49')[0m
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (1.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:52:16', '2010-04-16 04:52:16')[0m
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (2.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:53:39', '2010-04-16 04:53:39')[0m
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (1.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:54:47', '2010-04-16 04:54:47')[0m
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (2.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:55:08', '2010-04-16 04:55:08')[0m
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (1.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:57:09', '2010-04-16 04:57:09')[0m
+  [4;36;1mTenant Load (0.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (2.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 04:57:56', '2010-04-16 04:57:56')[0m
+  [4;36;1mTenant Load (1.0ms)[0m   [0;1mSELECT * FROM "tenants" LIMIT 1[0m
+  [4;35;1mTenant Create (1.0ms)[0m   [0mINSERT INTO "tenants" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 05:01:46', '2010-04-16 05:01:46')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Company 1', '2010-04-16 05:01:46', '2010-04-16 05:01:46', NULL, NULL, 1)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 1', '2010-04-16 05:01:46', '2010-04-16 05:01:46', '1', NULL, 1)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 1', '2010-04-16 05:01:46', '2010-04-16 05:01:46', '1/2', NULL, 1)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 2', '2010-04-16 05:01:46', '2010-04-16 05:01:46', '1/2', NULL, 1)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Region 2', '2010-04-16 05:01:46', '2010-04-16 05:01:46', '1', NULL, 1)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "type", "tenant_id") VALUES('Base 3', '2010-04-16 05:01:46', '2010-04-16 05:01:46', '1/5', NULL, 1)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (1,2)) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/5') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 05:07:13', '2010-04-16 05:07:13')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 05:08:40', '2010-04-16 05:08:40')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 05:09:27', '2010-04-16 05:09:27')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-16 05:09:27', '2010-04-16 05:09:27', NULL, 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-16 05:09:27', '2010-04-16 05:09:27', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-16 05:09:27', '2010-04-16 05:09:27', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-16 05:09:27', '2010-04-16 05:09:27', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-16 05:09:27', '2010-04-16 05:09:27', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-16 05:09:27', '2010-04-16 05:09:27', '1/5', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (1,2)) [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/5') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" [0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 05:16:43', '2010-04-16 05:16:43')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('an OU', '2010-04-16 05:16:43', '2010-04-16 05:16:43', NULL, 1, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 05:17:25', '2010-04-16 05:17:25')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('an OU', '2010-04-16 05:17:25', '2010-04-16 05:17:25', NULL, 1, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 05:17:52', '2010-04-16 05:17:52')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('an OU', '2010-04-16 05:17:52', '2010-04-16 05:17:52', NULL, 1, NULL)[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 05:18:11', '2010-04-16 05:18:11')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-16 05:18:11', '2010-04-16 05:18:11', NULL, 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-16 05:18:11', '2010-04-16 05:18:11', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-16 05:18:11', '2010-04-16 05:18:11', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-16 05:18:11', '2010-04-16 05:18:11', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-16 05:18:11', '2010-04-16 05:18:11', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-16 05:18:11', '2010-04-16 05:18:11', '1/5', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (1,2)) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/5') [0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-16 05:18:11', '2010-04-16 05:18:11')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('an OU', '2010-04-16 05:18:11', '2010-04-16 05:18:11', NULL, 1, NULL)[0m
