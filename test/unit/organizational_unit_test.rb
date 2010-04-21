@@ -3,9 +3,7 @@ require 'test_helper'
 class OrganizationalUnitTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   #fixtures :organizational_units
-  def setup
-    Account.set_current_account(Account.first || Account.create!(:name=>"Lieutenant Dan"))
-  end
+  
   
   context "OrganizationalUnits" do
     should "really act like trees" do

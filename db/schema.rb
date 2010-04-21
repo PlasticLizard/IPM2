@@ -9,13 +9,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100416054043) do
+ActiveRecord::Schema.define(:version => 20100421054748) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.integer  "department_head_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "organizational_roles", :force => true do |t|
+    t.string   "name",                            :null => false
+    t.integer  "account_id"
+    t.integer  "department_id"
+    t.string   "role_description", :limit => 500
+    t.string   "ancestry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "organizational_roles", ["ancestry"], :name => "index_organizational_roles_on_ancestry"
 
   create_table "organizational_units", :force => true do |t|
     t.string   "name"
@@ -37,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20100416054043) do
     t.datetime "updated_at"
     t.string   "email_address"
     t.datetime "last_access"
+    t.string   "type"
   end
 
   create_table "requirements", :force => true do |t|

@@ -34,5 +34,7 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def setup
+    Account.set_current_account(Account.first || Account.create!(:name=>"Lieutenant Dan"))
+  end
 end

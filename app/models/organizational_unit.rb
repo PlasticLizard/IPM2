@@ -1,5 +1,5 @@
-class OrganizationalUnit < AccountModel
+class OrganizationalUnit < ActiveRecord::Base
+  include AccountModel
   acts_as_tree
-  belongs_to :account 
 
 end

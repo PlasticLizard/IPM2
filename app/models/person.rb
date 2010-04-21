@@ -1,3 +1,3 @@
-class Person < AccountModel
-  belongs_to :account
+class Person < ActiveRecord::Base
+  include AccountModel
 end

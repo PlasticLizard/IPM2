@@ -217,3 +217,305 @@ Migrating to CreateRequirements (20100416054043)
   [4;36;1mSQL (73.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415032824')[0m
   [4;35;1mSQL (57.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100415034703')[0m
   [4;36;1mSQL (66.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415034800')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20100412044545)
+Migrating to CreateOrganizationalUnits (20100415032415)
+Migrating to AddAncestryToOrganizationalUnit (20100415032824)
+Migrating to CreatePeople (20100415034703)
+Migrating to AddUserFieldsToPeople (20100415034800)
+Migrating to CreateRequirements (20100416054043)
+Migrating to CreateOrganizationalRoles (20100421043434)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE "organizational_roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "account_id" integer, "department_id" integer, "role_description" varchar(500), "ancestry" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE INDEX "index_organizational_roles_on_ancestry" ON "organizational_roles" ("ancestry")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100421043434')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("accounts")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("organizational_roles")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_info('index_organizational_roles_on_ancestry')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("organizational_units")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_info('index_organizational_units_on_ancestry')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_list("people")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("requirements")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (92.0ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (79.0ms)[0m   [0;1mCREATE TABLE "organizational_roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "account_id" integer, "department_id" integer, "role_description" varchar(500), "ancestry" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (115.0ms)[0m   [0mCREATE INDEX "index_organizational_roles_on_ancestry" ON "organizational_roles" ("ancestry")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (71.0ms)[0m   [0mCREATE TABLE "organizational_units" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "type" varchar(255), "account_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime, "ancestry" varchar(255)) [0m
+  [4;36;1mSQL (73.0ms)[0m   [0;1mCREATE INDEX "index_organizational_units_on_ancestry" ON "organizational_units" ("ancestry")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (94.0ms)[0m   [0;1mCREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "middle_initial" varchar(255), "created_at" datetime, "updated_at" datetime, "email_address" varchar(255), "last_access" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (95.0ms)[0m   [0;1mCREATE TABLE "requirements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "type" varchar(255), "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (66.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (70.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100421043434')[0m
+  [4;35;1mSQL (91.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100412044545')[0m
+  [4;36;1mSQL (98.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415032415')[0m
+  [4;35;1mSQL (91.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100415032824')[0m
+  [4;36;1mSQL (116.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415034703')[0m
+  [4;35;1mSQL (98.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100415034800')[0m
+  [4;36;1mSQL (91.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100416054043')[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20100412044545)
+Migrating to CreateOrganizationalUnits (20100415032415)
+Migrating to AddAncestryToOrganizationalUnit (20100415032824)
+Migrating to CreatePeople (20100415034703)
+Migrating to AddUserFieldsToPeople (20100415034800)
+Migrating to CreateRequirements (20100416054043)
+Migrating to CreateOrganizationalRoles (20100421043434)
+Migrating to CreateDepartments (20100421050223)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "account_id" integer, "reports_to_role_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100421050223')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("departments")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("organizational_roles")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_info('index_organizational_roles_on_ancestry')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("organizational_units")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_info('index_organizational_units_on_ancestry')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("people")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_list("requirements")[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (85.0ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (3.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (61.0ms)[0m   [0;1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "account_id" integer, "reports_to_role_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (72.0ms)[0m   [0;1mCREATE TABLE "organizational_roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "account_id" integer, "department_id" integer, "role_description" varchar(500), "ancestry" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (92.0ms)[0m   [0mCREATE INDEX "index_organizational_roles_on_ancestry" ON "organizational_roles" ("ancestry")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (89.0ms)[0m   [0mCREATE TABLE "organizational_units" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "type" varchar(255), "account_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime, "ancestry" varchar(255)) [0m
+  [4;36;1mSQL (90.0ms)[0m   [0;1mCREATE INDEX "index_organizational_units_on_ancestry" ON "organizational_units" ("ancestry")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (77.0ms)[0m   [0;1mCREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "middle_initial" varchar(255), "created_at" datetime, "updated_at" datetime, "email_address" varchar(255), "last_access" datetime) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (92.0ms)[0m   [0;1mCREATE TABLE "requirements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "type" varchar(255), "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (80.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (91.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (92.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100421050223')[0m
+  [4;35;1mSQL (90.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100412044545')[0m
+  [4;36;1mSQL (116.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415032415')[0m
+  [4;35;1mSQL (107.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100415032824')[0m
+  [4;36;1mSQL (90.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415034703')[0m
+  [4;35;1mSQL (98.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100415034800')[0m
+  [4;36;1mSQL (82.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100416054043')[0m
+  [4;35;1mSQL (98.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100421043434')[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDepartments (20100421050223)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mDROP TABLE "departments"[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mDELETE FROM schema_migrations WHERE version = '20100421050223'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("organizational_roles")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_info('index_organizational_roles_on_ancestry')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("organizational_units")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_info('index_organizational_units_on_ancestry')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("people")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("requirements")[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20100412044545)
+Migrating to CreateOrganizationalUnits (20100415032415)
+Migrating to AddAncestryToOrganizationalUnit (20100415032824)
+Migrating to CreatePeople (20100415034703)
+Migrating to AddUserFieldsToPeople (20100415034800)
+Migrating to CreateRequirements (20100416054043)
+Migrating to CreateOrganizationalRoles (20100421043434)
+Migrating to CreateDepartments (20100421050223)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "account_id" integer, "department_head_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100421050223')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("departments")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("organizational_roles")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_info('index_organizational_roles_on_ancestry')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("organizational_units")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_info('index_organizational_units_on_ancestry')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_list("people")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("requirements")[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20100412044545)
+Migrating to CreateOrganizationalUnits (20100415032415)
+Migrating to AddAncestryToOrganizationalUnit (20100415032824)
+Migrating to CreatePeople (20100415034703)
+Migrating to AddUserFieldsToPeople (20100415034800)
+Migrating to CreateRequirements (20100416054043)
+Migrating to CreateOrganizationalRoles (20100421043434)
+Migrating to CreateDepartments (20100421050223)
+Migrating to AddTypeToPeople (20100421054748)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mALTER TABLE "people" ADD "type" varchar(255)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100421054748')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("departments")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_list("organizational_roles")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_info('index_organizational_roles_on_ancestry')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("organizational_units")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_info('index_organizational_units_on_ancestry')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("people")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("requirements")[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20100412044545)
+Migrating to CreateOrganizationalUnits (20100415032415)
+Migrating to AddAncestryToOrganizationalUnit (20100415032824)
+Migrating to CreatePeople (20100415034703)
+Migrating to AddUserFieldsToPeople (20100415034800)
+Migrating to CreateRequirements (20100416054043)
+Migrating to CreateOrganizationalRoles (20100421043434)
+Migrating to CreateDepartments (20100421050223)
+Migrating to AddTypeToPeople (20100421054748)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("departments")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_list("organizational_roles")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_info('index_organizational_roles_on_ancestry')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("organizational_units")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_info('index_organizational_units_on_ancestry')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("people")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("requirements")[0m
