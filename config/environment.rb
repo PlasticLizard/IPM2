@@ -25,6 +25,7 @@ Rails::Initializer.run do |config|
   config.gem 'formtastic'
   config.gem 'inherited_resources'
   config.gem 'ancestry'
+  config.gem 'enumerated_attribute'
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).

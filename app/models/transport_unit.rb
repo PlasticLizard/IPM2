@@ -1,0 +1,2 @@
+class TransportUnit < OrganizationalUnit
+end

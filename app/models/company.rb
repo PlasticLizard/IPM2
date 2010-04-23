@@ -1,0 +1,2 @@
+class Company < OrganizationalUnit
+end
