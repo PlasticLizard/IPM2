@@ -1,0 +1,105 @@
+<style type="text/css">
+    #departments-list { list-style-type: none; margin: 0; padding: 0;  }
+    #departments-list li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; cursor:pointer }
+    #departments-list li span.order_department { position: absolute; margin-left: -1.3em; cursor:move; }
+    #departments-list li span.delete_department { float:right;}
+
+    #departments-list .ui-selecting { background: #FECA40; }
+    #departments-list .ui-selected { background: #F39814; color: white; }
+
+</style>
+
+
+<ul id="departments-list">
+  <% @departments.each do |d| %>
+      <li class="ui-state-default" id="department_<%= d.id -%>">
+        <span class="ui-icon ui-icon-arrowthick-2-n-s order_department"></span>
+        <span class="department_name"><%= d.name -%></span>
+        <span class="ui-icon ui-icon-closethick delete_department"></span>
+      </li>
+  <% end %>
+</ul>
+<form id="addDepartment" action="departments/create" method="post">
+  <input id="department_name" name="department[name]" type="text"/>
+  <input value="Add" type="submit"/>
+</form>
+
+
+<% content_for :javascript do %>
+
+    <% javascript_tag do %>
+
+
+        $(function() {
+        $('#departments-list').sortable(
+        {
+        handle: '.order_department',
+        update: function(){
+        $.ajax({
+        type: 'post',
+        data: $('#departments-list').sortable('serialize'),
+        dataType: 'script',
+        complete: function(request){
+        $('#departments-list').effect('highlight');
+        },
+        url: 'departments/sort'})
+        }
+        });
+
+        $("input:submit").button();
+
+        $('#addDepartment').submit(
+            function(event) {
+              event.preventDefault();
+              var form = $(this);
+              form.ajaxSubmit({
+                dataType: 'json',
+                beforeSend: function() {
+                },
+                success: function(json) {
+                    form.resetForm();
+                    var id = json["department"]["id"]
+                    var name = json["department"]["name"]
+                    var list = $("#departments-list");
+                    var new_item = list.children().last().clone();
+                    new_item.attr("id","department_" + id);
+                    new_item.children(1).text(name);                    
+                    list.append(new_item);
+                  
+                },
+                error: function(response, status, error) {
+                },
+                complete: function() {
+                }
+              });
+
+              return false;
+              }
+        );
+
+         $('.delete_department').livequery('click',function(){
+            item = $(this).parent();
+            id = parseInt(item.attr("id").split("_")[1]);
+            $.ajax({
+                type: 'post',
+                data: {_method:'delete',department:{id:id}},
+                dataType:null,
+                complete: function(request){
+                    item.remove();
+                },
+                url: 'departments/destroy/' + id
+                });
+            }
+        );
+        
+        //$('#departments-list').selectable();
+
+
+
+        });
+
+
+
+    <% end %>
+
+<% end %>

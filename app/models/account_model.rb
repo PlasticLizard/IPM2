@@ -5,6 +5,6 @@ module AccountModel
   end
 
   def before_validation
-    self.account = Account.current
+    self.account = Account.current if Account.current
   end
 end

@@ -214,3 +214,722 @@
   [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('an OU', '2010-04-22 05:53:47', '2010-04-22 05:53:47', NULL, 1, NULL)[0m
   [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
   [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-22 05:53:47', '2010-04-22 05:53:47')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-24 19:21:14', '2010-04-24 19:21:14')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-24 19:21:14', '2010-04-24 19:21:14')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-24 19:21:15', '2010-04-24 19:21:15')[0m
+  [4;36;1mOrganizationalUnit Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-24 19:21:15', '2010-04-24 19:21:15', NULL, 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-24 19:21:15', '2010-04-24 19:21:15', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-24 19:21:15', '2010-04-24 19:21:15', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-24 19:21:15', '2010-04-24 19:21:15', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-24 19:21:15', '2010-04-24 19:21:15', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-24 19:21:15', '2010-04-24 19:21:15', '1/5', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (1,2)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/5') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-24 19:21:15', '2010-04-24 19:21:15')[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', '2010-04-24 19:21:15', '2010-04-24 19:21:15', 1, NULL)[0m
+  [4;35;1mOrganizationalRole Create (1.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r1', NULL, '2010-04-24 19:21:15', NULL, '2010-04-24 19:21:15', 1, 1, NULL)[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r2', NULL, '2010-04-24 19:21:15', '1', '2010-04-24 19:21:15', 1, 1, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (3.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-24 19:21:15', '2010-04-24 19:21:15')[0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('an OU', '2010-04-24 19:21:15', '2010-04-24 19:21:15', NULL, 1, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-24 19:21:15', '2010-04-24 19:21:15')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:49:31', '2010-04-25 21:49:31')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:49:31', '2010-04-25 21:49:31')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:49:31', '2010-04-25 21:49:31')[0m
+  [4;36;1mOrganizationalRole Create (0.0ms)[0m   [0;1mSQLite3::SQLException: organizational_roles.name may not be NULL: INSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES(NULL, NULL, '2010-04-25 21:49:31', NULL, '2010-04-25 21:49:31', 1, NULL, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:50:06', '2010-04-25 21:50:06')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:50:06', '2010-04-25 21:50:06')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:50:06', '2010-04-25 21:50:06')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 21:50:06', NULL, '2010-04-25 21:50:06', 1, NULL, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:56:04', '2010-04-25 21:56:04')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:56:04', '2010-04-25 21:56:04')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:56:04', '2010-04-25 21:56:04')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 21:56:04', NULL, '2010-04-25 21:56:04', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 21:56:04', '2010-04-25 21:56:04')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:00:15', '2010-04-25 22:00:15')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:00:15', '2010-04-25 22:00:15')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:00:16', '2010-04-25 22:00:16')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 22:00:16', NULL, '2010-04-25 22:00:16', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:00:16', '2010-04-25 22:00:16')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:01:44', '2010-04-25 22:01:44')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:01:44', '2010-04-25 22:01:44')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:01:44', '2010-04-25 22:01:44')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 22:01:44', NULL, '2010-04-25 22:01:44', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:01:44', '2010-04-25 22:01:44')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:02:15', '2010-04-25 22:02:15')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:02:15', '2010-04-25 22:02:15')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:02:15', '2010-04-25 22:02:15')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 22:02:15', NULL, '2010-04-25 22:02:15', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:02:15', '2010-04-25 22:02:15')[0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:03:08', '2010-04-25 22:03:08')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:03:09', '2010-04-25 22:03:09')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:03:09', '2010-04-25 22:03:09')[0m
+  [4;36;1mOrganizationalRole Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 22:03:09', NULL, '2010-04-25 22:03:09', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:03:09', '2010-04-25 22:03:09')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:03:40', '2010-04-25 22:03:40')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:03:40', '2010-04-25 22:03:40')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:03:40', '2010-04-25 22:03:40')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 22:03:40', NULL, '2010-04-25 22:03:40', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:03:40', '2010-04-25 22:03:40')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:05:25', '2010-04-25 22:05:25')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:05:26', '2010-04-25 22:05:26')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:05:26', '2010-04-25 22:05:26')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 22:05:26', NULL, '2010-04-25 22:05:26', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:05:26', '2010-04-25 22:05:26')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:05:26', '2010-04-25 22:05:26')[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-25 22:05:26', '2010-04-25 22:05:26', 1, NULL)[0m
+  [4;35;1mOrganizationalRole Create (1.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r1', NULL, '2010-04-25 22:05:26', NULL, '2010-04-25 22:05:26', 1, 1, NULL)[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r2', NULL, '2010-04-25 22:05:26', '1', '2010-04-25 22:05:26', 1, 1, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:47:58', '2010-04-25 22:47:58')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:47:58', '2010-04-25 22:47:58')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:47:58', '2010-04-25 22:47:58')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 22:47:58', NULL, '2010-04-25 22:47:58', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:47:58', '2010-04-25 22:47:58')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:47:58', '2010-04-25 22:47:58')[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-25 22:47:58', '2010-04-25 22:47:58', 1, NULL)[0m
+  [4;35;1mOrganizationalRole Create (1.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r1', NULL, '2010-04-25 22:47:58', NULL, '2010-04-25 22:47:58', 1, 1, NULL)[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r2', NULL, '2010-04-25 22:47:58', '1', '2010-04-25 22:47:58', 1, 1, NULL)[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:47:58', '2010-04-25 22:47:58')[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-25 22:47:58', '2010-04-25 22:47:58', NULL, 1, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:47:58', '2010-04-25 22:47:58')[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-25 22:47:58', '2010-04-25 22:47:58', NULL, 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-25 22:47:58', '2010-04-25 22:47:58', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-25 22:47:58', '2010-04-25 22:47:58', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-25 22:47:58', '2010-04-25 22:47:58', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-25 22:47:58', '2010-04-25 22:47:58', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-25 22:47:58', '2010-04-25 22:47:58', '1/5', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:06', '2010-04-25 22:49:06')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:06', '2010-04-25 22:49:06')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:06', '2010-04-25 22:49:06')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 22:49:06', NULL, '2010-04-25 22:49:06', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:06', '2010-04-25 22:49:06')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:06', '2010-04-25 22:49:06')[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-25 22:49:06', '2010-04-25 22:49:06', 1, NULL)[0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r1', NULL, '2010-04-25 22:49:06', NULL, '2010-04-25 22:49:06', 1, 1, NULL)[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r2', NULL, '2010-04-25 22:49:06', '1', '2010-04-25 22:49:06', 1, 1, NULL)[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:06', '2010-04-25 22:49:06')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-25 22:49:06', '2010-04-25 22:49:06', NULL, 1, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:06', '2010-04-25 22:49:06')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-25 22:49:06', '2010-04-25 22:49:06', NULL, 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-25 22:49:06', '2010-04-25 22:49:06', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-25 22:49:06', '2010-04-25 22:49:06', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-25 22:49:06', '2010-04-25 22:49:06', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-25 22:49:06', '2010-04-25 22:49:06', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-25 22:49:06', '2010-04-25 22:49:06', '1/5', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:54', '2010-04-25 22:49:54')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:54', '2010-04-25 22:49:54')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:54', '2010-04-25 22:49:54')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 22:49:54', NULL, '2010-04-25 22:49:54', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:54', '2010-04-25 22:49:54')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:54', '2010-04-25 22:49:54')[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-25 22:49:54', '2010-04-25 22:49:54', 1, NULL)[0m
+  [4;35;1mOrganizationalRole Create (1.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r1', NULL, '2010-04-25 22:49:54', NULL, '2010-04-25 22:49:54', 1, 1, NULL)[0m
+  [4;36;1mOrganizationalRole Load (0.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Create (1.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r2', NULL, '2010-04-25 22:49:54', '1', '2010-04-25 22:49:54', 1, 1, NULL)[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:54', '2010-04-25 22:49:54')[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-25 22:49:54', '2010-04-25 22:49:54', NULL, 1, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 22:49:54', '2010-04-25 22:49:54')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-25 22:49:54', '2010-04-25 22:49:54', NULL, 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-25 22:49:54', '2010-04-25 22:49:54', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-25 22:49:54', '2010-04-25 22:49:54', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-25 22:49:54', '2010-04-25 22:49:54', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-25 22:49:54', '2010-04-25 22:49:54', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-25 22:49:54', '2010-04-25 22:49:54', '1/5', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (1,2)) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/5') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;36;1mAccount Create (0.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-25 23:03:20', '2010-04-25 23:03:20', NULL, 2, NULL)[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 23:03:20', NULL, '2010-04-25 23:03:20', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-25 23:03:20', '2010-04-25 23:03:20', 1, NULL)[0m
+  [4;35;1mOrganizationalRole Create (1.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r1', NULL, '2010-04-25 23:03:20', NULL, '2010-04-25 23:03:20', 1, 1, NULL)[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r2', NULL, '2010-04-25 23:03:20', '1', '2010-04-25 23:03:20', 1, 1, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-25 23:03:20', '2010-04-25 23:03:20', NULL, 1, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:03:20', '2010-04-25 23:03:20')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-25 23:03:20', '2010-04-25 23:03:20', NULL, 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-25 23:03:20', '2010-04-25 23:03:20', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-25 23:03:20', '2010-04-25 23:03:20', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-25 23:03:20', '2010-04-25 23:03:20', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-25 23:03:20', '2010-04-25 23:03:20', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-25 23:03:20', '2010-04-25 23:03:20', '1/5', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (1,2)) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/5') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:16', '2010-04-25 23:04:16')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:17', '2010-04-25 23:04:17')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:17', '2010-04-25 23:04:17')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:17', '2010-04-25 23:04:17')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:17', '2010-04-25 23:04:17')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-25 23:04:17', '2010-04-25 23:04:17', NULL, 2, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:17', '2010-04-25 23:04:17')[0m
+  [4;36;1mOrganizationalRole Create (2.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 23:04:17', NULL, '2010-04-25 23:04:17', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:17', '2010-04-25 23:04:17')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:17', '2010-04-25 23:04:17')[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-25 23:04:17', '2010-04-25 23:04:17', 1, NULL)[0m
+  [4;35;1mOrganizationalRole Create (1.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r1', NULL, '2010-04-25 23:04:17', NULL, '2010-04-25 23:04:17', 1, 1, NULL)[0m
+  [4;36;1mOrganizationalRole Load (0.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r2', NULL, '2010-04-25 23:04:17', '1', '2010-04-25 23:04:17', 1, 1, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:17', '2010-04-25 23:04:17')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-25 23:04:17', '2010-04-25 23:04:17', NULL, 1, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:04:17', '2010-04-25 23:04:17')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-25 23:04:17', '2010-04-25 23:04:17', NULL, 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-25 23:04:17', '2010-04-25 23:04:17', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-25 23:04:17', '2010-04-25 23:04:17', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-25 23:04:17', '2010-04-25 23:04:17', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-25 23:04:17', '2010-04-25 23:04:17', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-25 23:04:17', '2010-04-25 23:04:17', '1/5', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (1,2)) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/5') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-25 23:08:45', '2010-04-25 23:08:45', NULL, 2, NULL)[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;36;1mOrganizationalRole Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-25 23:08:45', NULL, '2010-04-25 23:08:45', 1, NULL, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-25 23:08:45', '2010-04-25 23:08:45', 1, NULL)[0m
+  [4;35;1mOrganizationalRole Create (1.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r1', NULL, '2010-04-25 23:08:45', NULL, '2010-04-25 23:08:45', 1, 1, NULL)[0m
+  [4;36;1mOrganizationalRole Load (0.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r2', NULL, '2010-04-25 23:08:45', '1', '2010-04-25 23:08:45', 1, 1, NULL)[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-25 23:08:45', '2010-04-25 23:08:45', NULL, 1, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:08:45', '2010-04-25 23:08:45')[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-25 23:08:45', '2010-04-25 23:08:45', NULL, 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-25 23:08:45', '2010-04-25 23:08:45', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-25 23:08:45', '2010-04-25 23:08:45', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-25 23:08:46', '2010-04-25 23:08:46', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-25 23:08:46', '2010-04-25 23:08:46', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-25 23:08:46', '2010-04-25 23:08:46', '1/5', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (1,2)) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/5') [0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (3.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:20:38', '2010-04-25 23:20:38')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'Department 1') LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('Department 1', 1, '2010-04-25 23:20:38', '2010-04-25 23:20:38', 1, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:28:14', '2010-04-25 23:28:14')[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSQLite3::SQLException: no such column: departments.account: SELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'Department 1' AND "departments".account = 1) LIMIT 1[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:28:14', '2010-04-25 23:28:14')[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSQLite3::SQLException: no such column: departments.account: SELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account = 1) LIMIT 1[0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:29:48', '2010-04-25 23:29:48')[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'Department 1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('Department 1', 1, '2010-04-25 23:29:48', '2010-04-25 23:29:48', 1, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-25 23:29:48', '2010-04-25 23:29:48')[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-25 23:29:48', '2010-04-25 23:29:48', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-25 23:29:48', '2010-04-25 23:29:48', 1, NULL)[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-25 23:29:48', '2010-04-25 23:29:48', 1, NULL)[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1 AND "departments".id <> 1) LIMIT 1[0m
+  [4;36;1mDepartment Update (0.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-25 23:29:48', "position" = 2 WHERE "id" = 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1 AND "departments".id <> 2) LIMIT 1[0m
+  [4;36;1mDepartment Update (0.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-25 23:29:48', "position" = 3 WHERE "id" = 2[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1 AND "departments".id <> 3) LIMIT 1[0m
+  [4;36;1mDepartment Update (1.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-25 23:29:48', "position" = 1 WHERE "id" = 3[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:31:35', '2010-04-26 00:31:35')[0m
+  [4;36;1mAccount Create (0.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:31:35', '2010-04-26 00:31:35')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:31:35', '2010-04-26 00:31:35')[0m
+  [4;35;1mAccount Create (0.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:31:35', '2010-04-26 00:31:35')[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:31:35', '2010-04-26 00:31:35', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:31:35', '2010-04-26 00:31:35', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:31:35', '2010-04-26 00:31:35', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:33:12', '2010-04-26 00:33:12')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:33:12', '2010-04-26 00:33:12')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:33:12', '2010-04-26 00:33:12')[0m
+  [4;35;1mAccount Create (0.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:33:12', '2010-04-26 00:33:12')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:33:12', '2010-04-26 00:33:12', 1, NULL)[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:33:12', '2010-04-26 00:33:12', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:33:12', '2010-04-26 00:33:12', 1, NULL)[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:33:57', '2010-04-26 00:33:57')[0m
+  [4;36;1mAccount Create (0.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:33:57', '2010-04-26 00:33:57')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:33:57', '2010-04-26 00:33:57')[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:33:57', '2010-04-26 00:33:57')[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:33:57', '2010-04-26 00:33:57', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:33:57', '2010-04-26 00:33:57', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:33:57', '2010-04-26 00:33:57', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:35:57', '2010-04-26 00:35:57')[0m
+  [4;36;1mAccount Create (0.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:35:57', '2010-04-26 00:35:57')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:35:57', '2010-04-26 00:35:57')[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:35:57', '2010-04-26 00:35:57')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:35:57', '2010-04-26 00:35:57', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:35:57', '2010-04-26 00:35:57', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:35:57', '2010-04-26 00:35:57', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:36:25', '2010-04-26 00:36:25')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:36:26', '2010-04-26 00:36:26')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:36:26', '2010-04-26 00:36:26')[0m
+  [4;35;1mAccount Create (0.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:36:26', '2010-04-26 00:36:26')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:36:26', '2010-04-26 00:36:26', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:36:26', '2010-04-26 00:36:26', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:36:26', '2010-04-26 00:36:26', 1, NULL)[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:46:44', '2010-04-26 00:46:44')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:46:44', '2010-04-26 00:46:44')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:46:44', '2010-04-26 00:46:44')[0m
+  [4;35;1mAccount Create (0.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:46:44', '2010-04-26 00:46:44')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:46:44', '2010-04-26 00:46:44', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:46:44', '2010-04-26 00:46:44', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:46:44', '2010-04-26 00:46:44', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:47:19', '2010-04-26 00:47:19')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:47:19', '2010-04-26 00:47:19')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:47:19', '2010-04-26 00:47:19')[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:47:19', '2010-04-26 00:47:19')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:47:19', '2010-04-26 00:47:19', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:47:19', '2010-04-26 00:47:19', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:47:19', '2010-04-26 00:47:19', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:47:58', '2010-04-26 00:47:58')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:47:58', '2010-04-26 00:47:58')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:47:58', '2010-04-26 00:47:58')[0m
+  [4;35;1mAccount Create (0.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:47:58', '2010-04-26 00:47:58')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:47:58', '2010-04-26 00:47:58', 1, NULL)[0m
+  [4;35;1mDepartment Load (2.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:47:58', '2010-04-26 00:47:58', 1, NULL)[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:47:58', '2010-04-26 00:47:58', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:49:04', '2010-04-26 00:49:04')[0m
+  [4;36;1mAccount Create (0.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:49:04', '2010-04-26 00:49:04')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:49:04', '2010-04-26 00:49:04')[0m
+  [4;35;1mAccount Create (0.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:49:04', '2010-04-26 00:49:04')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (1.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:49:04', '2010-04-26 00:49:04', 1, NULL)[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:49:04', '2010-04-26 00:49:04', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:49:04', '2010-04-26 00:49:04', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (2.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:52:57', '2010-04-26 00:52:57')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:52:57', '2010-04-26 00:52:57')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:52:57', '2010-04-26 00:52:57')[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:52:57', '2010-04-26 00:52:57')[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:52:57', '2010-04-26 00:52:57', 1, NULL)[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:52:57', '2010-04-26 00:52:57', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:52:57', '2010-04-26 00:52:57', 1, NULL)[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:54:20', '2010-04-26 00:54:20')[0m
+  [4;36;1mAccount Create (0.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:54:20', '2010-04-26 00:54:20')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:54:20', '2010-04-26 00:54:20')[0m
+  [4;35;1mAccount Create (0.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:54:20', '2010-04-26 00:54:20')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:54:20', '2010-04-26 00:54:20', 1, NULL)[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:54:20', '2010-04-26 00:54:20', 1, NULL)[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:54:20', '2010-04-26 00:54:20', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:57:51', '2010-04-26 00:57:51')[0m
+  [4;36;1mAccount Create (0.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:57:51', '2010-04-26 00:57:51')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:57:51', '2010-04-26 00:57:51')[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:57:51', '2010-04-26 00:57:51')[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:57:51', '2010-04-26 00:57:51', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:57:51', '2010-04-26 00:57:51', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:57:51', '2010-04-26 00:57:51', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:58:15', '2010-04-26 00:58:15')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:58:15', '2010-04-26 00:58:15')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 00:58:15', '2010-04-26 00:58:15')[0m
+  [4;35;1mAccount Create (0.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 00:58:15', '2010-04-26 00:58:15')[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 00:58:15', '2010-04-26 00:58:15', 1, NULL)[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 00:58:15', '2010-04-26 00:58:15', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 00:58:15', '2010-04-26 00:58:15', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 2) ORDER BY position[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:00:02', '2010-04-26 01:00:02')[0m
+  [4;36;1mAccount Create (0.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 01:00:02', '2010-04-26 01:00:02')[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:00:02', '2010-04-26 01:00:02')[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 01:00:02', '2010-04-26 01:00:02', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 01:00:03', '2010-04-26 01:00:03', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 01:00:03', '2010-04-26 01:00:03', 1, NULL)[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments".account_id = 1) ORDER BY position[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1 AND "departments".id <> 1) LIMIT 1[0m
+  [4;36;1mDepartment Update (1.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-26 01:00:03', "position" = 2 WHERE "id" = 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1 AND "departments".id <> 2) LIMIT 1[0m
+  [4;36;1mDepartment Update (0.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-26 01:00:03', "position" = 3 WHERE "id" = 2[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1 AND "departments".id <> 3) LIMIT 1[0m
+  [4;36;1mDepartment Update (0.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-26 01:00:03', "position" = 1 WHERE "id" = 3[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:01:32', '2010-04-26 01:01:32')[0m
+  [4;36;1mAccount Create (0.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 01:01:32', '2010-04-26 01:01:32')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:01:32', '2010-04-26 01:01:32')[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 01:01:32', '2010-04-26 01:01:32', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 01:01:32', '2010-04-26 01:01:32', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (0.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 01:01:32', '2010-04-26 01:01:32', 1, NULL)[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments".account_id = 1) ORDER BY position[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1 AND "departments".id <> 1) LIMIT 1[0m
+  [4;36;1mDepartment Update (1.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-26 01:01:32', "position" = 2 WHERE "id" = 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1 AND "departments".id <> 2) LIMIT 1[0m
+  [4;36;1mDepartment Update (0.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-26 01:01:32', "position" = 3 WHERE "id" = 2[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1 AND "departments".id <> 3) LIMIT 1[0m
+  [4;36;1mDepartment Update (0.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-26 01:01:32', "position" = 1 WHERE "id" = 3[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-26 01:04:53', '2010-04-26 01:04:53', NULL, 2, NULL)[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;36;1mAccount Create (1.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('My Account', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 01:04:53', '2010-04-26 01:04:53', 1, NULL)[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d2', 2, '2010-04-26 01:04:53', '2010-04-26 01:04:53', 1, NULL)[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;35;1mDepartment Create (1.0ms)[0m   [0mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d3', 3, '2010-04-26 01:04:53', '2010-04-26 01:04:53', 1, NULL)[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments".account_id = 1) ORDER BY position[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1 AND "departments".id <> 1) LIMIT 1[0m
+  [4;36;1mDepartment Update (1.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-26 01:04:53', "position" = 2 WHERE "id" = 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd2' AND "departments".account_id = 1 AND "departments".id <> 2) LIMIT 1[0m
+  [4;36;1mDepartment Update (1.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-26 01:04:53', "position" = 3 WHERE "id" = 2[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd3' AND "departments".account_id = 1 AND "departments".id <> 3) LIMIT 1[0m
+  [4;36;1mDepartment Update (0.0ms)[0m   [0;1mUPDATE "departments" SET "updated_at" = '2010-04-26 01:04:53', "position" = 1 WHERE "id" = 3[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 1) [0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 2) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 3) [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (1.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'Department 1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('Department 1', 1, '2010-04-26 01:04:53', '2010-04-26 01:04:53', 1, NULL)[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('My Role', NULL, '2010-04-26 01:04:53', NULL, '2010-04-26 01:04:53', 1, NULL, NULL)[0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT "departments".id FROM "departments" WHERE ("departments"."name" = 'd1' AND "departments".account_id = 1) LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE (account_id = 1) ORDER BY position DESC LIMIT 1[0m
+  [4;36;1mDepartment Create (0.0ms)[0m   [0;1mINSERT INTO "departments" ("name", "position", "created_at", "updated_at", "account_id", "department_head_id") VALUES('d1', 1, '2010-04-26 01:04:53', '2010-04-26 01:04:53', 1, NULL)[0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r1', NULL, '2010-04-26 01:04:53', NULL, '2010-04-26 01:04:53', 1, 1, NULL)[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Create (0.0ms)[0m   [0mINSERT INTO "organizational_roles" ("name", "organizational_unit_type", "created_at", "ancestry", "updated_at", "account_id", "department_id", "role_description") VALUES('r2', NULL, '2010-04-26 01:04:53', '1', '2010-04-26 01:04:53', 1, 1, NULL)[0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mAccount Create (2.0ms)[0m   [0mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;36;1mOrganizationalUnit Create (1.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES(NULL, '2010-04-26 01:04:53', '2010-04-26 01:04:53', NULL, 1, NULL)[0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mAccount Create (2.0ms)[0m   [0;1mINSERT INTO "accounts" ("name", "created_at", "updated_at") VALUES('Lieutenant Dan', '2010-04-26 01:04:53', '2010-04-26 01:04:53')[0m
+  [4;35;1mOrganizationalUnit Create (1.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Company 1', '2010-04-26 01:04:53', '2010-04-26 01:04:53', NULL, 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 1', '2010-04-26 01:04:53', '2010-04-26 01:04:53', '1', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 1', '2010-04-26 01:04:53', '2010-04-26 01:04:53', '1/2', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 2', '2010-04-26 01:04:53', '2010-04-26 01:04:53', '1/2', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Create (0.0ms)[0m   [0mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Region 2', '2010-04-26 01:04:53', '2010-04-26 01:04:53', '1', 1, NULL)[0m
+  [4;36;1mOrganizationalUnit Create (0.0ms)[0m   [0;1mINSERT INTO "organizational_units" ("name", "created_at", "updated_at", "ancestry", "account_id", "type") VALUES('Base 3', '2010-04-26 01:04:53', '2010-04-26 01:04:53', '1/5', 1, NULL)[0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."name" = 'Company 1') LIMIT 1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE (ancestry like '1/%' or ancestry = '1') [0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."id" IN (1,2)) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/2') [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM "organizational_units" WHERE ("organizational_units"."ancestry" = '1/5') [0m
