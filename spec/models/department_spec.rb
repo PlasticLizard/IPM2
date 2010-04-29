@@ -9,6 +9,22 @@ describe Department do
 
   it "should create a new instance given valid attributes" do
     Department.create!(@valid_attributes)
-  end  
+  end
+
+  it "should create a default department head upon save if no roles exist" do
+    d = Department.create!(@valid_attributes)
+    d.roles.count.should equal 1
+    d.roles[0].name.should == "Department 1 Director"
+    d.roles[0].should == d.department_head
+  end
+
+  it "should not create any new roles if roles are already present" do
+    d = Department.new(@valid_attributes)
+    d.roles.build :name=>"Lord of the Lieu"
+    d.save
+    d = Department.find(d.id)
+    d.roles.count.should equal 1
+    d.roles[0].name.should == "Lord of the Lieu"
+  end
 
 end

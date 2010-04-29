@@ -23,7 +23,7 @@ describe OrganizationalRole do
     department = Department.create! :name=>"d1"
     role = OrganizationalRole.create! :name=>"r1", :department=>department
     child = OrganizationalRole.create! :name=>"r2", :parent=>role
-    department.id.should equal child.department_id
+    child.department_id.should equal  department.id
   end
 
 

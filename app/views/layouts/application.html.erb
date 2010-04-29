@@ -3,16 +3,16 @@
 <html>
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet 'application' %>
-    <%= stylesheet 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css'%>
-    <%= stylesheet 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css'%>
-    <%= javascript "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"%>
-    <%= javascript "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"%>
-    <%= javascript "jquery.livequery.min"%>
-    <%= javascript "jquery.form"%>
-    <%= javascript "application"%>
-    <%= yield(:head) %>
+    <%= stylesheet_link_tag 'application' -%>
+    <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css'-%>
+    <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css'-%>
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"-%>
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"-%>
+    <%= javascript_include_tag "jquery.livequery.min"-%>
+    <%= javascript_include_tag "jquery.form"-%>
+    <%= javascript_include_tag "application"-%>
     <% javascript_tag "var AUTH_TOKEN =  #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+    <%= yield(:head) %>
   </head>
   <body>
     <div id="container">

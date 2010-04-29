@@ -1,6 +1,5 @@
 class Admin::DepartmentsController < AccountResourceController
   respond_to :json
-
   def sort
     current_account.departments.reorder(params[:department])
     render :nothing=>true

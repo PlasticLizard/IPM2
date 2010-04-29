@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20100424203911) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "organizational_unit_type"
-    t.string   "position_type"
   end
 
   add_index "organizational_roles", ["ancestry"], :name => "index_organizational_roles_on_ancestry"
