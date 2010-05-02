@@ -1,5 +1,12 @@
 class Admin::DepartmentsController < AccountResourceController
   respond_to :json
+
+  def show
+    show! do |format|
+      format.all { render :partial=>"show"}
+    end
+  end
+
   def sort
     current_account.departments.reorder(params[:department])
     render :nothing=>true
@@ -14,6 +21,12 @@ class Admin::DepartmentsController < AccountResourceController
   def destroy
     destroy! do |format|
       format.json {render :nothing => true}
+    end
+  end
+
+  def update
+    update! do |format|
+      format.json {render :nothing=>true}
     end
   end
 

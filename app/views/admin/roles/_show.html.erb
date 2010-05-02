@@ -1,0 +1,56 @@
+
+
+<div id="role_name"
+     name="role[name]"
+     class="heading editable"
+     data-update_value="'role[name]'">
+  <%=@role.name%>
+</div>
+
+<span id="role_position_type"
+      class="editable"
+      data-select_options="'<%=position_type_select_options%>'"
+      data-field_type='"select"'
+      data-update_value='"role[position_type]"'>
+  <%=position_type_description%>
+</span>, and is staffed per
+
+<span id="role_organizational_unit_type"
+      class="editable"
+      data-select_options="'<%=organizational_unit_type_options%>'"
+      data-field_type='"select"'
+      data-update_value="'role[organizational_unit_type]'">
+  <%=@role.organizational_unit_type%>
+</span>.
+
+<hr/>
+
+<div>
+  <%unless @role.is_root?%>
+      Reports to: <a href="#"><%=@role.parent.name%></a>
+  <%end-%>
+  <%if @role.has_children?%>
+      Responsible for:  <a href="#"><%=@role.children.map{|c|c.name}.join(",")%></a>
+  <%end-%>
+</div>
+
+
+<div>
+  <p>
+    Job Description/Mission Statement:
+  <div id="role_description"
+       name="role[role_description]"
+       class="description editable"
+       data-field_type="'textarea'"
+       data-update_value="'role[role_description]'"
+       data-text_area_cols="100"
+       data-text_area_rows="10">
+    <%=@role.role_description || "<i>Click here to add a job description / mission statement</i>"%>
+  </div>
+  </p>
+</div>
+
+<script language="javascript">
+  $.fn.editInPlace.defaults.url='departments/<%=@department.id%>/roles/<%=resource.id%>';
+  $('.editable').editInPlace();
+</script>

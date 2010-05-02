@@ -1,101 +1,86 @@
+<%stylesheet "jquery.layout.css"%>
+<%javascript "jquery.layout.min-1.2.0"%>
+<% javascript("jquery.maestro.editinplace")%>
+
+<script type="text/javascript" src="/javascripts/jsTree/jquery.tree.js"></script>
+<script type="text/javascript" src="/javascripts/jsTree/plugins/jquery.tree.contextmenu.js"></script>
+
 <style type="text/css">
-    #departments-list { list-style-type: none; margin: 0; padding: 0;  }
-    #departments-list li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; cursor:pointer }
-    #departments-list li span.order_department { position: absolute; margin-left: -1.3em; cursor:move; }
-    #departments-list li span.delete_department { float:right;}
+	html, body {
+		width:		100%;
+		height:		100%;
+		overflow:	hidden;
+	} 	
+	#container{
+		/*width:	900px;	*/
+		width:		97%;
+		/*max-width:	900px; */
+		min-width:	700px;
+		_width:		700px; /* min-width for IE6 */
+		height:		97%;
+		padding:	0;
+		margin:		0 auto;
+	}
+	.pane {
+		display:	none; /* will appear when layout inits */
+	}
 
-    #departments-list .ui-selecting { background: #FECA40; }
-    #departments-list .ui-selected { background: #F39814; color: white; }
+	</style>
 
-</style>
+  <div class="ui-layout-center">
+    <div class="center-north">
+      <div id="department_detail"></div>
+    </div>
+    <div class="center-center">
+      <div id="role_detail"></div>
+    </div>
+  </div>
 
-
-<ul id="departments-list">
-  <% @departments.each do |d| %>
-      <li class="ui-state-default" id="department_<%= d.id -%>">
-        <span class="ui-icon ui-icon-arrowthick-2-n-s order_department"></span>
-        <span class="department_name"><%= d.name -%></span>
-        <span class="ui-icon ui-icon-closethick delete_department"></span>
-      </li>
-  <% end %>
-</ul>
-<form id="addDepartment" action="departments/create" method="post">
-  <input id="department_name" name="department[name]" type="text"/>
-  <input value="Add" type="submit"/>
-</form>
+  <div class="ui-layout-west">
+    <div class="west-center"> <%= render :partial=>"department_list" %></div>
+    <div class="west-south"><div id="department_roles"></div></div>
+  </div>
 
 
-<% content_for :javascript do %>
-    <script language="javascript">
-        function reorderDepartments()
-        {
-            $.ajax({
-                type: 'post',
-                data: $('#departments-list').sortable('serialize'),
-                dataType: 'script',
-                complete: function(request){
-                    $('#departments-list').effect('highlight');
-                },
-                url: 'departments/sort'})
-        }
+<script language="javascript">
+    var outerLayout, westLayout;
 
-        $(function() {
-            $('#departments-list').sortable(
-            {
-                handle: '.order_department',
-                update: reorderDepartments
-            });
+    $(document).ready(function() {
 
-            $("input:submit").button();
-
-            $('#addDepartment').submit(
-                    function(event) {
-                        event.preventDefault();
-                        var form = $(this);
-                        form.ajaxSubmit({
-                            dataType: 'json',
-                            beforeSend: function() {
-                            },
-                            success: function(json) {
-                                form.resetForm();
-                                var id = json["department"]["id"]
-                                var name = json["department"]["name"]
-                                var list = $("#departments-list");
-                                var new_item = list.children().last().clone();
-                                new_item.attr("id","department_" + id);
-                                new_item.children(1).text(name);
-                                list.append(new_item);
-
-                            },
-                            error: function(response, status, error) {
-                            },
-                            complete: function() {
-                            }
-                        });
-
-                        return false;
-                    }
-                    );
-
-            $('.delete_department').livequery('click',function(){
-                item = $(this).parent();
-                id = parseInt(item.attr("id").split("_")[1]);
-                $.ajax({
-                    type: 'post',
-                    data: {_method:'delete',department:{id:id}},
-                    dataType:null,
-                    complete: function(request){
-                        item.remove();
-                    },
-                    url: 'departments/destroy/' + id
-                });
-            }
-                    );
-
-            //$('#departments-list').selectable();
+        outerLayout = $('#container').layout({
+            minSize:			100	// ALL panes
+            ,	west__size:			300
+            ,	west__onresize:		'westLayout.resizeAll'
+            ,	useStateCookie:		true
         });
 
+        westLayout = $('div.ui-layout-west').layout({
+            minSize:				50	// ALL panes
+            ,	center__paneSelector:	".west-center"
+            ,	south__paneSelector:	".west-south"
+            ,	south__size:			250
+        });
+
+        centerLayout = $('div.ui-layout-center').layout({
+             closable:				false	// pane can open & close
+            ,resizable:				false	// when open, pane can be resized
+            ,slidable:				false	// when closed, pane can 'slide' open over other panes - closes on mouse-out
+
+            ,center__paneSelector: ".center-center"
+            ,north__paneSelector:  ".center-north"
+            ,north__size: 85
+        });
+
+        $(document).bind("department.selected",function(e,department_id){
+            $("#department_roles").load("departments/" + department_id + "/roles");
+            $("#department_detail").load("departments/" + department_id)
+        });
+
+        $(document).bind("role.selected",function(e,department_id, role_id){
+            $("#role_detail").load("departments/" + department_id + "/roles/" + role_id);
+        });
+
+    });
 
 
-    </script>
-<% end %>
+</script>

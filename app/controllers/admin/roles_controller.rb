@@ -1,6 +1,18 @@
 class Admin::RolesController < AccountResourceController
   belongs_to :department
-  respond_to :json
+  respond_to :json, :html
+
+  def index
+    index! do |format|
+      format.all {render :partial=>"index"}
+    end
+  end
+
+  def show
+    show! do |format|
+      format.all {render :partial=>"show"}
+    end
+  end
 
   def collection
     @roles ||= parent.roles.ordered_by_ancestry

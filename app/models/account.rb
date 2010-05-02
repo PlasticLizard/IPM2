@@ -15,7 +15,7 @@ class Account < ActiveRecord::Base
   end
 
   def organizational_structure
-    [:region, :station, :transport_unit]
+    [:company, :region, :base, :transport_unit]
   end
 
   cattr_accessor :current

@@ -1,0 +1,8 @@
+<% javascript("jquery.maestro.editinplace")%>
+
+<div id="department_name"
+     name="department[name]"
+     class="heading editable"
+     data-update_value="'department[name]'"><%=@department.name%></div>
+Reports to: <a href="#"><%=department_head_name%></a>
+<%=init_resource_edit_in_place%>

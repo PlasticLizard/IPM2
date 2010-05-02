@@ -13,9 +13,10 @@ describe Department do
 
   it "should create a default department head upon save if no roles exist" do
     d = Department.create!(@valid_attributes)
+    d = Department.find(d.id)
     d.roles.count.should equal 1
     d.roles[0].name.should == "Department 1 Director"
-    d.roles[0].should == d.department_head
+    d.department_head.should == d.roles[0]
   end
 
   it "should not create any new roles if roles are already present" do

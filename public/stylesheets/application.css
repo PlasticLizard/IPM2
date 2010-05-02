@@ -18,6 +18,14 @@ a {
   overflow: hidden;
 }
 
+.heading {
+    font-size:2em;
+}
+
+.editable{
+    color: #3366ff
+}
+
 #container {
   width: 75%;
   margin: 0 auto;

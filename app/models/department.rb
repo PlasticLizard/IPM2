@@ -10,9 +10,10 @@ class Department < ActiveRecord::Base
 
   has_many :roles, :class_name=>'OrganizationalRole' 
 
-  def before_save
-    unless roles.size > 0
+  def after_save
+    unless roles.size > 0 || self.department_head_id
       self.department_head = roles.build :name=>"#{name} Director"
+      save!
     end
   end
 

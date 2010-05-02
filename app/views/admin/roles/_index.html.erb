@@ -1,26 +1,11 @@
-<script type="text/javascript" src="/javascripts/jsTree/jquery.tree.js"></script>
-<script type="text/javascript" src="/javascripts/jsTree/plugins/jquery.tree.contextmenu.js"></script>
+
 <div id="roles">
   <%=role_tree_html%>
 </div>
 
-<% content_for :javascript do %>
     <script language="javascript">
-        $(function () {
-            $("#roles").tree({
-                plugins : {
-                    contextmenu : { }
-                },
-                callback:{
-                    onrename:renameRole,
-                    ondelete:deleteRole,
-                    oncreate:createRole,
-                    onmove:moveRole
-                }
 
-            });
-        });
-
+        var baseUrl = "departments/<%=@department.id%>/roles"
 
         function renameRole(node,tree,rollback){
             if (node.id != null && node.id != '')
@@ -33,7 +18,7 @@
                     complete: function(request){
                         $("#roles").effect('highlight');
                     },
-                    url: 'roles/' + node_id});
+                    url: baseUrl + "/" + node_id});
             }
 
         }
@@ -47,7 +32,7 @@
                 complete: function(request){
                     $("#roles").effect('highlight');
                 },
-                url: 'roles/' + node_id
+                url: baseUrl + '/' + node_id
             });
         }
 
@@ -68,13 +53,13 @@
                 },
                 complete: function() {
                 },
-                url: 'roles'
+                url: baseUrl
             });
         }
 
         function moveRole(node,ref,ref_type,tree,rollback)
         {
-            var node_id = node.id.split("_").pop(); 
+            var node_id = node.id.split("_").pop();
             var parent = tree.parent(node);
             var parent_id = ((parent != -1 && parent.length > 0) ? parent[0].id.split("_").pop() : null);
             if (parent_id == null) return;
@@ -85,8 +70,28 @@
                 complete: function(request){
                     $("#roles").effect('highlight');
                 },
-                url: 'roles/' + node_id});
+                url: baseUrl + '/' + node_id});
 
         }
+
+        function triggerRoleSelectedEvent(node,tree)
+        {
+            var node_id = node.id.split("_").pop();
+
+            $(node).trigger('role.selected',[<%=@department.id%>,node_id]);
+        }
+
+        $("#roles").tree({
+            plugins : {
+                contextmenu : { }
+            },
+            callback:{
+                onrename:renameRole,
+                ondelete:deleteRole,
+                oncreate:createRole,
+                onmove:moveRole,
+                onselect: triggerRoleSelectedEvent
+            }
+
+        });
     </script>
-<% end %>
