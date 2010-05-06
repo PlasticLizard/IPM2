@@ -1,5 +1,4 @@
 class AccountResourceController < InheritedResources::Base
-
   protected
 
   def begin_of_association_chain
@@ -8,5 +7,5 @@ class AccountResourceController < InheritedResources::Base
 
   def current_account
     Account.current
-  end
+  end  
 end

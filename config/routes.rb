@@ -43,6 +43,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :departments, :collection=>{:manage=>:get} do |dep|
       dep.resources :roles
     end
+    admin.resources :companies, :member=>{:create_organizational_unit=>:post} do |company|
+      company.resources :regions, :stations, :transport_units
+    end
   end
 
   map.connect ':controller/:action/:id'

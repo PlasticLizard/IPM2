@@ -15,7 +15,13 @@ class Account < ActiveRecord::Base
   end
 
   def organizational_structure
-    [:company, :region, :base, :transport_unit]
+    @organizational_structure ||= OrganizationalUnitHierarchy.new(Company,Region,Station,TransportUnit)
+  end
+
+  def before_save
+    unless companies.size > 0
+      companies.build :name=>self.name
+    end
   end
 
   cattr_accessor :current

@@ -1,0 +1,8 @@
+<% javascript("jquery.maestro.editinplace")%>
+
+<div id="company_name"
+     name="company[name]"
+     class="heading editable"
+     data-update_value="'company[name]'"><%=@company.name%></div>
+
+<%=javascript_tag("$.fn.editInPlace.defaults.url='companies/#{resource.id}';$('.editable').editInPlace();")%>

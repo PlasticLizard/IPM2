@@ -28,4 +28,11 @@ describe OrganizationalUnit do
     b3.should be_is_only_child
   end
 
+  it "should create children appropriate to its type" do
+    c = Company.create! :name=>"c1"
+    r = c.create_child!(:name=>"r1")
+    r.class.should equal Region
+    r.name.should == "r1"
+  end
+
 end

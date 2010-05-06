@@ -26,4 +26,10 @@ describe Account do
     d3.position.should equal 1
 
   end
+
+  it "should ensure at least one company exists when saved" do
+    a = Account.create!(@valid_attributes)
+    a.companies.size.should equal 1
+    a.companies[0].name.should equal a.name
+  end
 end
