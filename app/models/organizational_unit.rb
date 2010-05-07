@@ -15,7 +15,7 @@ class OrganizationalUnit < ActiveRecord::Base
 
   def roles
     account.roles.
-            find_all_by_organizational_unit_type(self.class.organizational_unit_type)
+            find_all_by_organizational_unit_type(self.class.organizational_unit_type.to_s)
   end
 
   def self.organizational_unit_type

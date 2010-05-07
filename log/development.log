@@ -30861,3 +30861,901 @@ Completed in 43ms (View: 8, DB: 3) | 200 OK [http://localhost/admin/companies/17
   [4;36;1mSQL (83.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100422034251')[0m
   [4;35;1mSQL (91.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100424203911')[0m
   [4;36;1mSQL (93.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100501043227')[0m
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:49:00) [GET]
+  Parameters: {"action"=>"show", "id"=>"27", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 27) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (2.0ms)
+Rendered admin/shared/_organizational_unit_header (58.0ms)
+Rendered admin/regions/_show (67.0ms)
+Completed in 114ms (View: 70, DB: 6) | 200 OK [http://localhost/admin/companies/17/regions/27]
+
+
+Processing Admin::CompaniesController#show (for 127.0.0.1 at 2010-05-06 23:49:02) [GET]
+  Parameters: {"action"=>"show", "id"=>"17", "controller"=>"admin/companies"}
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+Rendered admin/companies/_show (5.0ms)
+Completed in 41ms (View: 9, DB: 2) | 200 OK [http://localhost/admin/companies/17]
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-06 23:49:03) [GET]
+  Parameters: {"action"=>"show", "id"=>"32", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 32) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (0.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :station
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (51.0ms)
+Rendered admin/stations/_show (53.0ms)
+Completed in 104ms (View: 57, DB: 5) | 200 OK [http://localhost/admin/companies/17/stations/32]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:49:04) [GET]
+  Parameters: {"action"=>"show", "id"=>"18", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 18) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (0.0ms)
+Rendered admin/shared/_organizational_unit_header (48.0ms)
+Rendered admin/regions/_show (51.0ms)
+Completed in 97ms (View: 53, DB: 6) | 200 OK [http://localhost/admin/companies/17/regions/18]
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-06 23:49:05) [GET]
+  Parameters: {"action"=>"show", "id"=>"29", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 29) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :station
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (0.0ms)
+Rendered admin/shared/_organizational_unit_header (145.0ms)
+Rendered admin/stations/_show (147.0ms)
+Completed in 199ms (View: 149, DB: 5) | 200 OK [http://localhost/admin/companies/17/stations/29]
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-06 23:49:07) [GET]
+  Parameters: {"action"=>"show", "id"=>"19", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 19) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (0.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :station
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (49.0ms)
+Rendered admin/stations/_show (52.0ms)
+Completed in 98ms (View: 55, DB: 5) | 200 OK [http://localhost/admin/companies/17/stations/19]
+
+
+Processing Admin::TransportUnitsController#show (for 127.0.0.1 at 2010-05-06 23:49:09) [GET]
+  Parameters: {"action"=>"show", "id"=>"22", "company_id"=>"17", "controller"=>"admin/transport_units"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 22) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :transport_unit
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (48.0ms)
+Rendered admin/transport_units/_show (50.0ms)
+Completed in 96ms (View: 53, DB: 5) | 200 OK [http://localhost/admin/companies/17/transport_units/22]
+
+
+Processing Admin::TransportUnitsController#show (for 127.0.0.1 at 2010-05-06 23:49:10) [GET]
+  Parameters: {"action"=>"show", "id"=>"23", "company_id"=>"17", "controller"=>"admin/transport_units"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 23) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :transport_unit
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (0.0ms)
+Rendered admin/shared/_organizational_unit_header (51.0ms)
+Rendered admin/transport_units/_show (52.0ms)
+Completed in 102ms (View: 55, DB: 6) | 200 OK [http://localhost/admin/companies/17/transport_units/23]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:49:11) [GET]
+  Parameters: {"action"=>"show", "id"=>"31", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 31) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (0.0ms)
+Rendered admin/shared/_organizational_unit_header (46.0ms)
+Rendered admin/regions/_show (48.0ms)
+Completed in 96ms (View: 50, DB: 6) | 200 OK [http://localhost/admin/companies/17/regions/31]
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-06 23:49:11) [GET]
+  Parameters: {"action"=>"show", "id"=>"33", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 33) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :station
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (0.0ms)
+Rendered admin/shared/_organizational_unit_header (146.0ms)
+Rendered admin/stations/_show (149.0ms)
+Completed in 199ms (View: 153, DB: 5) | 200 OK [http://localhost/admin/companies/17/stations/33]
+
+
+Processing Admin::TransportUnitsController#show (for 127.0.0.1 at 2010-05-06 23:49:12) [GET]
+  Parameters: {"action"=>"show", "id"=>"34", "company_id"=>"17", "controller"=>"admin/transport_units"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 34) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :transport_unit
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (51.0ms)
+Rendered admin/transport_units/_show (54.0ms)
+Completed in 100ms (View: 56, DB: 6) | 200 OK [http://localhost/admin/companies/17/transport_units/34]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:49:13) [GET]
+  Parameters: {"action"=>"show", "id"=>"37", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 37) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (0.0ms)
+Rendered admin/shared/_organizational_unit_header (48.0ms)
+Rendered admin/regions/_show (50.0ms)
+Completed in 99ms (View: 53, DB: 4) | 200 OK [http://localhost/admin/companies/17/regions/37]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:49:14) [GET]
+  Parameters: {"action"=>"show", "id"=>"31", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 31) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (51.0ms)
+Rendered admin/regions/_show (53.0ms)
+Completed in 101ms (View: 55, DB: 5) | 200 OK [http://localhost/admin/companies/17/regions/31]
+
+
+Processing Admin::DepartmentsController#index (for 127.0.0.1 at 2010-05-06 23:49:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/departments"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (2.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments".account_id = 1) ORDER BY position[0m
+Rendering template within layouts/application
+Rendering admin/departments/index
+Rendered admin/departments/_department_list (8.0ms)
+Completed in 56ms (View: 24, DB: 4) | 200 OK [http://localhost/admin/departments]
+
+
+Processing Admin::RolesController#index (for 127.0.0.1 at 2010-05-06 23:49:25) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;35;1mOrganizationalRole Load (4.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE (("organizational_roles".department_id = 74) AND ("organizational_roles".department_id = 74)) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Rendered admin/roles/_index (24.0ms)
+Completed in 92ms (View: 25, DB: 7) | 200 OK [http://localhost/admin/departments/74/roles]
+
+
+Processing Admin::DepartmentsController#show (for 127.0.0.1 at 2010-05-06 23:49:25) [GET]
+  Parameters: {"action"=>"show", "id"=>"74", "controller"=>"admin/departments"}
+  [4;36;1mAccount Load (3.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;36;1mOrganizationalRole Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54) [0m
+Rendered admin/departments/_show (44.0ms)
+Completed in 98ms (View: 48, DB: 6) | 200 OK [http://localhost/admin/departments/74]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-06 23:49:27) [GET]
+  Parameters: {"action"=>"show", "id"=>"54", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54 AND ("organizational_roles".department_id = 74)) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54') LIMIT 1[0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54') [0m
+Rendered admin/roles/_show (82.0ms)
+Completed in 160ms (View: 85, DB: 6) | 200 OK [http://localhost/admin/departments/74/roles/54]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-06 23:49:30) [GET]
+  Parameters: {"action"=>"show", "id"=>"56", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mDepartment Load (2.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 56 AND ("organizational_roles".department_id = 74)) [0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56') LIMIT 1[0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56') [0m
+Rendered admin/roles/_show (198.0ms)
+Completed in 276ms (View: 198, DB: 10) | 200 OK [http://localhost/admin/departments/74/roles/56]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-06 23:49:31) [GET]
+  Parameters: {"action"=>"show", "id"=>"57", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mDepartment Load (0.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 57 AND ("organizational_roles".department_id = 74)) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 56) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56/57') LIMIT 1[0m
+Rendered admin/roles/_show (70.0ms)
+Completed in 133ms (View: 72, DB: 5) | 200 OK [http://localhost/admin/departments/74/roles/57]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-06 23:49:33) [GET]
+  Parameters: {"action"=>"show", "id"=>"54", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54 AND ("organizational_roles".department_id = 74)) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54') LIMIT 1[0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54') [0m
+Rendered admin/roles/_show (194.0ms)
+Completed in 278ms (View: 197, DB: 8) | 200 OK [http://localhost/admin/departments/74/roles/54]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-06 23:49:40) [GET]
+  Parameters: {"action"=>"show", "id"=>"56", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;36;1mOrganizationalRole Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 56 AND ("organizational_roles".department_id = 74)) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56') LIMIT 1[0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56') [0m
+Rendered admin/roles/_show (89.0ms)
+Completed in 168ms (View: 91, DB: 9) | 200 OK [http://localhost/admin/departments/74/roles/56]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-06 23:49:41) [GET]
+  Parameters: {"action"=>"show", "id"=>"57", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 57 AND ("organizational_roles".department_id = 74)) [0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 56) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56/57') LIMIT 1[0m
+Rendered admin/roles/_show (83.0ms)
+Completed in 166ms (View: 85, DB: 7) | 200 OK [http://localhost/admin/departments/74/roles/57]
+
+
+Processing Admin::CompaniesController#index (for 127.0.0.1 at 2010-05-06 23:51:09) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/companies"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering admin/companies/index
+  [4;36;1mOrganizationalUnit Load (4.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."account_id" = 1) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Completed in 114ms (View: 82, DB: 6) | 200 OK [http://localhost/admin/companies]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:51:13) [GET]
+  Parameters: {"action"=>"show", "id"=>"27", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 27) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (58.0ms)
+Rendered admin/regions/_show (62.0ms)
+Completed in 124ms (View: 65, DB: 6) | 200 OK [http://localhost/admin/companies/17/regions/27]
+
+
+Processing Admin::CompaniesController#show (for 127.0.0.1 at 2010-05-06 23:51:13) [GET]
+  Parameters: {"action"=>"show", "id"=>"17", "controller"=>"admin/companies"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (2.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+Rendered admin/companies/_show (7.0ms)
+Completed in 154ms (View: 12, DB: 4) | 200 OK [http://localhost/admin/companies/17]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:51:14) [GET]
+  Parameters: {"action"=>"show", "id"=>"27", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 27) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (0.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (60.0ms)
+Rendered admin/regions/_show (64.0ms)
+Completed in 127ms (View: 69, DB: 5) | 200 OK [http://localhost/admin/companies/17/regions/27]
+
+
+Processing Admin::CompaniesController#show (for 127.0.0.1 at 2010-05-06 23:51:15) [GET]
+  Parameters: {"action"=>"show", "id"=>"17", "controller"=>"admin/companies"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+Rendered admin/companies/_show (6.0ms)
+Completed in 43ms (View: 9, DB: 3) | 200 OK [http://localhost/admin/companies/17]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:51:16) [GET]
+  Parameters: {"action"=>"show", "id"=>"27", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 27) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (172.0ms)
+Rendered admin/regions/_show (175.0ms)
+Completed in 244ms (View: 179, DB: 6) | 200 OK [http://localhost/admin/companies/17/regions/27]
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-06 23:51:45) [GET]
+  Parameters: {"action"=>"show", "id"=>"32", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 32) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :station
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (62.0ms)
+Rendered admin/stations/_show (66.0ms)
+Completed in 128ms (View: 69, DB: 6) | 200 OK [http://localhost/admin/companies/17/stations/32]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:51:46) [GET]
+  Parameters: {"action"=>"show", "id"=>"18", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (2.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 18) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (1.0ms)
+Rendered admin/shared/_organizational_unit_header (69.0ms)
+Rendered admin/regions/_show (72.0ms)
+Completed in 145ms (View: 76, DB: 8) | 200 OK [http://localhost/admin/companies/17/regions/18]
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-06 23:53:15) [GET]
+  Parameters: {"action"=>"show", "id"=>"32", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 32) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :station
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (0.0ms)
+Rendered admin/shared/_organizational_unit_header (52.0ms)
+Rendered admin/stations/_show (54.0ms)
+Completed in 101ms (View: 55, DB: 6) | 200 OK [http://localhost/admin/companies/17/stations/32]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:53:16) [GET]
+  Parameters: {"action"=>"show", "id"=>"27", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 27) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = '--- :region
+') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_roles (0.0ms)
+Rendered admin/shared/_organizational_unit_header (47.0ms)
+Rendered admin/regions/_show (49.0ms)
+Completed in 96ms (View: 53, DB: 5) | 200 OK [http://localhost/admin/companies/17/regions/27]
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (88.0ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (102.0ms)[0m   [0;1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "account_id" integer, "department_head_id" integer, "created_at" datetime, "updated_at" datetime, "position" integer) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (91.0ms)[0m   [0;1mCREATE TABLE "organizational_roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "account_id" integer, "department_id" integer, "role_description" varchar(500), "ancestry" varchar(255), "created_at" datetime, "updated_at" datetime, "role_type" varchar(255) DEFAULT 'exclusive', "position_type" varchar(255) DEFAULT 'exclusive', "organizational_unit_type" varchar(255) DEFAULT 'company') [0m
+  [4;35;1mSQL (98.0ms)[0m   [0mCREATE INDEX "index_organizational_roles_on_ancestry" ON "organizational_roles" ("ancestry")[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (95.0ms)[0m   [0mCREATE TABLE "organizational_units" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "type" varchar(255), "account_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime, "ancestry" varchar(255)) [0m
+  [4;36;1mSQL (105.0ms)[0m   [0;1mCREATE INDEX "index_organizational_units_on_ancestry" ON "organizational_units" ("ancestry")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (94.0ms)[0m   [0;1mCREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "middle_initial" varchar(255), "created_at" datetime, "updated_at" datetime, "email_address" varchar(255), "last_access" datetime, "type" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (86.0ms)[0m   [0;1mCREATE TABLE "requirements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "type" varchar(255), "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (96.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (100.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (101.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100501052032')[0m
+  [4;35;1mSQL (92.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100412044545')[0m
+  [4;36;1mSQL (98.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415032415')[0m
+  [4;35;1mSQL (100.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100415032824')[0m
+  [4;36;1mSQL (82.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415034703')[0m
+  [4;35;1mSQL (82.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100415034800')[0m
+  [4;36;1mSQL (91.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100416054043')[0m
+  [4;35;1mSQL (83.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100421043434')[0m
+  [4;36;1mSQL (91.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100421050223')[0m
+  [4;35;1mSQL (92.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100421054748')[0m
+  [4;36;1mSQL (89.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100422034251')[0m
+  [4;35;1mSQL (100.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100424203911')[0m
+  [4;36;1mSQL (89.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100501043227')[0m
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-06 23:57:11) [GET]
+  Parameters: {"action"=>"show", "id"=>"32", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 32) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'station') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_role (7.0ms)
+Rendered admin/shared/_organizational_unit_roles (16.0ms)
+Rendered admin/shared/_organizational_unit_header (166.0ms)
+Rendered admin/stations/_show (169.0ms)
+Completed in 215ms (View: 171, DB: 6) | 200 OK [http://localhost/admin/companies/17/stations/32]
+
+
+Processing Admin::CompaniesController#show (for 127.0.0.1 at 2010-05-06 23:57:15) [GET]
+  Parameters: {"action"=>"show", "id"=>"17", "controller"=>"admin/companies"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+Rendered admin/companies/_show (5.0ms)
+Completed in 42ms (View: 9, DB: 3) | 200 OK [http://localhost/admin/companies/17]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:57:17) [GET]
+  Parameters: {"action"=>"show", "id"=>"27", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 27) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'region') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_role (6.0ms)
+Rendered admin/shared/_organizational_unit_roles (7.0ms)
+Rendered admin/shared/_organizational_unit_header (54.0ms)
+Rendered admin/regions/_show (56.0ms)
+Completed in 101ms (View: 57, DB: 5) | 200 OK [http://localhost/admin/companies/17/regions/27]
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-06 23:57:18) [GET]
+  Parameters: {"action"=>"show", "id"=>"32", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 32) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'station') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_role (6.0ms)
+Rendered admin/shared/_organizational_unit_roles (7.0ms)
+Rendered admin/shared/_organizational_unit_header (56.0ms)
+Rendered admin/stations/_show (59.0ms)
+Completed in 105ms (View: 62, DB: 5) | 200 OK [http://localhost/admin/companies/17/stations/32]
+
+
+Processing Admin::CompaniesController#index (for 127.0.0.1 at 2010-05-06 23:57:44) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/companies"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering admin/companies/index
+  [4;36;1mOrganizationalUnit Load (3.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."account_id" = 1) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Completed in 111ms (View: 79, DB: 5) | 200 OK [http://localhost/admin/companies]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-06 23:57:49) [GET]
+  Parameters: {"action"=>"show", "id"=>"18", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 18) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'region') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_role (11.0ms)
+Rendered admin/shared/_organizational_unit_roles (23.0ms)
+Rendered admin/shared/_organizational_unit_header (187.0ms)
+Rendered admin/regions/_show (191.0ms)
+Completed in 251ms (View: 193, DB: 8) | 200 OK [http://localhost/admin/companies/17/regions/18]
+
+
+Processing Admin::RegionsController#update (for 127.0.0.1 at 2010-05-06 23:58:00) [PUT]
+  Parameters: {"region"=>{"position_type"=>"ho"}, "action"=>"update", "_method"=>"put", "id"=>"18", "original_html"=>"\n      Hi there!\n", "company_id"=>"17", "controller"=>"admin/regions", "element_id"=>"role_assignment"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 18) AND (ancestry like '17/%' or ancestry = '17') [0m
+
+ActiveRecord::UnknownAttributeError (unknown attribute: position_type):
+  C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/base_helpers.rb:75:in `update_resource'
+  C:/Ruby/lib/ruby/gems/1.8/gems/inherited_resources-1.0.6/lib/inherited_resources/actions.rb:45:in `update!'
+  app/controllers/admin/organizational_units_controller.rb:18:in `update'
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  -e:1:in `load'
+  -e:1
+
+Rendered rescues/_trace (91.0ms)
+Rendered rescues/_request_and_response (2.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing Admin::CompaniesController#index (for 127.0.0.1 at 2010-05-06 23:59:22) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/companies"}
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering admin/companies/index
+  [4;36;1mOrganizationalUnit Load (4.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."account_id" = 1) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Completed in 228ms (View: 200, DB: 5) | 200 OK [http://localhost/admin/companies]
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-06 23:59:50) [GET]
+  Parameters: {"action"=>"show", "id"=>"29", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mCompany Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;35;1mOrganizationalUnit Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 29) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'station') AND ("organizational_roles".account_id = 1) [0m
+Rendered admin/shared/_organizational_unit_role (6.0ms)
+Rendered admin/shared/_organizational_unit_roles (7.0ms)
+Rendered admin/shared/_organizational_unit_header (52.0ms)
+Rendered admin/stations/_show (54.0ms)
+Completed in 98ms (View: 56, DB: 6) | 200 OK [http://localhost/admin/companies/17/stations/29]
+
+
+Processing Admin::CompaniesController#index (for 127.0.0.1 at 2010-05-07 00:00:57) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/companies"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering admin/companies/index
+  [4;35;1mOrganizationalUnit Load (3.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."account_id" = 1) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Completed in 210ms (View: 181, DB: 5) | 200 OK [http://localhost/admin/companies]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-07 00:01:01) [GET]
+  Parameters: {"action"=>"show", "id"=>"18", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 18) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'region') AND ("organizational_roles".account_id = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74) [0m
+Rendered admin/shared/_organizational_unit_role (39.0ms)
+Rendered admin/shared/_organizational_unit_roles (50.0ms)
+Rendered admin/shared/_organizational_unit_header (116.0ms)
+Rendered admin/regions/_show (119.0ms)
+Completed in 178ms (View: 121, DB: 7) | 200 OK [http://localhost/admin/companies/17/regions/18]
+
+
+Processing Admin::CompaniesController#index (for 127.0.0.1 at 2010-05-07 00:01:38) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/companies"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering admin/companies/index
+  [4;35;1mOrganizationalUnit Load (3.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."account_id" = 1) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Completed in 210ms (View: 179, DB: 5) | 200 OK [http://localhost/admin/companies]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-07 00:01:43) [GET]
+  Parameters: {"action"=>"show", "id"=>"18", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;36;1mAccount Load (3.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 18) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'region') AND ("organizational_roles".account_id = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74) [0m
+Rendered admin/shared/_organizational_unit_role (37.0ms)
+Rendered admin/shared/_organizational_unit_roles (46.0ms)
+Rendered admin/shared/_organizational_unit_header (103.0ms)
+Rendered admin/regions/_show (106.0ms)
+Completed in 167ms (View: 107, DB: 9) | 200 OK [http://localhost/admin/companies/17/regions/18]
+
+
+Processing Admin::CompaniesController#index (for 127.0.0.1 at 2010-05-07 00:02:03) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/companies"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering admin/companies/index
+  [4;35;1mOrganizationalUnit Load (5.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."account_id" = 1) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Completed in 250ms (View: 209, DB: 7) | 200 OK [http://localhost/admin/companies]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-07 00:02:08) [GET]
+  Parameters: {"action"=>"show", "id"=>"18", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (0.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 18) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'region') AND ("organizational_roles".account_id = 1) [0m
+  [4;35;1mDepartment Load (2.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74) [0m
+Rendered admin/shared/_organizational_unit_role (40.0ms)
+Rendered admin/shared/_organizational_unit_roles (49.0ms)
+Rendered admin/shared/_organizational_unit_header (123.0ms)
+Rendered admin/regions/_show (127.0ms)
+Completed in 191ms (View: 127, DB: 8) | 200 OK [http://localhost/admin/companies/17/regions/18]
+
+
+Processing Admin::CompaniesController#index (for 127.0.0.1 at 2010-05-07 00:02:41) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/companies"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering admin/companies/index
+  [4;35;1mOrganizationalUnit Load (4.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."account_id" = 1) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Completed in 208ms (View: 177, DB: 6) | 200 OK [http://localhost/admin/companies]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-07 00:02:46) [GET]
+  Parameters: {"action"=>"show", "id"=>"18", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (2.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 18) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'region') AND ("organizational_roles".account_id = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74) [0m
+Rendered admin/shared/_organizational_unit_role (38.0ms)
+Rendered admin/shared/_organizational_unit_roles (42.0ms)
+Rendered admin/shared/_organizational_unit_header (110.0ms)
+Rendered admin/regions/_show (121.0ms)
+Completed in 181ms (View: 122, DB: 8) | 200 OK [http://localhost/admin/companies/17/regions/18]
+
+
+Processing Admin::DepartmentsController#index (for 127.0.0.1 at 2010-05-07 00:02:55) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/departments"}
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mDepartment Load (3.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments".account_id = 1) ORDER BY position[0m
+Rendering template within layouts/application
+Rendering admin/departments/index
+Rendered admin/departments/_department_list (10.0ms)
+Completed in 73ms (View: 32, DB: 4) | 200 OK [http://localhost/admin/departments]
+
+
+Processing Admin::RolesController#index (for 127.0.0.1 at 2010-05-07 00:02:59) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;36;1mOrganizationalRole Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE (("organizational_roles".department_id = 74) AND ("organizational_roles".department_id = 74)) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Rendered admin/roles/_index (23.0ms)
+Completed in 93ms (View: 27, DB: 4) | 200 OK [http://localhost/admin/departments/74/roles]
+
+
+Processing Admin::DepartmentsController#show (for 127.0.0.1 at 2010-05-07 00:03:00) [GET]
+  Parameters: {"action"=>"show", "id"=>"74", "controller"=>"admin/departments"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54) [0m
+Rendered admin/departments/_show (45.0ms)
+Completed in 90ms (View: 48, DB: 5) | 200 OK [http://localhost/admin/departments/74]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-07 00:03:01) [GET]
+  Parameters: {"action"=>"show", "id"=>"54", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;36;1mOrganizationalRole Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54 AND ("organizational_roles".department_id = 74)) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54') LIMIT 1[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54') [0m
+Rendered admin/roles/_show (173.0ms)
+Completed in 255ms (View: 178, DB: 7) | 200 OK [http://localhost/admin/departments/74/roles/54]
+
+
+Processing Admin::RolesController#update (for 127.0.0.1 at 2010-05-07 00:03:08) [PUT]
+  Parameters: {"action"=>"update", "role"=>{"name"=>"Director"}, "_method"=>"put", "id"=>"54", "original_html"=>"\n  Department 1 Director\n", "controller"=>"admin/roles", "department_id"=>"74", "element_id"=>"role_name"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54 AND ("organizational_roles".department_id = 74)) [0m
+  [4;36;1mOrganizationalRole Update (3.0ms)[0m   [0;1mUPDATE "organizational_roles" SET "updated_at" = '2010-05-07 07:03:08', "name" = 'Director' WHERE "id" = 54[0m
+Completed in 173ms (View: 3, DB: 0) | 200 OK [http://localhost/admin/departments/74/roles/54]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-07 00:03:09) [GET]
+  Parameters: {"action"=>"show", "id"=>"56", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 56 AND ("organizational_roles".department_id = 74)) [0m
+  [4;36;1mOrganizationalRole Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56') LIMIT 1[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56') [0m
+Rendered admin/roles/_show (69.0ms)
+Completed in 133ms (View: 69, DB: 9) | 200 OK [http://localhost/admin/departments/74/roles/56]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-07 00:03:11) [GET]
+  Parameters: {"action"=>"show", "id"=>"56", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 56 AND ("organizational_roles".department_id = 74)) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54) [0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56') LIMIT 1[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56') [0m
+Rendered admin/roles/_show (90.0ms)
+Completed in 171ms (View: 94, DB: 8) | 200 OK [http://localhost/admin/departments/74/roles/56]
+
+
+Processing Admin::RolesController#update (for 127.0.0.1 at 2010-05-07 00:03:15) [PUT]
+  Parameters: {"action"=>"update", "role"=>{"name"=>"Regional Manager"}, "_method"=>"put", "id"=>"56", "original_html"=>"\n  D1 Regional Manager\n", "controller"=>"admin/roles", "department_id"=>"74", "element_id"=>"role_name"}
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (0.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;35;1mOrganizationalRole Load (1.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 56 AND ("organizational_roles".department_id = 74)) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 54) [0m
+  [4;35;1mOrganizationalRole Update (3.0ms)[0m   [0mUPDATE "organizational_roles" SET "updated_at" = '2010-05-07 07:03:15', "name" = 'Regional Manager' WHERE "id" = 56[0m
+Completed in 163ms (View: 3, DB: 0) | 200 OK [http://localhost/admin/departments/74/roles/56]
+
+
+Processing Admin::RolesController#show (for 127.0.0.1 at 2010-05-07 00:03:17) [GET]
+  Parameters: {"action"=>"show", "id"=>"57", "controller"=>"admin/roles", "department_id"=>"74"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 57 AND ("organizational_roles".department_id = 74)) [0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 56) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT "organizational_roles".id FROM "organizational_roles" WHERE ("organizational_roles"."ancestry" = '54/56/57') LIMIT 1[0m
+Rendered admin/roles/_show (184.0ms)
+Completed in 266ms (View: 187, DB: 7) | 200 OK [http://localhost/admin/departments/74/roles/57]
+
+
+Processing Admin::RolesController#update (for 127.0.0.1 at 2010-05-07 00:03:22) [PUT]
+  Parameters: {"action"=>"update", "role"=>{"name"=>"Base Manager"}, "_method"=>"put", "id"=>"57", "original_html"=>"\n  D1 Base Manager\n", "controller"=>"admin/roles", "department_id"=>"74", "element_id"=>"role_name"}
+  [4;35;1mAccount Load (2.0ms)[0m   [0mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;36;1mDepartment Load (1.0ms)[0m   [0;1mSELECT * FROM "departments" WHERE ("departments"."id" = 74 AND ("departments".account_id = 1)) ORDER BY position[0m
+  [4;35;1mOrganizationalRole Load (2.0ms)[0m   [0mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 57 AND ("organizational_roles".department_id = 74)) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."id" = 56) [0m
+  [4;35;1mOrganizationalRole Update (3.0ms)[0m   [0mUPDATE "organizational_roles" SET "updated_at" = '2010-05-07 07:03:22', "name" = 'Base Manager' WHERE "id" = 57[0m
+Completed in 174ms (View: 2, DB: 0) | 200 OK [http://localhost/admin/departments/74/roles/57]
+
+
+Processing Admin::CompaniesController#index (for 127.0.0.1 at 2010-05-07 00:03:28) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/companies"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering admin/companies/index
+  [4;35;1mOrganizationalUnit Load (5.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."account_id" = 1) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Completed in 146ms (View: 105, DB: 7) | 200 OK [http://localhost/admin/companies]
+
+
+Processing Admin::CompaniesController#show (for 127.0.0.1 at 2010-05-07 00:03:32) [GET]
+  Parameters: {"action"=>"show", "id"=>"17", "controller"=>"admin/companies"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+Rendered admin/companies/_show (5.0ms)
+Completed in 43ms (View: 10, DB: 3) | 200 OK [http://localhost/admin/companies/17]
+
+
+Processing Admin::RegionsController#show (for 127.0.0.1 at 2010-05-07 00:03:33) [GET]
+  Parameters: {"action"=>"show", "id"=>"27", "company_id"=>"17", "controller"=>"admin/regions"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 27) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (2.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'region') AND ("organizational_roles".account_id = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74) [0m
+Rendered admin/shared/_organizational_unit_role (37.0ms)
+Rendered admin/shared/_organizational_unit_roles (41.0ms)
+Rendered admin/shared/_organizational_unit_header (105.0ms)
+Rendered admin/regions/_show (109.0ms)
+Completed in 170ms (View: 111, DB: 8) | 200 OK [http://localhost/admin/companies/17/regions/27]
+
+
+Processing Admin::CompaniesController#index (for 127.0.0.1 at 2010-05-07 00:03:55) [GET]
+  Parameters: {"action"=>"index", "controller"=>"admin/companies"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering admin/companies/index
+  [4;35;1mOrganizationalUnit Load (6.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."account_id" = 1) ORDER BY (case when ancestry is null then 0 else 1 end), ancestry[0m
+Completed in 152ms (View: 109, DB: 8) | 200 OK [http://localhost/admin/companies]
+
+
+Processing Admin::StationsController#show (for 127.0.0.1 at 2010-05-07 00:04:00) [GET]
+  Parameters: {"action"=>"show", "id"=>"32", "company_id"=>"17", "controller"=>"admin/stations"}
+  [4;36;1mAccount Load (2.0ms)[0m   [0;1mSELECT * FROM "accounts" LIMIT 1[0m
+  [4;35;1mCompany Load (1.0ms)[0m   [0mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 17 AND ("organizational_units".account_id = 1)) AND ( ("organizational_units"."type" = 'Company' ) ) [0m
+  [4;36;1mOrganizationalUnit Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_units" WHERE ("organizational_units"."id" = 32) AND (ancestry like '17/%' or ancestry = '17') [0m
+  [4;35;1mAccount Load (1.0ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+  [4;36;1mOrganizationalRole Load (1.0ms)[0m   [0;1mSELECT * FROM "organizational_roles" WHERE ("organizational_roles"."organizational_unit_type" = 'station') AND ("organizational_roles".account_id = 1) [0m
+  [4;35;1mDepartment Load (1.0ms)[0m   [0mSELECT * FROM "departments" WHERE ("departments"."id" = 74) [0m
+Rendered admin/shared/_organizational_unit_role (40.0ms)
+Rendered admin/shared/_organizational_unit_roles (50.0ms)
+Rendered admin/shared/_organizational_unit_header (111.0ms)
+Rendered admin/stations/_show (116.0ms)
+Completed in 184ms (View: 118, DB: 7) | 200 OK [http://localhost/admin/companies/17/stations/32]
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (88.0ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (69.0ms)[0m   [0;1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "account_id" integer, "department_head_id" integer, "created_at" datetime, "updated_at" datetime, "position" integer) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (88.0ms)[0m   [0;1mCREATE TABLE "organizational_roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "account_id" integer, "department_id" integer, "role_description" varchar(500), "ancestry" varchar(255), "created_at" datetime, "updated_at" datetime, "role_type" varchar(255) DEFAULT 'exclusive', "position_type" varchar(255) DEFAULT 'exclusive', "organizational_unit_type" varchar(255) DEFAULT 'company') [0m
+  [4;35;1mSQL (93.0ms)[0m   [0mCREATE INDEX "index_organizational_roles_on_ancestry" ON "organizational_roles" ("ancestry")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (106.0ms)[0m   [0mCREATE TABLE "organizational_units" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "type" varchar(255), "account_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime, "ancestry" varchar(255)) [0m
+  [4;36;1mSQL (107.0ms)[0m   [0;1mCREATE INDEX "index_organizational_units_on_ancestry" ON "organizational_units" ("ancestry")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (113.0ms)[0m   [0;1mCREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "middle_initial" varchar(255), "created_at" datetime, "updated_at" datetime, "email_address" varchar(255), "last_access" datetime, "type" varchar(255)) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (108.0ms)[0m   [0;1mCREATE TABLE "requirements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "type" varchar(255), "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (91.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (105.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (97.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100501052032')[0m
+  [4;35;1mSQL (105.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100412044545')[0m
+  [4;36;1mSQL (82.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415032415')[0m
+  [4;35;1mSQL (93.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100415032824')[0m
+  [4;36;1mSQL (105.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100415034703')[0m
+  [4;35;1mSQL (101.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100415034800')[0m
+  [4;36;1mSQL (105.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100416054043')[0m
+  [4;35;1mSQL (110.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100421043434')[0m
+  [4;36;1mSQL (96.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100421050223')[0m
+  [4;35;1mSQL (110.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100421054748')[0m
+  [4;36;1mSQL (79.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100422034251')[0m
+  [4;35;1mSQL (82.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100424203911')[0m
+  [4;36;1mSQL (99.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100501043227')[0m
