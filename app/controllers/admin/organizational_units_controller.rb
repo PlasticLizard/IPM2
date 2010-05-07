@@ -1,6 +1,5 @@
 class Admin::OrganizationalUnitsController < AccountResourceController
   belongs_to :company
-
   def resource
     get_resource_ivar || set_resource_ivar(parent.descendants.find(params[:id]))
   end

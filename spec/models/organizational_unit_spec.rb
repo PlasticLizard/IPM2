@@ -35,4 +35,15 @@ describe OrganizationalUnit do
     r.name.should == "r1"
   end
 
+  it "should present roles appropriate to its type" do
+    r1 = OrganizationalRole.create! :name=>"r1", :organizational_unit_type=>:company
+    r2 = OrganizationalRole.create! :name=>"r2", :organizational_unit_type=>:region
+    r3 = OrganizationalRole.create! :name=>"r3", :organizational_unit_type=>:company
+    c = Company.create! :name=>"c1"
+    c.roles.count.should equal 2
+    c.roles.should include r1
+    c.roles.should include r3
+    c.roles.should_not include r2
+  end
+
 end

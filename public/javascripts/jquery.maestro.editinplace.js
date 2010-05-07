@@ -91,7 +91,7 @@ $.fn.editInPlace.defaults = {
     bg_over:			"#ffc", // string: background color of hover of unactivated editor
 	bg_out:				"transparent", // string: background color on restore from hover
 	hover_class:		"",  // string: class added to root element during hover. Will override bg_over and bg_out
-	show_buttons:		true, // boolean: will show the buttons: cancel or save; will automatically cancel out the onBlur functionality
+	show_buttons:		false, // boolean: will show the buttons: cancel or save; will automatically cancel out the onBlur functionality
 	save_button:		'<button class="inplace_save">Save</button>', // string: image button tag to use as â€œSaveâ€ button
 	cancel_button:		'<button class="inplace_cancel">Cancel</button>', // string: image button tag to use as â€œCancelâ€ button
 	params:				"_method=put", // string: example: first_name=dave&last_name=hauenstein extra paramters sent via the post request to the server
