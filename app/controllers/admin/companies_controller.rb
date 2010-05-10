@@ -1,6 +1,6 @@
 class Admin::CompaniesController  < AccountResourceController
   def collection
-    @companies ||= current_account.companies.ordered_by_ancestry
+    @companies ||= current_account.companies
   end
 
   def show
@@ -21,10 +21,14 @@ class Admin::CompaniesController  < AccountResourceController
     end
   end
 
-  def create_organizational_unit
+  def organizational_model
+    TreeHelper.arrange_tree_nodes(OrganizationalUnit.all :account_id=>Account.current.id)
+  end
+
+  def organizational_unit
     new_ou_attributes = params["organizational_unit"]
     parent_id = new_ou_attributes.delete("parent_id")
-    parent_ou = (params["id"] == parent_id) ? resource : resource.descendants.find(parent_id.to_i)
+    parent_ou = (params["id"] == parent_id) ? resource : OrganizationalUnit.find(parent_id)
 
     raise "The parent of the requested organizational unit cannot be found" unless parent_ou
     raise "A child cannot be created for #{self} because it is the last level of the organizational hierarchy" unless parent_ou.child_type

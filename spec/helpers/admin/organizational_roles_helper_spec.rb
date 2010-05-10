@@ -9,10 +9,14 @@ describe Admin::RolesHelper do
   end
 
   it "should prepare an un-ordered list from the hash of tree nodes provided" do
-    tree_hash = {OrganizationalRole.new(:id=>1, :name=>"o1")=>{OrganizationalRole.new(:id=>2,:name=>"o2")=>{},
-                                                               OrganizationalRole.new(:id=>3,:name=>"o3")=>{}}}
+    ids = [BSON::ObjectID.new,BSON::ObjectID.new,BSON::ObjectID.new]
+    children = OrderedHash.new
+    children[OrganizationalRole.new(:id=>ids[1],:name=>"o2")] = {}
+    children[OrganizationalRole.new(:id=>ids[2],:name=>"o3")] = {}
+    tree_hash = {OrganizationalRole.new(:id=>ids[0], :name=>"o1")=>children}
 
-    expected = "<ul><li id='role_1' class='open'><a href='#'><ins></ins>o1</a><ul><li id='role_2' class='open'><a href='#'><ins></ins>o2</a></li><li id='role_3' class='open'><a href='#'><ins></ins>o3</a></li></ul></li></ul>"
+    expected = "<ul><li id='role_#{ids[0]}' class='open'><a href='#'><ins></ins>o1</a><ul><li id='role_#{ids[1]}' class='open'><a href='#'><ins></ins>o2</a></li><li id='role_#{ids[2]}' class='open'><a href='#'><ins></ins>o3</a></li></ul></li></ul>"
+
 
     helper.send(:subtree_html,tree_hash).should == expected
   end

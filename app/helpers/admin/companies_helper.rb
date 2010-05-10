@@ -1,12 +1,8 @@
 module Admin::CompaniesHelper
   def org_tree_html
-    arranged = organizational_model
+    arranged = controller.organizational_model
     org_subtree_html(arranged)
-  end
-
-   def organizational_model
-    @companies.arrange :conditions=>{:account_id=>Account.current.id}
-  end
+  end   
 
   private
   def org_subtree_html(tree_hash)

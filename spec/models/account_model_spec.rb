@@ -18,6 +18,6 @@ describe AccountModel do
     Account.set_current_account(Account.create!(:name=>"Lieutenant Dan"))
     ou = OrganizationalUnit.create
     ou.should be_valid
-    ou.account.should equal Account.current
+    ou.account.should == Account.current
   end 
 end

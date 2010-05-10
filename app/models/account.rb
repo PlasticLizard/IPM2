@@ -1,11 +1,17 @@
-class Account < ActiveRecord::Base
-#  has_many :people, :dependent=>:destroy
-#  has_many :users#, :conditions=>{:type=>"User"} <--May not be required?
-#  has_many :employees
-  has_many :companies, :dependent=>:destroy
+class Account
+  include MongoMapper::Document
+  
+  key :name, String
+  timestamps!
+  
+  many :companies, :dependent=>:destroy do
+    def arrange
+      TreeHelper.arrange_tree_nodes(all)
+    end
+  end
 
-  has_many :roles, :class_name=>'OrganizationalRole', :dependent=>:destroy
-  has_many :departments, :dependent=>:destroy, :order=>'position' do
+  many :roles, :class_name=>'OrganizationalRole', :dependent=>:destroy
+  many :departments, :dependent=>:destroy, :order=>'position' do
     def reorder(ordered_department_ids)
       all.each do |dep|
         dep.position = ordered_department_ids.index(dep.id.to_s) + 1
@@ -18,7 +24,8 @@ class Account < ActiveRecord::Base
     @organizational_structure ||= OrganizationalUnitHierarchy.new(Company,Region,Station,TransportUnit)
   end
 
-  def before_save
+  after_save :ensure_company
+  def ensure_company
     unless companies.size > 0
       companies.build :name=>self.name
     end

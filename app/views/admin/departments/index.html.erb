@@ -77,6 +77,7 @@
         });
 
         $(document).bind("role.selected",function(e,department_id, role_id){
+            if (role_id == null || role_id=='') return;
             $("#role_detail").load("departments/" + department_id + "/roles/" + role_id);
         });
 

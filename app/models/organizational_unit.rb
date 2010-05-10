@@ -1,7 +1,11 @@
-class OrganizationalUnit < ActiveRecord::Base
-  include AccountModel
-  acts_as_tree
+class OrganizationalUnit < AccountModel
+  include MongoMapper::Acts::Tree
 
+  key :name, String
+  key :_type, String
+
+  acts_as_tree
+  
   def child_type
     @child_type ||= account.organizational_structure.child_of(self)
   end

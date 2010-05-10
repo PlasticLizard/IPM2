@@ -20,9 +20,9 @@ describe Department do
   end
 
   it "should not create any new roles if roles are already present" do
-    d = Department.new(@valid_attributes)
-    d.roles.build :name=>"Lord of the Lieu"
-    d.save
+    d = Department.create!(@valid_attributes)
+    d.roles[0].name = "Lord of the Lieu"
+    d.save!
     d = Department.find(d.id)
     d.roles.count.should equal 1
     d.roles[0].name.should == "Lord of the Lieu"

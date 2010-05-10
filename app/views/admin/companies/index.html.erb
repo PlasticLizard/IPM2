@@ -119,7 +119,7 @@
             type: 'post',
             data:new_node_data,
             dataType: 'json',success: function(json) {
-                var id = json["id"]
+                var id = json["_id"]
                 $(node).attr("id","ou_" + id)
                 tree.set_type(json["type"],node);
             },
@@ -127,7 +127,7 @@
             },
             complete: function() {
             },
-            url: "companies/" + company_id + "/create_organizational_unit"
+            url: "companies/" + company_id + "/organizational_unit"
 
         });
     }
@@ -194,7 +194,7 @@
         var type = tree.get_type(node).split(':');
         var controller = type[1];
         var node_id = node.id.split("_").pop();
-
+        if (!node_id) return;
         var url = "companies/" + company_id;
         if (controller != "companies") url += "/" + controller + "/" + node_id;
 

@@ -13,19 +13,19 @@ describe OrganizationalUnit do
 
   it "should act like a tree" do
     c1 = OrganizationalUnit.create! :name=>"Company 1"
-    r1 = c1.children.create! :name=>"Region 1"
-    b1 = r1.children.create! :name=>"Base 1"
-    b2 = r1.children.create! :name=>"Base 2"
-    r2 = c1.children.create! :name=>"Region 2"
-    b3 = r2.children.create! :name=>"Base 3"
+    r1 = OrganizationalUnit.create! :name=>"Region 1", :parent=>c1
+    b1 = OrganizationalUnit.create! :name=>"Base 1", :parent=>r1
+    b2 = OrganizationalUnit.create! :name=>"Base 2", :parent=>r1
+    r2 = OrganizationalUnit.create! :name=>"Region 2", :parent=>c1
+    b3 = OrganizationalUnit.create! :name=>"Base 3", :parent=>r2
 
     c1 = OrganizationalUnit.find_by_name("Company 1")
 
     c1.descendants.count.should equal 5
     b1.ancestors.count.should equal 2
-    b2.siblings.count.should equal 2
+    b2.siblings.count.should equal 1
     b2.siblings.should include b1
-    b3.should be_is_only_child
+    b3.siblings.count.should equal 0
   end
 
   it "should create children appropriate to its type" do

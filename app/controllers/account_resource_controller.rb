@@ -7,5 +7,9 @@ class AccountResourceController < InheritedResources::Base
 
   def current_account
     Account.current
-  end  
+  end
+
+  def collection
+    get_collection_ivar || set_collection_ivar(end_of_association_chain.all)
+  end
 end

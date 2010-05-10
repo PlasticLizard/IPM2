@@ -20,13 +20,12 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'will_paginate'
-  config.gem 'formtastic'
   config.gem 'inherited_resources'
-  config.gem 'ancestry'
-  config.gem 'enumerated_attribute'
-  config.gem 'acts_as_list'
+  config.gem 'mongo_mapper'
+  config.gem 'ramdiv-mongo_mapper_acts_as_tree', :lib=>'mongo_mapper_acts_as_tree'
 
 
+  config.frameworks -= [:active_record]
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

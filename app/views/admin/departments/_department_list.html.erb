@@ -73,8 +73,8 @@
                             },
                             success: function(json) {
                                 form.resetForm();
-                                var id = json["department"]["id"]
-                                var name = json["department"]["name"]
+                                var id = json["id"]
+                                var name = json["name"]
                                 var list = $("#departments-list");
                                 var new_item = list.children().last().clone();
                                 new_item.attr("id","department_" + id);

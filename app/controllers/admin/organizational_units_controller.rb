@@ -1,7 +1,7 @@
 class Admin::OrganizationalUnitsController < AccountResourceController
   belongs_to :company
   def resource
-    get_resource_ivar || set_resource_ivar(parent.descendants.find(params[:id]))
+    get_resource_ivar || set_resource_ivar(OrganizationalUnit.find(params[:id]))
   end
 
   def collection
@@ -11,6 +11,12 @@ class Admin::OrganizationalUnitsController < AccountResourceController
   def show
     show! do |format|
       format.all { render :partial=>"show"}
+    end
+  end
+
+  def create
+    create! do |format|
+      format.json {render :nothing=>true}
     end
   end
 

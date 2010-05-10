@@ -1,11 +1,11 @@
 module Admin::RolesHelper
 
   def position_type_description
-    @role.enums(:position_type).label(@role.position_type)
+    OrganizationalRole.position_types[@role.position_type]
   end
 
   def position_type_select_options
-    @role.enums(:position_type).select_options.map{|opt|opt.join(":")}.join(",")
+    OrganizationalRole.position_types.map{|key,value|"#{key}:#{value}"}.join(",")
   end
 
   def organizational_unit_type_options
