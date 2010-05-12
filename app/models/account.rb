@@ -1,9 +1,15 @@
 class Account
   include MongoMapper::Document
-  
+
   key :name, String
   timestamps!
-  
+
+  many :requirement_sets do
+    def global
+      all.select{|rs|rs.department_id.blank?}
+    end
+  end
+
   many :companies, :dependent=>:destroy do
     def arrange
       TreeHelper.arrange_tree_nodes(all)

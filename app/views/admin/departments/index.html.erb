@@ -37,7 +37,7 @@
   </div>
 
   <div class="ui-layout-west">
-    <div class="west-center"> <%= render :partial=>"department_list" %></div>
+    <div class="west-center"> <%= render :partial=>"admin/shared/department_list", :locals=>{:departments=>@departments} %></div>
     <div class="west-south"><div id="department_roles"></div></div>
   </div>
 

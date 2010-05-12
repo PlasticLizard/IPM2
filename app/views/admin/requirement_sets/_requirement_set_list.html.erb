@@ -1,0 +1,105 @@
+
+
+<style type="text/css">
+    #requirement-set-list { list-style-type: none; margin: 0; padding: 0;  }
+    #requirement-set-list li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; cursor:pointer }
+    #requirement-set-list li span.delete_requirement_set { float:right;}
+
+    #requirement-set-list .ui-selecting { background: #FECA40; }
+    #requirement-set-list .ui-selected { background: #F39814; color: white; }
+
+</style>
+
+
+<ul id="requirement-set-list">
+  <% requirement_sets.each_with_index do |rs,index| %>
+      <li class="ui-state-default" id="requirement_set_<%= rs.id -%>">
+        <span class="requirement_set_name"><%= rs.name -%></span>
+        <span class="ui-icon ui-icon-closethick delete_requirement_set"></span>
+      </li>
+  <% end %>
+</ul>
+<form id="addRequirementSet" action="requirement_sets/create" method="post">
+  <input id="requirement_set_name" name="requirement_set[name]" type="text"/>
+  <input id="requirement_set_department_id" name="requirement_set[department_id]" value='<%=department.id.to_s%>' type="hidden"/>
+  <input value="Add" type="submit"/>
+</form>
+
+
+
+<script language="javascript">
+
+    function selectRequirementSet(requirement_set_id)
+    {
+        var dep_id = "requirement_set_" + requirement_set_id;
+        var selected = $("#requirement-set-list").children(".ui-selected")
+
+        if (selected.length > 0 && selected[0].id == dep_id) return;
+
+        selected.removeClass("ui-selected");
+        d = $("#" + dep_id);
+        d.addClass("ui-selected");
+        d.trigger("requirement_set.selected",["<%=department.id%>",requirement_set_id]);
+    }
+
+
+    $("input:submit").button();
+
+    $('#addRequirementSet').submit(
+            function(event) {
+                event.preventDefault();
+                var form = $(this);
+                form.ajaxSubmit({
+                    dataType: 'json',
+                    beforeSend: function() {
+                    },
+                    success: function(json) {
+                        form.resetForm();
+                        var id = json["id"]
+                        var name = json["name"]
+                        var list = $("#requirement-set-list");
+                        var new_item = list.children().last().clone();
+                        new_item.attr("id","requirement_set_" + id);
+                        new_item.children(0).text(name);
+                        list.append(new_item);
+                        selectRequirementSet(id);
+
+                    },
+                    error: function(response, status, error) {
+                    },
+                    complete: function() {
+                    }
+                });
+
+                return false;
+            }
+            );
+
+    $('.delete_requirement_set').live('click',function(){
+        item = $(this).parent();
+        id = item.attr("id").split("_")[2];
+
+        $.ajax({
+            type: 'post',
+            data: {_method:'delete',requirement_set:{id:id}},
+            dataType:"json",
+            complete: function(request){
+                item.remove();
+            },
+            url: 'departments/<%=department.id%>/requirement_sets/' + id
+        });
+    }
+            );
+
+    $("#requirement-set-list li").live('click',function(){
+        selectRequirementSet(this.id.split("_")[2]);
+    });
+
+    $(document).bind("requirement_set.selected",function(e,department_id,requirement_set_id){
+        d = $("requirement_set_" + requirement_set_id);
+        selectRequirementSet(requirement_set_id);
+    });
+
+
+
+</script>

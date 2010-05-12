@@ -15,6 +15,8 @@ class Department < AccountModel
     end
   end
 
+  many :requirement_sets
+
   after_save :ensure_department_head
   def ensure_department_head
     unless roles.count > 0 || self.department_head_id

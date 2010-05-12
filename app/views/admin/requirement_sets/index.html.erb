@@ -1,0 +1,71 @@
+<%stylesheet "jquery.layout.css"%>
+<%javascript "jquery.layout.min-1.2.0"%>
+<% javascript("jquery.maestro.editinplace")%>
+<% javascript "jquery.form"-%>
+
+
+<style type="text/css">
+	html, body {
+		width:		100%;
+		height:		100%;
+		overflow:	hidden;
+	}
+	#container{
+		/*width:	900px;	*/
+		width:		97%;
+		/*max-width:	900px; */
+		min-width:	700px;
+		_width:		700px; /* min-width for IE6 */
+		height:		97%;
+		padding:	0;
+		margin:		0 auto;
+	}
+	.pane {
+		display:	none; /* will appear when layout inits */
+	}
+
+	</style>
+
+  <div class="ui-layout-center">
+    <div id="requirement_set"></div>
+  </div>
+
+  <div class="ui-layout-west">
+    <div class="west-center"> <%= render :partial=>"admin/shared/department_list", :locals=>{:departments=>Account.current.departments} %></div>
+    <div class="west-south"><div id="requirement_sets"></div></div>
+  </div>
+
+
+<script language="javascript">
+    var outerLayout, westLayout;
+
+    $(document).ready(function() {
+
+        outerLayout = $('#container').layout({
+            minSize:			100	// ALL panes
+            ,	west__size:			300
+            ,	west__onresize:		'westLayout.resizeAll'
+            ,	useStateCookie:		true
+        });
+
+        westLayout = $('div.ui-layout-west').layout({
+            minSize:				50	// ALL panes
+            ,	center__paneSelector:	".west-center"
+            ,	south__paneSelector:	".west-south"
+            ,	south__size:			250
+        });       
+
+        $(document).bind("department.selected",function(e,department_id){
+            $("#requirement_sets").load("departments/" + department_id + "/requirement_sets/list");
+            //$("#department_detail").load("departments/" + department_id)
+        });
+
+        $(document).bind("requirement_set.selected",function(e,department_id,rs_id){
+            if (rs_id == null || rs_id=='') return;
+            $("#requirement_set").load("departments/" + department_id + "/requirement_sets/" + rs_id);
+        });
+
+    });
+
+
+</script>
