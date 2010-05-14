@@ -101,7 +101,7 @@
     // var baseUrl = "companies/<%#@department.id%>/roles"
 
     function find_root(node,tree){
-        parent = tree.parent(node);
+        var parent = tree.parent(node);
         if (parent == -1) return $(node);
         return find_root(parent,tree);
     }
@@ -119,8 +119,8 @@
             type: 'post',
             data:new_node_data,
             dataType: 'json',success: function(json) {
-                var id = json["_id"]
-                $(node).attr("id","ou_" + id)
+                var id = json["_id"];
+                $(node).attr("id","ou_" + id);
                 tree.set_type(json["type"],node);
             },
             error: function(response, status, error) {
@@ -146,7 +146,7 @@
             if (controller != "companies") url += "/" + controller + "/" + node_id;
 
 
-            data = {_method:"put"};
+            var data = {_method:"put"};
             data[resource] = {id:node_id,name:tree.get_text(node)};
             $.ajax({
                 type: 'post',
@@ -173,7 +173,7 @@
         var url = "companies/" + company_id;
         if (controller != "companies") url += "/" + controller + "/" + node_id;
 
-        data = {_method:"delete"};
+        var data = {_method:"delete"};
         data[resource] = {id:node_id};
         $.ajax({
             type: 'post',

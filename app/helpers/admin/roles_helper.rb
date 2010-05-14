@@ -13,7 +13,7 @@ module Admin::RolesHelper
   end
   
   def role_tree_html
-    arranged = @roles.arrange
+    arranged = @department.roles.arrange
     subtree_html(arranged)
   end
 

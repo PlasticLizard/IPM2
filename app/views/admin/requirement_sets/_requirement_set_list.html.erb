@@ -29,8 +29,16 @@
 
 <script language="javascript">
 
+    function getFirstRequirementSetId()
+    {
+        first = $("#requirement-set-list li").first();
+        return first ? first.attr("id").split("_")[2] : null;
+    }
+
     function selectRequirementSet(requirement_set_id)
     {
+        requirement_set_id = requirement_set_id ? requirement_set_id : getFirstRequirementSetId();
+        if (requirement_set_id == null) return;
         var dep_id = "requirement_set_" + requirement_set_id;
         var selected = $("#requirement-set-list").children(".ui-selected")
 
@@ -75,8 +83,11 @@
             }
             );
 
-    $('.delete_requirement_set').live('click',function(){
+
+    $('.delete_requirement_set').die('click');
+    $('.delete_requirement_set').live('click',function(event){
         item = $(this).parent();
+        $(this).die('click');
         id = item.attr("id").split("_")[2];
 
         $.ajax({
@@ -91,14 +102,18 @@
     }
             );
 
+    $("#requirement-set-list li").die('click');
     $("#requirement-set-list li").live('click',function(){
         selectRequirementSet(this.id.split("_")[2]);
     });
+
 
     $(document).bind("requirement_set.selected",function(e,department_id,requirement_set_id){
         d = $("requirement_set_" + requirement_set_id);
         selectRequirementSet(requirement_set_id);
     });
+
+    selectRequirementSet();
 
 
 

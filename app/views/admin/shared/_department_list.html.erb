@@ -1,5 +1,3 @@
-<% javascript "jquery.form"-%>
-
 <style type="text/css">
     #departments-list { list-style-type: none; margin: 0; padding: 0;  }
     #departments-list li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; cursor:pointer }
@@ -29,11 +27,21 @@
 
 <% content_for :javascript do %>
     <script language="javascript">
-
+        function getFirstDepartmentId()
+        {
+            first = $("#departments-list li").first();
+            return first ? first.attr("id").split("_")[1] : null;
+        }
+        
         function selectDepartment(department_id)
         {
-            dep_id = "department_" + department_id;
             selected = $("#departments-list").children(".ui-selected")
+            department_id = department_id ? department_id : getFirstDepartmentId();
+
+            if (department_id == null) return;
+
+            dep_id = "department_" + department_id;
+
             if (selected.length > 0 && selected[0].id == dep_id) return;
             
             selected.removeClass("ui-selected");
@@ -116,6 +124,8 @@
                 d = $("department_" + department_id);
                 selectDepartment(department_id);                
             });
+
+            selectDepartment();
         });
 
 

@@ -8,6 +8,7 @@ class Admin::RolesController < AccountResourceController
     end
   end
 
+  
   def show
     show! do |format|
       format.all {render :partial=>"show"}

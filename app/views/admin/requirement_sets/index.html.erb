@@ -1,7 +1,13 @@
 <%stylesheet "jquery.layout.css"%>
-<%javascript "jquery.layout.min-1.2.0"%>
-<% javascript("jquery.maestro.editinplace")%>
-<% javascript "jquery.form"-%>
+<%stylesheet "/javascripts/fancybox/jquery.fancybox-1.3.1.css"-%>
+<%javascript "jquery.layout.min-1.2.0"-%>
+<%javascript "jquery.form"-%>
+<%javascript "fancybox/jquery.fancybox-1.3.1.pack.js"-%>
+<%javascript "jquery.maestro.editinplace"-%>
+
+<script type="text/javascript" src="/javascripts/jsTree/jquery.tree.js"></script>
+<script type="text/javascript" src="/javascripts/jsTree/plugins/jquery.tree.checkbox.js"></script>
+
 
 
 <style type="text/css">
@@ -31,11 +37,11 @@
   </div>
 
   <div class="ui-layout-west">
-    <div class="west-center"> <%= render :partial=>"admin/shared/department_list", :locals=>{:departments=>Account.current.departments} %></div>
-    <div class="west-south"><div id="requirement_sets"></div></div>
+    <div class="west-north"> <%= render :partial=>"admin/shared/department_list", :locals=>{:departments=>Account.current.departments} %></div>
+    <div class="west-center"><div id="requirement_sets"></div></div>
   </div>
 
-
+ 
 <script language="javascript">
     var outerLayout, westLayout;
 
@@ -51,8 +57,8 @@
         westLayout = $('div.ui-layout-west').layout({
             minSize:				50	// ALL panes
             ,	center__paneSelector:	".west-center"
-            ,	south__paneSelector:	".west-south"
-            ,	south__size:			250
+            ,	north__paneSelector:	".west-north"
+            ,	north__size:			400
         });       
 
         $(document).bind("department.selected",function(e,department_id){

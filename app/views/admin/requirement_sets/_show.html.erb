@@ -1,1 +1,41 @@
-<%=resource.name%>
+<%return unless @requirement_set%>
+<div id="rs_name"
+     class="heading editable"
+     data-update_value="'requirement_set[name]'"><%=@requirement_set.name%></div>
+required by
+
+<a id="role_picker" title="choose some roles!" href="#role_dialog">
+  <%=required_roles_list%>
+</a>
+
+<div id="role_picker_tree" style="display:none">
+  <div id="role_dialog">
+    <div id="roles">
+      <%=role_tree_html%>
+    </div>
+    <a href="javascript:$.fancybox.close();">Close</a>
+  </div>
+</div>
+
+<script language="javascript">
+    $("#roles").tree({
+        plugins : {
+            checkbox : { three_state : false }
+        },
+        callback:{
+        },
+        ui:{
+            theme_name:"checkbox"
+        }
+
+    });
+
+    $("a#role_picker").fancybox({
+        'hide_on_content_click': false,
+        modal:true,
+        titlePosition:'inside'
+    });
+
+    $.fn.editInPlace.defaults.url='departments/<%=@department.id%>/requirement_sets/<%=@requirement_set.id%>';
+    $('.editable').editInPlace();
+</script>
