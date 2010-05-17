@@ -25,7 +25,7 @@ class Admin::RequirementSetsController < AccountResourceController
 
   def update
     update! do |format|
-      format.json {render :nothing=>true}
+      format.json {render :json=>{:ok=>true}.to_json}
     end
   end
 end

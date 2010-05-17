@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   map.namespace(:admin)  do |admin|
     admin.resources :departments, :collection=>{:manage=>:get} do |dep|
-      dep.resources :roles
+      dep.resources :roles, :collection=>{:select=>:get}
       dep.resources :requirement_sets, :collection=>{:list=>:get}
     end
     admin.resources :companies, :member=>{:organizational_unit=>:post} do |company|

@@ -1,41 +1,42 @@
 <%return unless @requirement_set%>
+
+<style type="text/css">
+    .boxy-content {
+        margin:5px;padding:0;
+    }
+</style>
 <div id="rs_name"
      class="heading editable"
      data-update_value="'requirement_set[name]'"><%=@requirement_set.name%></div>
 required by
 
-<a id="role_picker" title="choose some roles!" href="#role_dialog">
+<span id="required_roles" data-required_role_ids="[<%=required_role_ids.map{|id|"'#{id}'"}.join(",")%>]" class="editable">
   <%=required_roles_list%>
-</a>
+</span>
 
-<div id="role_picker_tree" style="display:none">
-  <div id="role_dialog">
-    <div id="roles">
-      <%=role_tree_html%>
-    </div>
-    <a href="javascript:$.fancybox.close();">Close</a>
-  </div>
-</div>
 
 <script language="javascript">
-    $("#roles").tree({
-        plugins : {
-            checkbox : { three_state : false }
-        },
-        callback:{
-        },
-        ui:{
-            theme_name:"checkbox"
-        }
-
+    var updateUrl = "departments/<%=@department.id%>/requirement_sets/<%=@requirement_set.id%>";
+    $("#required_roles").click(function(){
+        selected_ids = eval($(this).attr("data-required_role_ids"));
+        $.maestro.dialogs.roleSelector('<%=@department.id%>',selected_ids,{
+            title:"Select the roles this requirement applies to",
+            onSelection:function(selected){
+                ids = selected && selected[1] && selected[1].length > 0 ? selected[1] : "";
+                $.ajax({
+                    type: 'POST',
+                    url: updateUrl,
+                    data: {_method:'put',requirement_set:{organizational_role_ids:ids}},
+                    dataType: 'json',
+                    success: function(data){
+                        $("#required_roles").text((selected.length > 0 && selected[0] != "") ? selected[0].join(", ") : "all departmental employees")
+                            .attr("data-required_role_ids","[" + $.map(selected[1],function(id){return "'" + id + "'"}).join(",") + "]");
+                    }
+                });
+            }
+        });
     });
 
-    $("a#role_picker").fancybox({
-        'hide_on_content_click': false,
-        modal:true,
-        titlePosition:'inside'
-    });
-
-    $.fn.editInPlace.defaults.url='departments/<%=@department.id%>/requirement_sets/<%=@requirement_set.id%>';
+    $.fn.editInPlace.defaults.url=updateUrl;
     $('.editable').editInPlace();
 </script>

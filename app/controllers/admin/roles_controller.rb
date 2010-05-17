@@ -8,6 +8,9 @@ class Admin::RolesController < AccountResourceController
     end
   end
 
+  def select
+    render :partial=>"select"
+  end
   
   def show
     show! do |format|

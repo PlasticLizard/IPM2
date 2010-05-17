@@ -1,9 +1,11 @@
 <%stylesheet "jquery.layout.css"%>
-<%stylesheet "/javascripts/fancybox/jquery.fancybox-1.3.1.css"-%>
+<%stylesheet "boxy.css"%>
 <%javascript "jquery.layout.min-1.2.0"-%>
 <%javascript "jquery.form"-%>
-<%javascript "fancybox/jquery.fancybox-1.3.1.pack.js"-%>
 <%javascript "jquery.maestro.editinplace"-%>
+<%javascript "jquery.boxy.js"-%>
+<%javascript "jquery.maestro.dialogs.roleselector"%>
+
 
 <script type="text/javascript" src="/javascripts/jsTree/jquery.tree.js"></script>
 <script type="text/javascript" src="/javascripts/jsTree/plugins/jquery.tree.checkbox.js"></script>
@@ -62,6 +64,7 @@
         });       
 
         $(document).bind("department.selected",function(e,department_id){
+            $("#requirement_sets").html("");
             $("#requirement_sets").load("departments/" + department_id + "/requirement_sets/list");
             //$("#department_detail").load("departments/" + department_id)
         });
