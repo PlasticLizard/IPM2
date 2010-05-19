@@ -19,7 +19,7 @@ module Admin::RolesHelper
 
   private
   def subtree_html(tree_hash)
-    output = "<ul class='role_tree'>"
+    output = "<ul>"
     tree_hash.keys.each do |node|
       output << "<li id='role_#{node.id}' class='open'><a href='#'><ins></ins>#{node.name}</a>"
       output << subtree_html(tree_hash[node]) unless tree_hash[node].empty?

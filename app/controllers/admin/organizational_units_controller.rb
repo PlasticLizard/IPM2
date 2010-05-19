@@ -1,5 +1,5 @@
 class Admin::OrganizationalUnitsController < AccountResourceController
-  belongs_to :company
+  belongs_to :company, :optional=>true
   def resource
     get_resource_ivar || set_resource_ivar(OrganizationalUnit.find(params[:id]))
   end
@@ -12,6 +12,10 @@ class Admin::OrganizationalUnitsController < AccountResourceController
     show! do |format|
       format.all { render :partial=>"show"}
     end
+  end
+
+  def select
+    render :partial=>"select"
   end
 
   def create

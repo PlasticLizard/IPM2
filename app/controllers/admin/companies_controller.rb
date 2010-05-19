@@ -19,11 +19,7 @@ class Admin::CompaniesController  < AccountResourceController
     destroy! do |format|
       format.json {render :nothing => true}
     end
-  end
-
-  def organizational_model
-    TreeHelper.arrange_tree_nodes(OrganizationalUnit.all :account_id=>Account.current.id)
-  end
+  end  
 
   def organizational_unit
     new_ou_attributes = params["organizational_unit"]

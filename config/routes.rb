@@ -44,6 +44,8 @@ ActionController::Routing::Routes.draw do |map|
       dep.resources :roles, :collection=>{:select=>:get}
       dep.resources :requirement_sets, :collection=>{:list=>:get}
     end
+    admin.resources :organizational_units, :collection=>{:select=>:get}
+    
     admin.resources :companies, :member=>{:organizational_unit=>:post} do |company|
       company.resources :regions, :stations, :transport_units
     end

@@ -12,17 +12,21 @@ required by
 
 <span id="required_roles" data-required_role_ids="[<%=required_role_ids.map{|id|"'#{id}'"}.join(",")%>]" class="editable">
   <%=required_roles_list%>
+</span>, assigned to
+
+<span id="required_org_units" data-required_ou_ids="[<%=required_ou_ids.map{|id|"'#{id}'"}.join(",")%>]" class="editable">
+  <%=required_ou_list%>
 </span>
 
 
 <script language="javascript">
     var updateUrl = "departments/<%=@department.id%>/requirement_sets/<%=@requirement_set.id%>";
     $("#required_roles").click(function(){
-        selected_ids = eval($(this).attr("data-required_role_ids"));
+        var selected_ids = eval($(this).attr("data-required_role_ids"));
         $.maestro.dialogs.roleSelector('<%=@department.id%>',selected_ids,{
             title:"Select the roles this requirement applies to",
             onSelection:function(selected){
-                ids = selected && selected[1] && selected[1].length > 0 ? selected[1] : "";
+                var ids = selected && selected[1] && selected[1].length > 0 ? selected[1] : "";
                 $.ajax({
                     type: 'POST',
                     url: updateUrl,
@@ -35,6 +39,26 @@ required by
                 });
             }
         });
+    });
+
+    $("#required_org_units").click(function(){
+        var selected_ids = eval($(this).attr("data-required_ou_ids"));
+        $.maestro.dialogs.organizationalUnitSelector(selected_ids,{
+            title:"Select the locations this requirement applies to",
+            onSelection:function(selected){
+                var ids = selected && selected[1] && selected[1].length > 0 ? selected[1] : "";
+                $.ajax({
+                    type:'POST',
+                    url:updateUrl,
+                    data:{_method:'put',requirement_set:{organizational_unit_ids:ids}},
+                    dataType:'json',
+                    success:function(data){
+                        $("#required_org_units").text((selected.length > 0 && selected[0] != "") ? selected[0].join(", ") : "any location")
+                            .attr("data-required_ou_ids","[" + $.map(selected[1],function(id){return "'" + id + "'"}).join(",") + "]");
+                    }
+                })
+            }
+        })
     });
 
     $.fn.editInPlace.defaults.url=updateUrl;

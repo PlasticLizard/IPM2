@@ -30,6 +30,10 @@ class Account
     @organizational_structure ||= OrganizationalUnitHierarchy.new(Company,Region,Station,TransportUnit)
   end
 
+  def organizational_model
+    TreeHelper.arrange_tree_nodes(OrganizationalUnit.all :account_id=>id)
+  end
+
   after_save :ensure_company
   def ensure_company
     unless companies.size > 0
