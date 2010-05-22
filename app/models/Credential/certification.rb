@@ -1,2 +1,2 @@
-class Certification < Requirement
+class Certification < Credential
 end

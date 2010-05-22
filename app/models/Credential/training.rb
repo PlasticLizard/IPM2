@@ -1,3 +1,3 @@
-class Training < Requirement
+class Training < Credential
   #Code here
 end

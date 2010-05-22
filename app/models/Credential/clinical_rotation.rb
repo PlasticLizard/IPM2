@@ -1,3 +1,3 @@
-class ClinicalRotation < Requirement
+class ClinicalRotation < Credential
   #Code here
 end

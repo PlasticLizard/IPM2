@@ -1,4 +1,4 @@
-class Requirement
+class Credential
   include MongoMapper::Document
 
   key :name, String

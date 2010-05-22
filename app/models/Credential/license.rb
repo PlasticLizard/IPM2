@@ -1,2 +1,2 @@
-class License < Requirement  
+class License < Credential
 end

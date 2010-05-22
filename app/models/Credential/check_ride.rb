@@ -1,3 +1,3 @@
-class CheckRide < Requirement
+class CheckRide < Credential
   #Code here
 end
