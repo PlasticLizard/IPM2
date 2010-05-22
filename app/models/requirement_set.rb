@@ -14,7 +14,7 @@ class RequirementSet < AccountModel
 
   key :type, String
 
-  many :requirements, :polymorphic=>true
+  many :requirement_groups
 
 
 end

@@ -1,0 +1,2 @@
+class Certification < Requirement
+end

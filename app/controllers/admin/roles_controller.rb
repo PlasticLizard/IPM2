@@ -24,7 +24,7 @@ class Admin::RolesController < AccountResourceController
 
   def update
     return super unless parent_id = params["role"].delete("parent_id")
-    resource.update_attributes(get_parented_attributes(parent_id,params))
+    update_resource(resource,get_parented_attributes(parent_id,params))
     render :nothing=>true
   end
 

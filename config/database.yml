@@ -1,21 +1,23 @@
-development: &global_settings
-  database: ipm_dev
-  host: localhost
-  port: 27017
+development:
+  database: ipm2
+  host: flame.mongohq.com
+  port: 27027
+  username: ipm
+  password: Fl1ghtL1nk
 
 test: &TEST
-  database: ipm_test
-  <<: *global_settings
-
-production:
-  database: ipm
+  database: ipm2_test
   host: localhost
-  #username: username
-  #password: password
-  <<: *global_settings
+ 
+#production:
+#  database: ipm
+#  host: localhost
+#  #username: username
+#  #password: password
+#  <<: *global_settings
 
-staging:
-  database: ipm_staging
-  #username: username
-  #password: password
-  <<: *global_settings
+#staging:
+#  database: ipm_staging
+#  #username: username
+#  #password: password
+#  <<: *global_settings

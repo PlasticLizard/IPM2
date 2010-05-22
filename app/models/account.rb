@@ -38,6 +38,7 @@ class Account
   def ensure_company
     unless companies.size > 0
       companies.build :name=>self.name
+      save!
     end
   end
 

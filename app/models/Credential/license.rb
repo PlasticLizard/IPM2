@@ -1,0 +1,2 @@
+class License < Requirement  
+end
