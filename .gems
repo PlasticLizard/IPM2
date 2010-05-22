@@ -2,4 +2,3 @@
   inherited_resources
   mongo_mapper --version 0.7.5
   bson_ext
-  ramdiv-mongo_mapper_acts_as_tree

@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem 'mongo_mapper'
   config.gem 'ramdiv-mongo_mapper_acts_as_tree', :lib=>'mongo_mapper_acts_as_tree'
 
+  
 
   config.frameworks -= [:active_record]
   # Only load the plugins named here, in the order given (default is alphabetical).
