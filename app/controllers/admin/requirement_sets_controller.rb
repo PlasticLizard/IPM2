@@ -1,4 +1,5 @@
-class Admin::RequirementSetsController < AccountResourceController
+class Admin::RequirementSetsController  < InheritedResources::Base
+  include AccountResourceController
    belongs_to :department, :optional=>true
    
    def list

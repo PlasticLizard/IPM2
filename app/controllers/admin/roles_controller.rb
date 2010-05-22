@@ -1,4 +1,5 @@
-class Admin::RolesController < AccountResourceController
+class Admin::RolesController  < InheritedResources::Base
+  include AccountResourceController
   belongs_to :department
   respond_to :json, :html
 

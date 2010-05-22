@@ -1,4 +1,4 @@
-class AccountResourceController < InheritedResources::Base
+module AccountResourceController
   protected
 
   def begin_of_association_chain

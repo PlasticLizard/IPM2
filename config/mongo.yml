@@ -11,7 +11,7 @@ test: &TEST
  
 production:
   database: ipm2
-  host: flame.local.mongohq.com
+  host: flame.mongohq.com
   port: 27027
   username: ipm
   password: Fl1ghtL1nk

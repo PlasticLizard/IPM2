@@ -1,4 +1,5 @@
-class Admin::OrganizationalUnitsController < AccountResourceController
+class Admin::OrganizationalUnitsController  < InheritedResources::Base
+  include AccountResourceController
   belongs_to :company, :optional=>true
   def resource
     get_resource_ivar || set_resource_ivar(OrganizationalUnit.find(params[:id]))

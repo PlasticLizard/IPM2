@@ -1,4 +1,5 @@
-class Admin::DepartmentsController < AccountResourceController
+class Admin::DepartmentsController  < InheritedResources::Base
+  include AccountResourceController
   respond_to :json
 
   def show

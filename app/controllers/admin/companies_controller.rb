@@ -1,4 +1,6 @@
-class Admin::CompaniesController  < AccountResourceController
+class Admin::CompaniesController  < InheritedResources::Base
+  include AccountResourceController
+  
   def collection
     @companies ||= current_account.companies
   end
