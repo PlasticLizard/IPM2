@@ -1,4 +1,4 @@
-  will_paginate
+  will_paginate --version 2.3.12
   inherited_resources --version 1.0.6
   mongo_mapper --version 0.7.5
-  bson_ext
+  bson_ext --version 1.0
