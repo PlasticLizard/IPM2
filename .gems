@@ -1,0 +1,4 @@
+  will_paginate
+  inherited_resources
+  mongo_mapper
+  ramdiv-mongo_mapper_acts_as_tree
