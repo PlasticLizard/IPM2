@@ -20,7 +20,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'will_paginate'
-  config.gem 'inherited_resources'
+  config.gem 'inherited_resources', :version=>'1.0.6'
   config.gem 'mongo_mapper'
   config.gem 'ramdiv-mongo_mapper_acts_as_tree', :lib=>'mongo_mapper_acts_as_tree'
 
