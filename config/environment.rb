@@ -21,7 +21,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'will_paginate', :version=>'2.3.12'
   config.gem 'inherited_resources', :version=>'1.0.6'
-  config.gem 'mongo_mapper', :version=>'0.7.5'
+  config.gem 'mongo_mapper'
   config.gem 'ramdiv-mongo_mapper_acts_as_tree', :lib=>'mongo_mapper_acts_as_tree'
 
   
