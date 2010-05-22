@@ -9,12 +9,12 @@ test: &TEST
   database: ipm2_test
   host: localhost
  
-#production:
-#  database: ipm
-#  host: localhost
-#  #username: username
-#  #password: password
-#  <<: *global_settings
+production:
+  database: ipm2
+  host: flame.mongohq.com
+  port: 27027
+  username: ipm
+  password: Fl1ghtL1nk
 
 #staging:
 #  database: ipm_staging
