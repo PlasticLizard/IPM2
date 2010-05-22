@@ -1,4 +1,5 @@
   will_paginate
   inherited_resources
   mongo_mapper
+  bson_ext
   ramdiv-mongo_mapper_acts_as_tree
