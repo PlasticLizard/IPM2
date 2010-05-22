@@ -1,3 +1,4 @@
+  rails --version 2.3.5
   will_paginate --version 2.3.12
   inherited_resources --version 1.0.6
   mongo_mapper --version 0.7.5
