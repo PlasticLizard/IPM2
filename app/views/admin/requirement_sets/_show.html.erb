@@ -5,6 +5,7 @@
         margin:5px;padding:0;
     }
 </style>
+
 <div id="rs_name"
      class="heading editable"
      data-update_value="'requirement_set[name]'"><%=@requirement_set.name%></div>
@@ -17,6 +18,21 @@ required by
 <span id="required_org_units" data-required_ou_ids="[<%=required_ou_ids.map{|id|"'#{id}'"}.join(",")%>]" class="editable">
   <%=required_ou_list%>
 </span>
+
+<hr>
+<%@requirement_set.requirement_groups.each do |group|%>
+    <div class="requirement_group">
+      <span
+      class="editable"
+      data-select_options="'<%=credential_group_operators_options%>'"
+      data-field_type='"select"'
+      data-update_value="'requirement_group[rule_operator]'"
+      data-url='"requirement_sets/<%=@requirement_set.id%>/requirement_groups/<%=group.id%>"'>
+        <%=group.rule_operator.to_s.titleize%>
+    </span>
+       of the following items are required to satisfy this requirement:
+    </div>
+<%end%>
 
 
 <script language="javascript">
@@ -34,7 +50,7 @@ required by
                     dataType: 'json',
                     success: function(data){
                         $("#required_roles").text((selected.length > 0 && selected[0] != "") ? selected[0].join(", ") : "all departmental employees")
-                            .attr("data-required_role_ids","[" + $.map(selected[1],function(id){return "'" + id + "'"}).join(",") + "]");
+                                .attr("data-required_role_ids","[" + $.map(selected[1],function(id){return "'" + id + "'"}).join(",") + "]");
                     }
                 });
             }
@@ -54,7 +70,7 @@ required by
                     dataType:'json',
                     success:function(data){
                         $("#required_org_units").text((selected.length > 0 && selected[0] != "") ? selected[0].join(", ") : "any location")
-                            .attr("data-required_ou_ids","[" + $.map(selected[1],function(id){return "'" + id + "'"}).join(",") + "]");
+                                .attr("data-required_ou_ids","[" + $.map(selected[1],function(id){return "'" + id + "'"}).join(",") + "]");
                     }
                 })
             }

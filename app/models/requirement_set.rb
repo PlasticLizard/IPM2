@@ -1,6 +1,6 @@
 class RequirementSet < AccountModel
 
-  key :name, String
+  key :name, String, :required=>true
   key :description, String
 
   key :organizational_role_ids, Array
@@ -12,9 +12,14 @@ class RequirementSet < AccountModel
   key :department_id, ObjectId
   belongs_to :department
 
-  key :type, String
+  many :requirement_groups, :class_name=>'CredentialGroup'
 
-  many :requirement_groups
-
+  after_save :ensure_requirement_group
+  def ensure_requirement_group
+    unless requirement_groups.size > 0
+      requirement_groups.build
+      save!
+    end
+  end
 
 end

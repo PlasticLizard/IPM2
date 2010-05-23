@@ -1,5 +1,4 @@
-class Credential
-  include MongoMapper::Document
+class Credential < AccountModel
 
   key :name, String
   

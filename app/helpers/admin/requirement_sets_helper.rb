@@ -16,4 +16,8 @@ module Admin::RequirementSetsHelper
   def required_ou_ids
     resource.organizational_units.map{|ou|ou.id.to_s} || []
   end
+
+  def credential_group_operators_options
+    CredentialGroup.rule_operators.map{|op|"#{op.to_s.humanize}:#{op}"}.join(",")
+  end
 end
