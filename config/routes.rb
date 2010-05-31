@@ -47,12 +47,14 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :organizational_units, :collection=>{:select=>:get}
 
     admin.resources :requirement_sets do |rs|
-      rs.resources :requirement_groups
+      rs.resources :requirement_groups, :member=>{:add_requirement=>:put, :remove_requirement=>:delete}
     end
     
     admin.resources :companies, :member=>{:organizational_unit=>:post} do |company|
       company.resources :regions, :stations, :transport_units
     end
+
+    admin.resources :credentials, :collection=>{:quick_add=>:get}
   end
 
   map.connect ':controller/:action/:id'
