@@ -20,19 +20,8 @@ required by
 </span>
 
 <hr>
-<%@requirement_set.requirement_groups.each do |group|%>
-    <div class="requirement_group">
-      <span
-      class="editable"
-      data-select_options="'<%=credential_group_operators_options%>'"
-      data-field_type='"select"'
-      data-update_value="'requirement_group[rule_operator]'"
-      data-url='"requirement_sets/<%=@requirement_set.id%>/requirement_groups/<%=group.id%>"'>
-        <%=group.rule_operator.to_s.titleize%>
-    </span>
-       of the following items are required to satisfy this requirement:
-    </div>
-<%end%>
+<%=render :partial=>"admin/requirement_groups/group", :collection=>@requirement_set.requirement_groups%>
+
 
 
 <script language="javascript">
@@ -76,6 +65,41 @@ required by
             }
         })
     });
+
+    $(".requirement_group").find("button").button().click(function(){
+        var group_id = this.id.split("_").pop();
+        $.maestro.dialogs.credentialQuickCreate($(this).parent().find("select").val(),{
+            onSubmit:function(newCredential){
+                $.ajax({
+                    type:'POST',
+                    url:"requirement_sets/<%=@requirement_set.id%>/requirement_groups/" + group_id + "/add_requirement",
+                    data:{_method:'put',required_credential_id:newCredential["id"]},
+                    success:function(data){
+                        raiseUpdatedEvent();
+                    }
+                });
+            }
+        });
+    });
+
+    $(".delete_group_requirement").click(function(){
+        var ids = this.id.split("_").pop().split(":");
+        var group_id = ids[0];
+        var credential_id = ids[1];
+        $.ajax({
+            type:'POST',
+            url:"requirement_sets/<%=@requirement_set.id%>/requirement_groups/" + group_id + "/remove_requirement",
+            data:{_method:'delete',required_credential_id:credential_id},
+            success:function(data){
+                raiseUpdatedEvent();
+            }
+        });
+    });
+
+    function raiseUpdatedEvent()
+    {
+        $(document).trigger("requirement_set.selected",["<%=@department.id%>","<%=@requirement_set.id%>"]);
+    }
 
     $.fn.editInPlace.defaults.url=updateUrl;
     $('.editable').editInPlace();

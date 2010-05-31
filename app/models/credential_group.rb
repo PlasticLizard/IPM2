@@ -5,6 +5,6 @@ class CredentialGroup
   def self.rule_operators; [:all, :any]; end
 
   key :required_credential_ids, Array
-  many :required_credentials, :in=>:required_credential_ids, :class_name=>'Credential', :polymorphic=>true
+  many :required_credentials, :in=>:required_credential_ids, :class_name=>'Credential'
 
 end

@@ -6,6 +6,7 @@
 <%javascript "jquery.boxy.js"-%>
 <%javascript "jquery.maestro.dialogs.roleselector"%>
 <%javascript "jquery.maestro.dialogs.orgunitselector"%>
+<%javascript "jquery.maestro.dialogs.credentialquickcreate"%>
 
 
 <script type="text/javascript" src="/javascripts/jsTree/jquery.tree.js"></script>
@@ -73,6 +74,11 @@
         $(document).bind("requirement_set.selected",function(e,department_id,rs_id){
             if (rs_id == null || rs_id=='') return;
             $("#requirement_set").load("departments/" + department_id + "/requirement_sets/" + rs_id);
+        });
+
+        $(document).bind("requirement_set.updated", function(e,department_id,rs_id){
+            if (rs_id == null || rs_id=='') return;
+            $("#requirement_set").load("departments/" + department_id + "/requirement_sets/" + rs_id);        
         });
 
     });

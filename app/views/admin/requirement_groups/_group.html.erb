@@ -1,0 +1,45 @@
+<div class="requirement_group">
+      <span
+      class="editable"
+      data-select_options="'<%=credential_group_operators_options%>'"
+      data-field_type='"select"'
+      data-update_value="'requirement_group[rule_operator]'"
+      data-url='"requirement_sets/<%=@requirement_set.id%>/requirement_groups/<%=group.id%>"'>
+        <%=group.rule_operator.to_s.titleize%>
+    </span>
+  of the following items are required to satisfy this requirement:
+  <%unless group.required_credentials.blank?%>
+      <table>
+        <tr>
+          <td>Type</td><td>Name</td><td>Duty Requirement</td><td>&nbsp;</td>
+        </tr>
+        <%group.required_credentials.each do |credential|%>
+            <tr class="ui-state-default">
+              <td>
+                <%=credential.class.name.split("::")[-1].titleize%>
+              </td>
+              <td>
+                <%=credential.name%>
+              </td>
+              <td>
+                <%=credential.duty_requirement%>
+              </td>
+              <td>
+                <span id="delete_group_requirement_<%=group.id%>:<%=credential.id%>" class="ui-icon ui-icon-closethick delete_group_requirement" style="cursor:pointer"></span>
+              </td>
+            </tr>
+        <%end%>
+      </table>
+  <%end%>
+  <div>
+    <select id="credential_type_<%=group.id%>">
+      <option value="Certification">Certification</option>
+      <option value="CheckRide">Check Ride</option>
+      <option value="ClinicalRotation">Clinical Rotation</option>
+      <option value="License">License</option>
+      <option value="Training">Training</option>
+    </select>
+    <button id="add_new_credential_<%=group.id%>">Add</button>
+  </div>
+
+</div>

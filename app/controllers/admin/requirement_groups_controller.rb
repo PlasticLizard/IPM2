@@ -20,5 +20,20 @@ class Admin::RequirementGroupsController < InheritedResources::Base
       format.json {render :json=>{:ok=>true}.to_json}
     end
   end
+
+  def add_requirement
+    req = params[:required_credential_id]
+    resource.required_credential_ids << req
+    resource.save!
+    head :ok
+  end
+
+  def remove_requirement
+    req = params[:required_credential_id]
+
+    resource.required_credential_ids.delete(req)
+    resource.save!
+    head :ok
+  end
   
 end
