@@ -1,0 +1,20 @@
+<%form_for([:admin,@employee]) do |form|%>
+    <p>
+        <%=form.label :full_name%><br>
+        <%=form.text_field :full_name%> 
+    </p>
+    <p>
+        <%=form.label :email_address%><br>
+        <%=form.text_field :email_address%>
+    </p>
+    <p>
+      <%=form.label :department_id%><br>
+      <%=form.collection_select(:department_id, Account.current.departments, :id, :name, :prompt=>"Select a department")%>
+    </p>
+    <p>
+      <%=form.label :organizational_unit_id, "Primary assignment"%><br>
+      <%=form.collection_select(:organizational_unit_id, Account.current.organizational_units, :id, :name, :prompt=>"Select an assignment")%>
+    </p>
+    
+   <%=form.submit "Save"%>
+<%end%>

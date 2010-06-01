@@ -26,12 +26,18 @@ class Account
     end
   end
 
+  many :employees, :dependent=>:destroy, :order=>'last_name, first_name'
+
   def organizational_structure
     @organizational_structure ||= OrganizationalUnitHierarchy.new(Company,Region,Station,TransportUnit)
   end
 
+  def organizational_units
+    OrganizationalUnit.all :account_id=>id, :order=>'path'
+  end
+
   def organizational_model
-    TreeHelper.arrange_tree_nodes(OrganizationalUnit.all :account_id=>id)
+    TreeHelper.arrange_tree_nodes(organizational_units)
   end
 
   after_save :ensure_company

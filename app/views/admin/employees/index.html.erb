@@ -1,0 +1,49 @@
+<h1>Employees</h1>
+<table>
+  <tr>
+    <th>Employee</th>
+    <th>Department</th>
+    <th>Assignment</th>
+    <th>&nbsp;</th>
+  </tr>
+  <%@employees.each do |employee|%>
+      <tr  class="ui-state-default" id="emp_row_<%=employee.id%>">
+        <td>
+          <%=employee.full_name_formal%>
+        </td>
+        <td>
+          <%=employee.department.name%>
+        </td>
+        <td>
+          <%=employee.organizational_unit.name%>
+        </td>
+        <td>
+          <a href="<%=edit_resource_url(employee)%>"><span id="edit_employee_<%=employee.id%>" class="ui-icon ui-icon-pencil edit_employee" style="cursor:pointer"></span></a>
+          <span id="delete_employee_<%=employee.id%>" class="ui-icon ui-icon-closethick delete_employee" style="cursor:pointer"></span>
+        </td>
+      </tr>
+  <%end%>
+</table>
+<a href="employees/new" class="button">Create a new Employee</a>
+
+<script language="javascript">
+    $(function(){
+        $(".delete_employee").click(function(){
+            var id = this.id.split("_").pop();
+            $.ajax({
+                type: 'post',
+                data: {_method:'delete',employee:{id:id}},
+                dataType:null,
+                complete: function(request){
+                    $("#emp_row_" + id).remove();                    
+                    //var row = $(this).parent('tr');
+                    //$(row).remove();
+                },
+                url: 'employees/' + id
+            });
+        });
+
+        $(".button").button();
+    });
+</script>
+
