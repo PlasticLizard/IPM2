@@ -4,6 +4,8 @@ class OrganizationalUnit < AccountModel
   key :name, String
   key :_type, String
 
+  many :employees, :foreign_key=>'organizational_unit_id'
+
   acts_as_tree
   
   def child_type

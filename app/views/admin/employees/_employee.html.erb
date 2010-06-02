@@ -15,6 +15,10 @@
       <%=form.label :organizational_unit_id, "Primary assignment"%><br>
       <%=form.collection_select(:organizational_unit_id, Account.current.organizational_units, :id, :name, :prompt=>"Select an assignment")%>
     </p>
+    <p>
+      <%=form.label :organizational_role_id, "Primary Position"%><br>
+    <%=form.collection_select(:organizational_role_id, Account.current.roles, :id, :name, :prompt=>"Select a role")%>
+    </p>
     
    <%=form.submit "Save"%>
 <%end%>

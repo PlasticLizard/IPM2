@@ -3,7 +3,17 @@
      class="heading editable"
      data-update_value="'<%=organizational_unit_type%>[name]'"><%=ou.name%></div>
 
-<%=render :partial=>"admin/shared/organizational_unit_roles", :locals=>{:roles=>ou.roles}%>
+Positions:
+<% employees = ou.employees.sort{|a,b|a.full_name_formal<=>b.full_name_formal}
+   ou.roles.each do |role|%>
+        <div>
+          <%=role.department.name%> - <%=role.name%>
+        </div>
+        <div>
+          <%staff = employees.select{|emp|emp.organizational_role_id==role.id}.map{|emp|"<span class='employee'>#{emp.full_name}</span>"}%>
+          <%=staff.blank? ? "Currently Unstaffed" : staff.join(", ")%>
+        </div>
+<%end%>
 
 <%=javascript_tag("$.fn.editInPlace.defaults.url='companies/#{company.id}/#{organizational_unit_type.pluralize}/#{ou.id}';
                    $('.editable').editInPlace();")%>

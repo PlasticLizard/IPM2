@@ -16,6 +16,7 @@ class Department < AccountModel
   end
 
   many :requirement_sets
+  many :employees
 
   after_save :ensure_department_head
   def ensure_department_head

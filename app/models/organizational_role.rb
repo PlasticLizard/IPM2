@@ -17,6 +17,8 @@ class OrganizationalRole < AccountModel
   key :position_type, Symbol, :default=>:exclusive
   key :department_id, ObjectId
 
+  many :employees
+
   acts_as_tree
 
   belongs_to :department

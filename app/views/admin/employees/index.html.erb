@@ -4,6 +4,7 @@
     <th>Employee</th>
     <th>Department</th>
     <th>Assignment</th>
+    <th>Position</th>
     <th>&nbsp;</th>
   </tr>
   <%@employees.each do |employee|%>
@@ -16,6 +17,9 @@
         </td>
         <td>
           <%=employee.organizational_unit.name%>
+        </td>
+        <td>
+          <%=employee.organizational_role.name%>
         </td>
         <td>
           <a href="<%=edit_resource_url(employee)%>"><span id="edit_employee_<%=employee.id%>" class="ui-icon ui-icon-pencil edit_employee" style="cursor:pointer"></span></a>
