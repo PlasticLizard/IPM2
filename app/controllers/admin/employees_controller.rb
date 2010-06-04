@@ -10,6 +10,7 @@ class Admin::EmployeesController < InheritedResources::Base
   def update
     update! do |format|
       format.html {redirect_to collection_url}
+      format.json {head :ok}
     end
   end
 

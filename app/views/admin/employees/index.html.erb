@@ -10,7 +10,9 @@
   <%@employees.each do |employee|%>
       <tr  class="ui-state-default" id="emp_row_<%=employee.id%>">
         <td>
-          <%=employee.full_name_formal%>
+          <a href="<%=resource_url(employee)%>">
+            <%=employee.full_name_formal%>
+          </a>
         </td>
         <td>
           <%=employee.department.name%>
@@ -39,7 +41,7 @@
                 data: {_method:'delete',employee:{id:id}},
                 dataType:null,
                 complete: function(request){
-                    $("#emp_row_" + id).remove();                    
+                    $("#emp_row_" + id).remove();
                     //var row = $(this).parent('tr');
                     //$(row).remove();
                 },

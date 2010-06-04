@@ -21,6 +21,31 @@ required by
 
 <hr>
 <%=render :partial=>"admin/requirement_groups/group", :collection=>@requirement_set.requirement_groups%>
+<hr>
+<div class="heading">Employees</div>
+<%@requirement_set.employees.each do |employee|%>
+    <ul>
+      <li>
+        <div><%=employee.full_name_formal%></div>
+        <div style="font-style:italic;font-size:.75em"><%=employee.organizational_unit.name%> <%=employee.organizational_role.name%></div>
+        <ul>
+          <% 
+             @requirement_set.requirement_groups.each do |req_group|%>
+              <li><%=req_group.rule_operator%> required
+                <ul>
+                  <%req_group.required_credentials.each do |credential|%>
+                      <li>
+                        <%=credential.name%><%=credential.duty_requirement ? "*" : ""%>
+                      </li>
+                  <%end%>
+                </ul>
+              </li>
+          <%end%>
+        </ul>
+      </li>
+    </ul>
+
+<%end%>
 
 
 

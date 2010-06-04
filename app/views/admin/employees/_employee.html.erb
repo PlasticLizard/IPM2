@@ -17,7 +17,7 @@
     </p>
     <p>
       <%=form.label :organizational_role_id, "Primary Position"%><br>
-    <%=form.collection_select(:organizational_role_id, Account.current.roles, :id, :name, :prompt=>"Select a role")%>
+      <%=form.collection_select(:organizational_role_id, Account.current.roles, :id, :name, :prompt=>"Select a role")%>
     </p>
     
    <%=form.submit "Save"%>

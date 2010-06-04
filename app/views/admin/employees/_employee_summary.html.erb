@@ -1,0 +1,28 @@
+<style>
+  label {
+      font-weight:bold;
+      color:navy;
+  }
+</style>
+
+<div id="employee_full_name"
+     name="employee[full_name]"
+     class="heading editable"
+     data-update_value="'employee[full_name]'"><%=@employee.full_name%></div>
+
+<span id="employee_email_address"
+      name="employee[email_address]"
+      class="editable"
+      data-update_value="'employee[email_address]'"
+      data-default_text="'(Add an e-mail address)'"><%=@employee.email_address%>
+</span>
+<a href="mailto:<%=@employee.email_address%>" class="ui-icon ui-icon-mail-closed" style="float:left"></a>
+
+<div style="border-top:1px solid gray;padding:4px;margin:4px"><label>Department:</label> <%=@employee.department.name%> |
+     <label>Primary Assignment:</label> <%=@employee.organizational_unit.name%> |
+     <label>Primary Position:</label> <%=@employee.organizational_role.name%></div>
+
+
+
+<%=javascript_tag("$.fn.editInPlace.defaults.url='#{@employee.id}';
+                   $('.editable').editInPlace();")%>
