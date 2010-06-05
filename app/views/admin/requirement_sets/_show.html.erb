@@ -31,7 +31,7 @@ required by
         <ul>
           <% 
              @requirement_set.requirement_groups.each do |req_group|%>
-              <li><%=req_group.rule_operator%> required
+              <li><%=req_group.operator%> required
                 <ul>
                   <%req_group.required_credentials.each do |credential|%>
                       <li>

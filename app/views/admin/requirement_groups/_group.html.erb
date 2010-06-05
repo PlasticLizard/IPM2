@@ -3,9 +3,9 @@
       class="editable"
       data-select_options="'<%=credential_group_operators_options%>'"
       data-field_type='"select"'
-      data-update_value="'requirement_group[rule_operator]'"
+      data-update_value="'requirement_group[operator]'"
       data-url='"requirement_sets/<%=@requirement_set.id%>/requirement_groups/<%=group.id%>"'>
-        <%=group.rule_operator.to_s.titleize%>
+        <%=group.operator.to_s.titleize%>
     </span>
   of the following items are required to satisfy this requirement:
   <%unless group.required_credentials.blank?%>

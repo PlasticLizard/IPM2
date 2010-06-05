@@ -18,6 +18,6 @@ module Admin::RequirementSetsHelper
   end
 
   def credential_group_operators_options
-    CredentialGroup.rule_operators.map{|op|"#{op.to_s.humanize}:#{op}"}.join(",")
+    CredentialGroup.operators.map{|op|"#{op.to_s.humanize}:#{op}"}.join(",")
   end
 end
