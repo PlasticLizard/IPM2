@@ -16,5 +16,9 @@ class Employee < User
       end.last
     end
   end
+
+  def issue_credential(credential, options={})
+    Services::EmployeeRequirements::Service.current.issue_credential(credential,self,options)
+  end
   
 end

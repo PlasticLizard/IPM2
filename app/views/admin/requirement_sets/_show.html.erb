@@ -22,30 +22,28 @@ required by
 <hr>
 <%=render :partial=>"admin/requirement_groups/group", :collection=>@requirement_set.requirement_groups%>
 <hr>
-<div class="heading">Employees</div>
-<%@requirement_set.employees.each do |employee|%>
-    <ul>
+<div class="heading">Compliance</div>
+<ul>
+  <% compliance = @requirement_set.compliance_status
+     compliance.children.each do |employee|%>
       <li>
-        <div><%=employee.full_name_formal%></div>
-        <div style="font-style:italic;font-size:.75em"><%=employee.organizational_unit.name%> <%=employee.organizational_role.name%></div>
+        <a href="<%=admin_employee_url(employee.context)%>"><%=employee.name%></a>(<%=employee.status%>)
         <ul>
-          <% 
-             @requirement_set.requirement_groups.each do |req_group|%>
-              <li><%=req_group.operator%> required
+          <%employee.children.each do |group|%>
+              <li>
+                <%=group.name%> (<%=group.status%>)
                 <ul>
-                  <%req_group.required_credentials.each do |credential|%>
-                      <li>
-                        <%=credential.name%><%=credential.duty_requirement ? "*" : ""%>
-                      </li>
+                  <%group.children.each do |credential|%>
+                      <li><%=credential.name%> (<%=group.status%>)</li>
                   <%end%>
                 </ul>
               </li>
           <%end%>
         </ul>
       </li>
-    </ul>
+  <%end%>
+</ul>
 
-<%end%>
 
 
 

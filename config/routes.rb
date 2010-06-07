@@ -56,7 +56,7 @@ ActionController::Routing::Routes.draw do |map|
 
     admin.resources :credentials, :collection=>{:quick_add=>:get}
 
-    admin.resources :employees
+    admin.resources :employees, :member=>{:issue_credential=>:put, :select_credential=>:get}
   end
 
   map.connect ':controller/:action/:id'

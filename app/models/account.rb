@@ -16,6 +16,8 @@ class Account
     end
   end
 
+  many :credentials, :dependent=>:destroy
+
   many :roles, :class_name=>'OrganizationalRole', :dependent=>:destroy
   many :departments, :dependent=>:destroy, :order=>'position' do
     def reorder(ordered_department_ids)

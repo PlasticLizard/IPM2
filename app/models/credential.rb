@@ -7,4 +7,8 @@ class Credential < AccountModel
   #a value of 0 indicates that the credential never expires once issued
   key :days_until_expiration, Integer, :default=>0
 
+  def type
+    self.class.name.split("::")[-1].titleize
+  end
+
 end

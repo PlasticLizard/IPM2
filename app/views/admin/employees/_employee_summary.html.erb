@@ -23,6 +23,42 @@
      <label>Primary Position:</label> <%=@employee.organizational_role.name%></div>
 
 
+<p/>
+  <div class="heading">Credentials & Training</div>
+  <table id = "issued_credential_list">
+    <tr>
+      <th>Credential Type</th>
+      <th>Credential</th>
+      <th>Issued</th>
+      <th>Expires</th>
+    </tr>
+    <%@employee.issued_credentials.each do |ic|%>
+        <tr>
+          <td><%=ic.credential_type_name%></td>
+          <td><%=ic.credential_name%></td>
+          <td><%=ic.issue_date%></td>
+          <td><%=ic.expiration_date ? "#{ic.expiration_date} (#{ic.days_until_expiration} days)" : "Never expires"%></td>
+        </tr>
+    <%end%>
+  </table>
+  <button id="issue_credential">New Credential/Training</button>
 
-<%=javascript_tag("$.fn.editInPlace.defaults.url='#{@employee.id}';
-                   $('.editable').editInPlace();")%>
+<script language="javascript">
+  $.fn.editInPlace.defaults.url='#{@employee.id}';
+  $('.editable').editInPlace();
+  $('#issue_credential').button().click(function(){
+     $.maestro.dialogs.issueCredential('<%=@employee.id%>',{
+            onSubmit:function(newCredential){
+                location.reload(true);
+//                $.ajax({
+//                    type:'POST',
+//                    url:"requirement_sets/<%#@requirement_set.id%>/requirement_groups/" + group_id + "/add_requirement",
+//                    data:{_method:'put',required_credential_id:newCredential["id"]},
+//                    success:function(data){
+//                        raiseUpdatedEvent();
+//                    }
+//                });
+            }
+        });
+  });
+</script>

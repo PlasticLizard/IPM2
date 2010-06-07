@@ -22,6 +22,10 @@ class RequirementSet < AccountModel
     Account.current.employees.all filter
   end
 
+  def compliance_status
+    Services::EmployeeRequirements::Service.current.check_requirement_set_compliance(self)
+  end
+
   after_save :ensure_requirement_group
   def ensure_requirement_group
     unless requirement_groups.size > 0
