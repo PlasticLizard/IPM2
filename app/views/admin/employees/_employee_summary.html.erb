@@ -1,8 +1,8 @@
 <style>
-  label {
-      font-weight:bold;
-      color:navy;
-  }
+    label {
+        font-weight:bold;
+        color:navy;
+    }
 </style>
 
 <div id="employee_full_name"
@@ -19,46 +19,57 @@
 <a href="mailto:<%=@employee.email_address%>" class="ui-icon ui-icon-mail-closed" style="float:left"></a>
 
 <div style="border-top:1px solid gray;padding:4px;margin:4px"><label>Department:</label> <%=@employee.department.name%> |
-     <label>Primary Assignment:</label> <%=@employee.organizational_unit.name%> |
-     <label>Primary Position:</label> <%=@employee.organizational_role.name%></div>
+  <label>Primary Assignment:</label> <%=@employee.organizational_unit.name%> |
+  <label>Primary Position:</label> <%=@employee.organizational_role.name%></div>
 
 
 <p/>
-  <div class="heading">Credentials & Training</div>
-  <table id = "issued_credential_list">
-    <tr>
-      <th>Credential Type</th>
-      <th>Credential</th>
-      <th>Issued</th>
-      <th>Expires</th>
-    </tr>
-    <%@employee.issued_credentials.each do |ic|%>
-        <tr>
-          <td><%=ic.credential_type_name%></td>
-          <td><%=ic.credential_name%></td>
-          <td><%=ic.issue_date%></td>
-          <td><%=ic.expiration_date ? "#{ic.expiration_date} (#{ic.days_until_expiration} days)" : "Never expires"%></td>
-        </tr>
-    <%end%>
-  </table>
-  <button id="issue_credential">New Credential/Training</button>
+<div class="heading">Credentials & Training</div>
+<table id = "issued_credential_list" class="ui-widget">
+  <tr>
+    <th>Credential Type</th>
+    <th>Credential</th>
+    <th>Issued</th>
+    <th>Expires</th>
+    <th>&nbsp;</th>
+  </tr>
+  <%@employee.issued_credentials.each do |ic|%>
+      <tr class="ui-state-default ic_row_<%=ic.id%>">
+        <td><%=ic.credential_type_name%></td>
+        <td><%=ic.credential_name%></td>
+        <td><%=ic.issue_date%></td>
+        <td><%=ic.expiration_date ? "#{ic.expiration_date} (#{ic.days_until_expiration} days)" : "Never expires"%></td>
+        <td>
+          <span id="remove_credential_<%=ic.id%>" class="ui-icon ui-icon-closethick remove_credential" style="cursor:pointer"></span>
+        </td>
+      </tr>
+  <%end%>
+</table>
+<button id="issue_credential">New Credential/Training</button>
 
 <script language="javascript">
-  $.fn.editInPlace.defaults.url='#{@employee.id}';
-  $('.editable').editInPlace();
-  $('#issue_credential').button().click(function(){
-     $.maestro.dialogs.issueCredential('<%=@employee.id%>',{
+    $(".remove_credential").click(function(){
+        var id = this.id.split("_").pop();
+        $.ajax({
+            type: 'post',
+            data: {_method:'delete',issued_credential_id:id},
+            dataType:null,
+            complete: function(request){
+                $("tr.ic_row_" + id).remove();
+            },
+            url: '<%=@employee.id%>/remove_credential'
+        });
+    });
+
+    $(".button").button();
+
+    $.fn.editInPlace.defaults.url='#{@employee.id}';
+    $('.editable').editInPlace();
+    $('#issue_credential').button().click(function(){
+        $.maestro.dialogs.issueCredential('<%=@employee.id%>',{
             onSubmit:function(newCredential){
                 location.reload(true);
-//                $.ajax({
-//                    type:'POST',
-//                    url:"requirement_sets/<%#@requirement_set.id%>/requirement_groups/" + group_id + "/add_requirement",
-//                    data:{_method:'put',required_credential_id:newCredential["id"]},
-//                    success:function(data){
-//                        raiseUpdatedEvent();
-//                    }
-//                });
             }
         });
-  });
+    });
 </script>

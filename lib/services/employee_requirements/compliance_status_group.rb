@@ -7,7 +7,7 @@ module Services
       def initialize(name, context, options={})
         super(name,context,options)
         @children = []
-        @operator = options[:requires] || options[:operator] || :all
+        @operator = options[:require] || options[:operator] || :all
         #start off incomplete, to be proven wrong
         incomplete! if @operator == :any
       end      

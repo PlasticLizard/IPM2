@@ -18,7 +18,7 @@ describe Services::EmployeeRequirements::ComplianceStatusGroup do
   end
 
   it "should mark itself incomplete when all children are incomplete and any operator is used" do
-    group = Services::EmployeeRequirements::ComplianceStatusGroup.new("a","a",:requires=>:any)
+    group = Services::EmployeeRequirements::ComplianceStatusGroup.new("a","a",:require=>:any)
     group << create_status(:incomplete=>true)
     group << create_status(:incomplete=>true)
     group.should be_incomplete
@@ -33,7 +33,7 @@ describe Services::EmployeeRequirements::ComplianceStatusGroup do
   end
 
   it ".valid_until should return the last expiration date of the groups children when the operator is 'any'" do
-    group = Services::EmployeeRequirements::ComplianceStatusGroup.new("a","a",:requires=>:any)
+    group = Services::EmployeeRequirements::ComplianceStatusGroup.new("a","a",:require=>:any)
     group << create_status(:valid_until=>Date.today)
     group << create_status(:valid_until=>Date.tomorrow)
     group << create_status(:valid_until=>Date.yesterday)

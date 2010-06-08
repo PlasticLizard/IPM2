@@ -20,5 +20,10 @@ class Employee < User
   def issue_credential(credential, options={})
     Services::EmployeeRequirements::Service.current.issue_credential(credential,self,options)
   end
-  
+
+  def remove_credential(issued_credential_id)
+    issued_credentials.reject!{|c|c.id.to_s == issued_credential_id.to_s}
+    save!
+  end
+
 end

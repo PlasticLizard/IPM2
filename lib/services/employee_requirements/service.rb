@@ -4,8 +4,13 @@ class Services::EmployeeRequirements::Service
   end
 
   def issue_credential(credential,employee,options={})
-    ic = IssuedCredential.new(credential,options)
-    employee.issued_credentials << ic
+    ic = employee.issued_credentials.build
+    ic.credential = credential
+    ic.credential_type = credential.class.name
+    ic.credential_name = credential.name
+    ic.issue_date = options[:issue_date] || Date.today
+    ic.expiration_date = options[:expiration_date]
+    #employee.issued_credentials << ic
     employee.save!
     ic
   end

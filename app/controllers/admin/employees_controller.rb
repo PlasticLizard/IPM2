@@ -30,4 +30,10 @@ class Admin::EmployeesController < InheritedResources::Base
     head :ok
   end
 
+  def remove_credential
+    id = params[:issued_credential_id]
+    resource.remove_credential(id)
+    head :ok
+  end
+
 end

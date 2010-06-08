@@ -23,9 +23,10 @@ required by
 <%=render :partial=>"admin/requirement_groups/group", :collection=>@requirement_set.requirement_groups%>
 <hr>
 <div class="heading">Compliance</div>
+ <% compliance = @requirement_set.compliance_status%>
+     Status:<%=compliance.status%>
 <ul>
-  <% compliance = @requirement_set.compliance_status
-     compliance.children.each do |employee|%>
+     <%compliance.children.each do |employee|%>
       <li>
         <a href="<%=admin_employee_url(employee.context)%>"><%=employee.name%></a>(<%=employee.status%>)
         <ul>
@@ -34,7 +35,7 @@ required by
                 <%=group.name%> (<%=group.status%>)
                 <ul>
                   <%group.children.each do |credential|%>
-                      <li><%=credential.name%> (<%=group.status%>)</li>
+                      <li><%=credential.name%> (<%=credential.status%>)</li>
                   <%end%>
                 </ul>
               </li>

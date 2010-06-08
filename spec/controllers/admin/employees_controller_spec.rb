@@ -20,6 +20,19 @@ describe Admin::EmployeesController do
     emp.issued_credentials[0].credential_name.should == "Iam Sam"
     emp.issued_credentials[0].issue_date.should == Time.parse("01/01/2001").to_date
     emp.issued_credentials[0].expiration_date.should == Time.parse("01/02/2001").to_date
+    emp.issued_credentials[0].id.should_not be nil
+  end
+
+  it "should remove the specified credential" do
+    emp = Employee.create! :name=>"Sam Iam"
+    cred = Credentials::Certification.create! :name=>"Iam Sam"
+    emp.issue_credential(cred)
+
+    delete "remove_credential",:id=>emp.id.to_s,:issued_credential_id=>emp.issued_credentials[0].id.to_s
+
+    emp = emp.reload
+    emp.issued_credentials.count.should equal 0
+
   end
 
 end
