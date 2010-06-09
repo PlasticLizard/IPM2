@@ -12,7 +12,7 @@
         if (dlg.length==0)
         {
             dlg = $("<div id='" + dlg_id + "'></div>");
-            dlg.load(employee_id + "/select_credential",function(){
+            dlg.load(employee_id + "/issued_credentials/select",function(){
 
                 dlg.append("<div class='ui-widget-footer' style='float:right;padding-top:10px;padding-bottom:5px'> \
             <button class='ok'>Ok</button> \
@@ -43,7 +43,7 @@
 
                 $.ajax({
                     type:'POST',
-                    url:employee_id + "/issue_credential",
+                    url:employee_id + "/issued_credentials/issue",
                     data:{_method:'put',
                         credential_id:cred_id,
                         issue_date:cred_issue_date,
