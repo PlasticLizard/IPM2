@@ -9,11 +9,11 @@
 <div id="rs_name"
      class="heading editable"
      data-update_value="'requirement_set[name]'"><%=@requirement_set.name%></div>
-required by
+required by every
 
 <span id="required_roles" data-required_role_ids="[<%=required_role_ids.map{|id|"'#{id}'"}.join(",")%>]" class="editable">
   <%=required_roles_list%>
-</span>, assigned to
+</span> assigned to
 
 <span id="required_org_units" data-required_ou_ids="[<%=required_ou_ids.map{|id|"'#{id}'"}.join(",")%>]" class="editable">
   <%=required_ou_list%>

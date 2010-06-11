@@ -54,7 +54,7 @@ ActionController::Routing::Routes.draw do |map|
       company.resources :regions, :stations, :transport_units
     end
 
-    admin.resources :credentials, :collection=>{:quick_add=>:get}
+    admin.resources :credentials, :collection=>{:quick_add=>:get, :list=>:get}
 
     admin.resources :employees do |emp|
       emp.resources :issued_credentials, :collection=>{:issue=>:put, :select=>:get, :revoke=>:delete}      

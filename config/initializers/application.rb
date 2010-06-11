@@ -13,3 +13,9 @@ MongoMapper.setup(get_database_config, Rails.env, {
         :passenger => false
 })
 
+
+#cert_path = Rails.root.join("app","models","credentials")
+#searcher = "**/*.rb"
+#Dir[File.join(cert_path,searcher)].each do |cert|
+#  "Credentials::#{File.basename(cert).split(".")[0].classify}".constantize
+#end

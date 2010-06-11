@@ -16,7 +16,12 @@ class Account
     end
   end
 
-  many :credentials, :dependent=>:destroy
+  many :credentials, :dependent=>:destroy, :order=>:_type do
+    def by_type(type_name)
+      type_name = "Credentials::" + type_name unless type_name =~ /^Credentials\:\:.*/
+      all(:_type=>type_name)
+    end
+  end
 
   many :roles, :class_name=>'OrganizationalRole', :dependent=>:destroy
   many :departments, :dependent=>:destroy, :order=>'position' do
