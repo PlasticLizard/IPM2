@@ -15,6 +15,9 @@ class Employee < User
         a.issue_date <=> b.issue_date
       end.last
     end
+    def status(credential)
+      Services::EmployeeRequirements::Service.current.check_employee_compliance_for_credential(credential, proxy_owner)
+    end
   end
 
   def issue_credential(credential, options={})

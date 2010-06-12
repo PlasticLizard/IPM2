@@ -11,6 +11,10 @@ class Credential < AccountModel
     self.class.name.split("::")[-1]
   end
 
+  def issued_to
+    Account.current.employees.all 'issued_credentials.credential_id'=>id
+  end
+
   def self.credential_types
     #TODO: should auto-load these at startup from app/models/credentials folder
     %w(Certification CheckRide ClinicalRotation License Training)

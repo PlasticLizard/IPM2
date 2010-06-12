@@ -20,6 +20,16 @@ module Services
         self.valid_until ? self.valid_until - Date.today : nil
       end
 
+      def expiration_description
+        return "Never Expires" unless self.valid_until
+        if days_valid > 365 then valid_until
+        elsif days_valid > 60
+          "#{days_valid/30} Months"
+        else
+          "#{days_valid} Days"
+        end
+      end
+
       def status
         valid = days_valid
         return :incomplete if incomplete?

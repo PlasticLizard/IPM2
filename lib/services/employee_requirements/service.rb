@@ -32,22 +32,24 @@ class Services::EmployeeRequirements::Service
       group_status = Services::EmployeeRequirements::ComplianceStatusGroup.new(group.name,group,:require=>group.operator.to_sym || :all)
 
       group.required_credentials.each do |credential|
-
-        credential_status = Services::EmployeeRequirements::ComplianceStatus.new(credential.name,credential)
-        emp_credential = employee.issued_credentials.latest(credential)
-
-        unless emp_credential.blank?
-          credential_status.valid_until = emp_credential.expiration_date
-        else
-          credential_status.incomplete!
-        end
-        
-        group_status << credential_status
+        group_status << check_employee_compliance_for_credential(credential,employee)
       end
 
       status << group_status
     end
 
     status
+  end
+
+  def check_employee_compliance_for_credential(credential,employee)
+    credential_status = Services::EmployeeRequirements::ComplianceStatus.new(credential.name,credential)
+    emp_credential = employee.issued_credentials.latest(credential)
+
+    unless emp_credential.blank?
+      credential_status.valid_until = emp_credential.expiration_date
+    else
+      credential_status.incomplete!
+    end
+    credential_status
   end
 end

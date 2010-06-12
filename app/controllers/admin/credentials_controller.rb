@@ -27,5 +27,11 @@ class Admin::CredentialsController  < InheritedResources::Base
       format.html {render :partial=>"show"}  
     end
   end
+
+  def update
+    update! do |format|
+      format.all {head :ok}
+    end
+  end
     
 end

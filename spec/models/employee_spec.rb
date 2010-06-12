@@ -34,5 +34,16 @@ describe Employee do
     emp.issued_credentials.latest(c1).should be nil
   end
 
+  it "should return the correct status for a provided credential" do
+    c1 = Credentials::Certification.create! :name=>"hi"
+
+    emp = Employee.new :issued_credentials => [
+              IssuedCredential.new(:credential=>c1, :issue_date=>Date.today, :expiration_date=>Date.tomorrow),
+            ]
+    status = emp.issued_credentials.status(c1)
+    status.status.should == :expiration_imminent
+    status.valid_until.should == Date.tomorrow
+  end
+
  
 end
