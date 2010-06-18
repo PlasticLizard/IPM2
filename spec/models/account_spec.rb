@@ -10,51 +10,34 @@ describe Account do
   it "should create a new instance given valid attributes" do
     Account.create!(@valid_attributes)
   end
-
-  it "should sort departments based on an ordered list of ids" do
-    a = Account.current
-    d1 = a.departments.create! :name=>"d1"
-    d2 = a.departments.create! :name=>"d2"
-    d3 = a.departments.create! :name=>"d3"
-
-    a.departments.reorder([d3.id.to_s,d1.id.to_s,d2.id.to_s])
-
-    d1.reload; d2.reload; d3.reload;
-
-    d1.position.should equal 2
-    d2.position.should equal 3
-    d3.position.should equal 1
-
-  end
-
+  
   it "should ensure at least one company exists when saved" do
     a = Account.create!(@valid_attributes)
     a.companies.size.should equal 1
     a.companies[0].name.should equal a.name
   end
 
-  it "should return credentials by type" do
-    a = Account.current
-    c1 = Credentials::Certification.create! :name=>"Happy"
-    Credentials::Training.create!:name=>"Sad"
+  it "should organize credentials by department and type" do
+    d1 =Department.create :name=>"d1"
+    d2 = Department.create :name=>"d2"
+    d3 = Department.create :name=>"d3"
+    Credentials::Certification.create :name=>"c1", :department=>d2
+    Credentials::Training.create :name=>"t1", :department=>d2
+    Credentials::Certification.create :name=>"c2", :department=>d3
 
-    a.credentials.by_type("Credentials::Certification").count.should equal 1
-    a.credentials.by_type("Credentials::Certification")[0].id.should == c1.id
+    hierarchy = Account.current.credentials.by_department_and_type
+    hierarchy.length.should equal 3
+    hierarchy.keys[0].should == d1
+    hierarchy.keys[1].should == d2
+    hierarchy.keys[2].should == d3
+    hierarchy[d1].length.should be Credential.credential_types.length
+    hierarchy[d2].length.should be Credential.credential_types.length
+    hierarchy[d2]["Certification"][0].name.should == "c1"
+    hierarchy[d2]["Training"][0].name.should == "t1"
+    hierarchy[d3]["Certification"][0].name.should == "c2"
+
+
   end
 
-  it "should return credentials by only the class name" do
-    a = Account.current
-    c1 = Credentials::Certification.create! :name=>"Happy"
-    Credentials::Training.create!:name=>"Sad"
-
-    a.credentials.by_type("Certification").count.should equal 1
-    a.credentials.by_type("Certification")[0].id.should == c1.id
-  end
-
-  it "should return an empty array if no credentials exist that match" do
-    a = Account.current
-    Credentials::Training.create!:name=>"Sad"
-
-    a.credentials.by_type("Certification").count.should equal 0
-  end
+  
 end

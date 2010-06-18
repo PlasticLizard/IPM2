@@ -16,22 +16,15 @@ class Account
     end
   end
 
-  many :credentials, :dependent=>:destroy, :order=>:_type do
-    def by_type(type_name)
-      type_name = "Credentials::" + type_name unless type_name =~ /^Credentials\:\:.*/
-      all(:_type=>type_name)
+  many :credentials, :dependent=>:destory do
+    def by_department_and_type
+      proxy_owner.create_departmental_credential_hierarchy(all)
     end
   end
 
+
   many :roles, :class_name=>'OrganizationalRole', :dependent=>:destroy
-  many :departments, :dependent=>:destroy, :order=>'position' do
-    def reorder(ordered_department_ids)
-      all.each do |dep|
-        dep.position = ordered_department_ids.index(dep.id.to_s) + 1
-        dep.save
-      end
-    end
-  end
+  many :departments, :dependent=>:destroy, :order=>'name'
 
   many :employees, :dependent=>:destroy, :order=>'last_name, first_name'
 
@@ -63,4 +56,18 @@ class Account
     @@current = nil
   end
 
+  def create_departmental_credential_hierarchy(credentials)
+    hierarchy = OrderedHash.new
+    by_department = credentials.group_by{|cred|cred.department_id}
+    departments.each do |department|
+      by_type = by_department[department.id]
+      by_type = by_type.group_by{|cred|cred.type} if by_type
+      types = OrderedHash.new
+      Credential.credential_types.each do |type|
+        types[type] = by_type ? by_type[type] : []
+      end
+      hierarchy[department] = types
+    end
+    hierarchy
+  end
 end

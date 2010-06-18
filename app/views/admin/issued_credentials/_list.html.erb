@@ -10,7 +10,7 @@
     <%@issued_credentials.each do |ic|%>
         <tr class="ui-state-default ic_row_<%=ic.id%>">
           <td><%=ic.credential_type_name%></td>
-          <td><%=ic.credential_name%></td>
+          <td><a href="<%=admin_credential_url(ic.credential_id)%>"><%=ic.credential_name%></a></td>
           <td><%=ic.issue_date%></td>
           <td><%=ic.expiration_date ? "#{ic.expiration_date} (#{ic.days_until_expiration} days)" : "never expires"%></td>
           <td>

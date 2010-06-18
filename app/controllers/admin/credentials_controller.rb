@@ -1,10 +1,14 @@
 class Admin::CredentialsController  < InheritedResources::Base
   include AccountResourceController
 
+  belongs_to :department, :optional=>true
+
   def index
-    #loading of the collection is not needed, as we are dynamically loading by category (Credential Type)
+    @credentials = current_account.credentials.by_department_and_type
+    @show_title = true
+    render :layout=>'left_sidebar'
   end
-  
+
   def quick_add
     render :partial=>"quick_add", :locals=>{:credential_type, params["credential_type"] || "Credential"}
   end
@@ -15,16 +19,14 @@ class Admin::CredentialsController  < InheritedResources::Base
     render :json=>credential
   end
 
-  def list
-    @credentials = (type = params["type"]) ?
-            current_account.credentials.by_type(type) : current_account.credentials
-    @credential_type = type
-    render :partial=>"list"
+  def list    
+    @credentials = current_account.credentials.by_department_and_type
+    render request.xhr? ? {:partial=>"list"} : :list
   end
 
   def show
     show! do |format|
-      format.html {render :partial=>"show"}  
+      format.html { render request.xhr? ? {:partial=>"show"} :  :show}  
     end
   end
 
