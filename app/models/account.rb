@@ -66,7 +66,7 @@ class Account
       Credential.credential_types.each do |type|
         types[type] = by_type ? by_type[type] : []
       end
-      hierarchy[department] = types
+      hierarchy[department] = by_type#types
     end
     hierarchy
   end

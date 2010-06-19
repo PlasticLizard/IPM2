@@ -23,7 +23,8 @@ a {
 }
 
 .editable{
-    color: #3366ff
+    color: #3366ff;
+    cursor:pointer;
 }
 
 #container {

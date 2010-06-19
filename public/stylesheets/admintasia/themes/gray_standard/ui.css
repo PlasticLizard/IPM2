@@ -8,6 +8,7 @@
 #page_wrapper #page-content {
 	border-top:#ccc solid 2px;
 	border-bottom:#ccc solid 2px;
+    background-color:#fff;
 }
 
 #page_wrapper #page-content #page-content-wrapper {
@@ -309,9 +310,10 @@ a:hover, .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited
 }
 
 #sidebar-left #page_wrapper #page-content #page-content-wrapper {
-	background:#f2f2f2 url('images/sidebar-bg-left.png') left top repeat-y;
-	padding-left:202px;
+	background:#fdfdfd url('images/sidebar-bg-left.png') left top repeat-y;
+	padding-left:320px;
 }
+
 
 	/* Dashboard Buttons */
 
