@@ -8,6 +8,9 @@ class Account
     def global
       all.select{|rs|rs.department_id.blank?}
     end
+    def by_department
+      proxy_owner.create_departmental_requirement_set_hierarchy(all)
+    end
   end
 
   many :companies, :dependent=>:destroy do
@@ -57,16 +60,25 @@ class Account
   end
 
   def create_departmental_credential_hierarchy(credentials)
-    hierarchy = OrderedHash.new
+    hierarchy = BSON::OrderedHash.new
     by_department = credentials.group_by{|cred|cred.department_id}
     departments.each do |department|
       by_type = by_department[department.id]
       by_type = by_type.group_by{|cred|cred.type} if by_type
-      types = OrderedHash.new
+      types = BSON::OrderedHash.new
       Credential.credential_types.each do |type|
         types[type] = by_type ? by_type[type] : []
       end
       hierarchy[department] = by_type#types
+    end
+    hierarchy
+  end
+
+  def create_departmental_requirement_set_hierarchy(requirement_sets)
+    hierarchy = BSON::OrderedHash.new
+    by_department = requirement_sets.group_by{|rs|rs.department_id}
+    departments.each do |department|
+      hierarchy[department] = by_department[department.id] || []
     end
     hierarchy
   end

@@ -6,9 +6,12 @@
     }
 </style>
 
-<div id="rs_name"
+<span class="inner-page-title">
+<h2 id="rs_name"
      class="heading editable"
-     data-update_value="'requirement_set[name]'"><%=@requirement_set.name%></div>
+     data-update_value="'requirement_set[name]'"><%=@requirement_set.name%></h2>
+</span>
+<p>
 required by every
 
 <span id="required_roles" data-required_role_ids="[<%=required_role_ids.map{|id|"'#{id}'"}.join(",")%>]" class="editable">
@@ -18,10 +21,10 @@ required by every
 <span id="required_org_units" data-required_ou_ids="[<%=required_ou_ids.map{|id|"'#{id}'"}.join(",")%>]" class="editable">
   <%=required_ou_list%>
 </span>
+</p>
 
-<hr>
 <%=render :partial=>"admin/requirement_groups/group", :collection=>@requirement_set.requirement_groups%>
-<hr>
+
 <div class="heading">Compliance</div>
  <% compliance = @requirement_set.compliance_status%>
      Status:<%=compliance.status%>
@@ -104,21 +107,7 @@ required by every
                 });
             }
         });
-    });
-
-    $(".delete_group_requirement").click(function(){
-        var ids = this.id.split("_").pop().split(":");
-        var group_id = ids[0];
-        var credential_id = ids[1];
-        $.ajax({
-            type:'POST',
-            url:"requirement_sets/<%=@requirement_set.id%>/requirement_groups/" + group_id + "/remove_requirement",
-            data:{_method:'delete',required_credential_id:credential_id},
-            success:function(data){
-                raiseUpdatedEvent();
-            }
-        });
-    });
+    });   
 
     function raiseUpdatedEvent()
     {

@@ -10,6 +10,13 @@ class Credential < AccountModel
   #a value of 0 indicates that the credential never expires once issued
   key :days_until_expiration, Integer, :default=>0
 
+  scope :by_department,  lambda { |department_id| where(:department_id => department_id) }
+
+  def self.by_type(type_name)
+    type_name = "Credentials::" + type_name unless type_name =~ /^Credentials\:\:.*/
+    where(:_type=>type_name)
+  end
+
   def type
     self.class.name.split("::")[-1]
   end

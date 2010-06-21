@@ -60,7 +60,7 @@ Spec::Runner.configure do |config|
     Thread.current["account_id"] = nil
 
     MongoMapper.database.collections.each do |coll|
-      coll.drop
+      coll.drop unless coll.name =~ /.*\.?system\..*/
     end
   end
 end

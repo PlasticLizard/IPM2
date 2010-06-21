@@ -13,16 +13,8 @@
         {
             dlg = $("<div id='" + dlg_id + "'></div>");
             dlg.load("departments/" + department_id + "/roles/select",function(){
-                dlg.tree({
-                    plugins : {
-                        checkbox : { three_state : false }
-                    },
-                    callback:{
-                    },
-                    ui:{
-                        theme_name:"checkbox"
-                    }
-
+                dlg.jstree({
+                    plugins : [ "themes", "html_data", "ui", "checkbox"  ]
                 });
                 dlg.append("<div class='ui-widget-footer' style='float:right;padding-top:10px;padding-bottom:5px'> \
             <button class='ok'>Ok</button> \
@@ -37,7 +29,7 @@
         function showDialog(selected_roles,options,dlg)
         {
             var node_ids = $.map(selected_roles,function(item){return "#role_" + item});
-            var tree = $.tree.reference(dlg);
+            var tree = $.jstree._reference(dlg);
 
 
             options.modal = options.modal || true;
@@ -48,7 +40,7 @@
                 Boxy.get(this).hide();
             });
             dlg.find("button.ok").click(function(){
-                var checkedNodes = $.tree.plugins.checkbox.get_checked(tree);
+                var checkedNodes = tree.get_checked();
                 var selected =
                         extractSelectedDepartments(checkedNodes);
                 if (options.onSelection)
@@ -65,13 +57,13 @@
 
             uncheckAll(tree);
             var nodes = $(node_ids.join(", "));
-            nodes.each(function(index,node){$.tree.plugins.checkbox.check(node)});
+            nodes.each(function(index,node){tree.check_node(node)});
         }
 
         function uncheckAll(tree)
         {
-            var checkedNodes = $.tree.plugins.checkbox.get_checked(tree);
-            checkedNodes.each(function(index,node){$.tree.plugins.checkbox.uncheck(node)});
+            var checkedNodes = tree.get_checked();
+            checkedNodes.each(function(index,node){tree.uncheck_node(node)});
         }
 
         function extractSelectedDepartments(checked_nodes)

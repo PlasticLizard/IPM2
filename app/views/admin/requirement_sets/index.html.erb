@@ -1,87 +1,73 @@
-<%stylesheet "jquery.layout.css"%>
-<%stylesheet "boxy.css"%>
-<%javascript "jquery.layout.min-1.2.0"-%>
-<%javascript "jquery.form"-%>
-<%javascript "jquery.maestro.editinplace"-%>
-<%javascript "jquery.boxy.js"-%>
-<%javascript "jquery.maestro.dialogs.roleselector"%>
-<%javascript "jquery.maestro.dialogs.orgunitselector"%>
-<%javascript "jquery.maestro.dialogs.credentialquickcreate"%>
+<%content_for :head do%>
+    <%stylesheet "boxy.css"%>
+    <%javascript "jquery.form"-%>
+    <%javascript "jquery.maestro.editinplace"-%>
+    <%javascript "jquery.boxy.js"-%>
+    <%javascript "jquery.maestro.dialogs.roleselector"%>
+    <%javascript "jquery.maestro.dialogs.orgunitselector"%>
+    <%javascript "jquery.maestro.dialogs.createcredential"%>
+    <script type="text/javascript" src="/javascripts/jsTree/jquery.jstree.js"></script>
+    <%javascript "jquery.maestro.jstreehelper"%>
+<%end%>
+
+<%content_for :title do%>
+    Staff Requirements
+<%end%>
 
 
-<script type="text/javascript" src="/javascripts/jsTree/jquery.tree.js"></script>
-<script type="text/javascript" src="/javascripts/jsTree/plugins/jquery.tree.checkbox.js"></script>
+<div id="requirement_set_detail"  style="min-height:500px;">
+</div>
 
 
+<%content_for :sidebar do%>
 
-<style type="text/css">
-	html, body {
-		width:		100%;
-		height:		100%;
-		overflow:	hidden;
-	}
-	#container{
-		/*width:	900px;	*/
-		width:		97%;
-		/*max-width:	900px; */
-		min-width:	700px;
-		_width:		700px; /* min-width for IE6 */
-		height:		97%;
-		padding:	0;
-		margin:		0 auto;
-	}
-	.pane {
-		display:	none; /* will appear when layout inits */
-	}
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header">
+        Requirements
+        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
+      <div class="portlet-content">
+        <%= render :partial=>"tree"%>
+      </div>
+    </div>
 
-	</style>
+    <button id="create_requirement_set">New Requirements Group</button>
 
-  <div class="ui-layout-center">
-    <div id="requirement_set"></div>
-  </div>
+<%end%>
 
-  <div class="ui-layout-west">
-    <div class="west-north"> <%= render :partial=>"admin/shared/department_list", :locals=>{:departments=>Account.current.departments} %></div>
-    <div class="west-center"><div id="requirement_sets"></div></div>
-  </div>
+<%content_for :javascript do%>
+    <script language="javascript">
 
- 
-<script language="javascript">
-    var outerLayout, westLayout;
+        $(document).ready(function() {
 
-    $(document).ready(function() {
+            $("#requirement_tree").jstree({
+                core : {animation:50},
+                plugins : [ "themes", "html_data", "ui", "crrm" ]
+            })
+                    .bind("select_node.jstree",function(event,data){
 
-        outerLayout = $('#container').layout({
-            minSize:			100	// ALL panes
-            ,	west__size:			300
-            ,	west__onresize:		'westLayout.resizeAll'
-            ,	useStateCookie:		true
+                var department_id = data.rslt.obj.attr("data-department-id");
+                var requirement_set_id = data.rslt.obj.attr("data-requirement-set-id");
+
+                if (data.rslt.obj.attr("rel") == "department"){
+                    $(document).trigger("department.selected",[department_id]);
+                }
+                else if (data.rslt.obj.attr("rel") == "requirement-set"){
+                    $(document).trigger("requirement_set.selected",[department_id,requirement_set_id]);
+                }
+            });
+
+//            $(document).bind("department.selected",function(e,department_id){
+//                $("#requirement_sets").html("");
+//                $("#requirement_sets").load("departments/" + department_id + "/requirement_sets/list");
+//            });
+
+            $(document).bind("requirement_set.selected",function(e,department_id,rs_id){
+                if (rs_id == null || rs_id=='') return;
+                $("#requirement_set_detail").load("departments/" + department_id + "/requirement_sets/" + rs_id);
+            });            
+
         });
 
-        westLayout = $('div.ui-layout-west').layout({
-            minSize:				50	// ALL panes
-            ,	center__paneSelector:	".west-center"
-            ,	north__paneSelector:	".west-north"
-            ,	north__size:			400
-        });       
 
-        $(document).bind("department.selected",function(e,department_id){
-            $("#requirement_sets").html("");
-            $("#requirement_sets").load("departments/" + department_id + "/requirement_sets/list");
-            //$("#department_detail").load("departments/" + department_id)
-        });
-
-        $(document).bind("requirement_set.selected",function(e,department_id,rs_id){
-            if (rs_id == null || rs_id=='') return;
-            $("#requirement_set").load("departments/" + department_id + "/requirement_sets/" + rs_id);
-        });
-
-        $(document).bind("requirement_set.updated", function(e,department_id,rs_id){
-            if (rs_id == null || rs_id=='') return;
-            $("#requirement_set").load("departments/" + department_id + "/requirement_sets/" + rs_id);        
-        });
-
-    });
-
-
-</script>
+    </script>
+<%end%>

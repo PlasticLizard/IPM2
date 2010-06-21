@@ -15,13 +15,7 @@ class Department < AccountModel
     end
   end
 
-  many :credentials, :dependent=>:destroy, :order=>:_type do
-    def by_type(type_name = nil)
-      return all.group_by(&:type) unless type_name
-      type_name = "Credentials::" + type_name unless type_name =~ /^Credentials\:\:.*/
-      all(:_type=>type_name)
-    end
-  end
+  many :credentials, :dependent=>:destroy, :order=>:_type
 
   many :requirement_sets
   many :employees

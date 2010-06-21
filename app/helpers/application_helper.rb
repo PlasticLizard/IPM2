@@ -9,7 +9,7 @@ module ApplicationHelper
   def org_subtree_html(tree_hash)
     output = "<ul>"
     tree_hash.keys.each do |node|
-      output << "<li id='ou_#{node.id}' class='open' rel='#{node.class.name.underscore}:#{node.class.name.pluralize.underscore}'><a href='#'><ins></ins>#{node.name}</a>"
+      output << "<li id='ou_#{node.id}' class='jstree-open' rel='#{node.class.name.underscore}:#{node.class.name.pluralize.underscore}'><a href='#'>#{node.name}</a>"
       output << org_subtree_html(tree_hash[node]) unless tree_hash[node].empty?
       output << "</li>"
     end

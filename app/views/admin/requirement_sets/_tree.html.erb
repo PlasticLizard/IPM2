@@ -1,0 +1,19 @@
+<div id="requirement_tree">
+  <ul>
+    <%@requirements.keys.each do |dep|%>
+        <li id="<%=dep.id%>" data-department-id="<%=dep.id%>" rel="department">
+          <a href="#"><%=dep.name%></a>
+          <%unless @requirements[dep].blank?%>
+                <ul>
+                  <%@requirements[dep].each do |rs| %>
+                      <li id="<%=rs.id%>" data-requirement-set-id="<%=rs.id%>" data-department-id="<%=dep.id%>" rel="requirement-set">
+                        <a href='#' class="tooltip" title="<%=h rs.name%>"><%=truncate(rs.name,:length=>35)%></a>
+                      </li>
+                  <% end %>
+              </ul>
+          <%end%>
+        </li>
+    <%end%>
+  </ul>
+</div>
+
