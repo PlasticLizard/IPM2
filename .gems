@@ -2,5 +2,5 @@
   will_paginate --version 2.3.12
   inherited_resources --version 1.0.6
   mongo_mapper --version 0.8.2
-  bson_ext --version 1.0.3
+  bson_ext --version 1.0.1
   ramdiv-mongo_mapper_acts_as_tree
