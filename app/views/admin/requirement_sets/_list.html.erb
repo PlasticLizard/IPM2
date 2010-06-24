@@ -1,0 +1,65 @@
+<div class="inner-page-title">
+  <h2><%=@department.name%> Department Requirement Sets</h2>
+</div>
+
+<div class="hastable" style="float:left;">
+  <table>
+    <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Status
+      </th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%requirement_sets.each do |rs|%>
+        <tr id="tr_<%=rs.id%>">
+          <td>
+            <a href="#select" rel="requirement_set" data-department-id="<%=rs.department_id%>" data-requirement-set-id="<%=rs.id%>">
+              <%=rs.name%>
+            </a>
+          </td>
+          <td>
+            <%=rs.compliance_status.status%>
+          </td>
+          <td>
+            <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Delete <%=rs.name%>" href="#delete" rel="credential" data-requirement-set-id="<%=rs.id%>">
+              <span class="ui-icon ui-icon-circle-close"></span>
+            </a>
+          </td>
+        </tr>
+    <%end%>
+    </tbody>
+  </table>
+  <br/>
+</div>
+
+<script language="javascript">
+
+
+    $("a[href=#delete]").click(function()
+    {
+        var rs_id = $(this).attr("data-requirement-set-id");
+        $.ajax({
+            type: 'post',
+            data:{_method:"delete",requirement_set:{id:rs_id}},
+            dataType: 'script',
+            complete: function(request){
+                $("#tr_" + rs_id).remove();
+                $(document).trigger("requirement_set.deleted",[rs_id]);
+            },
+            url: '/admin/requirement_sets/' + rs_id
+        });
+    });
+
+    $("a[href=#select]").click(function()
+    {
+        var dep_id = $(this).attr("data-department-id");
+        var rs_id = $(this).attr("data-requirement-set-id");
+        $(document).trigger("requirement_set.selected",[dep_id,rs_id]);
+    });
+</script>

@@ -22,6 +22,7 @@ class RequirementSet < AccountModel
     Account.current.employees.all filter
   end
 
+  #TODO:This should be cached at some regular interval, or when related components change
   def compliance_status
     Services::EmployeeRequirements::Service.current.check_requirement_set_compliance(self)
   end

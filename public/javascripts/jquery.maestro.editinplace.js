@@ -420,7 +420,7 @@ $.extend(InlineEditor.prototype, {
 				/* put the newly updated info into the original element */
 				that.dom.html(new_text);
 				if (that.settings.success)
-					that.settings.success.apply(that, [new_text, that.dom]);
+					that.settings.success.apply(that, [html, that.dom]);
 			},
 			error: function(request) {
 				that.dom.html(that.originalHTML); // REFACT: what about a restorePreEditingContent()

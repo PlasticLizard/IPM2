@@ -11,7 +11,7 @@ describe Admin::RequirementGroupsController do
     cred = Credentials::Certification.create! :name=>"My Cert"
     rs = RequirementSet.create! :name=>"rs1"
     group = rs.requirement_groups[0]
-    put "add_requirement", :requirement_set_id=>rs.id.to_s,:id=>group.id.to_s, :required_credential_id=>cred.id.to_s
+    put "add_requirements", :requirement_set_id=>rs.id.to_s,:id=>group.id.to_s, :required_credential_ids=>[cred.id.to_s]
     rs.reload
     rs.requirement_groups[0].required_credential_ids.should include cred.id.to_s
   end

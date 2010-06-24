@@ -21,9 +21,9 @@ class Admin::RequirementGroupsController < InheritedResources::Base
     end
   end
 
-  def add_requirement
-    req = params[:required_credential_id]
-    resource.required_credential_ids << req
+  def add_requirements
+    req = params[:required_credential_ids]
+    resource.required_credential_ids += req
     resource.save!
     head :ok
   end

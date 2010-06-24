@@ -1,11 +1,17 @@
 <%content_for :head do%>
     <%stylesheet "boxy.css"%>
     <%javascript "jquery.form"-%>
-    <%javascript "jquery.maestro.editinplace"-%>
     <%javascript "jquery.boxy.js"-%>
+    <%javascript "jquery.maestro.editinplace"-%>
+
+    <%javascript "jquery.maestro.dialogs.createcredential"%>
+    <%javascript "jquery.maestro.credentialtree"%>
+    <%javascript "jquery.maestro.dialogs.selectcredential"%>
+    <%javascript "jquery.maestro.dialogs.createrequirementset"%>
+
     <%javascript "jquery.maestro.dialogs.roleselector"%>
     <%javascript "jquery.maestro.dialogs.orgunitselector"%>
-    <%javascript "jquery.maestro.dialogs.createcredential"%>
+
     <script type="text/javascript" src="/javascripts/jsTree/jquery.jstree.js"></script>
     <%javascript "jquery.maestro.jstreehelper"%>
 <%end%>
@@ -30,7 +36,7 @@
       </div>
     </div>
 
-    <button id="create_requirement_set">New Requirements Group</button>
+    <button id="create_requirement_set">New Requirements Set</button>
 
 <%end%>
 
@@ -38,6 +44,7 @@
     <script language="javascript">
 
         $(document).ready(function() {
+
 
             $("#requirement_tree").jstree({
                 core : {animation:50},
@@ -56,18 +63,56 @@
                 }
             });
 
-//            $(document).bind("department.selected",function(e,department_id){
-//                $("#requirement_sets").html("");
-//                $("#requirement_sets").load("departments/" + department_id + "/requirement_sets/list");
-//            });
+            $("#create_requirement_set").button().click(function(){
+                $.maestro.dialogs.createRequirementSet({
+                    onSubmit:function(rs){
+                        var tree = $.jstree._reference("#requirement_tree");
+                        var folder = $("#" + rs["department_id"]);
+                        folder = tree._get_node(folder);
+
+                        tree.create_node(folder,"last",{
+                            attr:{
+                                id: rs["id"],
+                                "data-department-id":rs["department_id"],
+                                "data-requirement-set-id":rs["id"],
+                                rel:"requirement-set"
+                            },
+                            data:{
+                                attr:{title:rs["name"]},
+                                title:rs["name"]
+                            }
+                        });
+                        $(document).trigger("requirement_set.selected",["department_id",rs["id"]]);
+                    }
+                });
+            });
+
+            $(document).bind("department.selected",function(e,department_id){
+                $("#requirement_set_detail").html("");
+                $("#requirement_set_detail").load("departments/" + department_id + "/requirement_sets/list");
+                select_node("#requirement_tree","#" + department_id);
+            });
 
             $(document).bind("requirement_set.selected",function(e,department_id,rs_id){
                 if (rs_id == null || rs_id=='') return;
                 $("#requirement_set_detail").load("departments/" + department_id + "/requirement_sets/" + rs_id);
-            });            
+                select_node("#requirement_tree","#" + rs_id);
+            });
+
+            $(document).bind("requirement_set.deleted",function(e,requirement_set_id){
+                $.jstree._reference("#requirement_tree").remove("#" + requirement_set_id);
+            });
+
+            $(document).bind("requirement_set.renamed",function(e,requirement_set_id,new_name){
+                var tree = $.jstree._reference("#requirement_tree");
+                if (tree.get_text("#" + requirement_set_id) != new_name)
+                    tree.set_text("#" + requirement_set_id,new_name);
+            });
+
+            $(document).trigger("department.selected",['<%=@requirements.keys[0].id%>']);
+
 
         });
-
 
     </script>
 <%end%>

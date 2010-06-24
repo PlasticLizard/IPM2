@@ -13,7 +13,7 @@ class Admin::RequirementSetsController  < InheritedResources::Base
   end
 
   def list
-    render :partial=>"requirement_set_list", :locals=>{:requirement_sets=>collection, :department=>parent}
+    render :partial=>"list", :locals=>{:requirement_sets=>collection, :department=>parent}
    end
 
    def show
@@ -22,10 +22,9 @@ class Admin::RequirementSetsController  < InheritedResources::Base
     end
   end
 
-  def create
-    create! do |format|
-      format.json { render :json=>resource.to_json }
-    end
+   def create
+    rs = RequirementSet.create(params["requirement_set"]);
+    render :json=>rs
   end
 
   def destroy
@@ -37,6 +36,12 @@ class Admin::RequirementSetsController  < InheritedResources::Base
   def update
     update! do |format|
       format.json {render :json=>{:ok=>true}.to_json}
+    end
+  end
+
+  def new
+    new! do |format|
+      format.html { render :partial=>"form"}
     end
   end
 end

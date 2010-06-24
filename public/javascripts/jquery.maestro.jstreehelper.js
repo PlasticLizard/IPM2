@@ -1,5 +1,5 @@
-function select_node(node){
-    var tree = $.jstree._reference("#credential_tree");
+function select_node(tree,node){
+    var tree = $.jstree._reference(tree);
     node = tree._get_node(node);
 
     if (tree.is_selected(node)) return;

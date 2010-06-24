@@ -14,7 +14,7 @@
             dlg = $("<div id='" + dlg_id + "'></div>");
             dlg.load("departments/" + department_id + "/roles/select",function(){
                 dlg.jstree({
-                    plugins : [ "themes", "html_data", "ui", "checkbox"  ]
+                    plugins : [ "themes", "html_data", "ui"  ]
                 });
                 dlg.append("<div class='ui-widget-footer' style='float:right;padding-top:10px;padding-bottom:5px'> \
             <button class='ok'>Ok</button> \
@@ -40,7 +40,7 @@
                 Boxy.get(this).hide();
             });
             dlg.find("button.ok").click(function(){
-                var checkedNodes = tree.get_checked();
+                var checkedNodes = tree.get_selected();
                 var selected =
                         extractSelectedDepartments(checkedNodes);
                 if (options.onSelection)
@@ -57,13 +57,13 @@
 
             uncheckAll(tree);
             var nodes = $(node_ids.join(", "));
-            nodes.each(function(index,node){tree.check_node(node)});
+            nodes.each(function(index,node){tree.select_node(node)});
         }
 
         function uncheckAll(tree)
         {
-            var checkedNodes = tree.get_checked();
-            checkedNodes.each(function(index,node){tree.uncheck_node(node)});
+            var checkedNodes = tree.get_selected();
+            checkedNodes.each(function(index,node){tree.deselect_node(node)});
         }
 
         function extractSelectedDepartments(checked_nodes)

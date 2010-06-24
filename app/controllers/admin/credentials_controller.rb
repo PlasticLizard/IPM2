@@ -53,4 +53,9 @@ class Admin::CredentialsController  < InheritedResources::Base
     end
   end
 
+  def select
+    @credentials = current_account.credentials.by_department_and_type
+    render :partial=>"tree"
+  end
+
 end

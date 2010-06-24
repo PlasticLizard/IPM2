@@ -17,7 +17,7 @@ class Services::EmployeeRequirements::Service
 
   def check_requirement_set_compliance(requirement_set)
     employees = requirement_set.employees
-    status = ComplianceStatusGroup.new(requirement_set.name,requirement_set)
+    status = Services::EmployeeRequirements::ComplianceStatusGroup.new(requirement_set.name,requirement_set)
     employees.each do |employee|
       status << check_employee_compliance(requirement_set,employee)
     end

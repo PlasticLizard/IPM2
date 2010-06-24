@@ -1,0 +1,12 @@
+<%form_for([:admin,@requirement_set]) do |form|%>
+  <div>
+    <p>
+        <%=form.label :department_id%><br>
+        <%=form.collection_select(:department_id, Account.current.departments, :id, :name, :prompt=>"Select a department")%>
+    </p>
+    <p>
+        <%=form.label :name%><br>
+        <%=form.text_field :name%>
+    </p>    
+  </div>
+<%end%>

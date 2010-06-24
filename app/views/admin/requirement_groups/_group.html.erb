@@ -48,33 +48,44 @@ data-url='"requirement_sets/<%=@requirement_set.id%>/requirement_groups/<%=group
     </div>
 <%end%>
 
-<div class="portlet ui-corner-all ui-widget ui-widget-content" style="width:50%">
-  <select>
-    
-    <option value="Certification">Certification</option>
-    <option value="CheckRide">Check Ride</option>
-    <option value="ClinicalRotation">Clinical Rotation</option>
-    <option value="License">License</option>
-    <option value="Training">Training</option>
-  </select>
-  <button id="add_new_credential_<%=group.id%>">Add</button>
+<div class="portlet ui-corner-all ui-widget ui-widget-content" style="width:50%" data-group-id="<%=group.id%>">
+  <button id="add_requirement_<%=group.id%>" class="add-requirement" >Add New Requirements</button>
 </div>
 
 <script language="javascript">
-    $("a[href=#delete]").click(function()
-    {
-        var cred_id = $(this).attr("data-credential-id");
-        var group_id = $(this).attr("data-group-id");
-        $.ajax({
-            type:'POST',
-            url:"requirement_sets/<%=@requirement_set.id%>/requirement_groups/" + group_id + "/remove_requirement",
-            data:{_method:'delete',required_credential_id:cred_id},
-            success:function(data){
-                $("#tr_" + group_id + "_" + cred_id).remove();
-                $(document).trigger("requirement_set.requirement_group.requirement.deleted",[group_id,cred_id]);
-            }
+    $(document).ready(function(){
+        $("a[href=#delete]").click(function()
+        {
+            var cred_id = $(this).attr("data-credential-id");
+            var group_id = $(this).attr("data-group-id");
+            $.ajax({
+                type:'POST',
+                url:"requirement_sets/<%=@requirement_set.id%>/requirement_groups/" + group_id + "/remove_requirement",
+                data:{_method:'delete',required_credential_id:cred_id},
+                success:function(){
+                    $("#tr_" + group_id + "_" + cred_id).remove();
+                    $(document).trigger("requirement_set.requirement_group.requirement.deleted",[group_id,cred_id]);
+                }
+            });
+        });
+
+        $("button.add-requirement").button().click(function(){
+            var group_id = $(this).parent().attr("data-group-id");
+            $.maestro.dialogs.selectCredential('<%=@requirement_set.department_id%>',{
+                onSelection:function(selected_credential_ids){
+                    $.ajax({
+                        type: 'POST',
+                        url: "requirement_sets/<%=@requirement_set.id%>/requirement_groups/" + group_id + "/add_requirements",
+                        data:{_method:'PUT', required_credential_ids:selected_credential_ids},
+                        success:function(){
+                            $(document).trigger("requirement_set.selected",['<%=@requirement_set.department_id%>','<%=@requirement_set.id%>']);
+                        }
+                    });
+                }
+            });
         });
     });
+
 
 </script>
 

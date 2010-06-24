@@ -48,14 +48,14 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :organizational_units, :collection=>{:select=>:get}
 
     admin.resources :requirement_sets do |rs|
-      rs.resources :requirement_groups, :member=>{:add_requirement=>:put, :remove_requirement=>:delete}
+      rs.resources :requirement_groups, :member=>{:add_requirements=>:put, :remove_requirement=>:delete}
     end
     
     admin.resources :companies, :member=>{:organizational_unit=>:post} do |company|
       company.resources :regions, :stations, :transport_units
     end
 
-    admin.resources :credentials
+    admin.resources :credentials, :collection=>{:select=>:get}
 
     admin.resources :employees do |emp|
       emp.resources :issued_credentials, :collection=>{:issue=>:put, :select=>:get, :revoke=>:delete}      
