@@ -41,9 +41,8 @@
                 Boxy.get(this).hide();
             });
             dlg.find("button.ok").click(function(){
-                var checkedNodes = tree.get_checked();
                 var selected =
-                        extractSelectedOrgUnits(checkedNodes);
+                        extractSelectedOrgUnits(tree,tree.get_checked(),null);
                 if (options.onSelection)
                     options.onSelection.apply(this,[selected]);
 
@@ -67,16 +66,20 @@
             checkedNodes.each(function(index,node){tree.uncheck_node(node)});
         }
 
-        function extractSelectedOrgUnits(checked_nodes)
+        function extractSelectedOrgUnits(tree,nodes,selections)
         {
-            var selected_names = [];
-            var selected_ids = [];
-            checked_nodes.each(function(index,node){
+            if (selections == null)  selections = [[],[]];
+            nodes.each(function(index,node){
                 var info = getNodeNameAndId(node);
-                selected_names.push(info[0]);
-                selected_ids.push(info[1]);
+                selections[0].push(info[0]);
+                selections[1].push(info[1]);
+                var children = tree._get_children(node);
+                if (children && children.length > 0){
+                    extractSelectedOrgUnits(tree,children,selections);
+                }
             });
-            return [selected_names,selected_ids];
+
+            return selections;
         }
 
         function getNodeNameAndId(node)

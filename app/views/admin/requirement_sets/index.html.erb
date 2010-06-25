@@ -20,6 +20,18 @@
     Staff Requirements
 <%end%>
 
+<%content_for :top_buttons do%>
+    <div id="training_nav_buttons">
+      <a class="btn ui-state-hover ui-corner-all">
+        <span class="ui-icon ui-icon-circle-check"></span>
+        Staff Requirements
+      </a>
+      <a class="btn ui-state-default ui-corner-all" id="drop" href="/admin/credentials">
+        <!--<span class="ui-icon ui-icon-bullet"></span>-->
+        Credential Manager
+      </a>
+    </div>   
+<%end%>
 
 <div id="requirement_set_detail"  style="min-height:500px;">
 </div>
