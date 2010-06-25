@@ -3,7 +3,7 @@ class OrganizationalRole < AccountModel
 
   def self.position_types
     @@position_types ||= begin
-      pt = OrderedHash.new
+      pt = BSON::OrderedHash.new
       pt[:exclusive] = "This role is assigned to a single individual"
       pt[:rotation] = "This role is divided into shifts scheduled via rotation"
       pt[:team] = "This role is shared by a team of peers"

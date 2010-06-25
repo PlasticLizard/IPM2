@@ -31,4 +31,10 @@ class Admin::DepartmentsController  < InheritedResources::Base
     end
   end
 
+  def index
+    @departments = current_account.roles.by_department
+    @show_title = true
+    render :layout=>'left_sidebar'
+  end
+
 end

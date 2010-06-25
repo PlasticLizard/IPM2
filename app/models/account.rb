@@ -9,7 +9,7 @@ class Account
       all.select{|rs|rs.department_id.blank?}
     end
     def by_department
-      proxy_owner.create_departmental_requirement_set_hierarchy(all)
+      proxy_owner.create_departmental_hierarchy(all)
     end
   end
 
@@ -26,7 +26,11 @@ class Account
   end
 
 
-  many :roles, :class_name=>'OrganizationalRole', :dependent=>:destroy
+  many :roles, :class_name=>'OrganizationalRole', :dependent=>:destroy do
+    def by_department
+      proxy_owner.create_departmental_hierarchy(all)
+    end
+  end
   many :departments, :dependent=>:destroy, :order=>'name'
 
   many :employees, :dependent=>:destroy, :order=>'last_name, first_name'
@@ -74,9 +78,9 @@ class Account
     hierarchy
   end
 
-  def create_departmental_requirement_set_hierarchy(requirement_sets)
+  def create_departmental_hierarchy(collection)
     hierarchy = BSON::OrderedHash.new
-    by_department = requirement_sets.group_by{|rs|rs.department_id}
+    by_department = collection.group_by{|item|item.department_id}
     departments.each do |department|
       hierarchy[department] = by_department[department.id] || []
     end

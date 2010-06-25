@@ -1,87 +1,121 @@
-<%stylesheet "jquery.layout.css"%>
-<%javascript "jquery.layout.min-1.2.0"%>
-<%javascript "jquery.maestro.editinplace"%>
-<%javascript "jquery.form"%>
-<script type="text/javascript" src="/javascripts/jsTree/jquery.tree.js"></script>
-<script type="text/javascript" src="/javascripts/jsTree/plugins/jquery.tree.contextmenu.js"></script>
+<%content_for :head do%>
+    <%stylesheet "boxy.css"%>
+    <%javascript "jquery.form"-%>
+    <%javascript "jquery.boxy.js"-%>
+    <%javascript "jquery.maestro.editinplace"-%>
 
-<style type="text/css">
-	html, body {
-		width:		100%;
-		height:		100%;
-		overflow:	hidden;
-	} 	
-	#container{
-		/*width:	900px;	*/
-		width:		97%;
-		/*max-width:	900px; */
-		min-width:	700px;
-		_width:		700px; /* min-width for IE6 */
-		height:		97%;
-		padding:	0;
-		margin:		0 auto;
-	}
-	.pane {
-		display:	none; /* will appear when layout inits */
-	}
+    <script type="text/javascript" src="/javascripts/jsTree/jquery.jstree.js"></script>
+    <%javascript "jquery.maestro.jstreehelper"%>
+<%end%>
 
-	</style>
+<%content_for :title do%>
+    Departments & Roles
+<%end%>
 
-  <div class="ui-layout-center">
-    <div class="center-north">
-      <div id="department_detail"></div>
+<%content_for :top_buttons do%>
+    <div id="org_nav_buttons">
+      <a class="btn ui-state-hover ui-corner-all">
+        <span class="ui-icon ui-icon-circle-check"></span>
+        Departments & Roles
+      </a>
+      <a class="btn ui-state-default ui-corner-all" id="drop" href="/admin/companies">
+        Organizational Model
+      </a>
     </div>
-    <div class="center-center">
-      <div id="role_detail"></div>
+<%end%>
+
+<div id="dep_role_detail"  style="min-height:500px;">
+</div>
+
+
+<%content_for :sidebar do%>
+
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header">
+        Departments & Roles
+        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
+      <div class="portlet-content">
+        <%= render :partial=>"tree"%>
+      </div>
     </div>
-  </div>
 
-  <div class="ui-layout-west">
-    <div class="west-center"> <%= render :partial=>"admin/shared/department_list", :locals=>{:departments=>@departments} %></div>
-    <div class="west-south"><div id="department_roles"></div></div>
-  </div>
+    <button id="create_department">New Department</button>
+    <button id="create_role">New Role</button>
+
+<%end%>
+
+<%content_for :javascript do%>
+    <script language="javascript">
+
+        $(document).ready(function() {
 
 
-<script language="javascript">
-    var outerLayout, westLayout;
+            $("#role_tree").jstree({
+                core : {animation:50},
+                plugins : [ "themes", "html_data", "ui", "crrm" ]
+            })
+                    .bind("select_node.jstree",function(event,data){
 
-    $(document).ready(function() {
+                var department_id = data.rslt.obj.attr("data-department-id");
+                var role_id = data.rslt.obj.attr("data-organizational-role-id");
 
-        outerLayout = $('#container').layout({
-            minSize:			100	// ALL panes
-            ,	west__size:			300
-            ,	west__onresize:		'westLayout.resizeAll'
-            ,	useStateCookie:		true
+                if (data.rslt.obj.attr("rel") == "department"){
+                    $(document).trigger("department.selected",[department_id]);
+                }
+                else if (data.rslt.obj.attr("rel") == "organizational-role"){
+                    $(document).trigger("organizational_role.selected",[department_id,role_id]);
+                }
+            });
+
+            $("#create_department").button().click(function(){
+//                $.maestro.dialogs.createRequirementSet({
+//                    onSubmit:function(rs){
+//                        var tree = $.jstree._reference("#requirement_tree");
+//                        var folder = $("#" + rs["department_id"]);
+//                        folder = tree._get_node(folder);
+//
+//                        tree.create_node(folder,"last",{
+//                            attr:{
+//                                id: rs["id"],
+//                                "data-department-id":rs["department_id"],
+//                                "data-requirement-set-id":rs["id"],
+//                                rel:"requirement-set"
+//                            },
+//                            data:{
+//                                attr:{title:rs["name"]},
+//                                title:rs["name"]
+//                            }
+//                        });
+//                        $(document).trigger("requirement_set.selected",["department_id",rs["id"]]);
+//                    }
+//                });
+            });
+
+            $(document).bind("department.selected",function(e,department_id){
+                $("#dep_role_detail").load("departments/" + department_id);
+                select_node("#role_tree","#" + department_id);
+            });
+
+            $(document).bind("organizational_role.selected",function(e,department_id,role_id){
+                if (role_id == null || role_id=='') return;
+                $("#dep_role_detail").load("departments/" + department_id + "/roles/" + role_id);
+                select_node("#role_tree","#" + role_id);
+            });
+
+            $(document).bind("organizational_role.deleted",function(e,role_id){
+                $.jstree._reference("#role_tree").remove("#" + role_id);
+            });
+
+            $(document).bind("organizational_role.renamed",function(e,role_id,new_name){
+                var tree = $.jstree._reference("#role_tree");
+                if (tree.get_text("#" + role_id) != new_name)
+                    tree.set_text("#" + role_id,new_name);
+            });
+
+            $(document).trigger("department.selected",['<%=@departments.keys[0].id%>']);
+
+
         });
 
-        westLayout = $('div.ui-layout-west').layout({
-            minSize:				50	// ALL panes
-            ,	center__paneSelector:	".west-center"
-            ,	south__paneSelector:	".west-south"
-            ,	south__size:			250
-        });
-
-        centerLayout = $('div.ui-layout-center').layout({
-             closable:				false	// pane can open & close
-            ,resizable:				false	// when open, pane can be resized
-            ,slidable:				false	// when closed, pane can 'slide' open over other panes - closes on mouse-out
-
-            ,center__paneSelector: ".center-center"
-            ,north__paneSelector:  ".center-north"
-            ,north__size: 85
-        });
-
-        $(document).bind("department.selected",function(e,department_id){
-            $("#department_roles").load("departments/" + department_id + "/roles");
-            $("#department_detail").load("departments/" + department_id)
-        });
-
-        $(document).bind("role.selected",function(e,department_id, role_id){
-            if (role_id == null || role_id=='') return;
-            $("#role_detail").load("departments/" + department_id + "/roles/" + role_id);
-        });
-
-    });
-
-
-</script>
+    </script>
+<%end%>
