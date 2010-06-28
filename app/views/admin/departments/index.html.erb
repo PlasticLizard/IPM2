@@ -39,8 +39,8 @@
       </div>
     </div>
 
-    <button id="create_department">New Department</button>
-    <button id="create_role">New Role</button>
+    <input id="new_department_name" type="text">
+    <a id="add_department">Add Department</a>
 
 <%end%>
 
@@ -67,28 +67,22 @@
                 }
             });
 
-            $("#create_department").button().click(function(){
-//                $.maestro.dialogs.createRequirementSet({
-//                    onSubmit:function(rs){
-//                        var tree = $.jstree._reference("#requirement_tree");
-//                        var folder = $("#" + rs["department_id"]);
-//                        folder = tree._get_node(folder);
-//
-//                        tree.create_node(folder,"last",{
-//                            attr:{
-//                                id: rs["id"],
-//                                "data-department-id":rs["department_id"],
-//                                "data-requirement-set-id":rs["id"],
-//                                rel:"requirement-set"
-//                            },
-//                            data:{
-//                                attr:{title:rs["name"]},
-//                                title:rs["name"]
-//                            }
-//                        });
-//                        $(document).trigger("requirement_set.selected",["department_id",rs["id"]]);
-//                    }
-//                });
+            $("#add_department").button().click(function(){
+                var new_department_data = {department:{name:$("#new_department_name").val()}};
+                $.ajax({
+                    type: 'post',
+                    data:new_department_data,
+                    dataType: 'json',
+                    success: function(json) {
+                        $("#new_department_name").val("");
+                        $(document).trigger("department.created",[json]);
+                    },
+                    error: function(response, status, error) {
+                    },
+                    complete: function() {
+                    },
+                    url: "/admin/departments"
+                });
             });
 
             $(document).bind("department.selected",function(e,department_id){
@@ -102,17 +96,61 @@
                 select_node("#role_tree","#" + role_id);
             });
 
+            $(document).bind("department.created",function(e,department){
+                var tree = $.jstree._reference("#role_tree");
+                var last = $("li.jstree-last[rel=department]");
+                last = tree._get_node(last);
+                var dep_node = tree.create_node(last,"after",{
+                    attr:{
+                        id:department["id"],
+                        "data-department-id":department["id"],
+                        rel:"department"
+                    },
+                    data:department["name"]
+                });
+                $(document).trigger("department.selected",[department["id"]]);
+
+            });
+
+            $(document).bind("organizational_role.created",function(e,parent_id,role){
+                var tree = $.jstree._reference("#role_tree");
+                var folder = $("#" + parent_id);
+                folder = tree._get_node(folder);
+                var role_node = tree.create_node(folder,"last",{
+                    attr:{
+                        id:role["id"],
+                        "data-department-id":role["department_id"],
+                        "data-organizational-role-id":role["id"],
+                        rel:"orgnizational-role"
+                    },
+                    data:role["name"]
+                });
+                $(document).trigger("organizational_role.selected",[role["department_id"],role["id"]]);
+            });
+
             $(document).bind("organizational_role.deleted",function(e,role_id){
                 $.jstree._reference("#role_tree").remove("#" + role_id);
             });
 
-            $(document).bind("organizational_role.renamed",function(e,role_id,new_name){
-                var tree = $.jstree._reference("#role_tree");
-                if (tree.get_text("#" + role_id) != new_name)
-                    tree.set_text("#" + role_id,new_name);
+            $(document).bind("department.deleted",function(e,department_id){
+                $.jstree._reference("#role_tree").remove("#" + department_id);
+                select_first_department();
             });
 
-            $(document).trigger("department.selected",['<%=@departments.keys[0].id%>']);
+            $(document).bind("department.renamed",function(e,department_id,new_name){
+               rename_node("#role_tree","#" + department_id,new_name);
+            });
+
+            $(document).bind("organizational_role.renamed",function(e,role_id,new_name){
+                rename_node("#role_tree","#" + role_id,new_name);
+            });
+
+            function select_first_department(){
+                var first_department = $("#role_tree").find("li[rel=department]").first();
+                select_node("#role_tree","#" + first_department.attr("id"));
+            }
+
+            select_first_department();
 
 
         });

@@ -28,7 +28,7 @@ class Account
 
   many :roles, :class_name=>'OrganizationalRole', :dependent=>:destroy do
     def by_department
-      proxy_owner.create_departmental_hierarchy(all)
+      proxy_owner.create_departmental_role_hierarchy(all)
     end
   end
   many :departments, :dependent=>:destroy, :order=>'name'
@@ -74,6 +74,14 @@ class Account
         types[type] = by_type ? by_type[type] : []
       end
       hierarchy[department] = by_type#types
+    end
+    hierarchy
+  end
+
+  def create_departmental_role_hierarchy(collection)
+    hierarchy = create_departmental_hierarchy(collection)
+    hierarchy.keys.each do |department|
+      hierarchy[department] = TreeHelper.arrange_tree_nodes(hierarchy[department]) if hierarchy[department]
     end
     hierarchy
   end

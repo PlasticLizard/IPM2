@@ -24,15 +24,24 @@ class Admin::RolesController  < InheritedResources::Base
   end
 
   def update
-    return super unless parent_id = params["role"].delete("parent_id")
-    update_resource(resource,get_parented_attributes(parent_id,params))
-    render :nothing=>true
+    if parent_id = params["role"].delete("parent_id")
+      update_resource(resource,get_parented_attributes(parent_id,params))
+    else
+      update_resource resource,params["role"]
+    end
+    render :json=>resource
   end
 
   def create
     return super unless parent_id = params["role"].delete("parent_id")
     new_child = OrganizationalRole.create!(get_parented_attributes(parent_id,params))
     render :json=>new_child.to_json
+  end
+
+  def destroy
+    destroy! do |format|
+      format.all { head :ok}
+    end
   end
 
   protected

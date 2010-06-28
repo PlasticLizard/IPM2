@@ -1,6 +1,120 @@
-<div id="department_name"
-     name="department[name]"
-     class="heading editable"
-     data-update_value="'department[name]'"><%=@department.name%></div>
-Reports to: <a href="#"><%=department_head_name%></a>
-<%=javascript_tag("$.fn.editInPlace.defaults.url='departments/#{resource.id}';$('.editable').editInPlace();")%>
+<div>
+<span div id="department_name"
+      name="department[name]"
+      class="heading editable"
+      data-update_value="'department[name]'"
+      data-success="department_renamed"><%=@department.name%>
+</span>
+  <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Delete the <%=@department.name%> department" href="#delete" rel="department" data-department-id="<%=@department.id%>">
+    <span class="ui-icon ui-icon-circle-close"></span>
+  </a>
+</div>
+
+
+<div class="content-box" style="float:left;padding:2px;margin:2px;background-color:#DDD">
+  <div class="content-box-wrapper" style="padding:2px;margin:2px;">
+    <h3 class="ui-box-header ui-corner-top">Department Head(s):</h3>
+    <%if @department.roles.count > 0%>
+        <div class="hastable">
+          <table style="width:100%">
+            <thead>
+            <tr>
+              <td>Role</td>
+              <td>Role Type</td>
+              <td>Staffed Per</td>
+              <td>Actions</td>
+            </tr>
+            </thead>
+            <tbody>
+            <%@department.roles.select{|d|d.parent_id.blank?}.each do |child_role|%>
+                <tr id="row_<%=child_role.id%>">
+                  <td>
+                    <a id="<%=child_role.id%>" href="#select" rel="organizational-role"><%=child_role.name%></a>
+                  </td>
+                  <td>
+                    <%=child_role.position_type%>
+                  </td>
+                  <td>
+                    <%=child_role.organizational_unit_type%>
+                  </td>
+                  <td>
+                    <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Remove <%=child_role.name%>" href="#delete" rel="organizational-role" data-organizational-role-id="<%=child_role.id%>">
+                      <span class="ui-icon ui-icon-circle-close"></span>
+                    </a>
+                  </td>
+                </tr>
+            <%end%>
+            </tbody>
+          </table>
+        </div>
+    <%end%>
+    <div class="ui-corner-all" style="background-color:white;padding:7px;">
+      <input id="new_role_name" type="text">
+      <a id="add_child_role">Add Department Head</a>
+    </div>
+  </div>
+</div>
+<script language="javascript">
+    $.fn.editInPlace.defaults.url='departments/<%=resource.id%>';
+    $('.editable').editInPlace();
+    function department_renamed(new_name){
+        $(document).trigger("department.renamed",['<%=resource.id%>',new_name]);
+    }
+    $("a[href=#select][rel=organizational\-role]").click(function(){
+        $(document).trigger("organizational_role.selected",['<%=@department.id%>',this.id]);
+    });
+
+    $("a[href=#delete][rel=department]").click(function(){
+        var department_id = $(this).attr("data-department-id");
+        $.ajax({
+            type: 'post',
+            data:{_method:"delete",department:{id:department_id}},
+            dataType: 'script',
+            success: function(request){
+                $(document).trigger("department.deleted",[department_id]);
+            },
+            url: "/admin/departments/<%=@department.id%>"
+        });
+    });
+
+    $("#add_child_role").button().click(function(){
+        var parent_id = '<%=@department.id%>';
+        var new_node_data = {role:{name:$("#new_role_name").val(),department_id:parent_id}};
+        $.ajax({
+            type: 'post',
+            data:new_node_data,
+            dataType: 'json',
+            success: function(json) {
+                $("#new_role_name").val("");
+                var id = json["id"]
+                $(document).trigger("organizational_role.created",[parent_id,json]);
+            },
+            error: function(response, status, error) {
+            },
+            complete: function() {
+            },
+            url: "/admin/departments/<%=@department.id%>/roles"
+        });
+
+    });
+
+    $("a[href=#select][rel=organizational\-role]").click(function(){
+        var role_id = this.id;
+        $(document).trigger("organizational_role.selected",['<%=@department.id%>',role_id]);
+    });
+
+    $("a[href=#delete][rel=organizational\-role]").click(function(){
+        var role_id = $(this).attr("data-organizational-role-id");
+        $.ajax({
+            type: 'post',
+            data:{_method:"delete",role:{id:role_id}},
+            dataType: 'script',
+            success: function(request){
+                $("#row_" + role_id).remove();
+                $(document).trigger("organizational_role.deleted",[role_id]);
+            },
+            url: "/admin/departments/<%=@department.id%>/roles/" + role_id
+        });
+    });
+
+</script>

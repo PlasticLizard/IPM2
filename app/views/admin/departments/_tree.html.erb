@@ -4,13 +4,7 @@
         <li id="<%=dep.id%>" data-department-id="<%=dep.id%>" rel="department">
           <a href="#"><%=dep.name%></a>
           <%unless @departments[dep].blank?%>
-                <ul>
-                  <%@departments[dep].each do |role| %>
-                      <li id="<%=role.id%>" data-organizational-role-id="<%=role.id%>" data-department-id="<%=dep.id%>" rel="organizational-role">
-                        <a href='#' class="tooltip" title="<%=h role.name%>"><%=truncate(role.name,:length=>35)%></a>
-                      </li>
-                  <% end %>
-              </ul>
+              <%=subtree_html(@departments[dep], dep.id)%>              
           <%end%>
         </li>
     <%end%>
