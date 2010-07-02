@@ -1,209 +1,98 @@
-<%stylesheet "jquery.layout.css"%>
-<%javascript "jquery.layout.min-1.2.0"%>
-<% javascript("jquery.maestro.editinplace")%>
+<%content_for :head do%>
+    <%stylesheet "boxy.css"%>
+    <%javascript "jquery.form"-%>
+    <%javascript "jquery.boxy.js"-%>
+    <%javascript "jquery.maestro.editinplace"-%>
 
-<script type="text/javascript" src="/javascripts/jsTree/jquery.tree.js"></script>
-<script type="text/javascript" src="/javascripts/jsTree/plugins/jquery.tree.contextmenu.js"></script>
+    <script type="text/javascript" src="/javascripts/jsTree/jquery.jstree.js"></script>
+    <%javascript "jquery.maestro.jstreehelper"%>
+<%end%>
 
-<style type="text/css">
-    html, body {
-        width:		100%;
-        height:		100%;
-        overflow:	hidden;
-    }
-    #container{
-    /*width:	900px;	*/
-        width:		97%;
-    /*max-width:	900px; */
-        min-width:	700px;
-        _width:		700px; /* min-width for IE6 */
-        height:		97%;
-        padding:	0;
-        margin:		0 auto;
-    }
-    .pane {
-        display:	none; /* will appear when layout inits */
-    }
+<%content_for :title do%>
+    Organizational Model
+<%end%>
 
-</style>
+<%content_for :top_buttons do%>
+    <div id="org_nav_buttons">
+      <a class="btn  ui-corner-all ui-state-default" href="/admin/departments">
+        Departments & Roles
+      </a>
+      <a class="btn ui-state-hover ui-corner-all" id="drop">
+        <span class="ui-icon ui-icon-circle-check"></span>
+        Organizational Model
+      </a>
+    </div>
+<%end%>
 
-<div class="ui-layout-center" id="ou_detail">
-
+<div id="detail"  style="min-height:500px;">
 </div>
 
-<div class="ui-layout-west">
-  <div id="org-tree">
-    <%=org_tree_html%>
-  </div>
-</div>
 
+<%content_for :sidebar do%>
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header">
+        Organizational Model
+        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
+      <div class="portlet-content">
+        <%=org_tree_html%>
+      </div>
+    </div>
+<%end%>
 
 <script language="javascript">
-    var outerLayout, westLayout;
+    $(document).ready(function(){
+        $("#org_tree").jstree({
+            core : {animation:50},
+            plugins : [ "themes", "html_data", "ui", "crrm" ]
+        })
+                .bind("select_node.jstree",function(event,data){
+            var $this = data.rslt.obj;
+            //            var root = find_root(node,tree);
+            //            var type = tree.get_type(node).split(':');
+            var controller = $this.attr("data-collection-name");
+            var ou_id = $this.attr("id");
+            if (!ou_id) return;
 
-    $(document).ready(function() {
-
-        outerLayout = $('#container').layout({
-            minSize:			100	// ALL panes
-            ,	west__size:			300
-            ,	west__onresize:		'westLayout.resizeAll'
-            ,	useStateCookie:		true
-        });
-
-        $("#org-tree").tree({
-            plugins : {
-                contextmenu : { }
-            },
-            callback:{
-                onrename:renameOrganizationalUnit,
-                beforedelete:deleteOrganizationalUnit,
-                oncreate:createOrganizationalUnit,
-                onselect: triggerOrganizationalUnitSelectedEvent
-            },
-            rules : {
-                // only nodes of type root can be top level nodes
-                valid_children : [ "company:companies" ]
-            },
-            types : {
-                // all node types inherit the "default" node type
-                "default" : {
-                    deletable : true,
-                    renameable : true,
-                    draggable: false
-                },
-                "company:companies" : {
-                    //valid_children : [ "region:regions" ]
-                    //                    ,
-                    //                    icon : {
-                    //                        image : "/demos/drive.png"
-                    //                    }
-                },
-                "region:regions" : {
-                    //valid_children : [ "station:stations" ]
-                },
-                "station:stations" : {
-                    // the following three rules basically do the same
-                    //valid_children : "transport_unit:transport_units"
-                    //                    ,icon : {
-                    //                        image : "/demos/file.png"
-                    //                    }
-                },
-                "transport_unit:transport_units": {
-                    valid_children:"none"
-                }
-            }
-
+            $(document).trigger('organizational_unit.selected',[controller,ou_id]);
 
         });
 
-    });
 
-    // var baseUrl = "companies/<%#@department.id%>/roles"
-
-    function find_root(node,tree){
-        var parent = tree.parent(node);
-        if (parent == -1) return $(node);
-        return find_root(parent,tree);
-    }
-
-    function createOrganizationalUnit(node, ref, ref_type, tree, rollback){
-        var parent = tree.parent(node);
-        var root = find_root(node,tree);
-
-        var parent_id = ((parent != -1  && parent.length > 0) ? parent[0].id.split("_").pop() : null);
-        var company_id = root[0].id.split("_").pop();
-
-        var new_node_data = {organizational_unit:{name:'New OU'}};
-        if (parent_id) new_node_data["organizational_unit"]["parent_id"] = parent_id;
-        $.ajax({
-            type: 'post',
-            data:new_node_data,
-            dataType: 'json',success: function(json) {
-                var id = json["_id"];
-                $(node).attr("id","ou_" + id);
-                tree.set_type(json["type"],node);
-            },
-            error: function(response, status, error) {
-            },
-            complete: function() {
-            },
-            url: "companies/" + company_id + "/organizational_unit"
-
-        });
-    }
-
-    function renameOrganizationalUnit(node,tree,rollback){
-        if (node.id != null && node.id != '')
-        {
-            var root = find_root(node,tree);
-            var company_id = root[0].id.split("_").pop();
-            var type = tree.get_type(node).split(':');
-            var controller = type[1];
-            var resource = type[0];
-            var node_id = node.id.split("_").pop();
-
-            var url = "companies/" + company_id;
-            if (controller != "companies") url += "/" + controller + "/" + node_id;
-
-
-            var data = {_method:"put"};
-            data[resource] = {id:node_id,name:tree.get_text(node)};
-            $.ajax({
-                type: 'post',
-                data: data,
-                dataType: 'json',
-                complete: function(request){
-                    //$("#roles").effect('highlight');
+        $(document).bind("organizational_unit.created",function(e,parent_id,ou){
+            var tree = $.jstree._reference("#org_tree");
+            var folder = $("#" + parent_id);
+            folder = tree._get_node(folder);
+            var ou_node = tree.create_node(folder,"last",{
+                attr:{
+                    id:ou["_id"],
+                    "data-collection-name":ou["collection_name"],
+                    rel:"orgnizational-unit"
                 },
-                url: url
+                data:ou["name"]
             });
+            $(document).trigger("organizational_unit.selected",[ou["collection_name"],ou["_id"]]);
+        });
+
+        $(document).bind("organizational_unit.selected",function(e,controller,ou_id){
+            select_node("#org_tree","#" + ou_id);
+            $("#detail").load(controller + "/" + ou_id);
+        });
+
+        $(document).bind("organizational_unit.renamed",function(e,unit_id,new_name){
+            rename_node("#org_tree","#" + unit_id,new_name);
+        });
+
+        $(document).bind("organizational_unit.deleted",function(e,ou_id){
+            $.jstree._reference("#org_tree").remove("#" + ou_id);
+        });
+
+        function select_first_company(){
+            var first_co = $("#org_tree").find("li[rel=organizational\-unit]").first();
+            select_node("#org_tree","#" + first_co.attr("id"));
         }
 
+        select_first_company();
 
-    }
-
-    function deleteOrganizationalUnit(node,tree,rollback){
-        var root = find_root(node,tree);
-        var company_id = root[0].id.split("_").pop();
-        var type = tree.get_type(node).split(':');
-        var controller = type[1];
-        var resource = type[0];
-        var node_id = node.id.split("_").pop();
-
-        var url = "companies/" + company_id;
-        if (controller != "companies") url += "/" + controller + "/" + node_id;
-
-        var data = {_method:"delete"};
-        data[resource] = {id:node_id};
-        $.ajax({
-            type: 'post',
-            data:data,
-            dataType: 'json',
-            complete: function(request){
-                //$("#roles").effect('highlight');
-            },
-            url: url
-        });
-        return true;
-    }
-
-    function triggerOrganizationalUnitSelectedEvent(node,tree)
-    {
-        var root = find_root(node,tree);
-        var company_id = root[0].id.split("_").pop();
-        var type = tree.get_type(node).split(':');
-        var controller = type[1];
-        var node_id = node.id.split("_").pop();
-        if (!node_id) return;
-        var url = "companies/" + company_id;
-        if (controller != "companies") url += "/" + controller + "/" + node_id;
-
-        $(node).trigger('organizational_unit.selected',[company_id,node_id,type,url]);
-    }
-
-    $(document).bind("organizational_unit.selected",function(e,company_id,node_id,type,url){
-        $("#ou_detail").load(url);
     });
-
 
 </script>

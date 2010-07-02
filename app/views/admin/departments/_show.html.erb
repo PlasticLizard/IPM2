@@ -1,12 +1,12 @@
-<div>
-<span div id="department_name"
+<div class="inner-page-title">
+<h2 div id="department_name"
       name="department[name]"
       class="heading editable"
       data-update_value="'department[name]'"
       data-success="department_renamed"><%=@department.name%>
-</span>
-  <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Delete the <%=@department.name%> department" href="#delete" rel="department" data-department-id="<%=@department.id%>">
-    <span class="ui-icon ui-icon-circle-close"></span>
+</h2>
+  <a  title="Delete the <%=@department.name%> department" href="#delete" rel="department" data-department-id="<%=@department.id%>">
+    Delete
   </a>
 </div>
 

@@ -1,4 +1,5 @@
 class Employee < User
+   
   key :organizational_unit_id, ObjectId
   belongs_to :organizational_unit
 

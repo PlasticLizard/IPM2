@@ -1,4 +1,5 @@
 class AccountModel
+    
   class << AccountModel
     def inherited(other)
       super
@@ -18,6 +19,6 @@ class AccountModel
       def set_current_account
         self.account = Account.current if Account.current
       end
-    end
+    end   
   end
 end

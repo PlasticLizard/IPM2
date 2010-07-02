@@ -1,0 +1,99 @@
+<div class="inner-page-title">
+<h2 id="<%=organizational_unit_type%>_name"
+     class="editable"
+     data-success="ou_renamed"
+     data-update_value="'<%=organizational_unit_type%>[name]'"><%=@organizational_unit.name%></h2>
+</div>
+<%unless @organizational_unit.child_type.blank?%>
+    <div class="content-box" style="float:left;padding:2px;margin:2px;background-color:#DDD">
+      <div class="content-box-wrapper" style="padding:2px;margin:2px;">
+        <h3 class="ui-box-header ui-corner-top"><%=@organizational_unit.child_type.to_s.titleize.pluralize%></h3>
+        <%if (children = @organizational_unit.children) && children.count > 0%>
+            <div class="hastable">
+              <table style="width:100%">
+                <thead>
+                <tr>
+                  <td>
+                    <%=@organizational_unit.child_type.to_s.titleize%>
+                  </td>
+                  <td>Actions</td>
+                </tr>
+                </thead>
+                <tbody>
+                <%children.each do |ou|%>
+                    <tr id="row_<%=ou.id%>">
+                      <td>
+                        <a data-organizational-unit-id="<%=ou.id%>" href="#select" rel="organizational-unit">
+                          <%=ou.name%>
+                        </a>
+                      </td>
+                      <td>
+                        <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Remove <%=ou.name%>" href="#delete" rel="organizational-unit" data-organizational-unit-id="<%=ou.id%>">
+                          <span class="ui-icon ui-icon-circle-close"></span>
+                        </a>
+                      </td>
+                    </tr>
+                <%end%>
+                </tbody>
+              </table>
+            </div>
+        <%end%>
+        <div class="ui-corner-all" style="background-color:white;padding:7px;">
+          <input id="new_ou_name" type="text">
+          <a id="add_child_ou">Add <%=@organizational_unit.child_type.to_s.titleize%></a>
+        </div>
+      </div>
+    </div>
+<%end%>
+
+
+<script language="javascript">
+    $.fn.editInPlace.defaults.url='<%=organizational_unit_type.pluralize%>/<%=@organizational_unit.id%>';
+    $('.editable').editInPlace();
+
+    function ou_renamed(new_name){
+        $(document).trigger("organizational_unit.renamed",['<%=@organizational_unit.id%>',new_name]);
+    }
+
+    $("#add_child_ou").button().click(function(){
+        var parent_id = '<%=@organizational_unit.id%>';
+        var new_node_data = {organizational_unit:{name:$("#new_ou_name").val(),parent_id:parent_id}};
+        $.ajax({
+            type: 'post',
+            data:new_node_data,
+            dataType: 'json',
+            success: function(json) {
+                $("#new_ou_name").val("");
+                var id = json["id"]
+                $(document).trigger("organizational_unit.created",[parent_id,json]);
+
+            },
+            error: function(response, status, error) {
+            },
+            complete: function() {
+            },
+            url: "/admin/organizational_units"
+        });
+    });
+
+    $("a[href=#select][rel=organizational\-unit]").click(function(){
+        var ou_id = $(this).attr("data-organizational-unit-id");
+        $(document).trigger("organizational_unit.selected",['<%=@organizational_unit.child_type.to_s.underscore.pluralize%>',ou_id]);
+    });
+
+    $("a[href=#delete][rel=organizational\-unit]").click(function(){
+        var ou_id = $(this).attr("data-organizational-unit-id");
+        $.ajax({
+            type: 'post',
+            data:{_method:"delete"},
+            dataType: 'script',
+            success: function(request){
+                $("#row_" + ou_id).remove();
+                $(document).trigger("organizational_unit.deleted",[ou_id]);
+            },
+            url: "/admin/<%=@organizational_unit.child_type.to_s.underscore.pluralize%>/" + ou_id
+        });
+    });
+
+</script>
+

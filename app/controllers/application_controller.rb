@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :authorize_account
 
+  layout "left_sidebar"
+  
   def authorize_account
     if (Rails.env == "development" && params["_account"])
       Account.set_current_account(Account.find(params["_account"].to_i))

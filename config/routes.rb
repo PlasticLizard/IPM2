@@ -45,6 +45,9 @@ ActionController::Routing::Routes.draw do |map|
       dep.resources :requirement_sets, :collection=>{:list=>:get}
       dep.resources :credentials, :collection=>{:list=>:get, :quick_add=>:get}
     end
+
+    admin.resources :regions, :stations, :transport_units
+    
     admin.resources :organizational_units, :collection=>{:select=>:get}
 
     admin.resources :requirement_sets do |rs|

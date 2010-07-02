@@ -6,7 +6,7 @@ class OrganizationalUnit < AccountModel
 
   many :employees, :foreign_key=>'organizational_unit_id'
 
-  acts_as_tree
+  acts_as_tree :search_class=>OrganizationalUnit, :order=>:name
   
   def child_type
     @child_type ||= account.organizational_structure.child_of(self)
