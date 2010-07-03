@@ -1,5 +1,52 @@
+<%content_for :head do%>
+    <%javascript "jquery.form"-%>
+
+    <script type="text/javascript" src="/javascripts/jsTree/jquery.jstree.js"></script>
+    <%javascript "jquery.maestro.jstreehelper"%>
+<%end%>
+
 <%content_for :title do%>
     Employee Directory
+<%end%>
+
+<%content_for :sidebar do%>
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header">
+        Filters
+        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
+      <div class="portlet-content">
+        <div class="search-bar">
+          <form method="get">
+            <%if params[:q]%>
+                <a href="/admin/employees" id="clear_search">
+                  <span class="ui-icon ui-icon-close"></span>
+                </a>
+            <%end%>
+            <label for="filter_name">Name:</label>
+            <input label="filter_name" type="text" name="q" value="<%=params[:q]%>"/>
+            <input type="submit" value="Search">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header">
+        Departments & Roles
+        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
+      <div class="portlet-content">
+        <%=render :partial=>"/admin/departments/tree"%>
+      </div>
+    </div>
+
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header">
+        Organizational Model
+        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
+      <div class="portlet-content">
+        <%=org_tree_html%>
+      </div>
+    </div>
 <%end%>
 
 <div class="content-box" style="float:left;">
@@ -71,6 +118,39 @@
         });
 
         $("#add_employee").button();
+
+        $("#role_tree").jstree({
+            core : {animation:50},
+            plugins : [ "themes", "html_data", "ui"]
+        })
+                .bind("select_node.jstree",function(event,data){
+
+            var department_id = data.rslt.obj.attr("data-department-id");
+            var role_id = data.rslt.obj.attr("data-organizational-role-id");
+
+            if (data.rslt.obj.attr("rel") == "department"){
+                $(document).trigger("department.selected",[department_id]);
+            }
+            else if (data.rslt.obj.attr("rel") == "organizational-role"){
+                $(document).trigger("organizational_role.selected",[department_id,role_id]);
+            }
+        });
+
+        $("#org_tree").jstree({
+            core : {animation:50},
+            plugins : [ "themes", "html_data", "ui" ]
+        })
+                .bind("select_node.jstree",function(event,data){
+            var $this = data.rslt.obj;
+            //            var root = find_root(node,tree);
+            //            var type = tree.get_type(node).split(':');
+            var controller = $this.attr("data-collection-name");
+            var ou_id = $this.attr("id");
+            if (!ou_id) return;
+
+            $(document).trigger('organizational_unit.selected',[controller,ou_id]);
+
+        });
     });
 </script>
 

@@ -28,8 +28,9 @@
 
         function showDialog(selected_roles,options,dlg)
         {
-            var node_ids = $.map(selected_roles,function(item){return "#role_" + item});
+            var node_ids = $.map(selected_roles,function(item){return "#" + item});
             var tree = $.jstree._reference(dlg);
+            tree.open_all();
 
 
             options.modal = options.modal || true;
@@ -56,8 +57,7 @@
             $(".title-bar").addClass("ui-widget-header");
 
             uncheckAll(tree);
-            var nodes = $(node_ids.join(", "));
-            nodes.each(function(index,node){tree.select_node(node)});
+            $.each(node_ids,function(index,node){tree.select_node(node)});
         }
 
         function uncheckAll(tree)
@@ -81,7 +81,7 @@
         function getNodeNameAndId(node)
         {
             node = $(node);
-            return [node.find("a").first().text(),node.attr("id").split("_").pop()];
+            return [node.find("a").first().text(),node.attr("id")];
         }
 
     }

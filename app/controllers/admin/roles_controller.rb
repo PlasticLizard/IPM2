@@ -10,7 +10,8 @@ class Admin::RolesController  < InheritedResources::Base
   end
 
   def select
-    render :partial=>"select"
+    @departments = {parent=>parent.roles.arrange}
+    render :partial=>"/admin/departments/tree"
   end
   
   def show

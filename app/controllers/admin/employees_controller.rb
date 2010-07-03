@@ -25,11 +25,14 @@ class Admin::EmployeesController < InheritedResources::Base
 
   def index
     @show_title = true
+    @departments = current_account.roles.by_department
     super
   end
 
   def collection
-    @employees ||= current_account.employees.paginate :page=>params[:page], :per_page=>(params[:per_page] || per_page)
+    query = current_account.employees
+    query = query.all(:full_name=> /#{params[:q]}/i) if params[:q] 
+    @employees ||= query.paginate :page=>params[:page], :per_page=>(params[:per_page] || per_page)
   end
 
 
