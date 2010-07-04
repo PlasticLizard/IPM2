@@ -2,7 +2,7 @@ class Admin::EmployeesController < InheritedResources::Base
   include AccountResourceController
 
   def per_page
-    20
+    25
   end
 
   def show
@@ -26,12 +26,23 @@ class Admin::EmployeesController < InheritedResources::Base
   def index
     @show_title = true
     @departments = current_account.roles.by_department
-    super
+    index! do |format|
+      format.html {
+        return render :partial=>"employee_list" if request.xhr?
+        render :index
+      }
+    end
   end
 
   def collection
     query = current_account.employees
-    query = query.all(:full_name=> /#{params[:q]}/i) if params[:q] 
+    filter = {}
+    filter[:full_name]=/#{params[:q]}/i unless params[:q].blank?
+    filter[:department_id] = params[:departments] unless params[:departments].blank?
+    filter[:organizational_role_id] = params[:roles] unless params[:roles].blank?
+    filter[:organizational_unit_id] = params[:organizational_units] unless params[:organizational_units].blank?
+    query = query.all(filter) unless filter.blank?
+
     @employees ||= query.paginate :page=>params[:page], :per_page=>(params[:per_page] || per_page)
   end
 

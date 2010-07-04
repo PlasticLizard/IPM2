@@ -43,7 +43,7 @@
             dlg.find("button.ok").click(function(){
                 var checkedNodes = tree.get_selected();
                 var selected =
-                        extractSelectedDepartments(checkedNodes);
+                        extractSelected(checkedNodes);
                 if (options.onSelection)
                     options.onSelection.apply(this,[selected]);
 
@@ -66,7 +66,7 @@
             checkedNodes.each(function(index,node){tree.deselect_node(node)});
         }
 
-        function extractSelectedDepartments(checked_nodes)
+        function extractSelected(checked_nodes)
         {
             var selected_names = [];
             var selected_ids = [];
