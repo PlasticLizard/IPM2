@@ -1,61 +1,30 @@
-<div id="issued_credential_list">
+<div id="issued_credential_list" class="hastable">
   <table id = "issued_credential_table" class="ui_widget">
+    <thead>
     <tr>
-      <th>Credential type</th>
       <th>Credential</th>
+      <th>Credential Type</th>
       <th>Issued</th>
       <th>Expires</th>
-      <th>&nbsp;</th>
+      <th>Actions</th>
     </tr>
+    </thead>
+    <tbody>
     <%@issued_credentials.each do |ic|%>
-        <tr class="ui-state-default ic_row_<%=ic.id%>">
-          <td><%=ic.credential_type_name%></td>
+        <tr class="ui_state_default ic_row_<%=ic.id%>">
           <td><a href="<%=admin_credential_url(ic.credential_id)%>"><%=ic.credential_name%></a></td>
+          <td><%=ic.credential_type_name%></td>
           <td><%=ic.issue_date%></td>
           <td><%=ic.expiration_date ? "#{ic.expiration_date} (#{ic.days_until_expiration} days)" : "never expires"%></td>
           <td>
-            <span id="edit_credential_<%=ic.id%>" class="ui-icon ui-icon-pencil edit_credential" style="cursor:pointer"></span>
-            <span id="remove_credential_<%=ic.id%>" class="ui-icon ui-icon-closethick remove_credential" style="cursor:pointer"></span>
+            <span id="edit_credential_<%=ic.id%>" class="ui-icon ui-icon-pencil edit-credential" style="cursor:pointer"></span>
+            <span id="remove_credential_<%=ic.id%>" class="ui-icon ui-icon-closethick remove-credential" style="cursor:pointer"></span>
           </td>
         </tr>
     <%end%>
+    </tbody>
   </table>
-  <button id="issue_credential">New Credential/Training</button>
-
-  <script language="javascript">
-    $(".remove_credential").click(function(){
-        var id = this.id.split("_").pop();
-        $.ajax({
-            type: 'post',
-            data: {_method:'delete',issued_credential_id:id},
-            data_type:null,
-            complete: function(request){
-                $("tr.ic_row_" + id).remove();
-            },
-            url: '<%=@employee.id%>/issued_credentials/revoke'
-        });
-    });
-
-    $('#issue_credential').button().click(function(){
-        $.maestro.dialogs.issueCredential('<%=@employee.id%>',{
-            onSubmit:function(new_credential){
-                $("#issued_credential_list").load("<%=@employee.id%>/issued_credentials/" + new_credential.id);
-            }
-        });
-    });
-
-    $(".edit_credential").click(function(){
-        var id = this.id.split("_").pop();
-        $.maestro.dialogs.editIssuedCredential('<%=@employee.id%>',id,{
-          onSubmit:function(credential){
-                $("#issued_credential_list").load("<%=@employee.id%>/issued_credentials/" + id);
-            }
-        });
-    });
-
-    $(".button").button();
-
-
-</script>
 </div>
+
+
 

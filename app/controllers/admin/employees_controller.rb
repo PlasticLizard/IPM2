@@ -2,12 +2,20 @@ class Admin::EmployeesController < InheritedResources::Base
   include AccountResourceController
 
   def per_page
-    25
+    20
   end
 
   def show
     @issued_credentials = resource.issued_credentials
-    super
+    show! do |format|
+      format.all { render :layout=>"no_sidebar"}
+    end
+  end
+
+  def edit
+    edit! do |format|
+      format.all { render :layout=>"no_sidebar"}
+    end
   end
 
   def create

@@ -3,6 +3,118 @@
 <%javascript "jquery.boxy.js"-%>
 <%javascript "jquery.maestro.dialogs.issuecredential"%>
 <%javascript "jquery.maestro.dialogs.editissuedcredential"%>
+<%javascript "jquery.maestro.credentialtree"%>
+<%javascript "jquery.maestro.dialogs.selectcredential"%>
 <%javascript "jquery.form"%>
+<script type="text/javascript" src="/javascripts/jsTree/jquery.jstree.js"></script>
+<%javascript "jquery.maestro.jstreehelper"%>
 
-<%=render :partial=>"employee_summary", :object=>resource%>
+<%content_for :breadcrumb do%>
+    <h2 id="employee_full_name"
+        name="employee[full_name]"
+        class="heading editable"
+        data_update_value="'employee[full_name]'"><%=@employee.full_name%></h2>
+
+
+    <span id="employee_email_address"
+          name="employee[email_address]"
+          class="editable"
+          data_update_value="'employee[email_address]'"
+          data_default_text="'(add an e_mail address)'">
+      <%=@employee.email_address%>
+</span>
+    <%unless @employee.email_address.blank?%>
+        <a href="mailto:<%=@employee.email_address%>">
+          <%=image_tag "email.png"%>
+        </a>
+    <%end%>
+<%end%>
+
+<%content_for :top_buttons do%>
+    <div id="emp_nav_buttons">
+      <a class="btn ui-state-default ui-corner-all" id="drop" href="/admin/employees">
+        <span class="ui-icon ui-icon-contact"></span>
+        Employee Directory
+      </a>
+    </div>
+<%end%>
+
+<div id="employee_details"  style="float:left;">
+  <div id="details" class="ui-corner-all" style="margin-bottom:5px;">
+    <ul>
+      <li><span>Department</span><%=@employee.department.name%></li>
+      <li><span>Assigned To</span><%=@employee.organizational_unit.name%></li>
+      <li><span>Position</span><%=@employee.organizational_role.name%></li>
+    </ul>
+    <a class="btn icon-only ui-state-default ui-corner-all" href="/admin/employees/<%=@employee.id%>/edit" title="Edit this employee" style="margin:1px;">
+      <span class="ui-icon ui-icon-pencil"></span>
+    </a>
+    <div class="clear"></div>
+
+  </div>
+
+
+
+  <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+    <div class="portlet-header ui-widget-header">
+      Credentials & Training
+    </div>
+    <div class="portlet-content">
+
+      <%=render :partial=>"admin/issued_credentials/list"%>
+
+    </div>
+  </div>
+
+  <button id="issue_credential">New Credential/Training</button>
+
+</div>
+
+<%content_for :javascript do%>
+    <script language="javascript">
+        $(document).ready(function(){
+
+
+            $.fn.editInPlace.defaults.url='<%=@employee.id%>';
+            $('.editable').editInPlace();
+
+            $(".remove-credential").live('click',function(){
+                var id = this.id.split("_").pop();
+                $.ajax({
+                    type: 'post',
+                    data: {_method:'delete',issued_credential_id:id},
+                    data_type:null,
+                    complete: function(request){
+                        $("tr.ic_row_" + id).remove();
+                    },
+                    url: '<%=@employee.id%>/issued_credentials/revoke'
+                });
+            });
+
+            $('#issue_credential').button().click(function(){
+                $.maestro.dialogs.selectCredential('<%=@employee.department_id%>',{
+                    onSelection:function(selected_credential_ids){
+                        var cred_id =  selected_credential_ids.pop();
+                        $.maestro.dialogs.issueCredential(cred_id,'<%=@employee.id%>',{
+                            onSubmit:function(new_credential){
+                                $("#issued_credential_list").load("<%=@employee.id%>/issued_credentials/" + new_credential.id);
+                            }
+                        });
+                    }
+                });
+
+            });
+
+            $(".edit-credential").live('click',function(){
+                var id = this.id.split("_").pop();
+                $.maestro.dialogs.editIssuedCredential('<%=@employee.id%>',id,{
+                    onSubmit:function(credential){
+                        $("#issued_credential_list").load("<%=@employee.id%>/issued_credentials/" + id);
+                    }
+                });
+            });
+        });
+
+
+    </script>
+<%end%>

@@ -4,15 +4,16 @@
         }
     };
 
-    $.maestro.dialogs.issueCredential = function(employee_id,options)
+    $.maestro.dialogs.issueCredential = function(credential_id,employee_id,options)
     {
         options = options || {};
-        var dlg_id = "maestro_dialogs_issueCredential";
+        var dlg_id = "maestro_dialogs_issueCredential_" + credential_id;
         var dlg = $("#" + dlg_id);
         if (dlg.length==0)
         {
+            var url = employee_id + "/issued_credentials/select?credential_id=" + credential_id;
             dlg = $("<div id='" + dlg_id + "'></div>");
-            dlg.load(employee_id + "/issued_credentials/select",function(){
+            dlg.load(url,function(){
 
                 dlg.append("<div class='ui-widget-footer' style='float:right;padding-top:10px;padding-bottom:5px'> \
             <button class='ok'>Ok</button> \
@@ -35,11 +36,11 @@
             dlg.find("button.ok").click(function(){
                 var sel = dlg.find("select");
 
-                cred_id = sel.val();
-                cred_name = dlg.find('option:selected').text();
+                var cred_id = credential_id;
+                var cred_name = dlg.find('#issued_credential_name').text();
 
-                cred_issue_date = dlg.find("#issue_date").val();
-                cred_expiration_date = dlg.find("#expiration_date").val();
+                var cred_issue_date = dlg.find("#issue_date").val();
+                var cred_expiration_date = dlg.find("#expiration_date").val();
 
                 $.ajax({
                     type:'POST',

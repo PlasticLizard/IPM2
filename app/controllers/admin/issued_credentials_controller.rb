@@ -29,6 +29,7 @@ class Admin::IssuedCredentialsController < InheritedResources::Base
   end
 
   def select
+    @credential = Credential.find(params[:credential_id])
     render :partial=>"select_credential"
   end
 

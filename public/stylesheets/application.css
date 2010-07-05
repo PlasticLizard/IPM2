@@ -93,3 +93,29 @@ span.ui-icon { float: left;}
 
 a.button {text-decoration:none;padding:2px;}
 
+#details ul li {
+
+    display:block;
+    float:left;
+    margin-right:5px;
+    padding-right:5px;
+    border-right:1px solid #CCC;
+}
+
+#details li span {
+    font-weight:normal;
+    font-size:.8em;
+    display:block;
+    margin-bottom:4px;
+}
+
+#details
+{
+    font-weight:bold;
+    color:white;
+    padding:10px;
+    font-size:1.2em;
+    background-color: #4f5978;
+    border: 1px solid gray;
+
+}
