@@ -19,7 +19,7 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'will_paginate', :version=>'2.3.12'
+  config.gem 'will_paginate', :version=>'>= 2.3.12'
   config.gem 'inherited_resources', :version=>'1.0.6'
   config.gem 'mongo_mapper'
   config.gem 'ramdiv-mongo_mapper_acts_as_tree', :lib=>'mongo_mapper_acts_as_tree', :version=>'>= 0.1.0'
