@@ -13,6 +13,14 @@ MongoMapper.setup(get_database_config, Rails.env, {
         :passenger => false
 })
 
+module IdentityMapAddition
+  def self.included(model)
+    model.plugin MongoMapper::Plugins::IdentityMap
+  end
+end
+
+MongoMapper::Document.append_inclusions(IdentityMapAddition) 
+
 
 #cert_path = Rails.root.join("app","models","credentials")
 #searcher = "**/*.rb"

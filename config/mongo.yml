@@ -1,7 +1,7 @@
 development:
   database: ipm2
-  host: flame.mongohq.com
-  port: 27027
+  host: 174.143.146.138
+  #port: 27027
   username: ipm
   password: Fl1ghtL1nk
 
@@ -11,8 +11,8 @@ test: &TEST
  
 production:
   database: ipm2
-  host: flame.mongohq.com
-  port: 27027
+  host: 174.143.146.138
+  #port: 27027
   username: ipm
   password: Fl1ghtL1nk
 
