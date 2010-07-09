@@ -25,29 +25,6 @@ required by every
 
 <%=render :partial=>"admin/requirement_groups/group", :collection=>@requirement_set.requirement_groups%>
 
-<div class="heading">Compliance</div>
- <% compliance = @requirement_set.compliance_status%>
-     Status:<%=compliance.status%>
-<ul>
-     <%compliance.children.each do |employee|%>
-      <li>
-        <a href="<%=admin_employee_url(employee.context)%>"><%=employee.name%></a>(<%=employee.status%>)
-        <ul>
-          <%employee.children.each do |group|%>
-              <li>
-                <%=group.name%> (<%=group.status%>)
-                <ul>
-                  <%group.children.each do |credential|%>
-                      <li><%=credential.name%> (<%=credential.status%>)</li>
-                  <%end%>
-                </ul>
-              </li>
-          <%end%>
-        </ul>
-      </li>
-  <%end%>
-</ul>
-
 <script language="javascript">
     var updateUrl = "departments/<%=@department.id%>/requirement_sets/<%=@requirement_set.id%>";
     $("#required_roles").click(function(){

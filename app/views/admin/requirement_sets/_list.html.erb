@@ -9,9 +9,6 @@
       <th>
         Name
       </th>
-      <th>
-        Status
-      </th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -22,10 +19,7 @@
             <a href="#select" rel="requirement_set" data-department-id="<%=rs.department_id%>" data-requirement-set-id="<%=rs.id%>">
               <%=rs.name%>
             </a>
-          </td>
-          <td>
-            <%=rs.compliance_status.status%>
-          </td>
+          </td>        
           <td>
             <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Delete <%=rs.name%>" href="#delete" rel="credential" data-requirement-set-id="<%=rs.id%>">
               <span class="ui-icon ui-icon-circle-close"></span>

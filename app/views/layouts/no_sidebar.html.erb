@@ -34,7 +34,7 @@
 <body>
 <div id="page_wrapper">
 <div id="page-header">
-<div id="page-header-wrapper">
+<div id="page-header-wrapper" class="fixed">
 <div id="top">
   <a href="ipm.heroku.com" class="logo" title="Maestro EMS">Maestro EMS</a>
   <div class="welcome">
@@ -94,7 +94,7 @@
 </div>
 </div>
 </div>
-<div id="sub-nav">
+<div id="sub-nav" class="fixed">
   <div class="page-title">
     <%- if show_title? -%>
         <h1><%=yield(:title) || "Untitled" %></h1>
@@ -108,7 +108,7 @@
     <%= yield(:top_buttons) %>
   </div>
 </div>
-<div id="page-layout">
+<div id="page-layout" class="fixed">
   <div id="page-content">
     <div id="page-content-wrapper" style="background:white">
       <%=yield%>

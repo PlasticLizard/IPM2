@@ -13,18 +13,19 @@ class Services::EmployeeRequirements::Service
     #employee.issued_credentials << ic
     employee.save!
     ic
-  end
+  end 
 
-  def check_requirement_set_compliance(requirement_set)
+
+  def update_requirement_set_compliance(requirement_set)
     employees = requirement_set.employees
     status = Services::EmployeeRequirements::ComplianceStatusGroup.new(requirement_set.name,requirement_set)
     employees.each do |employee|
-      status << check_employee_compliance(requirement_set,employee)
+      status << update_employee_compliance(requirement_set,employee)
     end
     status
   end
 
-  def check_employee_compliance(requirement_set,employee)
+  def update_employee_compliance(requirement_set,employee)
     status = Services::EmployeeRequirements::ComplianceStatusGroup.new(employee.full_name_formal,employee)
 
     requirement_set.requirement_groups.each do |group|

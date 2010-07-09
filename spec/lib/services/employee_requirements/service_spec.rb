@@ -33,7 +33,7 @@ describe Services::EmployeeRequirements::ComplianceStatus do
     rs.requirement_groups[0].required_credentials << cred1
     rs.requirement_groups[0].required_credentials << cred2
 
-    status = @service.check_employee_compliance(rs,emp)
+    status = @service.update_employee_compliance(rs,emp)
 
     status.status.should == :incomplete
     status.name.should == emp.full_name_formal
@@ -58,7 +58,7 @@ describe Services::EmployeeRequirements::ComplianceStatus do
     rs.requirement_groups[0].required_credentials << cred1
     rs.requirement_groups[0].required_credentials << cred2
 
-    status = @service.check_employee_compliance(rs,emp)
+    status = @service.update_employee_compliance(rs,emp)
 
     status.status.should == :current
     status.name.should == emp.full_name_formal

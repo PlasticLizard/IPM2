@@ -21,12 +21,7 @@ class RequirementSet < AccountModel
     filter[:organizational_role_id] = organizational_role_ids unless organizational_role_ids.blank?
     Account.current.employees.all filter
   end
-
-  #TODO:This should be cached at some regular interval, or when related components change
-  def compliance_status
-    Services::EmployeeRequirements::Service.current.check_requirement_set_compliance(self)
-  end
-
+  
   after_save :ensure_requirement_group
   def ensure_requirement_group
     unless requirement_groups.size > 0
