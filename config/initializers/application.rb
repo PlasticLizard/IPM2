@@ -19,7 +19,9 @@ module IdentityMapAddition
   end
 end
 
-MongoMapper::Document.append_inclusions(IdentityMapAddition) 
+MongoMapper::Document.append_inclusions(IdentityMapAddition)
+
+
 
 
 #cert_path = Rails.root.join("app","models","credentials")
