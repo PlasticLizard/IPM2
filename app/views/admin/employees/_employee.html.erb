@@ -1,24 +1,68 @@
+<%content_for :head do%>
+    <%stylesheet "boxy.css"%>
+    <%javascript "jquery.boxy.js"-%>
+
+    <%javascript "jquery.maestro.dialogs.roleselector"%>
+    <%javascript "jquery.maestro.dialogs.orgunitselector"%>
+
+    <script type="text/javascript" src="/javascripts/jsTree/jquery.jstree.js"></script>
+    <%javascript "jquery.maestro.jstreehelper"%>
+<%end%>
+
 <%form_for([:admin,@employee]) do |form|%>
     <p>
-        <%=form.label :full_name%><br>
-        <%=form.text_field :full_name%> 
+      <%=form.label :full_name%><br>
+      <%=form.text_field :full_name%>
     </p>
     <p>
-        <%=form.label :email_address%><br>
-        <%=form.text_field :email_address%>
+      <%=form.label :email_address%><br>
+      <%=form.text_field :email_address%>
     </p>
     <p>
       <%=form.label :department_id%><br>
       <%=form.collection_select(:department_id, Account.current.departments, :id, :name, :prompt=>"Select a department")%>
     </p>
     <p>
-      <%=form.label :organizational_unit_id, "Primary assignment"%><br>
-      <%=form.collection_select(:organizational_unit_id, Account.current.organizational_units, :id, :name, :prompt=>"Select an assignment")%>
+      <%=form.label :organizational_role_id, "Primary Position"%><br>
+      <button id="edit_primary_role">
+        <%=@employee.organizational_role ? @employee.organizational_role.name : "Select a Role"%>
+      </button>
+      <%=form.hidden_field :organizational_role_id%>
     </p>
     <p>
-      <%=form.label :organizational_role_id, "Primary Position"%><br>
-      <%=form.collection_select(:organizational_role_id, Account.current.roles, :id, :name, :prompt=>"Select a role")%>
+      <%=form.label :organizational_unit_id, "Primary assignment"%><br>
+      <button id="edit_assignment">
+        <%=@employee.organizational_unit ? @employee.organizational_unit.name : "Select an Assignment"%>
+      </button>
+      <%=form.hidden_field :organizational_unit_id%>
     </p>
-    
-   <%=form.submit "Save"%>
+    <%=form.submit "Save"%>
 <%end%>
+<script language="javascript">
+    $("#edit_primary_role").button().click(function(e){
+        e.preventDefault();
+        var selected_ids = [$("#employee_organizational_role_id").val()];
+        $.maestro.dialogs.roleSelector($("#employee_department_id").val(),selected_ids,{
+            title:"Select the primary role for this employee",
+            onSelection:function(selected){
+                var ids = selected && selected[1] && selected[1].length > 0 ? selected[1] : "";
+                $("#employee_organizational_role_id").val(selected[1][0]);
+                $("#edit_primary_role").text(selected[0][0]);
+            }
+        });
+    });
+
+    $("#edit_assignment").button().click(function(e){
+        e.preventDefault();
+        var selected_ids = [$("#employee_organizational_unit_id").val()];
+        $.maestro.dialogs.organizationalUnitSelector(selected_ids,{
+            title:"Select primary assignment for this employee",
+            singleSelect:true,
+            onSelection:function(selected){
+                var ids = selected && selected[1] && selected[1].length > 0 ? selected[1] : "";
+                $("#employee_organizational_unit_id").val(selected[1][0]);
+                $("#edit_assignment").text(selected[0][0]);
+            }
+        })
+    });
+</script>

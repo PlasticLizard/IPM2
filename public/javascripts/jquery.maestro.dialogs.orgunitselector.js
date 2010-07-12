@@ -7,14 +7,18 @@
     $.maestro.dialogs.organizationalUnitSelector = function(selected,options)
     {
         options = options || {};
+        var singleSel = options.singleSelect || false;
+        var plugins = [ "themes", "html_data", "ui"];
+        if (singleSel == false) plugins.push("checkbox");
+
         var dlg_id = "maestro_dialogs_orgUnitSelector";
         var dlg = $("#" + dlg_id);
         if (dlg.length==0)
         {
             dlg = $("<div id='" + dlg_id + "'></div>");
-            dlg.load("organizational_units/select",function(){
+            dlg.load("/admin/organizational_units/select",function(){
                 dlg.jstree({
-                    plugins : [ "themes", "html_data", "ui", "checkbox"  ]
+                    plugins : plugins
                 });
 
                 dlg.append("<div class='ui-widget-footer' style='float:right;padding-top:10px;padding-bottom:5px'> \
@@ -31,18 +35,19 @@
         {
             var node_ids = $.map(selected,function(item){return "#" + item});
             var tree = $.jstree._reference(dlg);
+            var singleSel = options.singleSelect || false;
 
 
             options.modal = options.modal || true;
             options.title = options.title || "Select a geography";
             options.closeable = false;
-            
+
             dlg.find("button").unbind().click(function(){
                 Boxy.get(this).hide();
             });
             dlg.find("button.ok").click(function(){
                 var selected =
-                        extractSelectedOrgUnits(tree,tree.get_checked(),null);
+                        extractSelectedOrgUnits(tree,tree.get_selected(),null);
                 if (options.onSelection)
                     options.onSelection.apply(this,[selected]);
 
@@ -55,14 +60,27 @@
             b.moveTo(null,100);
             $(".title-bar").addClass("ui-widget-header");
 
-            uncheckAll(tree);
-            $.each(node_ids,function(index,node){tree.check_node(node)});
+
+            if (singleSel){
+                deselectAll(tree);
+                $.each(node_ids,function(index,node){tree.select_node(node)});
+            }
+            else {
+                uncheckAll(tree);
+                $.each(node_ids,function(index,node){tree.check_node(node)});
+            }
         }
 
         function uncheckAll(tree)
         {
-            var checkedNodes = tree.get_checked();
+            var checkedNodes = tree.get_selected();
             checkedNodes.each(function(index,node){tree.uncheck_node(node)});
+        }
+
+        function deselectAll(tree)
+        {
+            var checkedNodes = tree.get_selected();
+            checkedNodes.each(function(index,node){tree.deselect_node(node)});
         }
 
         function extractSelectedOrgUnits(tree,nodes,selections)

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Services::EmployeeRequirements::ComplianceStatus do
+describe Services::EmployeeRequirements::Service do
   before(:each) do
     @service = Services::EmployeeRequirements::Service.new
   end
@@ -22,7 +22,7 @@ describe Services::EmployeeRequirements::ComplianceStatus do
     emp.issued_credentials.select{|c|c.credential.name=="Sexiness Training"}[0].expiration_date.should be nil
   end
 
-  it ".check_employee_compliance should bubble 'incomplete' if any credential is missing and the rule is :all" do
+  it ".update_employee_compliance should bubble 'incomplete' if any credential is missing and the rule is :all" do
     emp = Employee.create! :name=>"Here I Am"
     cred1 = Credentials::Certification.create! :name=>"ta da"
     cred2 = Credentials::Training.create! :name=>"Sexiness Training"
@@ -33,20 +33,21 @@ describe Services::EmployeeRequirements::ComplianceStatus do
     rs.requirement_groups[0].required_credentials << cred1
     rs.requirement_groups[0].required_credentials << cred2
 
-    status = @service.update_employee_compliance(rs,emp)
+    status = @service.update_employee_compliance_for_requirement_set(rs,emp)
 
     status.status.should == :incomplete
     status.name.should == emp.full_name_formal
-    status.context.should be emp
+    status.context_id.should == emp._id
+    status.context_type.should == "Employee"
     status.children[0].status.should == :incomplete
-    status.children[0].children.length.should equal 2
-    status.children[0].children[0].status.should == :current
-    status.children[0].children[1].status.should == :incomplete
+    status.children[0].children[0].children.length.should equal 2
+    status.children[0].children[0].children[0].status.should == :current
+    status.children[0].children[0].children[1].status.should == :incomplete
 
   end
 
-  it ".check_employee_compliance should show current if any components are current and the rule is :any" do
-         emp = Employee.create! :name=>"Here I Am"
+  it ".update_employee_compliance should show current if any components are current and the rule is :any" do
+    emp = Employee.create! :name=>"Here I Am"
     cred1 = Credentials::Certification.create! :name=>"ta da"
     cred2 = Credentials::Training.create! :name=>"Sexiness Training"
 
@@ -58,14 +59,41 @@ describe Services::EmployeeRequirements::ComplianceStatus do
     rs.requirement_groups[0].required_credentials << cred1
     rs.requirement_groups[0].required_credentials << cred2
 
-    status = @service.update_employee_compliance(rs,emp)
+    status = @service.update_employee_compliance_for_requirement_set(rs,emp)
 
     status.status.should == :current
     status.name.should == emp.full_name_formal
-    status.context.should be emp
+    status.context_id.should == emp._id
+    status.context_type.should == "Employee"
     status.children[0].status.should == :current
-    status.children[0].children.length.should equal 2
-    status.children[0].children.find{|s|s.name=="ta da"}.status.should == :current
-    status.children[0].children.find{|s|s.name=="Sexiness Training"}.status.should == :incomplete
+    status.children[0].children[0].children.length.should equal 2
+    status.children[0].children[0].children.select{|s|s.name=="ta da"}[0].status.should == :current
+    status.children[0].children[0].children.select{|s|s.name=="Sexiness Training"}[0].status.should == :incomplete
+  end
+
+  it ".update_employee_compliance should store the results on the employee" do
+    emp = Employee.create! :name=>"Here I Am"
+    cred1 = Credentials::Certification.create! :name=>"ta da"
+    cred2 = Credentials::Training.create! :name=>"Sexiness Training"
+
+    emp.issue_credential(cred1)
+
+    rs = RequirementSet.create! :name=>"ha!"
+    rs.requirement_groups[0].operator = :any
+    rs.save!
+    rs.requirement_groups[0].required_credentials << cred1
+    rs.requirement_groups[0].required_credentials << cred2
+
+    @service.update_employee_compliance_for_requirement_set(rs,emp)
+    status = emp.reload.requirement_compliance
+    status.status.should == :current
+    status.name.should == emp.full_name_formal
+
+    status.context_id.should == emp._id
+    status.context_type.should == "Employee"
+    status.children[0].children[0].status.should == :current
+    status.children[0].children[0].children.length.should equal 2
+    status.children[0].children[0].children.select{|s|s.name=="ta da"}[0].status.should == :current
+    status.children[0].children[0].children.select{|s|s.name=="Sexiness Training"}[0].status.should == :incomplete
   end
 end

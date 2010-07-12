@@ -1,0 +1,30 @@
+<%items.each do |stat|%>
+    <%if stat.context_type != "CredentialGroup"%>
+        <tr class="ui_state_default" style="<%=depth > 0 ? "background-color:#EEE" : ""%>">
+          <td>
+        <span style="margin-left:<%=(depth*5)+5%>px;">
+            <%=requirement_status_image(stat)%>
+            <%=stat.name%>
+            <%if stat.context_type == "RequirementSet"%>
+                (<%=stat.children[0].name%>)
+            <%end%>
+        </span>
+          </td>
+          <td><%=stat.status == :incomplete ? "incomplete" : stat.expiration_description%></td>
+          <td>
+            <div class="ui-corner-all requirement-status <%=stat.status%>">
+              <%=stat.status.to_s.humanize.titleize%>
+            </div>
+          </td>
+          <td>
+            <%if stat.context_type =~ /Credentials/%>
+            <span class="ui-icon ui-icon-pencil edit-credential" style="cursor:pointer"></span>
+            <span class="ui-icon ui-icon-closethick remove-credential" style="cursor:pointer"></span>
+            <%end%>
+          </td>
+        </tr>
+    <%end%>
+    <%if stat.is_a?(ComplianceStatusGroup)%>
+        <%=render :partial=>"compliance_status_items", :locals=>{:items=>stat.children, :depth=>depth+1}%>
+    <%end%>
+<%end%>

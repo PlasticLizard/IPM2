@@ -2,7 +2,7 @@
   <ul>
     <%@departments.keys.each do |dep|%>
         <li id="<%=dep.id%>" data-department-id="<%=dep.id%>" rel="department">
-          <a href="#"><%=dep.name%></a>
+          <a href="#" title="<%=dep.name%>"><%=dep.name%></a>
           <%unless @departments[dep].blank?%>
               <%=subtree_html(@departments[dep], dep.id)%>              
           <%end%>

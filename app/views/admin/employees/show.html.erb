@@ -53,8 +53,21 @@
 
   </div>
 
+  <%if @employee.requirement_compliance%>
+      <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+        <div class="portlet-header ui-widget-header">
+          Requirements
+          <span class="ui-corner-all requirement-status <%=@employee.requirement_compliance.status%>" style="margin-left:5px">
+              <%=@employee.requirement_compliance.status.to_s.humanize.titleize%>
+          </span>
+        </div>
+        <div class="portlet-content">
 
+          <%=render :partial=>"compliance_status_list"%>
 
+        </div>
+      </div>
+  <%end%>
   <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
     <div class="portlet-header ui-widget-header">
       Issued Credentials

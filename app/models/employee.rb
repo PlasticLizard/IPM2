@@ -1,13 +1,18 @@
 class Employee < User
    
-  key :organizational_unit_id, ObjectId
+  key :organizational_unit_id, ObjectId, :index=>true
   belongs_to :organizational_unit
 
-  key :organizational_role_id, ObjectId
+  key :organizational_role_id, ObjectId, :index=>true
   belongs_to :organizational_role
 
-  key :department_id, ObjectId
+  key :department_id, ObjectId, :index=>true
   belongs_to :department
+
+  key :requirement_compliance, ComplianceStatusGroup
+
+  ensure_index [[:department_id,1], [:organizational_role_id,1], [:organizational_unit_id,1]]
+
 
   many :issued_credentials do
     def latest(credential)
@@ -29,5 +34,7 @@ class Employee < User
     issued_credentials.reject!{|c|c.id.to_s == issued_credential_id.to_s}
     save!
   end
+
+
 
 end

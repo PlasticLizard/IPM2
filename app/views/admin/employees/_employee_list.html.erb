@@ -6,6 +6,7 @@
       <th>Department</th>
       <th>Assignment</th>
       <th>Position</th>
+      <th>Compliance</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -25,6 +26,13 @@
           </td>
           <td>
             <%=employee.organizational_role.name%>
+          </td>
+          <td>
+            <%if employee.requirement_compliance%>
+                <div class="ui-corner-all requirement-status <%=employee.requirement_compliance.status%>" style="margin-left:5px">
+                  <%=employee.requirement_compliance.status.to_s.humanize.titleize%>
+                </div>
+            <%end%>
           </td>
           <td>
             <a href="<%=edit_resource_url(employee)%>"><span id="edit_employee_<%=employee.id%>" class="ui-icon ui-icon-pencil edit_employee" style="cursor:pointer"></span></a>

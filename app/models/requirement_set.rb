@@ -12,6 +12,8 @@ class RequirementSet < AccountModel
   key :department_id, ObjectId
   belongs_to :department
 
+  key :compliance_status, ComplianceStatusGroup
+
   many :requirement_groups, :class_name=>'CredentialGroup'
 
   def employees

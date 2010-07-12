@@ -119,3 +119,35 @@ a.button {text-decoration:none;padding:2px;}
     border: 1px solid gray;
 
 }
+
+.requirement-status {
+    background-color: #e0dfe0;
+    border: 1px solid #cccccc;
+    padding:2px;
+    text-shadow:0px 0px;
+    text-align:center;
+    
+}
+
+.expired {
+    background-color: #a60000;
+    border-color: #660033;
+    color:white;
+}
+
+.current {
+    background-color: #ccffcc;
+    border-color: #99ff99;
+}
+
+.expires_soon {
+    background-color: #ffffcc;
+    border-color: #cccc00;
+}
+
+.expiration_imminent {
+    background-color: #ff9900;
+    border-color: #996600;
+    color:white;
+    font-weight:bold;
+}

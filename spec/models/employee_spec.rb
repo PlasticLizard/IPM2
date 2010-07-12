@@ -45,5 +45,6 @@ describe Employee do
     status.valid_until.should == Date.tomorrow
   end
 
+
  
 end

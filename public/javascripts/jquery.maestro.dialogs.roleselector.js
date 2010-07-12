@@ -12,7 +12,7 @@
         if (dlg.length==0)
         {
             dlg = $("<div id='" + dlg_id + "'></div>");
-            dlg.load("departments/" + department_id + "/roles/select",function(){
+            dlg.load("/admin/departments/" + department_id + "/roles/select",function(){
                 dlg.jstree({
                     plugins : [ "themes", "html_data", "ui"  ]
                 });

@@ -1,0 +1,15 @@
+<div id="compliance_status_list" class="hastable">
+  <table id = "compliance_status_table" class="ui_widget">
+    <thead>
+    <tr>
+      <th>Requirement</th>
+      <th>Expiration</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%=render :partial=>"compliance_status_items", :locals=>{:items=>@employee.requirement_compliance.children, :depth=>0}%>
+    </tbody>
+  </table>
+</div>
