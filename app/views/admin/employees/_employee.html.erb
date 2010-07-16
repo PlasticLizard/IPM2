@@ -35,6 +35,9 @@
         <%=@employee.organizational_unit ? @employee.organizational_unit.name : "Select an Assignment"%>
       </button>
       <%=form.hidden_field :organizational_unit_id%>
+      <%Account.current.organizational_structure.each_with_index do |ou,index|%>
+        <input id="employee_ou_<%=ou%>" name="employee[organizational_unit_ids][]" type="hidden" value="<%=@employee.organizational_unit_ids[index]%>"/>
+      <%end%>
     </p>
     <%=form.submit "Save"%>
 <%end%>
@@ -58,10 +61,12 @@
         $.maestro.dialogs.organizationalUnitSelector(selected_ids,{
             title:"Select primary assignment for this employee",
             singleSelect:true,
+            returnAncestors:true,
             onSelection:function(selected){
-                var ids = selected && selected[1] && selected[1].length > 0 ? selected[1] : "";
-                $("#employee_organizational_unit_id").val(selected[1][0]);
-                $("#edit_assignment").text(selected[0][0]);
+                var sel = selected[0] || {};
+                $("#employee_organizational_unit_id").val(sel.id);
+                $("#edit_assignment").text(sel.name);
+                $.each(selected,function(index,ou){$("#employee_ou_" + ou.type).val(ou.id);});
             }
         })
     });

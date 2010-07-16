@@ -52,15 +52,21 @@ required by every
         $.maestro.dialogs.organizationalUnitSelector(selected_ids,{
             title:"Select the locations this requirement applies to",
             onSelection:function(selected){
-                var ids = selected && selected[1] && selected[1].length > 0 ? selected[1] : "";
+                var ids = "", names = "any location";
+                if (selected.length > 0)
+                {
+                    ids = $.map(selected,function(item){return item.id});
+                    names = $.map(selected,function(item){return item.name}).join(", ");
+                }
+
                 $.ajax({
                     type:'POST',
                     url:updateUrl,
                     data:{_method:'put',requirement_set:{organizational_unit_ids:ids}},
                     dataType:'json',
                     success:function(data){
-                        $("#required_org_units").text((selected.length > 0 && selected[0] != "") ? selected[0].join(", ") : "any location")
-                                .attr("data-required_ou_ids","[" + $.map(selected[1],function(id){return "'" + id + "'"}).join(",") + "]");
+                        $("#required_org_units").text(names)
+                                .attr("data-required_ou_ids","[" + $.map(ids,function(id){return "'" + id + "'"}).join(",") + "]");
                     }
                 })
             }

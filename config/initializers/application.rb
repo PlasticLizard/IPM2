@@ -21,8 +21,9 @@ end
 
 MongoMapper::Document.append_inclusions(IdentityMapAddition)
 
-
-
+Cubicle.register_cubicle_directory(Rails.root.join('app','cubicles'))
+Cubicle.register_cubicle_directory(Rails.root.join('app','cubes'))
+Cubicle::Aggregation::Profiler.enabled = false
 
 #cert_path = Rails.root.join("app","models","credentials")
 #searcher = "**/*.rb"

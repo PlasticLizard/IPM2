@@ -9,7 +9,7 @@
         options = options || {};
         var singleSel = options.singleSelect || false;
         var plugins = [ "themes", "html_data", "ui"];
-        if (singleSel == false) plugins.push("checkbox");
+        if (!singleSel) plugins.push("checkbox");
 
         var dlg_id = "maestro_dialogs_orgUnitSelector";
         var dlg = $("#" + dlg_id);
@@ -36,6 +36,8 @@
             var node_ids = $.map(selected,function(item){return "#" + item});
             var tree = $.jstree._reference(dlg);
             var singleSel = options.singleSelect || false;
+            var returnAncestors = options.returnAncestors;
+            var returnChildren = options.returnChildren;
 
 
             options.modal = options.modal || true;
@@ -47,7 +49,7 @@
             });
             dlg.find("button.ok").click(function(){
                 var selected =
-                        extractSelectedOrgUnits(tree,tree.get_selected(),null);
+                        extractSelectedOrgUnits(tree,tree.get_selected(),null, returnAncestors,returnChildren);
                 if (options.onSelection)
                     options.onSelection.apply(this,[selected]);
 
@@ -83,26 +85,48 @@
             checkedNodes.each(function(index,node){tree.deselect_node(node)});
         }
 
-        function extractSelectedOrgUnits(tree,nodes,selections)
+        function extractSelectedOrgUnits(tree,nodes,selections,returnAncestors,returnChildren)
         {
-            if (selections == null)  selections = [[],[]];
+            if (selections == null)  selections = [];
             nodes.each(function(index,node){
-                var info = getNodeNameAndId(node);
-                selections[0].push(info[0]);
-                selections[1].push(info[1]);
-                var children = tree._get_children(node);
-                if (children && children.length > 0){
-                    extractSelectedOrgUnits(tree,children,selections);
+                selections.push(getNodeData(node));
+                
+                if (returnAncestors)
+                {
+                    var parent = tree._get_parent(node);
+                    extractAncestors(tree,parent,selections);
                 }
+                else if (returnChildren)
+                {
+                    var children = tree._get_children(node);
+                    if (children && children.length > 0){
+                        extractSelectedOrgUnits(tree,children,selections,returnAncestors);
+                    }
+                }
+
             });
 
             return selections;
         }
 
-        function getNodeNameAndId(node)
+        function extractAncestors(tree,curNode,selections){
+            if (curNode){
+                selections.push(getNodeData(curNode));
+                var parent = tree._get_parent(curNode);
+                if (parent)
+                    extractAncestors(tree,parent,selections);
+            }
+            return selections;
+        }
+
+        function getNodeData(node)
         {
             node = $(node);
-            return [node.find("a").first().text(),node.attr("id")];
+            return {
+                name: node.find("a").first().text(),
+                id: node.attr("id"),
+                type:node.attr("data-type")
+            };
         }
 
     }

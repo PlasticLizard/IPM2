@@ -3,6 +3,9 @@ class Employee < User
   key :organizational_unit_id, ObjectId, :index=>true
   belongs_to :organizational_unit
 
+  key :organizational_unit_ids, Array, :typecast=>'ObjectId'
+  many :organizational_units, :in=>:organizational_unit_ids, :class_name=>'OrganizationalUnit'
+
   key :organizational_role_id, ObjectId, :index=>true
   belongs_to :organizational_role
 
