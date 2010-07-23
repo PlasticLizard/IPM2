@@ -19,7 +19,7 @@ class Account
     end
   end
 
-  many :credentials, :dependent=>:destory do
+  many :credentials, :dependent=>:destroy do
     def by_department_and_type
       proxy_owner.create_departmental_credential_hierarchy(all)
     end

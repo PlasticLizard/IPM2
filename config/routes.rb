@@ -65,6 +65,8 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
 
+  map.resources :staff_requirements
+
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

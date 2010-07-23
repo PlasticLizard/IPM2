@@ -14,7 +14,10 @@ class EmployeeRequirementStatusCubicle
 
   dimension :compliance_status,     :field_name=>"requirement_compliance.status"
 
-  count     :total, :field_name=>"_id"
-  count     :non_compliant, :field_name=>"_id", :condition=>"this.requirement_compliance.status == 'incomplete' || this.requirement_compliance.status == 'expired'"
+  count     :total,                 :field_name=>"_id"
+  count     :non_compliant,         :field_name=>"_id", :condition=>"this.requirement_compliance.status == 'incomplete' || this.requirement_compliance.status == 'expired'"
+  count     :compliant,             :field_name=>"_id", :condition=>"this.requirement_compliance.status != 'incomplete' && this.requirement_compliance.status != 'expired'"
+
+  ratio     :compliance_pct,        :compliant, :total
 
 end

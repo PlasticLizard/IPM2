@@ -1,0 +1,14 @@
+<%collection.each do |ou,statuses|%>
+    <tr id="tr_<%=ou%>" data-ou-id="<%=ou%>" data-parent-id="<%=parent_id%>">
+      <td>
+        <a id="toggler_<%=ou%>" data-ou-type="<%= collection.name.to_s.split("_")[0]%>" data-ou-id="<%=ou%>" href="#toggle-children"><%=image_tag("plus-white.png", :id=>"toggle-#{ou}-image")%></a>
+        <%=ou%>
+      </td>
+      <td><%=number_to_percentage(statuses.measure_values.compliance_pct * 100, :precision=>0)%></td>
+      <td>
+        <%statuses.each do |status|%>
+            <span class="<%=status.compliance_status%>"><%=status.total%></span>
+        <%end%>
+      </td>
+    </tr>
+<%end%>

@@ -6,16 +6,20 @@ class OrganizationalUnitHierarchy < Array
     end
   end
 
-  def child_of(context)
+  def child_of(context, options={})
    idx = index(self.class.context_to_sym(context))
    raise "#{context} is not in the hierarchy, which has the following levels: #{self.inspect}" unless idx
-   idx >= length-1 ? nil : self[idx+1].to_s.classify.constantize
+   child = idx >= length-1 ? nil : self[idx+1]
+   return nil unless child
+   options[:as] == :symbol ? child : child.to_s.classify.constantize
   end
 
-  def parent_of(context)
+  def parent_of(context, options={})
     idx = index(self.class.context_to_sym(context))
     raise "#{context} is not in the hierarchy, which has the following levels: #{self.inspect}" unless idx
-    idx <= 0 ? nil : self[idx-1].to_s.classify.constantize
+    parent = idx <= 0 ? nil : self[idx-1]
+    return nil unless parent
+    options[:as] == :symbol ? parent : parent.to_s.classify.constantize
   end
 
   def self.context_to_sym(context)

@@ -1,0 +1,227 @@
+<%content_for :head do%>
+    <script type="text/javascript" src="/javascripts/jsTree/jquery.jstree.js"></script>
+    <%javascript "jquery.maestro.jstreehelper"%>
+<%end%>
+
+<%content_for :title do%>
+    Staff Requirement Compliance
+<%end%>
+
+<%content_for :sidebar do%>
+
+
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header">
+        <a href="#" id="clear_dep_query" style="display:none">
+          <%=image_tag "delete.png"%>
+        </a>
+        Departments & Roles
+        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
+      <div class="portlet-content">
+        <%=render :partial=>"/admin/departments/tree"%>
+      </div>
+    </div>
+
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header">
+        <a href="#" id="clear_org_query" style="display:none">
+          <%=image_tag "delete.png"%>
+        </a>
+        Organizational Model
+        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
+      <div class="portlet-content">
+        <%=org_tree_html%>
+      </div>
+    </div>
+<%end%>
+
+<%@status.each do |company, regions|%>
+    <div class="content-box" style="float:left;">
+      <div class="content-box-wrapper" style="padding:2px;margin:2px;">
+        <h3 class="ui-box-header ui-corner-top">
+          <%=company%> (<%=number_to_percentage(regions.measure_values.compliance_pct * 100, :precision=>0)%> compliance)
+        </h3>
+        <div id="requirements">
+          <div class="hastable">
+            <table>
+              <thead>
+              <tr>
+                <th>
+                  Location
+                </th>
+                <th>
+                  Compliance %
+                </th>
+                <td>
+                  Status
+                </td>
+              </tr>
+              </thead>
+              <tbody>
+              <%= render :partial=>"compliance_status_group", :locals=>{:collection=>regions, :parent_type=>:company, :parent_id=>company}%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+<%end%>
+
+
+<br>
+
+<script language="javascript">
+    function filterEmployees(url){
+        //        var name_query = $("#name_query").val();
+        //        url = url || "/admin/employees";
+        //        var filter = {}
+        //        if (name_query && name_query != "")
+        //        {
+        //            filter.q = name_query;
+        //            $("#clear_name_query").fadeIn();
+        //        }
+        //        else
+        //        {
+        //            $("#clear_name_query").fadeOut();
+        //        }
+        //
+        //        var dep_roles = getDepartmentAndRoleSelections();
+        //        var org_units = getOrganizationalUnitSelections();
+        //
+        //        var has_dep_query = false;
+        //        if (dep_roles[0].length > 0){
+        //            filter["departments[]"] = dep_roles[0];
+        //            has_dep_query = true;
+        //        }
+        //
+        //        if (dep_roles[1].length > 0){
+        //            filter["roles[]"] = dep_roles[1];
+        //            has_dep_query = true;
+        //        }
+        //
+        //        has_dep_query ? $("#clear_dep_query").fadeIn() : $("#clear_dep_query").fadeOut();
+        //
+        //        if (org_units.length > 0){
+        //            filter["organizational_units[]"] = org_units;
+        //            $("#clear_org_query").fadeIn();
+        //        }
+        //        else{
+        //            $("#clear_org_query").fadeOut();
+        //        }
+        //
+        //        $.get(url,filter,function(response){
+        //            var $e = $("#employees");
+        //            $e.slideUp(100);
+        //            $("#employees").html(response);
+        //            $e.slideDown(100);
+        //        });
+    }
+
+    function getDepartmentAndRoleSelections(){
+        var tree = $.jstree._reference("#role_tree");
+        var selections = tree.get_selected();
+        var departments = [];
+        var roles = [];
+        $.each(selections,function(index,selected){
+            var $sel = $(selected);
+            var rel = $sel.attr("rel");
+            if (rel == "department") departments.push(selected.id);
+            if (rel == "organizational-role"){
+                roles.push(selected.id);
+                departments.push($sel.attr('data-department-id'));
+            }
+        });
+        return [departments,roles];
+    }
+
+    function getOrganizationalUnitSelections(){
+        var tree = $.jstree._reference("#org_tree");
+        var selections = tree.get_selected();
+        var org_units = [];
+        $.each(selections,function(index,selected){
+            org_units.push(selected.id);
+            if (selected.children.length > 0){
+                collectChildUnits(selected.children,org_units);
+            }
+        });
+        return org_units;
+    }
+
+    function collectChildUnits(org_units, selected){
+        $.each(org_units,function(index,unit){
+            selected.push(unit.id);
+            if (unit.children.length > 0){
+                collectChildUnits(unit.children,selected);
+            }
+        });
+    }
+
+    function hideChildren(ou_id){
+        $("tr[data-parent-id=" + ou_id + "]").each(function(index,row){
+            var $row = $(row);
+            hideChildren($row.attr("data-ou-id"));
+            $row.hide();
+            $row.find("img").attr("src",'<%=image_path("plus-white.png")%>');
+        });
+    }
+
+
+    $(function(){
+        $("a[href=#toggle-children]").live('click',function(){
+            $this = $(this);
+
+            var img = $this.find("img"),
+                    ou_type = $this.attr("data-ou-type"),
+                    ou_id = $this.attr("data-ou-id"),
+                    url = "/staff_requirements/" + ou_id;
+
+            var open = /plus/i.exec(img.attr("src"));
+
+            if (open){
+                if ($this.attr("data-loaded")){
+                    $("tr[data-parent-id=" + ou_id + "]").show();
+                    img.attr("src",'<%=image_path("minus-white.png")%>');
+
+                }
+                else{
+                    $.get(url,{parent_type:ou_type},function(data){
+                        $this.attr("data-loaded","true");
+                        $("#tr_" + ou_id).after(data);
+                        img.attr("src",'<%=image_path("minus-white.png")%>');
+
+                    });
+                }
+            }
+            else {
+                hideChildren(ou_id);
+                img.attr("src",'<%=image_path("plus-white.png")%>');
+            }
+        });
+
+        $("#clear_dep_query").click(function(){
+            $.jstree._reference("#role_tree").deselect_all();
+            filterEmployees();
+        });
+
+        $("#clear_org_query").click(function(){
+            $.jstree._reference("#org_tree").deselect_all();
+            filterEmployees();
+        });
+
+        $("#role_tree").jstree({
+            core : {animation:50},
+            plugins : [ "themes", "html_data", "ui"]
+        })
+                .bind("select_node.jstree",function(event,data){filterEmployees();})
+                .bind("deselect_node.jstree",function(event,data){filterEmployees();});
+
+        $("#org_tree").jstree({
+            core : {animation:50},
+            plugins : [ "themes", "html_data", "ui" ]
+        })
+                .bind("select_node.jstree",function(event,data){filterEmployees();})
+                .bind("deselect_node.jstree",function(event,data){filterEmployees()});
+    });
+</script>
+
