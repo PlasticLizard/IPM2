@@ -22,24 +22,14 @@
       </div>
     </div>
 
-    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
-      <div class="portlet-header ui-widget-header">
-        <a href="#" id="clear_org_query" style="display:none">
-          <%=image_tag "delete.png"%>
-        </a>
-        Organizational Model
-        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
-      <div class="portlet-content">
-        <%=org_tree_html%>
-      </div>
-    </div>
+   
 <%end%>
 
 <%@status.each do |company, regions|%>
     <div class="content-box" style="float:left;">
       <div class="content-box-wrapper" style="padding:2px;margin:2px;">
         <h3 class="ui-box-header ui-corner-top">
-          <%=company%> (<%=number_to_percentage(regions.measure_values.compliance_pct * 100, :precision=>0)%> compliance)
+          <%=@names[BSON::ObjectID(company)]%> (<%=number_to_percentage(regions.measure_values.compliance_pct * 100, :precision=>0)%> compliance)
         </h3>
         <div id="requirements">
           <div class="hastable">
@@ -53,12 +43,12 @@
                   Compliance %
                 </th>
                 <td>
-                  Status
+                  Warnings
                 </td>
               </tr>
               </thead>
               <tbody>
-              <%= render :partial=>"compliance_status_group", :locals=>{:collection=>regions, :parent_type=>:company, :parent_id=>company}%>
+              <%= render :partial=>"compliance_status_group", :locals=>{:collection=>regions, :parent_type=>:company, :parent_id=>company, :depth=>0}%>
               </tbody>
             </table>
           </div>

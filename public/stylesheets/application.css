@@ -151,3 +151,8 @@ a.button {text-decoration:none;padding:2px;}
     color:white;
     font-weight:bold;
 }
+
+.score-small {
+    font-weight:bold;
+    font-size:1.1em;
+}

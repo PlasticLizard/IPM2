@@ -3,11 +3,13 @@ class StaffRequirementsController < ApplicationController
 
   def index
     @show_title = true
+    @names = OrganizationalUnit.get_names :_type=>{"$in"=>['Company','Region']}
     @departments = current_account.roles.by_department
     @status = EmployeeRequirementStatusCubicle.query do
-      select :compliance_status, :all_measures
-      by     :company_id, :region_id
-      where  :account_id => Account.current.id
+      select   :compliance_status, :all_measures
+      by       :company_id, :region_id, :station_id
+      where    :account_id => Account.current.id
+      order_by :company_id, :region_id
     end
   end
 
@@ -15,14 +17,16 @@ class StaffRequirementsController < ApplicationController
     parent_type = params[:parent_type].to_sym
     parent_id =   params[:id]
     ou_type = Account.current.organizational_structure.child_of(parent_type, :as=>:symbol)
-    puts "#{ou_type}_id".to_sym.inspect + ", " + "#{parent_type}_id".to_sym.inspect + ", " + parent_id
+    depth = Account.current.organizational_structure.index(parent_type)
     children = EmployeeRequirementStatusCubicle.query do
       select :compliance_status, :all_measures
       by     "#{ou_type}_id".to_sym
       where  "#{parent_type}_id".to_sym => BSON::ObjectID(parent_id), :account_id=>Account.current.id
     end
-    puts "Children:#{children.inspect}"
-    render :partial=>"compliance_status_group", :locals=>{:collection=>children, :parent_type=>parent_type,:parent_id=>parent_id}
+
+    @names = OrganizationalUnit.get_names :parent_id=>BSON::ObjectID(parent_id)
+    puts @names.inspect
+    render :partial=>"compliance_status_group", :locals=>{:collection=>children, :parent_type=>parent_type,:parent_id=>parent_id, :depth=>depth}
   end
 
 
