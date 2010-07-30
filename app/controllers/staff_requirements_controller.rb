@@ -3,9 +3,9 @@ class StaffRequirementsController < ApplicationController
 
   def index
     @show_title = true
-    @names = OrganizationalUnit.get_names :_type=>{"$in"=>['Company','Region']}
+    @names = OrganizationalUnit.get_names
     @departments = current_account.roles.by_department
-    @status = EmployeeRequirementStatusCubicle.query do
+    @status = EmployeeComplianceStatusCubicle.query do
       select   :compliance_status, :all_measures
       by       :company_id, :region_id, :station_id
       where    :account_id => Account.current.id
@@ -18,7 +18,7 @@ class StaffRequirementsController < ApplicationController
     parent_id =   params[:id]
     ou_type = Account.current.organizational_structure.child_of(parent_type, :as=>:symbol)
     depth = Account.current.organizational_structure.index(parent_type)
-    children = EmployeeRequirementStatusCubicle.query do
+    children = EmployeeComplianceStatusCubicle.query do
       select :compliance_status, :all_measures
       by     "#{ou_type}_id".to_sym
       where  "#{parent_type}_id".to_sym => BSON::ObjectID(parent_id), :account_id=>Account.current.id

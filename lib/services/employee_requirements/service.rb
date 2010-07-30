@@ -37,7 +37,7 @@ class Services::EmployeeRequirements::Service
         update_employee_compliance_for_requirement_set(rs,emp)
       end
     end
-    EmployeeRequirementStatusCubicle.process
+    EmployeeComplianceStatusCubicle.process
   end
 
   def update_employee_compliance_for_requirement_set(requirement_set,employee)

@@ -22,14 +22,12 @@
       </div>
     </div>
 
-   
-<%end%>
 
-<%@status.each do |company, regions|%>
+<%end%>
     <div class="content-box" style="float:left;">
       <div class="content-box-wrapper" style="padding:2px;margin:2px;">
         <h3 class="ui-box-header ui-corner-top">
-          <%=@names[BSON::ObjectID(company)]%> (<%=number_to_percentage(regions.measure_values.compliance_pct * 100, :precision=>0)%> compliance)
+          Requirements Status
         </h3>
         <div id="requirements">
           <div class="hastable">
@@ -37,18 +35,18 @@
               <thead>
               <tr>
                 <th>
-                  Location
+                  &nbsp;
                 </th>
                 <th>
-                  Compliance %
+                  Compliance
                 </th>
-                <td>
-                  Warnings
-                </td>
+                <th>
+                  Alerts
+                </th>
               </tr>
               </thead>
               <tbody>
-              <%= render :partial=>"compliance_status_group", :locals=>{:collection=>regions, :parent_type=>:company, :parent_id=>company, :depth=>0}%>
+              <%=render :partial=>"compliance_status_group", :locals=>{:collection=>@status, :depth=>0}%>
               </tbody>
             </table>
           </div>
@@ -56,7 +54,6 @@
       </div>
     </div>
     <div class="clear"></div>
-<%end%>
 
 
 <br>
