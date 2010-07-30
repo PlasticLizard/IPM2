@@ -1,4 +1,4 @@
-class EmployeeComplianceStatusCubicle
+class EmployeeRequirementComplianceStatusCubicle
   extend Cubicle::Aggregation
 
   source_collection "people",

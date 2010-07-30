@@ -3,7 +3,7 @@
   <span style="margin:2px;vertical-align:middle;">
         <%=number_to_percentage(subject.measure_values.compliance_pct * 100, :precision=>0)%>
     </span>
-  <div class="ui-corner-all bar-graph" style="margin-top:-14px;width:100%;height:15px">
+  <div class="ui-corner-all bar-graph expired-light" style="margin-top:-14px;width:100%;height:15px">
     <div class="bar-graph-bar expires_soon" style="<%=bar_style(subject.measure_values.compliance_pct)%>"></div>
     <div class="bar-graph-bar current" style="margin-top:-15px;color:gray;<%=bar_style(subject.measure_values.current_pct)%>"></div>
 
