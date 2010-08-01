@@ -96,4 +96,62 @@ describe Services::EmployeeRequirements::Service do
     status.children[0].children[0].children.select{|s|s.name=="ta da"}[0].status.should == :current
     status.children[0].children[0].children.select{|s|s.name=="Sexiness Training"}[0].status.should == :incomplete
   end
+
+  it "#detect_mandatory_requirements should mark all requirements as mandatory when the operator is all" do
+    emp = Employee.create! :name=>"Here I Am"
+    cred1 = Credentials::Certification.create! :name=>"ta da"
+    cred2 = Credentials::Training.create! :name=>"Sexiness Training"
+
+    emp.issue_credential(cred1)
+
+    rs = RequirementSet.create! :name=>"ha!"
+    rs.requirement_groups[0].required_credentials << cred1
+    rs.requirement_groups[0].required_credentials << cred2
+
+    status = @service.update_employee_compliance_for_requirement_set(rs,emp)
+
+    status.children[0].children[0].children.each do |req|
+      req.mandatory?.should be true
+    end
+  end
+
+  it "#detect_mandatory_requirements should mark the last expiring requirement as mandatory when the operator is any" do
+    emp = Employee.create! :name=>"Here I Am"
+    cred1 = Credentials::Certification.create! :name=>"ta da"
+    cred2 = Credentials::Training.create! :name=>"Sexiness Training"
+
+    emp.issue_credential(cred1, :expiration_date=>"1/1/2001")
+    emp.issue_credential(cred2, :expiration_date=>"1/2/2001")
+
+    rs = RequirementSet.create! :name=>"ha!"
+    rs.requirement_groups[0].operator = :any
+    rs.requirement_groups[0].required_credentials << cred1
+    rs.requirement_groups[0].required_credentials << cred2
+
+    status = @service.update_employee_compliance_for_requirement_set(rs,emp)
+
+    status.children[0].children[0].children.select{|s|s.name=="ta da"}[0].mandatory.should_not be true
+    status.children[0].children[0].children.select{|s|s.name=="Sexiness Training"}[0].mandatory.should be true
+  end
+
+  it "#detect_mandatory_requirements should add a default requirement when incomplete and the operator is any" do
+    emp = Employee.create! :name=>"Here I Am"
+    cred1 = Credentials::Certification.create! :name=>"ta da"
+    cred2 = Credentials::Training.create! :name=>"Sexiness Training"
+
+    rs = RequirementSet.create! :name=>"ha!"
+
+    rs.requirement_groups[0].operator = :any
+    rs.requirement_groups[0].required_credentials << cred1
+    rs.requirement_groups[0].required_credentials << cred2
+
+    status = @service.update_employee_compliance_for_requirement_set(rs,emp)
+
+    status.children[0].children[0].children.length.should be 3
+    status.children[0].children[0].children.select{|s|s.name=="ta da"}[0].mandatory.should_not be true
+    status.children[0].children[0].children.select{|s|s.name=="Sexiness Training"}[0].mandatory.should_not be true
+    status.children[0].children[0].children.select{|s|s.name=="ha! - Any"}[0].mandatory.should be true
+
+
+  end
 end

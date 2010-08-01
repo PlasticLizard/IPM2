@@ -6,8 +6,11 @@ class ComplianceStatus
   key :context_type, String
   key :valid_until, Date
   key :incomplete, Boolean, :default=>false
+  key :mandatory, Boolean, :default=>false
   key :status, Symbol, :default=>:current
   key :_type, String
+
+  alias mandatory? mandatory
 
   def initialize(*args)
     #Detect if MM is rehydrating form DB

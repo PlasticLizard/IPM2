@@ -49,9 +49,9 @@ describe RequirementSet do
   it "should retrieve all employees assigned to a particular organizational unit" do
     ou = OrganizationalUnit.create! :name=>"My OU"
     ou2 = OrganizationalUnit.create! :name=>"Your OU"
-    Employee.create! :full_name=>"Mr One", :organizational_unit=>ou
-    Employee.create! :full_name=>"Mr Two", :organizational_unit=>ou2
-    Employee.create! :full_name=>"Mr Three", :organizational_unit=>ou
+    Employee.create! :full_name=>"Mr One", :organizational_unit=>ou, :organizational_unit_ids=>[ou.id]
+    Employee.create! :full_name=>"Mr Two", :organizational_unit=>ou2, :organizational_unit_ids=>[ou2.id]
+    Employee.create! :full_name=>"Mr Three", :organizational_unit=>ou, :organizational_unit_ids=>[ou.id]
     rs = RequirementSet.new :name=>"this and that", :organizational_unit_ids=>[ou.id]
     employees = rs.employees
     employees.count.should equal 2
@@ -77,10 +77,10 @@ describe RequirementSet do
     r2 = OrganizationalRole.create! :name=>"R2"
     ou = OrganizationalUnit.create! :name=>"OU1"
     ou2 = OrganizationalUnit.create! :name=>"OU2"
-    Employee.create! :full_name=>"Mr One", :organizational_role=>r, :organizational_unit=>ou
-    Employee.create! :full_name=>"Mr Two", :organizational_role=>r2, :organizational_unit=>ou
-    Employee.create! :full_name=>"Mr Three", :organizational_role=>r,:organizational_unit=>ou2
-    Employee.create! :full_name=>"Mr Four", :organizational_role=>r2, :organizational_unit=>ou2
+    Employee.create! :full_name=>"Mr One", :organizational_role=>r, :organizational_unit=>ou, :organizational_unit_ids=>[ou.id]
+    Employee.create! :full_name=>"Mr Two", :organizational_role=>r2, :organizational_unit=>ou, :organizational_unit_ids=>[ou.id]
+    Employee.create! :full_name=>"Mr Three", :organizational_role=>r,:organizational_unit=>ou2, :organizational_unit_ids=>[ou2.id]
+    Employee.create! :full_name=>"Mr Four", :organizational_role=>r2, :organizational_unit=>ou2, :organizational_unit_ids=>[ou2.id]
     rs = RequirementSet.new :name=>"this and that", :organizational_role_ids=>[r.id], :organizational_unit_ids=>[ou.id,ou2.id]
     employees = rs.employees
     employees.count.should equal 2

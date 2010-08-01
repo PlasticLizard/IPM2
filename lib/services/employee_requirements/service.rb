@@ -29,7 +29,7 @@ class Services::EmployeeRequirements::Service
   def clear_employee_requirement_compliance
     Employee.set({},:requirement_compliance=>nil, :_type=>"Employee")
   end
-  
+
   def update_employee_requirement_compliance
     clear_employee_requirement_compliance
     RequirementSet.find_each do |rs|
@@ -43,16 +43,17 @@ class Services::EmployeeRequirements::Service
   def update_employee_compliance_for_requirement_set(requirement_set,employee)
     employee.requirement_compliance ||= ComplianceStatusGroup.new(employee.full_name_formal, employee)
     emp_status = employee.requirement_compliance
-    
+
     status = ComplianceStatusGroup.new(requirement_set.name,requirement_set)
 
     requirement_set.requirement_groups.each do |group|
 
-      group_status = ComplianceStatusGroup.new(group.name,group,:require=>group.operator.to_sym || :all)
+      group_status = ComplianceStatusGroup.new(requirement_set.name + " - Any",group,:require=>group.operator.to_sym || :all)
 
       group.required_credentials.each do |credential|
         group_status << check_employee_compliance_for_credential(credential,employee)
       end
+      group_status.detect_mandatory_requirements
       status << group_status
     end
 

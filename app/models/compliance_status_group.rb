@@ -37,4 +37,23 @@ class ComplianceStatusGroup < ComplianceStatus
     update_valid_until
   end
 
+  def detect_mandatory_requirements
+    if self.operator == :all
+      self.children.each {|child|child.mandatory = true}
+    else
+      last_valid_child = self.children.select{|child|(!child.incomplete) && child.valid_until == self.last_expiring_child}.pop
+      unless last_valid_child
+        last_valid_child = ComplianceStatusGroup.new :operator=>:any,
+                                                     :name=>name,
+                                                     :context_id=>context_id,
+                                                     :context_type=>context_type,
+                                                     :incomplete=>true,
+                                                     :status=>:incomplete,
+                                                     :_type=>_type
+        self.children << last_valid_child
+      end
+      last_valid_child.mandatory = true
+    end
+  end
+
 end
