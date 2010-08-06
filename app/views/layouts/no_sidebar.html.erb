@@ -55,37 +55,7 @@
     </a>
   </div>
 </div>
-<ul id="navigation">
-  <li>
-    <a href="/" class="sf-with-ul">Dashboard</a>
-  </li>
-  <li>
-    <a href="#" class="sf-with-ul">Administration</a>
-    <ul>
-      <li>
-        <a title="Manage departments and organizational roles" href="/admin/departments">Departments & Roles</a>
-      </li>
-      <li>
-        <a title="Manage companies, regions, stations and units" href="/admin/companies">Organizational Model</a>
-      </li>
-      <li>
-        <a href="#">Requirements & Credentials</a>
-        <ul>
-          <li>
-            <a title="Manage staff requirements" href="/admin/requirement_sets">Staff Requirements</a>
-          </li>
-          <li>
-            <a title="Manage your various types of certifications, credentials and training" href="/admin/credentials">Certifications & Credentials</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a title="Manage employees" href="/admin/employees">Employees</a>
-      </li>
-    </ul>
-  </li>
-
-</ul>
+<%=render :partial=>"shared/main_menu"%>
 <div id="search-bar">
   <form method="post" action="http://www.google.com/">
     <input type="text" name="q" value="live search demo" />

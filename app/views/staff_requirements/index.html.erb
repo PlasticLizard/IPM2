@@ -7,6 +7,24 @@
     Staff Requirement Compliance
 <%end%>
 
+<%content_for :top_buttons do
+    by_what = params[:by] || "organizational_unit"
+    ou_href, ou_class = by_what == "organizational_unit" ? ["","ui-state-hover"] : ["href='/staff_requirements'","ui-state-default"]
+    req_href, req_class = by_what == "organizational_unit" ? ["href='/staff_requirements?by=requirement'","ui-state-default"] : ["","ui-state-hover"]
+%>
+
+    <div id="req_cat_buttons">
+      <a class="btn ui-corner-all <%=ou_class%>" <%=ou_href%>>
+        <%if by_what == "organizational_unit"%><span class="ui-icon ui-icon-circle-check"></span><%end%>
+        By Organizational Unit
+      </a>
+      <a class="btn ui-corner-all <%=req_class%>" <%=req_href%>>
+        <%unless by_what == "organizational_unit"%><span class="ui-icon ui-icon-circle-check"></span><%end%>
+        By Requirement
+      </a>
+    </div>
+<%end%>
+
 <%content_for :sidebar do%>
 
 
@@ -24,6 +42,7 @@
 
 
 <%end%>
+
     <div class="content-box" style="float:left;">
       <div class="content-box-wrapper" style="padding:2px;margin:2px;">
         <h3 class="ui-box-header ui-corner-top">
@@ -46,7 +65,7 @@
               </tr>
               </thead>
               <tbody>
-              <%=render :partial=>"compliance_status_group", :locals=>{:collection=>@status, :depth=>0}%>
+              <%=render :partial=>"compliance_status_group", :locals=>{:collection=>@data, :depth=>0}%>
               </tbody>
             </table>
           </div>

@@ -167,11 +167,10 @@ a.button {text-decoration:none;padding:2px;}
 
 .bar-graph {
     border: 1px solid gray;
-    background-image:url("/images/bar-graph-bg.png");
+
 }
 
 .bar-graph-bar {
-    float:left;
     height:100%; 
     border-right:1px solid #BBB;
 }
@@ -189,7 +188,7 @@ a.button {text-decoration:none;padding:2px;}
 
 .mini-score .left {
     margin-right:-4px;
-    margin-left:4px;
+    margin-left:0px;
 }
 
 .mini-score .right {

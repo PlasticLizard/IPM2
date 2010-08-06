@@ -24,10 +24,11 @@ class EmployeeRequirementComplianceStatusCubicle
   dimension :requirement_status,         :expression=>'requirement.status'
   dimension :requirement_id,             :expression=>'requirement.context_id'
   dimension :requirement,                :expression=>'requirement.name'
+  dimension :mandatory,                  :expression=>'requirement.mandatory || false'
 
   count     :total,                      :field_name=>"_id"
-  count     :compliant,                  :field_name=>"_id", :condition=>"this.requirement_compliance.status != 'incomplete' && this.requirement_compliance.status != 'expired'"
-  count     :current,                    :field_name=>"_id", :condition=>"this.requirement_compliance.status == 'current'"
+  count     :compliant,                  :field_name=>"_id", :condition=>"requirement.status != 'incomplete' && requirement.status != 'expired'"
+  count     :current,                    :field_name=>"_id", :condition=>"requirement.status == 'current'"
 
   difference :non_compliant, :total,     :compliant
   difference :expiring_soon, :compliant, :current

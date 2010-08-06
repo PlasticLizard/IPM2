@@ -33,121 +33,91 @@
 
 <body id="sidebar-left">
 <div id="page_wrapper">
-<div id="page-header">
-<div id="page-header-wrapper">
-<div id="top">
-  <a href="ipm.heroku.com" class="logo" title="Maestro EMS">Maestro EMS</a>
-  <div class="welcome">
-    <span class="note">Welcome, <a href="#" title="Welcome, Nathan Stults">Nathan Stults</a></span>
+  <div id="page-header">
+    <div id="page-header-wrapper">
+      <div id="top">
+        <a href="ipm.heroku.com" class="logo" title="Maestro EMS">Maestro EMS</a>
+        <div class="welcome">
+          <span class="note">Welcome, <a href="#" title="Welcome, Nathan Stults">Nathan Stults</a></span>
 
-    <a class="btn ui-state-default ui-corner-all" href="#">
-      <span class="ui-icon ui-icon-wrench"></span>
-      Settings
-    </a>
-    <a class="btn ui-state-default ui-corner-all" href="#">
-      <span class="ui-icon ui-icon-person"></span>
-      My account
-    </a>
-    <a class="btn ui-state-default ui-corner-all" href="#">
-      <span class="ui-icon ui-icon-power"></span>
+          <a class="btn ui-state-default ui-corner-all" href="#">
+            <span class="ui-icon ui-icon-wrench"></span>
+            Settings
+          </a>
+          <a class="btn ui-state-default ui-corner-all" href="#">
+            <span class="ui-icon ui-icon-person"></span>
+            My account
+          </a>
+          <a class="btn ui-state-default ui-corner-all" href="#">
+            <span class="ui-icon ui-icon-power"></span>
 
-      Logout
-    </a>
-  </div>
-</div>
-<ul id="navigation">
-  <li>
-    <a href="/" class="sf-with-ul">Dashboard</a>
-  </li>
-  <li>
-    <a href="#" class="sf-with-ul">Administration</a>
-    <ul>
-      <li>
-        <a title="Manage departments and organizational roles" href="/admin/departments">Departments & Roles</a>
-      </li>
-      <li>
-        <a title="Manage companies, regions, stations and units" href="/admin/companies">Organizational Model</a>
-      </li>
-      <li>
-        <a href="#">Requirements & Credentials</a>
-        <ul>
-          <li>
-            <a title="Manage staff requirements" href="/admin/requirement_sets">Staff Requirements</a>
-          </li>
-          <li>
-            <a title="Manage your various types of certifications, credentials and training" href="/admin/credentials">Certifications & Credentials</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a title="Manage employees" href="/admin/employees">Employees</a>
-      </li>
-    </ul>
-  </li>
-
-</ul>
-<div id="search-bar">
-  <form method="post" action="http://www.google.com/">
-    <input type="text" name="q" value="live search demo" />
-
-  </form>
-</div>
-</div>
-</div>
-<div id="sub-nav">
-  <div class="page-title">
-    <%- if show_title? -%>
-        <h1><%=h(yield(:title) || "Untitled") %></h1>
-    <%- end -%>
-    <%= yield(:breadcrumb) %>
-    <!--
-    <span><a href="#" title="Layout Options">Breadcrumb</a> > <a href="#" title="Elements">Elements</a> > Icons</span>
-    -->
-  </div>
-  <div id="top-buttons">
-    <%= yield(:top_buttons) %>
-  </div>
-</div>
-<div id="page-layout">
-  <div id="page-content">
-    <div id="page-content-wrapper">
-      <%=yield%>
-      <div class="clearfix"></div>
-      <div id="sidebar">
-        <div class="sidebar-content">
-
-          <div class="hide_sidebar">
-            <%=yield(:sidebar)%>
-          </div>
-
-          <%if allow_hide_sidebar? || true%>
-              <a id="close_sidebar" class="btn ui-state-default full-link ui-corner-all" href="#drill">
-                <span class="ui-icon ui-icon-circle-arrow-e"></span>
-                Close Sidebar
-              </a>
-              <a id="open_sidebar" class="btn tooltip ui-state-default full-link icon-only ui-corner-all" title="Open Sidebar" href="#"><span class="ui-icon ui-icon-circle-arrow-w"></span></a>
-          <%end%>
+            Logout
+          </a>
         </div>
       </div>
-      <div class="clear">
+      <%=render :partial=>"shared/main_menu"%>
+      <div id="search-bar">
+        <form method="post" action="http://www.google.com/">
+          <input type="text" name="q" value="live search demo" />
+
+        </form>
       </div>
     </div>
-    <div class="clear"></div>
   </div>
+  <div id="sub-nav">
+    <div class="page-title">
+      <%- if show_title? -%>
+          <h1><%=h(yield(:title) || "Untitled") %></h1>
+      <%- end -%>
+      <%= yield(:breadcrumb) %>
+      <!--
+      <span><a href="#" title="Layout Options">Breadcrumb</a> > <a href="#" title="Elements">Elements</a> > Icons</span>
+      -->
+    </div>
+    <div id="top-buttons">
+      <%= yield(:top_buttons) %>
+    </div>
+  </div>
+  <div id="page-layout">
+    <div id="page-content">
+      <div id="page-content-wrapper">
+        <%=yield%>
+        <div class="clearfix"></div>
+        <div id="sidebar">
+          <div class="sidebar-content">
 
-</div>
-<div class="clear"></div>
-<div id="footer">
-  <a href="#" title="Home">Home</a> |
-  <a href="#" title="Register">Register</a> |
-  <a href="#" title="Members Login">Members Login</a> |
-  <a href="#" title="About us">About us</a> |
-  <a href="#" title="Example link">Example link</a>
+            <div class="hide_sidebar">
+              <%=yield(:sidebar)%>
+            </div>
 
-</div>
-<div id="copyright">
-  Created by <a href="http://www.thefreakparade.com" title="Freaky as ever">The Freak Parade</a>
-</div>
+            <%if allow_hide_sidebar? || true%>
+                <a id="close_sidebar" class="btn ui-state-default full-link ui-corner-all" href="#drill">
+                  <span class="ui-icon ui-icon-circle-arrow-e"></span>
+                  Close Sidebar
+                </a>
+                <a id="open_sidebar" class="btn tooltip ui-state-default full-link icon-only ui-corner-all" title="Open Sidebar" href="#"><span class="ui-icon ui-icon-circle-arrow-w"></span></a>
+            <%end%>
+          </div>
+        </div>
+        <div class="clear">
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+  </div>
+  <div class="clear"></div>
+  <div id="footer">
+    <a href="#" title="Home">Home</a> |
+    <a href="#" title="Register">Register</a> |
+    <a href="#" title="Members Login">Members Login</a> |
+    <a href="#" title="About us">About us</a> |
+    <a href="#" title="Example link">Example link</a>
+
+  </div>
+  <div id="copyright">
+    Created by <a href="http://www.thefreakparade.com" title="Freaky as ever">The Freak Parade</a>
+  </div>
 </div>
 <%= yield(:javascript) %>
 </body>

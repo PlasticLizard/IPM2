@@ -2,14 +2,25 @@ class StaffRequirementsController < ApplicationController
   include AccountResourceController
 
   def index
+    by_what = params[:by] || "organizational_unit"
     @show_title = true
-    @names = OrganizationalUnit.get_names
+    @names = nil
     @departments = current_account.roles.by_department
-    @status = EmployeeComplianceStatusCubicle.query do
-      select   :compliance_status, :all_measures
-      by       :company_id, :region_id, :station_id
-      where    :account_id => Account.current.id
-      order_by :company_id, :region_id
+    @data = if by_what == "organizational_unit"
+      @names = OrganizationalUnit.get_names
+      EmployeeComplianceStatusCubicle.query do
+        select   :all_measures
+        by       :company_id, :region_id, :station_id
+        where    :account_id => Account.current.id
+        order_by :company_id, :region_id
+      end
+    else
+      EmployeeRequirementComplianceStatusCubicle.query do
+        select   :all_measures
+        by       :requirement_set, :requirement
+        where    :account_id => Account.current.id, :mandatory=>true
+        order_by :requirement_set, :requirement
+      end
     end
   end
 
