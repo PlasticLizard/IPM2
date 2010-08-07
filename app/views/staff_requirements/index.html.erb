@@ -27,7 +27,6 @@
 
 <%content_for :sidebar do%>
 
-
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
       <div class="portlet-header ui-widget-header">
         <a href="#" id="clear_dep_query" style="display:none">
@@ -40,88 +39,69 @@
       </div>
     </div>
 
-
-<%end%>
-
-    <div class="content-box" style="float:left;">
-      <div class="content-box-wrapper" style="padding:2px;margin:2px;">
-        <h3 class="ui-box-header ui-corner-top">
-          Requirements Status
-        </h3>
-        <div id="requirements">
-          <div class="hastable">
-            <table>
-              <thead>
-              <tr>
-                <th>
-                  &nbsp;
-                </th>
-                <th>
-                  Compliance
-                </th>
-                <th>
-                  Alerts
-                </th>
-              </tr>
-              </thead>
-              <tbody>
-              <%=render :partial=>"compliance_status_group", :locals=>{:collection=>@data, :depth=>0}%>
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header">
+        <a href="#" id="clear_org_query" style="display:none">
+          <%=image_tag "delete.png"%>
+        </a>
+        Organizational Model
+        <span class="ui-icon ui-icon-circle-arrow-s"></span></div>
+      <div class="portlet-content">
+        <%=org_tree_html%>
       </div>
     </div>
-    <div class="clear"></div>
+<%end%>
+
+<div class="content-box" style="float:left;">
+  <div class="content-box-wrapper" style="padding:2px;margin:2px;">
+    <h3 class="ui-box-header ui-corner-top">
+      Requirements Status
+    </h3>
+    <div id="requirements">
+      <%=render :partial=>"staff_requirement_list"%>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>
 
 
 <br>
 
 <script language="javascript">
-    function filterEmployees(url){
-        //        var name_query = $("#name_query").val();
-        //        url = url || "/admin/employees";
-        //        var filter = {}
-        //        if (name_query && name_query != "")
-        //        {
-        //            filter.q = name_query;
-        //            $("#clear_name_query").fadeIn();
-        //        }
-        //        else
-        //        {
-        //            $("#clear_name_query").fadeOut();
-        //        }
-        //
-        //        var dep_roles = getDepartmentAndRoleSelections();
-        //        var org_units = getOrganizationalUnitSelections();
-        //
-        //        var has_dep_query = false;
-        //        if (dep_roles[0].length > 0){
-        //            filter["departments[]"] = dep_roles[0];
-        //            has_dep_query = true;
-        //        }
-        //
-        //        if (dep_roles[1].length > 0){
-        //            filter["roles[]"] = dep_roles[1];
-        //            has_dep_query = true;
-        //        }
-        //
-        //        has_dep_query ? $("#clear_dep_query").fadeIn() : $("#clear_dep_query").fadeOut();
-        //
-        //        if (org_units.length > 0){
-        //            filter["organizational_units[]"] = org_units;
-        //            $("#clear_org_query").fadeIn();
-        //        }
-        //        else{
-        //            $("#clear_org_query").fadeOut();
-        //        }
-        //
-        //        $.get(url,filter,function(response){
-        //            var $e = $("#employees");
-        //            $e.slideUp(100);
-        //            $("#employees").html(response);
-        //            $e.slideDown(100);
-        //        });
+    function filterRequirements(url){
+        url = url || "/staff_requirements";
+        var filter = {}
+        filter["by"] = "<%=params[:by_what]%>"
+        var dep_roles = getDepartmentAndRoleSelections();
+        var org_units = getOrganizationalUnitSelections();
+
+        var has_dep_query = false;
+        if (dep_roles[0].length > 0){
+            filter["departments[]"] = dep_roles[0];
+            has_dep_query = true;
+        }
+
+        if (dep_roles[1].length > 0){
+            filter["roles[]"] = dep_roles[1];
+            has_dep_query = true;
+        }
+
+        has_dep_query ? $("#clear_dep_query").fadeIn() : $("#clear_dep_query").fadeOut();
+
+        if (org_units.length > 0){
+            filter["organizational_units[]"] = org_units;
+            $("#clear_org_query").fadeIn();
+        }
+        else{
+            $("#clear_org_query").fadeOut();
+        }
+
+        $.get(url,filter,function(response){
+            var $e = $("#requirements");
+            $e.slideUp(100);
+            $("#requirements").html(response);
+            $e.slideDown(100);
+        });
     }
 
     function getDepartmentAndRoleSelections(){
@@ -163,71 +143,33 @@
         });
     }
 
-    function hideChildren(ou_id){
-        $("tr[data-parent-id=" + ou_id + "]").each(function(index,row){
-            var $row = $(row);
-            hideChildren($row.attr("data-ou-id"));
-            $row.hide();
-            $row.find("img").attr("src",'<%=image_path("plus-white.png")%>');
-        });
-    }
+
 
 
     $(function(){
-        $("a[href=#toggle-children]").live('click',function(){
-            $this = $(this);
-
-            var img = $this.find("img"),
-                    ou_type = $this.attr("data-ou-type"),
-                    ou_id = $this.attr("data-ou-id"),
-                    url = "/staff_requirements/" + ou_id;
-
-            var open = /plus/i.exec(img.attr("src"));
-
-            if (open){
-                if ($this.attr("data-loaded")){
-                    $("tr[data-parent-id=" + ou_id + "]").show();
-                    img.attr("src",'<%=image_path("minus-white.png")%>');
-
-                }
-                else{
-                    $.get(url,{parent_type:ou_type},function(data){
-                        $this.attr("data-loaded","true");
-                        $("#tr_" + ou_id).after(data);
-                        img.attr("src",'<%=image_path("minus-white.png")%>');
-
-                    });
-                }
-            }
-            else {
-                hideChildren(ou_id);
-                img.attr("src",'<%=image_path("plus-white.png")%>');
-            }
-        });
 
         $("#clear_dep_query").click(function(){
             $.jstree._reference("#role_tree").deselect_all();
-            filterEmployees();
+            filterRequirements();
         });
 
         $("#clear_org_query").click(function(){
             $.jstree._reference("#org_tree").deselect_all();
-            filterEmployees();
+            filterRequirements();
         });
 
         $("#role_tree").jstree({
             core : {animation:50},
             plugins : [ "themes", "html_data", "ui"]
         })
-                .bind("select_node.jstree",function(event,data){filterEmployees();})
-                .bind("deselect_node.jstree",function(event,data){filterEmployees();});
+                .bind("select_node.jstree",function(event,data){filterRequirements();})
+                .bind("deselect_node.jstree",function(event,data){filterRequirements();});
 
         $("#org_tree").jstree({
             core : {animation:50},
             plugins : [ "themes", "html_data", "ui" ]
         })
-                .bind("select_node.jstree",function(event,data){filterEmployees();})
-                .bind("deselect_node.jstree",function(event,data){filterEmployees()});
+                .bind("select_node.jstree",function(event,data){filterRequirements();})
+                .bind("deselect_node.jstree",function(event,data){filterRequirements()});
     });
 </script>
-

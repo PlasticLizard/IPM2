@@ -6,22 +6,29 @@ class StaffRequirementsController < ApplicationController
     @show_title = true
     @names = nil
     @departments = current_account.roles.by_department
+    filter = prepare_filter
+    filter[:account_id] = Account.current.id
     @data = if by_what == "organizational_unit"
-      @names = OrganizationalUnit.get_names
-      EmployeeComplianceStatusCubicle.query do
-        select   :all_measures
-        by       :company_id, :region_id, :station_id
-        where    :account_id => Account.current.id
-        order_by :company_id, :region_id
-      end
-    else
-      EmployeeRequirementComplianceStatusCubicle.query do
-        select   :all_measures
-        by       :requirement_set, :requirement
-        where    :account_id => Account.current.id, :mandatory=>true
-        order_by :requirement_set, :requirement
-      end
-    end
+              @names = OrganizationalUnit.get_names
+              EmployeeComplianceStatusCubicle.query do
+                select   :all_measures
+                by       :company_id, :region_id, :station_id
+                where    filter
+                order_by :company_id, :region_id
+              end
+            else
+              filter[:mandatory] = true
+              EmployeeRequirementComplianceStatusCubicle.query do
+                select   :all_measures
+                by       :requirement_set, :requirement
+                where    filter
+                order_by :requirement_set, :requirement
+              end
+            end
+
+    return render :partial=>"staff_requirement_list" if request.xhr?
+    render :index
+
   end
 
   def show
@@ -40,16 +47,13 @@ class StaffRequirementsController < ApplicationController
     render :partial=>"compliance_status_group", :locals=>{:collection=>children, :parent_type=>parent_type,:parent_id=>parent_id, :depth=>depth}
   end
 
+  private
+  def prepare_filter
+    filter = {}
+    filter[:department_id] = {"$in"=>params[:departments].map{|d|BSON::ObjectID(d)}} unless params[:departments].blank?
+    filter[:organizational_role_id] = {"$in"=>params[:roles].map{|d|BSON::ObjectID(d)}} unless params[:roles].blank?
+    filter[:organizational_unit_id] = {"$in"=>params[:organizational_units].map{|d|BSON::ObjectID(d)}} unless params[:organizational_units].blank?
+    filter
+  end
 
-#  def collection
-#    query = current_account.employees
-#    filter = {}
-#    filter[:full_name]=/#{params[:q]}/i unless params[:q].blank?
-#    filter[:department_id] = params[:departments] unless params[:departments].blank?
-#    filter[:organizational_role_id] = params[:roles] unless params[:roles].blank?
-#    filter[:organizational_unit_id] = params[:organizational_units] unless params[:organizational_units].blank?
-#    query = query.all(filter) unless filter.blank?
-#
-#    @employees ||= query.paginate :page=>params[:page], :per_page=>(params[:per_page] || per_page)
-#  end
 end

@@ -1,0 +1,20 @@
+<div class="hastable">
+  <table>
+    <thead>
+    <tr>
+      <th>
+        &nbsp;
+      </th>
+      <th>
+        Compliance
+      </th>
+      <th>
+        Alerts
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%=render :partial=>"compliance_status_group", :locals=>{:collection=>@data, :depth=>0}%>
+    </tbody>
+  </table>
+</div>
