@@ -14,6 +14,7 @@ class EmployeeComplianceStatusCubicle
   dimension :region_id,                  :field_name=>"organizational_unit_ids[1]"
   dimension :station_id,                 :field_name=>"organizational_unit_ids[2]"
   dimension :transport_unit_id,          :field_name=>"organizational_unit_ids[3]"
+  
 
   dimension :compliance_status,          :field_name=>"requirement_compliance.status"
 

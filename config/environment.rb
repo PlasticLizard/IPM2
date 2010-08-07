@@ -23,7 +23,8 @@ Rails::Initializer.run do |config|
   config.gem 'inherited_resources', :version=>'1.0.6'
   config.gem 'mongo_mapper'
   config.gem 'ramdiv-mongo_mapper_acts_as_tree', :lib=>'mongo_mapper_acts_as_tree', :version=>'>= 0.1.0'
-  config.gem 'cubicle', :version=>'>= 0.5.0'
+  config.gem 'cubicle', :version=>'>= 0.5.1'
+  config.gem 'mongo', :version=>'>= 1.0.7'
 
 
 

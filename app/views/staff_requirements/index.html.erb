@@ -71,7 +71,7 @@
     function filterRequirements(url){
         url = url || "/staff_requirements";
         var filter = {}
-        filter["by"] = "<%=params[:by_what]%>"
+        filter["by"] = "<%=params[:by] || "organizational_unit"%>"
         var dep_roles = getDepartmentAndRoleSelections();
         var org_units = getOrganizationalUnitSelections();
 
@@ -126,21 +126,32 @@
         var selections = tree.get_selected();
         var org_units = [];
         $.each(selections,function(index,selected){
-            org_units.push(selected.id);
-            if (selected.children.length > 0){
-                collectChildUnits(selected.children,org_units);
+            if (selected && selected.id){
+                org_units.push(format_org_unit(selected));
             }
+//            if (selected.children.length > 0){
+//                collectChildUnits(selected.children,org_units);
+//            }
+
         });
         return org_units;
     }
 
     function collectChildUnits(org_units, selected){
         $.each(org_units,function(index,unit){
-            selected.push(unit.id);
+            if (unit && unit.id){
+                selected.push(format_org_unit(unit));
+            }
             if (unit.children.length > 0){
                 collectChildUnits(unit.children,selected);
+
             }
+
         });
+    }
+
+    function format_org_unit(org_unit_element){
+        return $(org_unit_element).attr("data-type") + "_id:" + org_unit_element.id
     }
 
 

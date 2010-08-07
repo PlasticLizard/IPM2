@@ -20,7 +20,7 @@ class StaffRequirementsController < ApplicationController
               filter[:mandatory] = true
               EmployeeRequirementComplianceStatusCubicle.query do
                 select   :all_measures
-                by       :requirement_set, :requirement
+                by       :requirement_set, :requirement, :company_id, :region_id, :station_id
                 where    filter
                 order_by :requirement_set, :requirement
               end
@@ -52,8 +52,20 @@ class StaffRequirementsController < ApplicationController
     filter = {}
     filter[:department_id] = {"$in"=>params[:departments].map{|d|BSON::ObjectID(d)}} unless params[:departments].blank?
     filter[:organizational_role_id] = {"$in"=>params[:roles].map{|d|BSON::ObjectID(d)}} unless params[:roles].blank?
-    filter[:organizational_unit_id] = {"$in"=>params[:organizational_units].map{|d|BSON::ObjectID(d)}} unless params[:organizational_units].blank?
+    filter["$or"] = prepare_org_units_filter unless params[:organizational_units].blank?
+    puts filter.inspect
     filter
+  end
+
+  def prepare_org_units_filter
+    filter = {}
+    if (org_units = params[:organizational_units])
+      org_units.each do |org_unit|
+        key,id = org_unit.split(":")
+        (filter["_id.#{key}"] ||= []) << BSON::ObjectID(id)
+      end
+    end
+    filter.inject([]){|f,(k,v)| f << {k=>{"$in"=>v}};f}
   end
 
 end

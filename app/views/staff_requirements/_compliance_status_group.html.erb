@@ -2,7 +2,7 @@
     <tr id="tr_<%=ou%>" data-ou-id="<%=ou%>" class="child-row">
       <td>
         <span style="margin-left:<%=depth * 10%>px">
-          <%=@names ? @names[BSON::ObjectID(ou)] : ou%>
+          <%=@names && @names[BSON::ObjectID(ou)] ? @names[BSON::ObjectID(ou)] : ou%>
         </span>
       </td>
       <td>
@@ -15,5 +15,5 @@
        <%=render :partial=>"compliance_scorecard", :locals=>{:subject=>children}%>
       </td>
     </tr>
-    <%=render(:partial=>"compliance_status_group", :locals=>{:collection=>children, :depth=>depth+1}) unless children.is_a?(Array)%>
+    <%=render(:partial=>"compliance_status_group", :locals=>{:collection=>children, :depth=>depth+1}) unless children.is_a?(Array) || depth > 0%>
 <%end%>
