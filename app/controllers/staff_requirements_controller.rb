@@ -8,8 +8,10 @@ class StaffRequirementsController < ApplicationController
     @departments = current_account.roles.by_department
     filter = prepare_filter
     filter[:account_id] = Account.current.id
+    @max_depth = 2
     @data = if by_what == "organizational_unit"
               @names = OrganizationalUnit.get_names
+              @max_depth = 3
               EmployeeComplianceStatusCubicle.query do
                 select   :all_measures
                 by       :company_id, :region_id, :station_id

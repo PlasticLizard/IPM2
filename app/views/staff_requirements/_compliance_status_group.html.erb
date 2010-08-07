@@ -15,5 +15,5 @@
        <%=render :partial=>"compliance_scorecard", :locals=>{:subject=>children}%>
       </td>
     </tr>
-    <%=render(:partial=>"compliance_status_group", :locals=>{:collection=>children, :depth=>depth+1}) unless children.is_a?(Array) || depth > 0%>
+    <%=render(:partial=>"compliance_status_group", :locals=>{:collection=>children, :depth=>depth+1}) unless children.is_a?(Array) || depth >= (@max_depth - 1)%>
 <%end%>
