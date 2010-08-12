@@ -5,14 +5,22 @@ class Admin::OrganizationalUnitsController  < InheritedResources::Base
     get_resource_ivar || set_resource_ivar(OrganizationalUnit.find(params[:id]))
   end
 
+  def index
+    @companies = current_account.companies
+    @show_title = true
+    render 'index', :layout=>'left_sidebar'
+  end
+
 #  def collection
 #    get_collection_ivar || set_collection_ivar(parent.descendants)
 #  end
 
   def show
     @organizational_unit = resource
-    show! do |format|
-      format.all { render :partial=>"/admin/organizational_units/show"}
+    if request.xhr?
+      render :partial=>"/admin/organizational_units/show"
+    else
+      index
     end
   end
 

@@ -23,6 +23,17 @@ class RequirementSet < AccountModel
     filter[:organizational_role_id] = organizational_role_ids unless organizational_role_ids.blank?
     Account.current.employees.all filter
   end
+
+  def self.get_names
+    names = {}
+    RequirementSet.find_each do |rs|
+      names[rs._id] = rs.name
+      rs.requirement_groups.each do |g|
+        names[g._id] = g.name
+      end
+    end
+    names
+  end
   
   after_save :ensure_requirement_group
   def ensure_requirement_group

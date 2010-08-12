@@ -2,7 +2,7 @@
     <tr id="tr_<%=ou%>" data-ou-id="<%=ou%>" class="child-row">
       <td>
         <span style="margin-left:<%=depth * 10%>px">
-          <%=@names && @names[BSON::ObjectID(ou)] ? @names[BSON::ObjectID(ou)] : ou%>
+          <%=requirement_group_link(collection,@names,ou)%>
         </span>
       </td>
       <td>

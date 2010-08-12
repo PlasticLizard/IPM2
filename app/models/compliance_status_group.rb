@@ -14,7 +14,7 @@ class ComplianceStatusGroup < ComplianceStatus
     @operator = options[:require] || options[:operator] || :all
     #start off incomplete, to be proven wrong
     incomplete! if @operator == :any
-  end 
+  end
 
   def update_valid_until
     self.valid_until = self.operator==:all ? self.first_expiring_child : self.last_expiring_child
@@ -43,13 +43,13 @@ class ComplianceStatusGroup < ComplianceStatus
     else
       last_valid_child = self.children.select{|child|(!child.incomplete) && child.valid_until == self.last_expiring_child}.pop
       unless last_valid_child
-        last_valid_child = ComplianceStatusGroup.new :operator=>:any,
-                                                     :name=>name,
-                                                     :context_id=>context_id,
-                                                     :context_type=>context_type,
-                                                     :incomplete=>true,
-                                                     :status=>:incomplete,
-                                                     :_type=>_type
+        last_valid_child = ComplianceStatus.new :operator=>:any,
+                                               :name=>"Any in group",
+                                               :context_id=>nil,
+                                               :context_type=>nil,
+                                               :incomplete=>true,
+                                               :status=>:incomplete,
+                                               :_type=>nil
         self.children << last_valid_child
       end
       last_valid_child.mandatory = true

@@ -1,7 +1,7 @@
 <div id="requirement_tree">
   <ul>
     <%@requirements.keys.each do |dep|%>
-        <li id="<%=dep.id%>" data-department-id="<%=dep.id%>" rel="department">
+        <li id="<%=dep.id%>" data-department-id="<%=dep.id%>" rel="department" class="<%='jstree-open' if @department && @department.id == dep.id%>">
           <a href="#"><%=dep.name%></a>
           <%unless @requirements[dep].blank?%>
                 <ul>

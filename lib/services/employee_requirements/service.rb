@@ -32,11 +32,15 @@ class Services::EmployeeRequirements::Service
 
   def update_employee_requirement_compliance
     clear_employee_requirement_compliance
+    Employee.identity_map.clear
     RequirementSet.find_each do |rs|
       rs.employees.each do |emp|
         update_employee_compliance_for_requirement_set(rs,emp)
       end
     end
+  end
+
+  def refresh_requirement_cubes
     EmployeeComplianceStatusCubicle.process
     EmployeeRequirementComplianceStatusCubicle.process
   end

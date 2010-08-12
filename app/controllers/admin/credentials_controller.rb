@@ -15,7 +15,7 @@ class Admin::CredentialsController  < InheritedResources::Base
     else
       @credentials = current_account.credentials.by_department_and_type
       @show_title = true
-      render :layout=>'left_sidebar'
+      render 'index', :layout=>'left_sidebar'
     end
 
   end
@@ -42,8 +42,11 @@ class Admin::CredentialsController  < InheritedResources::Base
   end
 
   def show
-    show! do |format|
-      format.html { render request.xhr? ? {:partial=>"show"} :  :show}
+    @credential = Credential.find(params[:id])
+    if request.xhr?
+      render :partial=>"show"
+    else
+      index
     end
   end
 

@@ -1,8 +1,12 @@
 (function($){
 
     $.fn.credentialTree = function(options) {
+        options = options || {};
+        var selected = options.selected;
+        selected = selected ? [selected] : [];
 
         var tree = this.find("#credential_tree").jstree({
+            ui : {initially_select:selected},
             core : {animation:50},
             plugins : [ "themes", "html_data", "ui", "crrm" ]
         })

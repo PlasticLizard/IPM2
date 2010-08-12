@@ -146,11 +146,11 @@ describe Services::EmployeeRequirements::Service do
     rs.requirement_groups[0].required_credentials << cred2
 
     status = @service.update_employee_compliance_for_requirement_set(rs,emp)
-
+    puts status.children[0].children[0].children.inspect
     status.children[0].children[0].children.length.should be 3
     status.children[0].children[0].children.select{|s|s.name=="ta da"}[0].mandatory.should_not be true
     status.children[0].children[0].children.select{|s|s.name=="Sexiness Training"}[0].mandatory.should_not be true
-    status.children[0].children[0].children.select{|s|s.name=="ha! - Any"}[0].mandatory.should be true
+    status.children[0].children[0].children.select{|s|s.name=="Any in group"}[0].mandatory.should be true
 
 
   end

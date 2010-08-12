@@ -42,6 +42,7 @@
 <script language="javascript">
     $(document).ready(function(){
         $("#org_tree").jstree({
+            ui : {initially_select:'<%=@organizational_unit ? @organizational_unit.id.to_s : ""%>'},
             core : {animation:50},
             plugins : [ "themes", "html_data", "ui", "crrm" ]
         })
@@ -75,7 +76,7 @@
 
         $(document).bind("organizational_unit.selected",function(e,controller,ou_id){
             select_node("#org_tree","#" + ou_id);
-            $("#detail").load(controller + "/" + ou_id);
+            $("#detail").load("/admin/" + controller + "/" + ou_id);
         });
 
         $(document).bind("organizational_unit.renamed",function(e,unit_id,new_name){
@@ -91,7 +92,9 @@
             select_node("#org_tree","#" + first_co.attr("id"));
         }
 
+    <%unless @organizational_unit%>
         select_first_company();
+    <%end%>
 
     });
 

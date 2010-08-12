@@ -20,9 +20,10 @@ class StaffRequirementsController < ApplicationController
               end
             else
               filter[:mandatory] = true
+              @names = Credential.get_names.merge(RequirementSet.get_names)
               EmployeeRequirementComplianceStatusCubicle.query do
                 select   :all_measures
-                by       :requirement_set, :requirement, :company_id, :region_id, :station_id
+                by       :requirement_set_id, :requirement_id, :company_id, :region_id, :station_id
                 where    filter
                 order_by :requirement_set, :requirement
               end
@@ -45,7 +46,6 @@ class StaffRequirementsController < ApplicationController
     end
 
     @names = OrganizationalUnit.get_names :parent_id=>BSON::ObjectID(parent_id)
-    puts @names.inspect
     render :partial=>"compliance_status_group", :locals=>{:collection=>children, :parent_type=>parent_type,:parent_id=>parent_id, :depth=>depth}
   end
 
@@ -55,7 +55,6 @@ class StaffRequirementsController < ApplicationController
     filter[:department_id] = {"$in"=>params[:departments].map{|d|BSON::ObjectID(d)}} unless params[:departments].blank?
     filter[:organizational_role_id] = {"$in"=>params[:roles].map{|d|BSON::ObjectID(d)}} unless params[:roles].blank?
     filter["$or"] = prepare_org_units_filter unless params[:organizational_units].blank?
-    puts filter.inspect
     filter
   end
 

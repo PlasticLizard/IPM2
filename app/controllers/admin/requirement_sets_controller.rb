@@ -8,7 +8,7 @@ class Admin::RequirementSetsController  < InheritedResources::Base
 #    else
       @requirements = current_account.requirement_sets.by_department
       @show_title = true
-      render :layout=>'left_sidebar'
+      render 'index', :layout=>'left_sidebar'
 #    end
   end
 
@@ -17,8 +17,12 @@ class Admin::RequirementSetsController  < InheritedResources::Base
    end
 
    def show
-    show! do |format|
-      format.all { render :partial=>"show"}
+    @requirement_set = RequirementSet.find(params[:id])
+    @department ||= @requirement_set.department
+    if request.xhr?
+      render :partial=>"show"
+    else
+      index
     end
   end
 

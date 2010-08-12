@@ -34,6 +34,7 @@
 <%end%>
 
 <div id="requirement_set_detail"  style="min-height:500px;">
+  <%=render(:partial=>"show") if @requirement_set%>
 </div>
 
 
@@ -59,6 +60,7 @@
 
 
             $("#requirement_tree").jstree({
+                ui : {initially_select:'<%=@requirement_set ? @requirement_set.id.to_s : ""%>'},
                 core : {animation:50},
                 plugins : [ "themes", "html_data", "ui", "crrm" ]
             })
@@ -101,13 +103,13 @@
 
             $(document).bind("department.selected",function(e,department_id){
                 $("#requirement_set_detail").html("");
-                $("#requirement_set_detail").load("departments/" + department_id + "/requirement_sets/list");
+                $("#requirement_set_detail").load("/admin/departments/" + department_id + "/requirement_sets/list");
                 select_node("#requirement_tree","#" + department_id);
             });
 
             $(document).bind("requirement_set.selected",function(e,department_id,rs_id){
                 if (rs_id == null || rs_id=='') return;
-                $("#requirement_set_detail").load("departments/" + department_id + "/requirement_sets/" + rs_id);
+                $("#requirement_set_detail").load("/admin/departments/" + department_id + "/requirement_sets/" + rs_id);
                 select_node("#requirement_tree","#" + rs_id);
             });
 
@@ -121,7 +123,7 @@
                     tree.set_text("#" + requirement_set_id,new_name);
             });
 
-            $(document).trigger("department.selected",['<%=@requirements.keys[0].id%>']);
+            //$(document).trigger("department.selected",['<%=@requirements.keys[0].id%>']);
 
 
         });

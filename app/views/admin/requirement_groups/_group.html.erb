@@ -30,7 +30,9 @@ data-url='"requirement_sets/<%=@requirement_set.id%>/requirement_groups/<%=group
                   <%=credential.class.name.split("::")[-1].titleize%>
                 </td>
                 <td>
-                  <%=credential.name%>
+                  <a href="/admin/credentials/<%=credential.id%>">
+                    <%=credential.name%>
+                  </a>
                 </td>
                 <td>
                   <%=credential.duty_requirement%>
