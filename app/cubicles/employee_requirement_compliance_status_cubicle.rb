@@ -10,6 +10,9 @@ class EmployeeRequirementComplianceStatusCubicle
 
   dimension :account_id
 
+  dimension :employee_id, :field_name=>"_id"
+  dimension :employee_name, :expression=>"this.last_name + ', ' + this.first_name"
+
   dimension :organizational_role_id
   dimension :department_id
   dimension :company_id,                 :field_name=>"organizational_unit_ids[0]"
@@ -24,7 +27,7 @@ class EmployeeRequirementComplianceStatusCubicle
   dimension :requirement_status,         :expression=>'requirement.status'
   dimension :requirement_id,             :expression=>'requirement.context_id'
   dimension :requirement,                :expression=>'requirement.name'
-  dimension :mandatory,                  :expression=>'requirement.mandatory || false'
+  dimension :mandatory,                  :expression=>'requirement.mandatory ? "Yes" : "No"'
 
   count     :total,                      :field_name=>"_id"
   count     :compliant,                  :field_name=>"_id", :condition=>"requirement.status != 'incomplete' && requirement.status != 'expired'"

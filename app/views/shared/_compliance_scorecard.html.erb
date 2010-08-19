@@ -1,5 +1,5 @@
 <div class="mini-score" style="margin-top:2px;">
   <span class="ui-corner-left <%=compliance_alert_class(subject.measure_values.current.to_i,'current')%> left tooltip"title="Current: <%=subject.measure_values.current.to_i%> employees"><%=subject.measure_values.current.to_i%></span>
   <span class="<%=compliance_alert_class(subject.measure_values.expiring_soon,'expires_soon')%> tooltip" title="Expiring soon: <%=subject.measure_values.expiring_soon.to_i%> employees"><%=subject.measure_values.expiring_soon.to_i%></span>
-  <span class="ui-corner-right <%=compliance_alert_class(subject.measure_values.non_compliant,'expired')%> right tooltip" title="Expired or missing: <%=subject.measure_values.non_compliant.to_i%> employees"><%=subject.measure_values.non_compliant.to_i%></span>
+  <span class="ui-corner-right <%=compliance_alert_class(subject.measure_values.non_compliant,'expired')%> right tooltip" title="Expired or incomplete: <%=subject.measure_values.non_compliant.to_i%> employees"><%=subject.measure_values.non_compliant.to_i%></span>
 </div>

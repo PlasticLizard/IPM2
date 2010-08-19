@@ -23,7 +23,7 @@ required by every
 </span>
 </p>
 
-<%=render :partial=>"admin/requirement_groups/group", :collection=>@requirement_set.requirement_groups%>
+<%=render :partial=>"admin/requirement_groups/group", :collection=>@requirement_set.requirement_groups, :locals=>{:compliance=>@compliance}%>
 
 <script language="javascript">
     var updateUrl = "departments/<%=@department.id%>/requirement_sets/<%=@requirement_set.id%>";

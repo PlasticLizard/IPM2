@@ -36,7 +36,7 @@ class ComplianceStatus
     return "Never Expires" unless self.valid_until
     if days_valid > 365 then valid_until
     elsif days_valid > 60
-      "#{days_valid/30} Months"
+      "#{days_valid.to_i/30} Months"
     else
       "#{days_valid} Days"
     end

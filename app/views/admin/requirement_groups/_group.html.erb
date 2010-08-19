@@ -20,11 +20,13 @@ data-url='"requirement_sets/<%=@requirement_set.id%>/requirement_groups/<%=group
             <th>Type</th>
             <th>Name</th>
             <th>Duty Requirement</th>
+            <th>Compliance</th>
             <th>Action</th>
           </tr>
           </thead>
           <tbody>
           <%group.required_credentials.each do |credential|%>
+              <%status = compliance[credential._id]%>
               <tr id ="tr_<%=group.id%>_<%=credential.id%>">
                 <td>
                   <%=credential.class.name.split("::")[-1].titleize%>
@@ -36,6 +38,9 @@ data-url='"requirement_sets/<%=@requirement_set.id%>/requirement_groups/<%=group
                 </td>
                 <td>
                   <%=credential.duty_requirement%>
+                </td>
+                <td>
+                    <%=status ? render(:partial=>"shared/compliance_scorecard", :locals=>{:subject=>status}) : ""%> 
                 </td>
                 <td>
                   <a class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Remove requirement for <%=credential.name%>" href="#delete" rel="credential" data-credential-id="<%=credential.id%>" data-group-id="<%=group.id%>">

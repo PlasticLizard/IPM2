@@ -19,7 +19,7 @@ class StaffRequirementsController < ApplicationController
                 order_by :company_id, :region_id
               end
             else
-              filter[:mandatory] = true
+              filter[:mandatory] = "Yes"
               @names = Credential.get_names.merge(RequirementSet.get_names)
               EmployeeRequirementComplianceStatusCubicle.query do
                 select   :all_measures

@@ -12,7 +12,7 @@
         <div class="clear"></div>
       </td>
       <td>
-       <%=render :partial=>"compliance_scorecard", :locals=>{:subject=>children}%>
+       <%=render :partial=>"shared/compliance_scorecard", :locals=>{:subject=>children}%>
       </td>
     </tr>
     <%=render(:partial=>"compliance_status_group", :locals=>{:collection=>children, :depth=>depth+1}) unless children.is_a?(Array) || depth >= (@max_depth - 1)%>

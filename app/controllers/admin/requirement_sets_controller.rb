@@ -17,8 +17,14 @@ class Admin::RequirementSetsController  < InheritedResources::Base
    end
 
    def show
-    @requirement_set = RequirementSet.find(params[:id])
+    id = params[:id]
+    @requirement_set = RequirementSet.find(id)
     @department ||= @requirement_set.department
+    @compliance = EmployeeRequirementComplianceStatusCubicle.query do
+      select :all_measures
+      by :requirement_id
+      where :mandatory=>"Yes", :requirement_set_id=>BSON::ObjectID(id)
+    end
     if request.xhr?
       render :partial=>"show"
     else

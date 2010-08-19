@@ -42,7 +42,15 @@ class Admin::CredentialsController  < InheritedResources::Base
   end
 
   def show
-    @credential = Credential.find(params[:id])
+    id = params[:id]
+    @credential = Credential.find(id)
+    @compliance = EmployeeRequirementComplianceStatusCubicle.query do
+      select :employee_id, :employee_name, :requirement_status, :all_measures
+      by :mandatory
+      where :requirement_id=>BSON::ObjectID(id)
+      order_by :compliant, :employee_name
+    end
+    puts @compliance.inspect
     if request.xhr?
       render :partial=>"show"
     else
