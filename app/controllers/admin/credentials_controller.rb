@@ -50,7 +50,6 @@ class Admin::CredentialsController  < InheritedResources::Base
       where :requirement_id=>BSON::ObjectID(id)
       order_by :compliant, :employee_name
     end
-    puts @compliance.inspect
     if request.xhr?
       render :partial=>"show"
     else
