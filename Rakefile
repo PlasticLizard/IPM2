@@ -9,5 +9,4 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
-require 'dry_scaffold/tasks'
 
