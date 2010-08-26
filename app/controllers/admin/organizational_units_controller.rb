@@ -17,6 +17,15 @@ class Admin::OrganizationalUnitsController  < InheritedResources::Base
 
   def show
     @organizational_unit = resource
+
+#    @compliance = EmployeeComplianceStatusCubicle.query do
+#      select :employee_id, :employee_name, :requirement_status, :all_measures
+#      by :mandatory
+#      where :requirement_id=>BSON::ObjectID(id)
+#      order_by :compliant, :employee_name
+#    end
+#    puts resource.class.name.underscore + "_id[" + params[:id] + "]"
+
     if request.xhr?
       render :partial=>"/admin/organizational_units/show"
     else

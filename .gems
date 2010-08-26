@@ -1,8 +1,9 @@
   rails --version 2.3.5
   will_paginate --version 2.3.14
   inherited_resources --version 1.0.6
-  mongo_mapper --version 0.8.2
-  bson_ext --version 1.0.1
+  mongo_mapper --version 0.8.3
+  bson --version 1.0.4
+  bson_ext --version 1.0.4
   ramdiv-mongo_mapper_acts_as_tree --version 0.1.0
   cubicle --version 0.5.1
   mongo --version 1.0.7
