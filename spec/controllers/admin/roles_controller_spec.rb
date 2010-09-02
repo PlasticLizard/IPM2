@@ -8,7 +8,7 @@ describe Admin::RolesController do
   end
 
   it "should fetch the requested parent and add it to the params" do
-    ou = OrganizationalRole.new :id=>BSON::ObjectID.new, :name=>"ou"
+    ou = OrganizationalRole.new :id=>BSON::ObjectId.new, :name=>"ou"
     OrganizationalRole.should_receive(:find).with(1).and_return(ou)
     params = {"role"=>{}}
     params = controller.send(:get_parented_attributes,1,params)

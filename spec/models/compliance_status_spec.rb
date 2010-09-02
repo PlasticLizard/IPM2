@@ -28,7 +28,7 @@ describe ComplianceStatus do
 
   it "should return a status of expired when appropriate" do
     status = ComplianceStatus.new("a","a")
-    status.valid_until = Date.yesterday
+    status.valid_until = Date.today.advance(:days=>-2)
     status.status.should equal :expired
   end
 

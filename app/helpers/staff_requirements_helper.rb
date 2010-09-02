@@ -9,7 +9,7 @@ module StaffRequirementsHelper
 
   def requirement_group_link(collection,names,key)
     unless key == "Unknown"
-      name = names && names[BSON::ObjectID(key)] ? names[BSON::ObjectID(key)] : key
+      name = names && names[BSON::ObjectId(key)] ? names[BSON::ObjectId(key)] : key
       if collection.dimension.name.to_s == "requirement_id"
         "<a href='admin/credentials/#{key}'>#{name}</a>"
       elsif collection.dimension.name.to_s == "requirement_set_id"
@@ -18,7 +18,7 @@ module StaffRequirementsHelper
         "<a href='admin/organizational_units/#{key}'>#{name}</a>"  
       else
         name
-      end
+      end.html_safe
     else
       "Any in this set"
     end

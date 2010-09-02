@@ -1,7 +1,7 @@
 module Admin::CompaniesHelper
   def org_tree_html
     arranged = Account.current.organizational_model
-    "<div id='org_tree'>" + org_subtree_html(arranged) + "</div>"
+    ("<div id='org_tree'>" + org_subtree_html(arranged) + "</div>").html_safe
   end
 
   private

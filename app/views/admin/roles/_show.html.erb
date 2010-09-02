@@ -42,7 +42,7 @@
        data-update_value="'role[role_description]'"
        data-text_area_cols="100"
        data-text_area_rows="10">
-    <%=@role.description || "<i>Click here to add a job description / mission statement</i>"%>
+    <%=@role.description || raw("<i>Click here to add a job description / mission statement</i>")%>
   </div>
 </div>
 

@@ -47,7 +47,7 @@ class Admin::CredentialsController  < InheritedResources::Base
     @compliance = EmployeeRequirementComplianceStatusCubicle.query do
       select :employee_id, :employee_name, :requirement_status, :all_measures
       by :mandatory
-      where :requirement_id=>BSON::ObjectID(id)
+      where :requirement_id=>BSON::ObjectId(id)
       order_by :compliant, :employee_name
     end
     if request.xhr?

@@ -30,8 +30,8 @@ describe Admin::CredentialsController do
     get "list", :department_id=>d.id.to_s
     creds = assigns["credentials"]
     creds.length.should equal 2
-    creds.keys[0].should == "Certification"
-    creds.keys[1].should == "Training"
+    creds.keys[1].should == "Certification"
+    creds.keys[0].should == "Training"
     creds["Certification"][0].should == c1
     creds["Training"][0].should == t1
   end

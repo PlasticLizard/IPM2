@@ -42,18 +42,18 @@ class StaffRequirementsController < ApplicationController
     children = EmployeeComplianceStatusCubicle.query do
       select :compliance_status, :all_measures
       by     "#{ou_type}_id".to_sym
-      where  "#{parent_type}_id".to_sym => BSON::ObjectID(parent_id), :account_id=>Account.current.id
+      where  "#{parent_type}_id".to_sym => BSON::ObjectId(parent_id), :account_id=>Account.current.id
     end
 
-    @names = OrganizationalUnit.get_names :parent_id=>BSON::ObjectID(parent_id)
+    @names = OrganizationalUnit.get_names :parent_id=>BSON::ObjectId(parent_id)
     render :partial=>"compliance_status_group", :locals=>{:collection=>children, :parent_type=>parent_type,:parent_id=>parent_id, :depth=>depth}
   end
 
   private
   def prepare_filter
     filter = {}
-    filter[:department_id] = {"$in"=>params[:departments].map{|d|BSON::ObjectID(d)}} unless params[:departments].blank?
-    filter[:organizational_role_id] = {"$in"=>params[:roles].map{|d|BSON::ObjectID(d)}} unless params[:roles].blank?
+    filter[:department_id] = {"$in"=>params[:departments].map{|d|BSON::ObjectId(d)}} unless params[:departments].blank?
+    filter[:organizational_role_id] = {"$in"=>params[:roles].map{|d|BSON::ObjectId(d)}} unless params[:roles].blank?
     filter["$or"] = prepare_org_units_filter unless params[:organizational_units].blank?
     filter
   end
@@ -63,7 +63,7 @@ class StaffRequirementsController < ApplicationController
     if (org_units = params[:organizational_units])
       org_units.each do |org_unit|
         key,id = org_unit.split(":")
-        (filter["_id.#{key}"] ||= []) << BSON::ObjectID(id)
+        (filter["_id.#{key}"] ||= []) << BSON::ObjectId(id)
       end
     end
     filter.inject([]){|f,(k,v)| f << {k=>{"$in"=>v}};f}

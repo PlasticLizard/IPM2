@@ -21,7 +21,7 @@ class Admin::OrganizationalUnitsController  < InheritedResources::Base
 #    @compliance = EmployeeComplianceStatusCubicle.query do
 #      select :employee_id, :employee_name, :requirement_status, :all_measures
 #      by :mandatory
-#      where :requirement_id=>BSON::ObjectID(id)
+#      where :requirement_id=>BSON::ObjectId(id)
 #      order_by :compliant, :employee_name
 #    end
 #    puts resource.class.name.underscore + "_id[" + params[:id] + "]"

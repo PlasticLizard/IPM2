@@ -7,6 +7,11 @@ Date::DATE_FORMATS[:default] = '%m/%d/%Y'
 # if you want to change the format of Time display then add the line below
 Time::DATE_FORMATS[:default]= '%m/%d/%Y %H:%M:%S'
 
+require Rails.root.join("lib","names.rb")
+require Rails.root.join("lib","tree_helper.rb")
+require Rails.root.join("lib/services/employee_requirements.rb")
+require Rails.root.join("lib/services/employee_requirements/service.rb")
+
 
 MongoMapper.setup(get_database_config, Rails.env, {
         :logger    => Rails.logger,

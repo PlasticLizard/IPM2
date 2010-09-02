@@ -23,7 +23,7 @@ class Admin::RequirementSetsController  < InheritedResources::Base
     @compliance = EmployeeRequirementComplianceStatusCubicle.query do
       select :all_measures
       by :requirement_id
-      where :mandatory=>"Yes", :requirement_set_id=>BSON::ObjectID(id)
+      where :mandatory=>"Yes", :requirement_set_id=>BSON::ObjectId(id)
     end
     if request.xhr?
       render :partial=>"show"

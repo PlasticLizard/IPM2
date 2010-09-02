@@ -1,72 +1,65 @@
-ActionController::Routing::Routes.draw do |map|
+Ipm::Application.routes.draw do 
 
-  # The priority is based upon order of creation: first created -> highest priority.
+  namespace :admin do
 
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
+    resources :departments do
+      collection do
+        get :manage
+      end
 
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
+      resources :roles do
+        collection { get :select }
+      end
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
-
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
-
-  # See how all your routes lay out with "rake routes"
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing or commenting them out if you're using named routes and resources.
-  map.namespace(:admin)  do |admin|
-    admin.resources :departments, :collection=>{:manage=>:get} do |dep|
-      dep.resources :roles, :collection=>{:select=>:get}
-      dep.resources :requirement_sets, :collection=>{:list=>:get}
-      dep.resources :credentials, :collection=>{:list=>:get, :quick_add=>:get}
+      resources :requirement_sets do
+        collection { get :list }
+      end
+      resources :credentials do
+        collection do
+          get :list, :quick_add
+        end
+      end
     end
 
-    admin.resources :regions, :stations, :transport_units
+    resources :regions, :stations, :transport_units
     
-    admin.resources :organizational_units, :collection=>{:select=>:get}
+    resources :organizational_units do
+      collection { get :select }
+    end
 
-    admin.resources :requirement_sets do |rs|
-      rs.resources :requirement_groups, :member=>{:add_requirements=>:put, :remove_requirement=>:delete}
+    resources :requirement_sets do
+      resources :requirement_groups do
+        member do
+          put :add_requirement
+          delete :remove_requirement
+        end
+      end
     end
     
-    admin.resources :companies, :member=>{:organizational_unit=>:post} do |company|
-      company.resources :regions, :stations, :transport_units
+    resources :companies do
+      member { post :organizational_unit }
+      resources :regions, :stations, :transport_units
     end
 
-    admin.resources :credentials, :collection=>{:select=>:get}
+    resources :credentials do
+      collection { get :select }
+    end
 
-    admin.resources :employees do |emp|
-      emp.resources :issued_credentials, :collection=>{:issue=>:put, :select=>:get, :revoke=>:delete}      
+    resources :employees do
+      resources :issued_credentials do
+        collection do
+          put :issue
+          get :select
+          delete :revoke
+        end
+      end
     end
   end
 
-  map.resources :staff_requirements
+  resources :staff_requirements
 
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  match '/:controller(/:action(/:id))'
+#
+#  map.connect ':controller/:action/:id'
+#  map.connect ':controller/:action/:id.:format'
 end

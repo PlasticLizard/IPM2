@@ -7,6 +7,6 @@ module Admin::DepartmentsHelper
       output << "</li>"
     end
     output << "</ul>"
-    output
+    output.html_safe
   end
 end
