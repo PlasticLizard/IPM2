@@ -1,5 +1,9 @@
 class Employee < User
    
+  attr_accessible :email, :password, :password_confirmation, :account_id, :account, :full_name, :organizational_unit_ids,
+                  :organizational_units, :organizational_role_id, :organizational_role, :department_id, :department,
+                  :requirement_compliance, :issued_credentials
+
   key :organizational_unit_id, ObjectId, :index=>true
   belongs_to :organizational_unit
 

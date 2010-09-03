@@ -16,15 +16,15 @@
         data_update_value="'employee[full_name]'"><%=@employee.full_name%></h2>
 
 
-    <span id="employee_email_address"
-          name="employee[email_address]"
+    <span id="employee_email"
+          name="employee[email]"
           class="editable"
-          data_update_value="'employee[email_address]'"
+          data_update_value="'employee[email]'"
           data_default_text="'(add an e_mail address)'">
-      <%=@employee.email_address%>
+      <%=@employee.email%>
 </span>
-    <%unless @employee.email_address.blank?%>
-        <a href="mailto:<%=@employee.email_address%>">
+    <%unless @employee.email.blank?%>
+        <a href="mailto:<%=@employee.email%>">
           <%=image_tag "email.png"%>
         </a>
     <%end%>

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Employee do
   before(:each) do
     @valid_attributes = {
-
+        :email=>"hereiam@hereiam.com",:password=>"my password", :password_confirmation=>"my password"
             }
   end
 

@@ -3,7 +3,6 @@ class Person < AccountModel
   key :full_name, String
   key :first_name, String
   key :last_name, String
-  key :email_address, String
   key :_type, String
 
   def full_name_formal

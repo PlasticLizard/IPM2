@@ -11,6 +11,9 @@ gem 'rails', '3.0.0'
 gem "mongo"
 gem "bson_ext", "1.0.7"
 gem "mongo_mapper", "0.8.4"
+gem "devise", "~> 1.1.1"
+gem "mm-devise", "1.1.1"
+gem "rails3-generators", ">= 0.12.1"
 
 gem 'will_paginate', '>= 2.3.12'
 gem 'inherited_resources', '1.1.2'

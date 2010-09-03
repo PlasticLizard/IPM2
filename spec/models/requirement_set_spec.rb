@@ -24,8 +24,8 @@ describe RequirementSet do
   end
 
   it "should retrieve all employees when no criteria are specified" do
-    Employee.create! :full_name=>"Chairman Mao"
-    Employee.create! :full_name=>"Bozo Clown"
+    Employee.create! :full_name=>"Chairman Mao", :email=>"herei@am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"Bozo Clown", :email=>"herei@am2.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     rs = RequirementSet.new :name=>"everybody in the bloody system"
     employees = rs.employees
     employees.count.should equal 2
@@ -36,9 +36,9 @@ describe RequirementSet do
   it "should retrieve all employees in a given department when only department is specified" do
     d = Department.create! :name=>"My Department"
     d2 = Department.create! :name=>"Your Department"
-    Employee.create! :full_name=>"Chairman Mao", :department=>d
-    Employee.create! :full_name=>"Bozo Clown", :department=>d
-    Employee.create! :full_name=>"The Shadow", :department=>d2
+    Employee.create! :full_name=>"Chairman Mao", :department=>d, :email=>"herei@am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"Bozo Clown", :department=>d, :email=>"herei@am2.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"The Shadow", :department=>d2, :email=>"herei@am3.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     rs = RequirementSet.new :name=>"everybody in my department", :department=>d
     employees = rs.employees
     employees.count.should equal 2
@@ -49,9 +49,9 @@ describe RequirementSet do
   it "should retrieve all employees assigned to a particular organizational unit" do
     ou = OrganizationalUnit.create! :name=>"My OU"
     ou2 = OrganizationalUnit.create! :name=>"Your OU"
-    Employee.create! :full_name=>"Mr One", :organizational_unit=>ou, :organizational_unit_ids=>[ou.id]
-    Employee.create! :full_name=>"Mr Two", :organizational_unit=>ou2, :organizational_unit_ids=>[ou2.id]
-    Employee.create! :full_name=>"Mr Three", :organizational_unit=>ou, :organizational_unit_ids=>[ou.id]
+    Employee.create! :full_name=>"Mr One", :organizational_unit=>ou, :organizational_unit_ids=>[ou.id], :email=>"herei@am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"Mr Two", :organizational_unit=>ou2, :organizational_unit_ids=>[ou2.id], :email=>"herei@am2.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"Mr Three", :organizational_unit=>ou, :organizational_unit_ids=>[ou.id], :email=>"herei@am3.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     rs = RequirementSet.new :name=>"this and that", :organizational_unit_ids=>[ou.id]
     employees = rs.employees
     employees.count.should equal 2
@@ -62,9 +62,9 @@ describe RequirementSet do
   it "should retrieve all employees with a particular role" do
     r = OrganizationalRole.create! :name=>"My Role"
     r2 = OrganizationalRole.create! :name=>"Your Role"
-    Employee.create! :full_name=>"Mr One", :organizational_role=>r
-    Employee.create! :full_name=>"Mr Two", :organizational_role=>r
-    Employee.create! :full_name=>"Mr Three", :organizational_role=>r2
+    Employee.create! :full_name=>"Mr One", :organizational_role=>r , :email=>"herei@am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"Mr Two", :organizational_role=>r, :email=>"herei@am2.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"Mr Three", :organizational_role=>r2, :email=>"herei@am3.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     rs = RequirementSet.new :name=>"this and that", :organizational_role_ids=>[r.id]
     employees = rs.employees
     employees.count.should equal 2
@@ -77,10 +77,10 @@ describe RequirementSet do
     r2 = OrganizationalRole.create! :name=>"R2"
     ou = OrganizationalUnit.create! :name=>"OU1"
     ou2 = OrganizationalUnit.create! :name=>"OU2"
-    Employee.create! :full_name=>"Mr One", :organizational_role=>r, :organizational_unit=>ou, :organizational_unit_ids=>[ou.id]
-    Employee.create! :full_name=>"Mr Two", :organizational_role=>r2, :organizational_unit=>ou, :organizational_unit_ids=>[ou.id]
-    Employee.create! :full_name=>"Mr Three", :organizational_role=>r,:organizational_unit=>ou2, :organizational_unit_ids=>[ou2.id]
-    Employee.create! :full_name=>"Mr Four", :organizational_role=>r2, :organizational_unit=>ou2, :organizational_unit_ids=>[ou2.id]
+    Employee.create! :full_name=>"Mr One", :organizational_role=>r, :organizational_unit=>ou, :organizational_unit_ids=>[ou.id], :email=>"herei@am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"Mr Two", :organizational_role=>r2, :organizational_unit=>ou, :organizational_unit_ids=>[ou.id], :email=>"herei@am3.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"Mr Three", :organizational_role=>r,:organizational_unit=>ou2, :organizational_unit_ids=>[ou2.id], :email=>"herei@am4.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
+    Employee.create! :full_name=>"Mr Four", :organizational_role=>r2, :organizational_unit=>ou2, :organizational_unit_ids=>[ou2.id], :email=>"herei@am5.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     rs = RequirementSet.new :name=>"this and that", :organizational_role_ids=>[r.id], :organizational_unit_ids=>[ou.id,ou2.id]
     employees = rs.employees
     employees.count.should equal 2

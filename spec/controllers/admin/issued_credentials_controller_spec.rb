@@ -8,7 +8,7 @@ describe Admin::IssuedCredentialsController do
   end
 
   it "should add the specified credential to the issued_credential list of the current employee" do
-    emp = Employee.create! :name=>"Sam Iam"
+    emp = Employee.create! :name=>"Sam Iam", :email=>"iam@sam.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     cred = Credentials::Certification.create! :name=>"Iam Sam"
 
     put "issue", :employee_id=>emp.id.to_s,:credential_id=>cred.id.to_s,:issue_date=>"01/01/2001",:expiration_date=>"01/02/2001"
@@ -24,7 +24,7 @@ describe Admin::IssuedCredentialsController do
   end
 
   it "should remove the specified credential" do
-    emp = Employee.create! :name=>"Sam Iam"
+    emp = Employee.create! :name=>"Sam Iam", :email=>"sam@iam.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     cred = Credentials::Certification.create! :name=>"Iam Sam"
     emp.issue_credential(cred)
 

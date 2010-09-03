@@ -6,7 +6,7 @@ describe Services::EmployeeRequirements::Service do
   end
 
   it ".issue_credential should add an appropriately configured IssuedCredential to the provided employee for the provided credential" do
-    emp = Employee.create! :name=>"Here I Am"
+    emp = Employee.create! :name=>"Here I Am", :email=>"hereiam@hereiam.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     cred1 = Credentials::Certification.create! :name=>"ta da"
     cred2 = Credentials::Training.create! :name=>"Sexiness Training"
 
@@ -23,7 +23,7 @@ describe Services::EmployeeRequirements::Service do
   end
 
   it ".update_employee_compliance should bubble 'incomplete' if any credential is missing and the rule is :all" do
-    emp = Employee.create! :name=>"Here I Am"
+    emp = Employee.create! :name=>"Here I Am", :email=>"i_sam_sam@sam_i_am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     cred1 = Credentials::Certification.create! :name=>"ta da"
     cred2 = Credentials::Training.create! :name=>"Sexiness Training"
 
@@ -47,7 +47,7 @@ describe Services::EmployeeRequirements::Service do
   end
 
   it ".update_employee_compliance should show current if any components are current and the rule is :any" do
-    emp = Employee.create! :name=>"Here I Am"
+    emp = Employee.create! :name=>"Here I Am", :email=>"hereiam@haha.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     cred1 = Credentials::Certification.create! :name=>"ta da"
     cred2 = Credentials::Training.create! :name=>"Sexiness Training"
 
@@ -72,7 +72,7 @@ describe Services::EmployeeRequirements::Service do
   end
 
   it ".update_employee_compliance should store the results on the employee" do
-    emp = Employee.create! :name=>"Here I Am"
+    emp = Employee.create! :name=>"Here I Am", :email=>"hereiam@am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     cred1 = Credentials::Certification.create! :name=>"ta da"
     cred2 = Credentials::Training.create! :name=>"Sexiness Training"
 
@@ -98,7 +98,7 @@ describe Services::EmployeeRequirements::Service do
   end
 
   it "#detect_mandatory_requirements should mark all requirements as mandatory when the operator is all" do
-    emp = Employee.create! :name=>"Here I Am"
+    emp = Employee.create! :name=>"Here I Am", :email=>"herei@am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     cred1 = Credentials::Certification.create! :name=>"ta da"
     cred2 = Credentials::Training.create! :name=>"Sexiness Training"
 
@@ -116,7 +116,7 @@ describe Services::EmployeeRequirements::Service do
   end
 
   it "#detect_mandatory_requirements should mark the last expiring requirement as mandatory when the operator is any" do
-    emp = Employee.create! :name=>"Here I Am"
+    emp = Employee.create! :name=>"Here I Am", :email=>"herei@am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     cred1 = Credentials::Certification.create! :name=>"ta da"
     cred2 = Credentials::Training.create! :name=>"Sexiness Training"
 
@@ -135,7 +135,7 @@ describe Services::EmployeeRequirements::Service do
   end
 
   it "#detect_mandatory_requirements should add a default requirement when incomplete and the operator is any" do
-    emp = Employee.create! :name=>"Here I Am"
+    emp = Employee.create! :name=>"Here I Am", :email=>"herei@am.com", :password=>"iamsam.com", :password_confirmation=>"iamsam.com"
     cred1 = Credentials::Certification.create! :name=>"ta da"
     cred2 = Credentials::Training.create! :name=>"Sexiness Training"
 
