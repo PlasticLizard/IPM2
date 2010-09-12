@@ -4,17 +4,21 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  before_filter :authorize_account
+  before_filter :authenticate_user!
 
-  layout "left_sidebar"
-  
-  def authorize_account
-    if (Rails.env == "development" && params["_account"])
-      Account.set_current_account(Account.find(params["_account"].to_i))
+  layout :layout_by_resource
+
+  def layout_by_resource
+    if devise_controller?
+      "no_nav"
     else
-      Account.set_current_account(Account.first)
+      "left_sidebar"
     end
   end
-  # Scrub sensitive parameters from your log
-   filter_parameter_logging :password
+
+  def authenticate_user!
+    super
+    Account.set_current_account(current_user.account)
+  end
+
 end

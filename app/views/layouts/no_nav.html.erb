@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title><%= h(yield(:title) || "RPM On-Line") %></title>
+
+  <%= csrf_meta_tag %>
+
+  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"-%>
+  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"-%>
+
+  <script type="text/javascript" src="/javascripts/admintasia/superfish.js"></script>
+
+  <script type="text/javascript" src="/javascripts/admintasia/live_search.js"></script>
+  <script type="text/javascript" src="/javascripts/admintasia/tooltip.js"></script>
+  <script type="text/javascript" src="/javascripts/admintasia/cookie.js"></script>
+  <script type="text/javascript" src="/javascripts/admintasia/custom.js"></script>
+
+  <link href="/stylesheets/admintasia/ui/ui.base.css" rel="stylesheet" media="all" />
+
+  <link href="/stylesheets/admintasia/themes/gray_lightness/ui.css" rel="stylesheet" title="style" media="all" />
+
+  <%= stylesheet_link_tag "application" -%>
+
+  <!--[if IE 7]>
+    <link href="/stylesheets/admintasia/ie7.css" rel="stylesheet" media="all" />
+    <![endif]-->
+  <%= javascript_include_tag "application"-%>
+  <% javascript_tag "var AUTH_TOKEN =  #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <%= yield(:head) %>
+
+</head>
+<body>
+<div id="page_wrapper">
+  <div id="page-header">
+    <div id="page-header-wrapper">
+      <div id="top">
+        <a href="#" class="logo" title="RPM On-Line">RPM On-Line</a>
+        <!--
+                        <div class="welcome">
+                          <span class="note">Welcome, <a href="#" title="Welcome, Horia Simon">Horia Simon</a></span>
+                          <a class="btn ui-state-default ui-corner-all" href="#">
+                              <span class="ui-icon ui-icon-wrench"></span>
+                              Settings
+                          </a>
+                          <a class="btn ui-state-default ui-corner-all" href="#">
+                              <span class="ui-icon ui-icon-person"></span>
+                              My account
+                          </a>
+                          <a class="btn ui-state-default ui-corner-all" href="#">
+                              <span class="ui-icon ui-icon-power"></span>
+                              Logout
+                          </a>
+                      </div>
+                      -->
+      </div>
+    </div>
+  </div>
+  <div id="sub-nav" class="fixed">
+    <div class="page-title">
+      <h1><%=h(yield(:title) || "Untitled") %></h1>
+      <%= yield(:breadcrumb) %>
+      <!--
+      <span><a href="#" title="Layout Options">Breadcrumb</a> > <a href="#" title="Elements">Elements</a> > Icons</span>
+      -->
+    </div>
+    <div id="top-buttons">
+      <%= yield(:top_buttons) %>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div id="page-layout">
+    <div id="page-content">
+
+
+           <%= yield %>
+
+
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

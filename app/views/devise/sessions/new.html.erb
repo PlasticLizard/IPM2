@@ -1,0 +1,28 @@
+
+
+<%content_for :head do%>
+    <link href="/stylesheets/admintasia/ui/ui.login.css" rel="stylesheet" media="all" />
+<%end%>
+
+<div id="login">
+  <div id="login-content">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <p style="padding-left:22px">
+        <%= f.label :email, "E-mail", :style=>"font-weight:bold" %>
+        <%= f.text_field :email %></p>
+
+      <p><%= f.label :password, "Password", :style=>"font-weight:bold" %>
+        <%= f.password_field :password %></p>
+
+      <% if devise_mapping.rememberable? -%>
+          <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+      <% end -%>
+
+      <p><%= f.submit "Sign in" %></p>
+  <% end %>
+
+  <p style="color: red; font-weight: bold;"><%= flash[:alert] %></p>
+
+  <%= render :partial => "devise/shared/links" %>
+   </div>
+</div>

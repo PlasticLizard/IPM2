@@ -38,8 +38,8 @@
       <div id="top">
         <a href="ipm.heroku.com" class="logo" title="Maestro EMS">Maestro EMS</a>
         <div class="welcome">
-          <span class="note">Welcome, <a href="#" title="Welcome, Nathan Stults">Nathan Stults</a></span>
-
+          <span class="note">Welcome, <a href="/admin/employees/<%=current_user.id%>" title="Welcome, <%=current_user.full_name%>"><%=current_user.full_name%></a></span>
+           <!--
           <a class="btn ui-state-default ui-corner-all" href="#">
             <span class="ui-icon ui-icon-wrench"></span>
             Settings
@@ -48,7 +48,8 @@
             <span class="ui-icon ui-icon-person"></span>
             My account
           </a>
-          <a class="btn ui-state-default ui-corner-all" href="#">
+          -->
+          <a class="btn ui-state-default ui-corner-all" href="/users/sign_out">
             <span class="ui-icon ui-icon-power"></span>
 
             Logout
@@ -56,12 +57,14 @@
         </div>
       </div>
       <%=render :partial=>"shared/main_menu"%>
+      <!--
       <div id="search-bar">
         <form method="post" action="http://www.google.com/">
           <input type="text" name="q" value="live search demo" />
 
         </form>
       </div>
+      -->
     </div>
   </div>
   <div id="sub-nav">

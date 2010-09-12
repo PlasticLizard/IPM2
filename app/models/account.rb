@@ -34,6 +34,7 @@ class Account
   many :departments, :dependent=>:destroy, :order=>'name'
 
   many :employees, :dependent=>:destroy, :order=>'last_name, first_name'
+  many :users, :dependent=>:destroy
 
   def organizational_structure
     @organizational_structure ||= OrganizationalUnitHierarchy.new(Company,Region,Station,TransportUnit)
@@ -55,7 +56,10 @@ class Account
     end
   end
 
-  cattr_accessor :current
+  def self.current
+    @@current ||= nil
+  end
+
   def self.set_current_account(account=nil)
     @@current = account
   end

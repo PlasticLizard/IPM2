@@ -16,6 +16,10 @@ def database_cleanup
   end
 end
 
+def ensure_user
+  Account.current.users.first || User.create!(:email=>"herei@am.com", :password=>"testpw", :password_confirmation=>"testpw")
+end
+
 Rspec.configure do |config|
   # == Mock Framework
   #
@@ -38,8 +42,9 @@ Rspec.configure do |config|
 
   config.before(:each) do
     Account.set_current_account(Account.first || Account.create!(:name=>"Lieutenant Dan"))
-    Thread.current["account_id"] = nil
   end
+
+  config.include Devise::TestHelpers, :type=>:controller
 
   config.after(:each) do
     database_cleanup

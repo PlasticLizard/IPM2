@@ -1,5 +1,4 @@
 class AccountModel
-    
   class << AccountModel
     def inherited(other)
       super
@@ -24,7 +23,8 @@ class AccountModel
 
     module InstanceMethods
       def set_current_account
-        self.account = Account.current if Account.current
+        Account.current ||= nil
+        self.account ||= Account.current
       end
     end   
   end

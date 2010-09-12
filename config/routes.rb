@@ -61,6 +61,8 @@ Ipm::Application.routes.draw do
   resources :staff_requirements
 
   match '/:controller(/:action(/:id))'
+
+  root :to=>"staff_requirements#index"
 #
 #  map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'
