@@ -23,8 +23,7 @@ class AccountModel
 
     module InstanceMethods
       def set_current_account
-        Account.current ||= nil
-        self.account ||= Account.current
+        self.account = Account.current
       end
     end   
   end
